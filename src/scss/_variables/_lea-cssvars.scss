@@ -1,0 +1,54 @@
+@import 'shared';
+
+body,
+.lea {
+	--font-primary: #{$font-primary};
+	--font-secondary: #{$font-secondary};
+	--font-size: #{$font-size};
+	--line-height: #{$line-height};
+	--font-extralight: #{$font-extralight};
+	--font-light: #{$font-light};
+	--font-regular: #{$font-regular};
+	--font-semibold: #{$font-semibold};
+	--font-bold: #{$font-bold};
+	--font-extrabold: #{$font-extrabold};
+	--font-black: #{$font-black};
+	--btn-radius: #{$btn-radius};
+	--card-radius: #{$card-radius};
+	--bullet-size: #{$bullet-size};
+}
+
+@import 'lea';
+
+body,
+.lea {
+	--background: #{$background};
+	--background-negative: #{$background-negative};
+	--background-secondary: #{$background-secondary};
+	--background-tertiary: #{$background-tertiary};
+	--background-tertiary-dark: #{$background-tertiary-dark};
+	--background-header: #{$background-header};
+	--background-subheader: #{$background-subheader};
+	// --background-quaternary: #{$background-quaternary};
+	// --background-quinary: #{$background-quinary};
+	// --background-senary: #{$background-senary};
+	--foreground: #{$foreground};
+	--foreground-negative: #{$foreground-negative};
+	--foreground-secondary: #{$foreground-secondary};
+	--foreground-footer: #{$foreground-footer};
+	--background-tilesize: #{$background-tilesize};
+	--foreground-tilesize: #{$foreground-tilesize};
+	--border: #{$border};
+	--nav-header: #{$nav-header};
+	--nav-header-secondary: #{$nav-header-secondary};
+	--nav-product: #{$nav-product};
+	--nav-product-active: #{$nav-product-active};
+	--primary: #{$primary};
+	--primary-active: #{$primary-active};
+	--store: #{$store};
+	--store-secondary: #{$store-secondary};
+	--facebook: #{$facebook};
+	--google: #{$google};
+}
+
+@import 'cssvars';

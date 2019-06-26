@@ -1,0 +1,10 @@
+<div class="group--checkbox" ng-class="getClasses()">
+	<div class="group--input">
+		<label class="form__label">
+			<input type="{{getType()}}" name="{{field}}" class="form__checkbox" ng-model="ngModel" ng-true-value="true" ng-false-value="false" ng-required="required" ng-disabled="disabled" ng-readonly="readonly" ng-change="onChange" ng-focus="onFocus()" ng-blur="onBlur()">
+			<span ng-bind="title"></span>
+		</label>
+		<ng-transclude></ng-transclude>
+		<sup ng-if="required">✽ required</sup>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+.group--cta {
+	margin: 60px 0 0 0;
+	text-align: left;
+	font-size: 16px;
+	color: black;
+
+	@include media-breakpoint-up(sm) {
+		.btn:not(:last-child) {
+			margin-right: 15px;
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+
+		&>.btn+.btn {
+			margin-top: 15px;
+		}
+	}
+}
+
+.group--tile {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	padding: 20px 0 50px 0;
+
+	&>div {
+		flex: 1 0 auto;
+		text-align: center;
+	}
+}

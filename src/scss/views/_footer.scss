@@ -1,0 +1,176 @@
+footer {
+
+	.inner {
+		width: 100%;
+		max-width: 1920px;
+		margin: 0 auto;
+	}
+
+}
+
+.section--social {
+	.row {
+		height: 170px;
+		align-items: stretch;
+	}
+
+	.col-md-4 {
+		position: relative;
+		display: flex;
+		align-items: center;
+		font-family: $font-secondary;
+		font-size: 24px;
+		font-weight: 300;
+		background: white;
+
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 10.72%;
+			height: 100%;
+			top: 0;
+			left: -10.72%;
+			background: white;
+		}
+	}
+
+	.col-md-8 {
+		position: relative;
+		background: #e7e7e7;
+
+		&:after {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 10.72%;
+			height: 100%;
+			top: 0;
+			right: -10.72%;
+			background: #e7e7e7;
+		}
+	}
+
+	.nav--social {
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 percentage(1 / 8);
+		height: 100%;
+
+		&>li>a {
+			display: block;
+		}
+
+		svg {
+			fill: #D3D4D3;
+		}
+
+		li:first-child {
+			svg {
+				fill: #232120;
+			}
+		}
+
+		.icon--facebook {
+			width: 18px;
+			height: 35px;
+		}
+
+		.icon--twitter {
+			width: 35px;
+			height: 29px;
+		}
+
+		.icon--instagram {
+			width: 31px;
+			height: 31px;
+		}
+
+		.icon--youtube {
+			width: 38px;
+			height: 27px;
+		}
+
+		.icon--linkedin {
+			width: 31px;
+			height: 31px;
+		}
+	}
+
+}
+
+.section--footer {
+	background: #d6d6d6;
+	padding: 70px 0;
+
+	.row:first-child {
+		margin-bottom: 140px;
+	}
+
+	.brand {
+		display: block;
+		position: relative;
+		z-index: 1;
+		line-height: 0;
+		font-size: 0;
+		width: 100%;
+
+		.icon--lea-ceramiche {
+			width: 137px;
+			height: 56px;
+		}
+	}
+
+	.nav--footer {
+		flex-direction: column;
+
+		&>li {
+
+			&>a,
+			&>span {
+				font-size: 16px;
+				font-weight: 700;
+				color: $foreground;
+			}
+
+			&:hover {
+
+				&>a,
+				&>span {
+					color: $foreground;
+				}
+			}
+		}
+
+		&>li+li {
+			margin-top: 40px;
+		}
+	}
+
+	.title {
+		margin-bottom: 15px;
+	}
+
+	p {
+		font-size: 16px;
+		font-weight: 100;
+		line-height: 1.4;
+	}
+
+	.btn--link {
+		margin-top: 30px;
+	}
+
+	.row--colophon {
+		font-size: 16px;
+		font-weight: 100;
+		line-height: 1;
+		color: #878887;
+
+		.icon--websolute {
+			width: 82px;
+			height: 16px;
+		}
+
+	}
+}

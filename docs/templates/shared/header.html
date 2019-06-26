@@ -1,0 +1,106 @@
+<!-- HEADER -->
+<header class="section section--header section--header-fixed" ng-class="{ enter: root.init, ready: root.ready, scrolled: root.scrolled }" scroll="onScroll($event)">
+	<div class="inner">
+		<div class="container">
+			<div class="menu">
+				<div class="menu__brand col-md-1">
+					<a class="brand" href="index.html">
+						<svg class="icon icon--lea-ceramiche"><use xlink:href="#icon--lea-ceramiche"></use></svg>
+					</a>
+				</div>
+				<div class="menu__primary col-md-3 offset-md-1">
+					<ul class="nav nav--primary hidden-xs-down">
+						<li has-dropdown="span" dropped-in="root.onPrimaryDroppedIn" dropped-out="root.onPrimaryDroppedOut">
+							<span>Collections</span>
+							<ul class="nav nav--submenu" dropdown>
+								<li><a href="#">Collezioni</a></li>
+								<li has-dropdown="span" dropped-in="root.onSecondaryDroppedIn">
+									<span>Tecnologie +</span>
+									<ul class="nav nav--submenu" dropdown>
+										<li><a href="#">Gres Porcellanato</a></li>
+										<li><a href="#">Gres Laminato Slimtech</a></li>
+										<li><a href="#">Gres 20mm</a></li>
+										<li><a href="#">Protect</a></li>
+										<li><a href="#">Lealab</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Real</a></li>
+							</ul>
+						</li>
+						<li has-dropdown="span" dropped-in="root.onPrimaryDroppedIn" dropped-out="root.onPrimaryDroppedOut">
+							<span>Creativity</span>
+							<ul class="nav nav--submenu" dropdown>
+								<li><a href="#">Journal</a></li>
+								<li><a href="#">Collaborazioni</a></li>
+								<li><a href="#">Eventi e installazioni</a></li>
+								<li><a href="#">Premi</a></li>
+								<li><a href="#">News</a></li>
+								<li><a href="#">Lealab</a></li>
+							</ul>
+						</li>
+						<li has-dropdown="span" dropped-in="root.onPrimaryDroppedIn" dropped-out="root.onPrimaryDroppedOut">
+							<span>Performance</span>
+							<ul class="nav nav--submenu" dropdown>
+								<li><a href="#">Slimtech</a></li>
+								<li><a href="#">Protect</a></li>
+								<li><a href="#">Realizzazioni</a></li>
+								<li has-dropdown="span" dropped-in="root.onSecondaryDroppedIn">
+									<span>Applicazioni +</span>
+									<ul class="nav nav--submenu" dropdown>
+										<li><a href="#">Facciate ventilate</a></li>
+										<li><a href="#">Soluzioni 20mm</a></li>
+										<li><a href="#">Pavimenti sopraelevati</a></li>
+										<li><a href="#">Percorsi tattili per non vedenti</a></li>
+										<li><a href="#">Cappotti termici</a></li>
+										<li><a href="#">Lealab</a></li>
+										<li><a href="#">Top cucine</a></li>
+										<li><a href="#">Manuale tecnico</a></li>
+										<li><a href="#">Rivestimento piscine</a></li>
+									</ul>
+								</li>
+								<li has-dropdown="span" dropped-in="root.onSecondaryDroppedIn">
+									<span>Guide e soluzioni +</span>
+									<ul class="nav nav--submenu" dropdown>
+										<li><a href="#">Facciate ventilate</a></li>
+										<li><a href="#">Soluzioni 20mm</a></li>
+										<li><a href="#">Pavimenti sopraelevati</a></li>
+										<li><a href="#">Percorsi tattili per non vedenti</a></li>
+										<li><a href="#">Cappotti termici</a></li>
+										<li><a href="#">Lealab</a></li>
+										<li><a href="#">Top cucine</a></li>
+										<li><a href="#">Manuale tecnico</a></li>
+										<li><a href="#">Rivestimento piscine</a></li>
+									</ul>
+								</li>
+								<li><a href="#">Certificazioni</a></li>
+							</ul>
+						</li>
+					</ul>
+					<button type="button" class="btn btn--menu hidden-sm-up" ng-click="root.menuOpened = !root.menuOpened">
+						<svg class="icon icon--menu" ng-if="!root.menuOpened"><use xlink:href="#menu"></use></svg>
+						<svg class="icon icon--close" ng-if="root.menuOpened"><use xlink:href="#close"></use></svg>
+					</button>
+				</div>
+				<div class="menu__secondary col-md-7" ng-class="{ 'hidden-xs-down': !root.menuOpened }">
+					<ul class="nav nav--secondary">
+						<li><a href="store-locator.html">Punti vendita</a></li>
+						<li><a href="company.html">Company +</a></li>
+						<li><a href="downloads.html">Downloads</a></li>
+					</ul>
+				</div>
+				<div class="menu__tertiary col-md-2 offset-md-10">
+					<ul class="nav nav--tertiary">
+						<li><a href="search.html"><svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> Cerca</a></li>
+						<li><a href="wishlist.html"><svg class="icon icon--wishlist"><use xlink:href="#icon--wishlist"></use></svg> Wishlist</a> <span class="wishlist--badge" ng-bind="root.wishlistCount" ng-if="root.wishlistCount"></span></li>
+						<li has-dropdown="span" dropped-in="root.onDroppedIn">
+							<span>IT <svg class="icon icon--plus"><use xlink:href="#icon--plus"></use></svg></span>
+							<!--
+							<ng-include src="'templates/shared/submenu-markets.html'"></ng-include>
+							-->
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>

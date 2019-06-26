@@ -1,0 +1,319 @@
+input,
+select,
+textarea {
+	font-family: $font-primary;
+	outline: none !important;
+	cursor: pointer;
+}
+
+button {
+	outline: none !important;
+	background: transparent;
+	border: none;
+}
+
+.group--control {
+	display: flex;
+	align-items: center;
+
+	&>.control {
+		flex: 1 1 auto;
+	}
+
+	&>.btn {
+		flex: 1 1 auto;
+	}
+
+}
+
+.control--select {
+	.input {
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		.icon--search {
+			width: 16px;
+			height: 16px;
+			line-height: 1;
+			fill: $primary;
+		}
+
+		.icon--close {
+			width: 20px;
+			height: 30px;
+			padding: 10px 10px 10px 0;
+			fill: $primary;
+		}
+
+		.value {
+			outline: none !important;
+			line-height: inherit;
+		}
+
+		.icon--arrow-down {
+			position: absolute;
+			width: 13px;
+			height: 9px;
+			right: 15px;
+			top: 50%;
+			margin-top: -5px;
+			fill: $primary;
+		}
+
+		&[disabled] {
+			pointer-events: none;
+		}
+	}
+
+	&.selected {
+		.input {
+			.value {
+
+				&,
+				&::placeholder {
+					font-weight: $font-regular;
+					color: $foreground;
+				}
+			}
+		}
+	}
+}
+
+/////////////////////////////////////////
+
+$white: #fff !default;
+$black: #000 !default;
+$red: #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green: #5cb85c !default;
+$blue: #0000ff !default;
+$teal: #5bc0de !default;
+$pink: #ff5b77 !default;
+$purple: #613d7c !default;
+$idle: #999;
+$placeholder: #ccc;
+$warning: $primary;
+$success: $blue;
+
+%group--form {
+	position: relative;
+	margin-bottom: 40px;
+}
+
+.group--form,
+.group--text,
+.group--password,
+.group--select,
+.group--textarea {
+	@extend %group--form;
+}
+
+.form__label {
+	display: block;
+	position: relative;
+	margin-bottom: 10px;
+	font-size: 11px;
+	font-weight: $font-bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: $foreground;
+
+	span {
+		display: inline-block;
+	}
+
+	sup {
+		font-size: 0.7em;
+		margin-left: 4px;
+	}
+
+	/*
+	.empty>& {
+		span {
+			transform: translateY(28px);
+		}
+	}
+
+	.focus>& {
+		span {
+			transform: translateY(10px);
+		}
+
+		&:after {
+			transform: translateX(0);
+		}
+	}
+
+	.success>& {
+		&:before {
+			background: $success;
+		}
+
+		&:after {
+			background: $success;
+		}
+	}
+
+	.error>& {
+		&:before {
+			background: $warning;
+		}
+
+		&:after {
+			background: $warning;
+		}
+	}
+	*/
+}
+
+.form__control {
+	display: block;
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	margin: 0;
+	padding: 0 0 0 30px;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid $foreground;
+	appearance: none;
+	font-size: 16px;
+	font-weight: $font-regular;
+	background: $background;
+	color: $foreground-secondary;
+
+	&::placeholder {
+		color: $foreground-secondary;
+	}
+
+	&.empty {}
+
+	&.focus {}
+
+	&.success {}
+
+	&.error {}
+}
+
+.group--select {
+	svg {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -5px;
+		width: 10px;
+		height: 10px;
+		pointer-events: none;
+		fill: $foreground;
+	}
+}
+
+.group--textarea {
+	.form__control {
+		height: auto;
+		border: 1px solid $foreground;
+	}
+}
+
+.group--input {
+	position: relative;
+	display: flex;
+	align-items: center;
+
+	&>*+* {
+		margin-left: 10px;
+	}
+
+	ng-transclude {
+		flex: 1 1 auto;
+	}
+}
+
+.group--checkbox {
+	position: relative;
+	margin-bottom: 10px;
+
+	.form__label {
+		cursor: pointer;
+	}
+
+	.group--input {
+		align-items: flex-start;
+		line-height: 20px;
+		font-size: 14px;
+	}
+
+	&.error {
+		sup {
+			color: $primary;
+		}
+	}
+}
+
+.group--select {
+	@extend %group--form;
+}
+
+control-messages {
+	display: none;
+	position: absolute;
+	width: 100%;
+	padding: 3px 0;
+	font-size: 10px;
+	font-weight: $font-bold;
+	text-transform: uppercase;
+	// background: $background-tertiary;
+	color: $primary;
+
+	.error>& {
+		display: block;
+	}
+
+	&>span {}
+}
+
+/*
+.btn {
+	cursor: pointer;
+	-webkit-appearance: none;
+	outline: none;
+	box-shadow: none;
+
+	&:focus {
+		-webkit-appearance: none;
+		outline: none;
+		box-shadow: none;
+	}
+
+	&.busy {
+		position: relative;
+		z-index: 10;
+		background: $blue;
+		border-color: $blue;
+	}
+
+	&.error {
+		background: $red;
+		border-color: $red;
+	}
+
+	&.success {
+		background: $green;
+		border-color: $green;
+	}
+}
+
+.input-group-addon {
+	position: relative;
+	cursor: pointer;
+	background: transparent;
+
+	[class^='icon-'] {
+		font-size: 15px;
+		line-height: 20px;
+		color: $blue;
+	}
+}
+*/

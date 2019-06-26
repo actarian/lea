@@ -1,0 +1,731 @@
+a,
+button,
+[ng-reflect-router-link],
+.btn {
+	display: inline-block;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: ease-in-out 350ms;
+	transition-property: background-color, color, border, opacity;
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: inherit;
+		text-decoration: none;
+		outline: none;
+	}
+
+	/*
+	&:hover {
+		box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.15);
+	}
+	*/
+
+	&[disabled] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.link {
+	text-decoration: underline;
+	margin: 0 5px;
+}
+
+.btn--discover {
+	display: inline-block;
+
+	span {
+		display: inline-block;
+		padding: 15px 50px;
+		text-transform: uppercase;
+		font-size: 13px;
+		font-weight: $font-semibold;
+		color: $primary;
+		border: 2px solid $primary;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		span {
+			color: $primary;
+			border-color: $primary;
+		}
+	}
+
+	.section--negative & {
+		span {
+			color: $foreground-negative;
+			border-color: $foreground-negative;
+		}
+
+		&,
+		&:active,
+		&:focus,
+		&:hover,
+		&:visited {
+			span {
+				color: $foreground-negative;
+				border-color: $foreground-negative;
+			}
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+		display: block;
+	}
+}
+
+.btn--gallery {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 14px;
+	color: $primary;
+
+	svg {
+		fill: $primary;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $primary;
+	}
+
+	b {
+		margin-left: 5px;
+		position: relative;
+		text-transform: uppercase;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -4px;
+			width: 100%;
+			height: 2px;
+			background: $primary;
+			transition: all ease-out 350ms;
+		}
+	}
+
+	&:hover {
+		b {
+			&:after {
+				transform: scale(0, 1);
+			}
+		}
+	}
+
+	.icon--gallery {
+		width: 18px;
+		height: 14px;
+		margin-right: 10px;
+	}
+
+	@include media-breakpoint-down(xs) {
+		justify-content: flex-start;
+		align-items: center;
+		text-align: left;
+		line-height: 1.2;
+	}
+}
+
+
+
+.btn--link {
+	display: inline-flex;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 500;
+
+	span {
+		display: inline-block;
+		transition: all ease-in-out 350ms;
+	}
+
+	.icon--arrow {
+		width: 8px;
+		height: 13px;
+		margin-left: 17px;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $foreground;
+	}
+
+	&:hover {
+		span {
+			transform: translateX(10px);
+		}
+	}
+}
+
+/*
+.btn--link-secondary {
+	@extend %btn--link;
+}
+
+.btn--category {
+	position: relative;
+	font-size: 15px;
+	font-weight: 500;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 100%;
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $primary;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -1px;
+		width: 100%;
+		height: 2px;
+		background: $primary;
+		transition: all ease-out 350ms;
+	}
+
+	&:hover {
+		&:after {
+			transform: scale(0, 1);
+			background: $primary;
+		}
+	}
+
+	.section--negative & {
+
+		&,
+		&:active,
+		&:focus,
+		&:hover,
+		&:visited {
+			color: $foreground-negative;
+		}
+
+		&:after {
+			background: $foreground-negative;
+		}
+
+		&:hover {
+			&:after {
+				background: $primary;
+			}
+		}
+	}
+}
+
+.btn--mail {
+	position: relative;
+
+	svg {
+		fill: $foreground;
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -3px;
+		width: 100%;
+		height: 2px;
+		background: $foreground-secondary;
+		transform: scale(0, 1);
+		transition: all ease-out 350ms;
+	}
+
+	&:hover {
+		&:after {
+			transform: scale(1, 1);
+		}
+	}
+
+	.section--negative & {
+		&:after {
+			background: $background-negative;
+		}
+
+	}
+}
+
+.btn--download {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 14px;
+	color: $primary;
+
+	svg {
+		fill: $primary;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $primary;
+	}
+
+	span {
+		position: relative;
+		text-transform: uppercase;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -4px;
+			width: 100%;
+			height: 2px;
+			background: $primary;
+			transition: all ease-out 350ms;
+		}
+	}
+
+	&:hover {
+		span {
+			&:after {
+				transform: scale(0, 1);
+			}
+		}
+	}
+
+	.icon {
+		width: 24px;
+		height: 28px;
+		margin-right: 10px;
+	}
+}
+
+.btn--wishlist,
+.btn--search {
+	display: inline-flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 19px;
+	color: $primary;
+
+	svg {
+		fill: $primary;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $primary;
+	}
+
+	b {
+		margin-left: 5px;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -4px;
+			width: 100%;
+			height: 2px;
+			background: $primary;
+			transition: all ease-out 350ms;
+		}
+	}
+
+	&:hover {
+		b {
+			&:after {
+				transform: scale(0, 1);
+			}
+		}
+	}
+}
+
+.btn--search {
+	.icon--search {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+.btn--wishlist {
+	.icon--wishlist {
+		width: 25px;
+		height: 22px;
+	}
+
+	.icon--wishlist+span {
+		margin-left: 10px;
+	}
+}
+
+.btn--play {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 196px;
+	height: 196px;
+	transform: translateX(-50%) translateY(-50%);
+	pointer-events: none;
+	transition: opacity ease-in-out 350ms 200ms;
+
+	.icon--play-progress,
+	.icon--play-progress-background {
+		display: block;
+		position: absolute;
+		width: 196px;
+		height: 196px;
+		top: 0;
+		left: 0;
+		fill: transparent;
+		stroke: $foreground-negative;
+		transition: opacity ease-in-out 350ms;
+	}
+
+	.icon--play {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		fill: $foreground-negative;
+		width: 30px;
+		height: 30px;
+		margin-left: -13px;
+		margin-top: -14px;
+	}
+
+	&.playing {
+		opacity: 0;
+
+		.icon--play-progress {
+			opacity: 1;
+		}
+	}
+
+	.icon--play-progress-background {
+		opacity: 0.2;
+	}
+
+	@include media-breakpoint-down(md) {
+		width: 150px;
+		height: 150px;
+
+		.icon--play-progress,
+		.icon--play-progress-background {
+			width: 150px;
+			height: 150px;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		width: 100px;
+		height: 100px;
+
+		.icon--play-progress,
+		.icon--play-progress-background {
+			width: 100px;
+			height: 100px;
+		}
+
+		.icon--play {
+			width: 20px;
+			height: 20px;
+			margin-left: -9px;
+			margin-top: -9px;
+		}
+
+		.icon--play-progress-background {
+			opacity: 0.5;
+		}
+
+	}
+
+}
+
+.btn--menu {
+	position: relative;
+	padding: 10px;
+	background: transparent;
+	z-index: 1;
+
+	.icon--menu,
+	.icon--close {
+		fill: $foreground-negative;
+		stroke: none;
+		width: 26px;
+		height: 16px;
+	}
+}
+
+.btn--secondary {
+	font-size: 15px;
+	font-weight: $font-regular;
+	text-transform: uppercase;
+	border: 2px solid $primary;
+	padding: 10px 15px;
+	white-space: nowrap;
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $primary;
+	}
+
+	&>span {
+		display: inline-block;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -3px;
+			width: 100%;
+			height: 2px;
+			background: $primary;
+			transform: scale(0, 1);
+			transition: all ease-out 350ms;
+		}
+	}
+
+	&:hover {
+		&>span:after {
+			transform: scale(1, 1);
+			background: $primary;
+		}
+	}
+
+	.section--negative & {
+		border-color: $foreground-negative;
+
+		&,
+		&:active,
+		&:focus,
+		&:hover,
+		&:visited {
+			color: $foreground-negative;
+		}
+
+		&>span:after {
+			background: $foreground-negative;
+		}
+
+		&:hover {
+			&>span:after {
+				background: $primary;
+			}
+		}
+	}
+}
+
+.btn--project {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 50px;
+	font-size: 16px;
+	border-top: 2px solid $border;
+
+	&,
+	&:link,
+	&:focus,
+	&:active {
+		color: $primary;
+	}
+
+	svg {
+		fill: $primary;
+		width: 14px;
+		height: 14px;
+	}
+
+	&:hover {
+		color: $primary;
+
+svg {
+	// fill: white;
+	fill: $primary;
+}
+}
+
+}
+
+.btn--position {
+	display: inline-flex;
+	align-items: center;
+	font-size: 13px;
+	font-weight: $font-bold;
+	text-transform: uppercase;
+	white-space: nowrap;
+
+	.icon--pin {
+		width: 15px;
+		height: 17px;
+		margin-right: 10px;
+		fill: $primary;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $primary;
+	}
+
+	&>span {
+		display: inline-block;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -3px;
+			width: 100%;
+			height: 2px;
+			background: $primary;
+			transform: scale(0, 1);
+			transition: all ease-out 350ms;
+		}
+	}
+
+	&:hover {
+		&>span:after {
+			transform: scale(1, 1);
+			background: $primary;
+		}
+	}
+
+	.section--negative & {
+
+		.icon--pin {
+			fill: $foreground-negative;
+		}
+
+		&,
+		&:active,
+		&:focus,
+		&:hover,
+		&:visited {
+			color: $foreground-negative;
+		}
+
+		&>span:after {
+			background: $foreground-negative;
+		}
+
+		&:hover {
+			&>span:after {
+				background: $primary;
+			}
+		}
+	}
+}
+
+*/
+
+
+@mixin center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin ball {
+	@include center;
+	content: '';
+	display: block;
+	width: 4px;
+	height: 4px;
+	border-radius: 50%;
+	background: #fff;
+	z-index: 2;
+	margin-top: 4px;
+	animation: ball .45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+	/*
+	background: $primary;
+	.section--negative & {
+		background: $foreground-negative;
+	}
+	*/
+}
+
+.btn--busy {
+	position: relative;
+	user-select: none;
+	pointer-events: none;
+	transition: none;
+
+	&,
+	&:hover,
+	&:focus,
+	&:active,
+	&.active {
+		color: rgba(0, 0, 0, 0) !important;
+	}
+
+	&:before {
+		@include ball;
+		animation-delay: .15s;
+	}
+
+	&>svg {
+		display: none;
+	}
+
+	&>span {
+		&::before {
+			@include ball;
+			margin-left: -10px;
+		}
+
+		&::after {
+			@include ball;
+			margin-left: 10px;
+			animation-delay: .3s;
+		}
+	}
+
+}
+
+/*--------------------
+Keyframe
+--------------------*/
+@keyframes ball {
+	from {
+		transform: translateY(0) scaleY(.8);
+	}
+
+	to {
+		transform: translateY(-10px);
+	}
+}

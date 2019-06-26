@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="279" height="419" viewBox="0 0 279 419">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 5792 8688">
+      <image width="5792" height="8688" xlink:href="02-image.jpg"/>
+    </pattern>
+  </defs>
+  <rect id="LEA-concreto-rust-6mm-still-life-001" width="279" height="419" opacity="0.76" fill="url(#pattern)"/>
+</svg>

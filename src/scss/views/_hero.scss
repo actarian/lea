@@ -1,0 +1,173 @@
+@import '../mixins';
+
+%section--hero {
+	position: relative;
+}
+
+.section--hero {
+	@extend %section--hero;
+
+	.background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		// height: 100vh;
+		padding-top: 56.25%;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.title {
+		font-size: 56px;
+		line-height: 1.2;
+		color: #232120;
+	}
+}
+
+/*
+.section--hero-home {
+	@extend %section--hero;
+
+	.swiper-container {
+		position: relative;
+		height: auto;
+	}
+
+	.swiper-slide {
+		height: auto;
+	}
+
+	.container {
+		align-items: center;
+		justify-content: flex-end;
+		padding-bottom: 0;
+	}
+
+	.margin--cta {
+		padding: 40px 0 50px 0;
+	}
+}
+*/
+
+/*
+.section--hero-secondary {
+	position: relative;
+	padding-top: 60px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 90px;
+		background: $background-header;
+	}
+
+	&.section--negative {
+		padding-top: 0;
+
+		&:before {
+			display: none;
+		}
+	}
+
+	.background {
+		z-index: 0;
+	}
+
+	.aspect {
+		pointer-events: none;
+	}
+
+	.container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		text-align: left;
+		padding-top: 100px;
+		padding-bottom: 100px;
+		z-index: 1;
+	}
+
+	.category {
+		margin-bottom: 30px;
+		font-size: 14px;
+		font-weight: $font-semibold;
+		text-transform: uppercase;
+		color: $foreground;
+	}
+
+	.title {
+		font-size: 5.2vw;
+		line-height: 1.1;
+		font-weight: $font-light;
+		color: $foreground;
+
+		b {
+			font-weight: $font-semibold;
+		}
+	}
+
+	@include media-breakpoint-down(sm) {
+
+		.category {
+			margin-bottom: 15px;
+			font-size: 12px;
+		}
+
+		.title {
+			font-size: 12.8vw;
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+		.aspect {
+			@include aspect-grid(375, 667);
+		}
+	}
+
+	@include media-breakpoint-up(sm) {
+		.aspect {
+			@include aspect-grid(1920, 670);
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+		.title {
+			font-size: 100px;
+		}
+	}
+}
+*/
+
+/*
+.section--negative {
+
+	&:not(.section--full) {
+		background: $background-header;
+	}
+
+	.background,
+	.picture {
+		background: $background-header;
+	}
+
+	&,
+	.category,
+	.title,
+	.abstract,
+	.description {
+		color: $foreground-negative;
+	}
+}
+*/

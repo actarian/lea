@@ -1,0 +1,138 @@
+@import "../mixins";
+
+.page {
+	display: block;
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	max-width: 1920px;
+	margin: 0 auto;
+	// padding: 36px 0 0 0;
+	// background: black;
+	overflow: hidden;
+
+	@include media-breakpoint-down(xs) {
+		padding: 0;
+	}
+
+	&.smooth-scroll {
+		position: fixed;
+		top: 0;
+		left: 50%;
+		width: 100%;
+	}
+}
+
+.wrapper {
+
+	&:before {
+		content: '';
+		opacity: 1;
+		display: block;
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		left: 50%;
+		top: 50vh;
+		margin: -32px 0 0 -32px;
+		border-radius: 50%;
+		border: 10px solid $foreground;
+		animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+	}
+
+	.view {
+		position: relative;
+		background: $background;
+		min-height: 100vh;
+		opacity: 0;
+		// transition: all ease-in-out 350ms;
+	}
+
+	/*
+	.init & {
+		.view {
+			opacity: 1;
+		}
+	}
+	*/
+
+	/*
+	display: block;
+	position: fixed;
+	width: 100vw;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	background: $background;
+	// overflow-x: hidden;
+	user-select: none;
+	left: 0;
+
+	.fastscroll & {
+		position: relative;
+	}
+	*/
+}
+
+@keyframes ripple {
+	0% {
+		opacity: 1;
+		transform: scale(0.01, 0.01);
+	}
+
+	100% {
+		opacity: 0;
+		transform: scale(1, 1);
+	}
+}
+
+.section {
+	position: relative;
+}
+
+.container {
+	// max-width: 1320px;
+}
+
+page-transition {
+	display: flex;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	justify-content: center;
+	align-items: center;
+	z-index: 10000;
+	opacity: 0;
+	pointer-events: none;
+	background: $background;
+	transition: all ease-in-out 600ms;
+
+	&.loading {
+		transition: none;
+		opacity: 1;
+	}
+}
+
+.spinner {
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: red;
+	animation: rotating 750ms ease-in-out infinite;
+}
+
+@keyframes rotating {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	60% {
+		transform: rotate(-90deg);
+	}
+
+	100% {
+		transform: rotate(-90deg);
+	}
+}
