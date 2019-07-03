@@ -166,3 +166,14 @@ $diff: 280px;
 [parallax] {
 	overflow: hidden;
 }
+
+[parallax-outer] {
+	position: relative;
+	transform-origin: 50% 50% !important;
+	transition: none !important;
+}
+
+section {
+	perspective: 50vw;
+	// perspective-origin: 50% 50%;
+}

@@ -152,6 +152,7 @@ export default class DomService {
 				}
 				const nodeTop = node.top || 0;
 				const top = down ? -this.scrollTop : Math.round((nodeTop + (-this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100;
+				// const top = Math.round((nodeTop + (-this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100;
 				node.classList.add('smooth-scroll');
 				if (node.top !== top) {
 					node.top = top;

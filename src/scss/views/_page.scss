@@ -25,6 +25,7 @@
 
 .wrapper {
 
+	/*
 	&:before {
 		content: '';
 		opacity: 1;
@@ -39,6 +40,7 @@
 		border: 10px solid $foreground;
 		animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 	}
+	*/
 
 	.view {
 		position: relative;
@@ -115,6 +117,7 @@ page-transition {
 	}
 }
 
+/*
 .spinner {
 	display: block;
 	width: 40px;
@@ -136,3 +139,4 @@ page-transition {
 		transform: rotate(-90deg);
 	}
 }
+*/

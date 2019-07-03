@@ -22787,6 +22787,16 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var mx = {
+  x: 0,
+  y: 0
+};
+window.addEventListener('mousemove', function (e) {
+  // const x = e.clientX / window.innerWidth * 2 - 1;
+  // const y = e.clientY / window.innerHeight * 2 - 1;
+  mx.x = e.clientX;
+  mx.y = e.clientY;
+});
 var i = 0;
 
 var ParallaxOuterDirective =
@@ -22802,8 +22812,12 @@ function () {
   _createClass(ParallaxOuterDirective, [{
     key: "link",
     value: function link(scope, element, attributes, controller) {
+      var _this = this;
+
       var node = element[0];
-      node.top = 0; // const childNode = node.querySelector('img, video');
+      node.top = 0;
+      node.rx = 0;
+      node.ry = 0; // const childNode = node.querySelector('img, video');
       // if (childNode) {
 
       var style = window.getComputedStyle(node);
@@ -22812,15 +22826,41 @@ function () {
       var subscription = this.parallax$(node, parallax, i).subscribe(function (top) {
         if (node.top !== top) {
           node.top += (top - node.top) / 10;
-        }
+        } // node.setAttribute('style', `transform: translateY(${node.top}%)`);
 
-        node.setAttribute('style', "transform: translateY(".concat(node.top, "%);"));
+
+        _this.parallaxAndSkew(node, node.rect);
       });
       element.on('$destroy', function () {
         subscription.unsubscribe();
       }); // }
 
       i++;
+    }
+  }, {
+    key: "parallaxAndSkew",
+    value: function parallaxAndSkew(node, rect) {
+      node.rect = rect;
+      var angle = 4;
+      var dx = mx.x - rect.center.x;
+      var dy = mx.y - rect.center.y;
+      var ex, ey;
+
+      if (Math.abs(dx) < rect.width * 0.6 && Math.abs(dy) < rect.height * 0.6) {
+        ey = angle * 2 * dx / rect.width;
+        ex = -angle * dy / rect.height;
+      } else {
+        ey = 0;
+        ex = 0;
+      }
+
+      if (node.rx !== ex || node.ey !== ey) {
+        node.rx += (ex - node.rx) / 20;
+        node.ry += (ey - node.ry) / 20;
+      } // console.log(node.top, node.rx, node.ry);
+
+
+      node.setAttribute('style', "transform: translateY(".concat(node.top, "%) rotateX(").concat(node.rx, "deg) rotateY(").concat(node.ry, "deg);"));
     }
   }, {
     key: "units",
@@ -22832,12 +22872,14 @@ function () {
   }, {
     key: "parallax$",
     value: function parallax$(node, parallax, i) {
-      var _this = this;
+      var _this2 = this;
 
       return this.domService.rafAndRect$().pipe((0, _operators.map)(function (datas) {
         var windowRect = datas[1];
 
         var rect = _rect.default.fromNode(node);
+
+        _this2.parallaxAndSkew(node, rect);
 
         var intersection = rect.intersection(windowRect);
 
@@ -22847,11 +22889,11 @@ function () {
           return null;
         }
       }), (0, _operators.filter)(function (y) {
-        return y !== null && _this.domService.ready;
+        return y !== null && _this2.domService.ready;
       }), (0, _operators.distinctUntilChanged)(), (0, _operators.map)(function (y) {
         var direction = i % 2 === 0 ? 1 : -1;
         var p = y * parallax * direction;
-        return _this.units(p);
+        return _this2.units(p);
       }));
     }
   }], [{
@@ -26196,7 +26238,8 @@ function () {
         }
 
         var nodeTop = node.top || 0;
-        var top = down ? -_this.scrollTop : Math.round((nodeTop + (-_this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100;
+        var top = down ? -_this.scrollTop : Math.round((nodeTop + (-_this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100; // const top = Math.round((nodeTop + (-this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100;
+
         node.classList.add('smooth-scroll');
 
         if (node.top !== top) {

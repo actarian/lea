@@ -435,3 +435,10 @@ layout {
 		}
 	}
 }
+
+.title,
+.abstract,
+.description {
+	position: relative;
+	z-index: 1;
+}

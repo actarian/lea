@@ -4766,6 +4766,17 @@ canvas {
 [parallax] {
   overflow: hidden; }
 
+[parallax-outer] {
+  position: relative;
+  -webkit-transform-origin: 50% 50% !important;
+          transform-origin: 50% 50% !important;
+  -webkit-transition: none !important;
+  transition: none !important; }
+
+section {
+  -webkit-perspective: 50vw;
+          perspective: 50vw; }
+
 .section--distinct {
   background: var(--background-tertiary); }
   @media (min-width: 860px) {
@@ -4985,6 +4996,22 @@ canvas {
 
 .wrapper {
   /*
+	&:before {
+		content: '';
+		opacity: 1;
+		display: block;
+		position: absolute;
+		width: 64px;
+		height: 64px;
+		left: 50%;
+		top: 50vh;
+		margin: -32px 0 0 -32px;
+		border-radius: 50%;
+		border: 10px solid $foreground;
+		animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+	}
+	*/
+  /*
 	.init & {
 		.view {
 			opacity: 1;
@@ -5007,20 +5034,6 @@ canvas {
 		position: relative;
 	}
 	*/ }
-  .wrapper:before {
-    content: '';
-    opacity: 1;
-    display: block;
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    left: 50%;
-    top: 50vh;
-    margin: -32px 0 0 -32px;
-    border-radius: 50%;
-    border: 10px solid var(--foreground);
-    -webkit-animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-            animation: ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
   .wrapper .view {
     position: relative;
     background: var(--background);
@@ -5076,36 +5089,29 @@ page-transition {
     transition: none;
     opacity: 1; }
 
+/*
 .spinner {
-  display: block;
-  width: 40px;
-  height: 40px;
-  background: red;
-  -webkit-animation: rotating 750ms ease-in-out infinite;
-          animation: rotating 750ms ease-in-out infinite; }
-
-@-webkit-keyframes rotating {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  60% {
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg); }
-  100% {
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg); } }
+	display: block;
+	width: 40px;
+	height: 40px;
+	background: red;
+	animation: rotating 750ms ease-in-out infinite;
+}
 
 @keyframes rotating {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg); }
-  60% {
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg); }
-  100% {
-    -webkit-transform: rotate(-90deg);
-            transform: rotate(-90deg); } }
+	0% {
+		transform: rotate(0deg);
+	}
 
+	60% {
+		transform: rotate(-90deg);
+	}
+
+	100% {
+		transform: rotate(-90deg);
+	}
+}
+*/
 .wrapper--header {
   display: block;
   max-width: 1920px;
@@ -6383,6 +6389,12 @@ layout {
       width: auto;
       max-width: 100%;
       max-height: 100%; }
+
+.title,
+.abstract,
+.description {
+  position: relative;
+  z-index: 1; }
 
 @media (max-width: 859.98px) {
   .hidden-xs-down {
