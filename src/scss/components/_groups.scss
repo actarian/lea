@@ -11,11 +11,10 @@
 	}
 
 	@include media-breakpoint-down(xs) {
-
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		align-items: center;
+		align-items: flex-start;
 
 		&>.btn+.btn {
 			margin-top: 15px;

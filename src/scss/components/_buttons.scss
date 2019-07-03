@@ -37,111 +37,63 @@ button,
 }
 
 .btn--discover {
-	display: inline-block;
-
-	span {
-		display: inline-block;
-		padding: 15px 50px;
-		text-transform: uppercase;
-		font-size: 13px;
-		font-weight: $font-semibold;
-		color: $primary;
-		border: 2px solid $primary;
-	}
+	white-space: nowrap;
 
 	&,
 	&:active,
 	&:focus,
 	&:hover,
 	&:visited {
-		span {
-			color: $primary;
-			border-color: $primary;
+		color: $foreground;
+	}
+
+	&>span {
+		display: inline-block;
+		position: relative;
+
+		&:after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: -6px;
+			width: 100%;
+			height: 4px;
+			background: $foreground;
+			// transform: scale(0, 1);
+			transform-origin: left center;
+			transition: transform ease-out 350ms;
+		}
+	}
+
+	&:hover {
+		&>span:after {
+			transform: scale(0, 1);
+			background: $foreground;
 		}
 	}
 
 	.section--negative & {
-		span {
-			color: $foreground-negative;
-			border-color: $foreground-negative;
-		}
+		color: $foreground-negative;
 
 		&,
 		&:active,
 		&:focus,
 		&:hover,
 		&:visited {
-			span {
-				color: $foreground-negative;
-				border-color: $foreground-negative;
+			color: $foreground-negative;
+		}
+
+		&>span:after {
+			background: $foreground-negative;
+		}
+
+		&:hover {
+			&>span:after {
+				background: $foreground-negative;
 			}
 		}
 	}
-
-	@include media-breakpoint-down(xs) {
-		display: block;
-	}
 }
-
-.btn--gallery {
-	display: inline-flex;
-	justify-content: flex-start;
-	align-items: center;
-	font-size: 14px;
-	color: $primary;
-
-	svg {
-		fill: $primary;
-	}
-
-	&,
-	&:active,
-	&:focus,
-	&:hover,
-	&:visited {
-		color: $primary;
-	}
-
-	b {
-		margin-left: 5px;
-		position: relative;
-		text-transform: uppercase;
-
-		&:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: -4px;
-			width: 100%;
-			height: 2px;
-			background: $primary;
-			transition: all ease-out 350ms;
-		}
-	}
-
-	&:hover {
-		b {
-			&:after {
-				transform: scale(0, 1);
-			}
-		}
-	}
-
-	.icon--gallery {
-		width: 18px;
-		height: 14px;
-		margin-right: 10px;
-	}
-
-	@include media-breakpoint-down(xs) {
-		justify-content: flex-start;
-		align-items: center;
-		text-align: left;
-		line-height: 1.2;
-	}
-}
-
-
 
 .btn--link {
 	display: inline-flex;

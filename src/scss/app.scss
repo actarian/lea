@@ -24,43 +24,6 @@
 @import 'views/hero';
 @import 'views/home';
 
-/*
-@import 'views/markets';
-@import 'views/breadcrumb';
-@import 'views/sections.scss';
-@import 'views/advanced-search';
-@import 'views/collections';
-@import 'views/faqs';
-@import 'views/features';
-@import 'views/generics.scss';
-@import 'views/moodboard';
-@import 'views/product';
-@import 'views/tiles';
-@import 'views/be-inspired';
-@import 'views/store-locator';
-*/
-
-.picture--with-category {
-	position: relative;
-	width: 100%;
-	@include aspect-clip(457, 305);
-
-	.category {
-		display: inline-block;
-		position: absolute;
-		right: 0;
-		bottom: -1px;
-		font-size: 12px;
-		line-height: 22px;
-		padding: 4px 20px;
-		margin: 0;
-		background: $background;
-		transition: all ease-out 250ms;
-		text-transform: none;
-	}
-}
-
-
 @import 'components/responsive';
 
 .debug {

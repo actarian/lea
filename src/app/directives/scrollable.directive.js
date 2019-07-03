@@ -76,7 +76,8 @@ export default class ScrollableDirective {
 				const outerWidth = this.domService.getOuterWidth(scrollable);
 				const innerWidth = scrollableInner.lastElementChild.offsetLeft + this.domService.getOuterWidth(scrollableInner.lastElementChild);
 				const endx = (outerWidth - innerWidth) * pow;
-				const newx = x + (endx - x) / friction;
+				let newx = x + (endx - x) / friction;
+				newx = Math.round(newx * 1000) / 1000;
 				if (x !== newx) {
 					x = newx;
 					// TweenMax.set(scrollableInner, { x: x });

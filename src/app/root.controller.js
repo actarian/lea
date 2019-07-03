@@ -97,7 +97,7 @@ class RootCtrl {
 	}
 
 	onPrimaryDroppedOut(node, dropdown) {
-		// console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
+		console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
 		if (dropdown === this.primary) {
 			document.querySelector('body').classList.remove('droppin-in');
 			document.querySelector('.section--header').classList.remove('opened');
@@ -105,7 +105,7 @@ class RootCtrl {
 	}
 
 	onSecondaryDroppedIn(node, dropdown) {
-		// console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
+		console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
 		/*
 		TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
 		TweenMax.to(dropdown, 0.8, {

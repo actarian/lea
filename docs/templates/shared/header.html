@@ -1,12 +1,21 @@
 <!-- HEADER -->
-<header class="section section--header section--header-fixed" ng-class="{ enter: root.init, ready: root.ready, scrolled: root.scrolled }" scroll="onScroll($event)">
+<header class="section section--header section--header-fixed" ng-class="{ enter: root.init, ready: root.ready, scrolled: root.scrolled }" scroll="root.onScroll($event)">
 	<div class="inner">
 		<div class="container">
 			<div class="menu">
 				<div class="menu__brand col-md-1">
 					<a class="brand" href="index.html">
-						<svg class="icon icon--lea-ceramiche"><use xlink:href="#icon--lea-ceramiche"></use></svg>
+						<div class="aspect">
+							<svg class="icon icon--lea-ceramiche"><use xlink:href="#icon--lea-ceramiche"></use></svg>
+						</div>
 					</a>
+					<button type="button" class="btn btn--menu hidden-md-up" ng-class="{ active: root.menuOpened }" ng-click="root.menuOpened = !root.menuOpened">
+						<svg class="icon icon--menu" viewBox="0 0 37 23">
+							<path xmlns="http://www.w3.org/2000/svg" d="M0.4 0.4L0.4 4.6 7.3 4.6 36.6 4.6 36.6 0.4z"/>
+							<path xmlns="http://www.w3.org/2000/svg" d="M0.4 13.8L7.3 13.8 36.6 13.8 36.6 9.6 0.4 9.6z"/>
+							<path xmlns="http://www.w3.org/2000/svg" d="M0.4 22.6L7.3 22.6 36.6 22.6 36.6 18.4 0.4 18.4z"/>
+						</svg>
+					</button>
 				</div>
 				<div class="menu__primary col-md-3 offset-md-1">
 					<ul class="nav nav--primary hidden-xs-down">
@@ -76,27 +85,22 @@
 							</ul>
 						</li>
 					</ul>
-					<button type="button" class="btn btn--menu hidden-sm-up" ng-click="root.menuOpened = !root.menuOpened">
-						<svg class="icon icon--menu" ng-if="!root.menuOpened"><use xlink:href="#menu"></use></svg>
-						<svg class="icon icon--close" ng-if="root.menuOpened"><use xlink:href="#close"></use></svg>
-					</button>
 				</div>
-				<div class="menu__secondary col-md-7" ng-class="{ 'hidden-xs-down': !root.menuOpened }">
+				<div class="menu__secondary col-md-7 hidden-xs-down">
 					<ul class="nav nav--secondary">
 						<li><a href="store-locator.html">Punti vendita</a></li>
 						<li><a href="company.html">Company +</a></li>
 						<li><a href="downloads.html">Downloads</a></li>
 					</ul>
 				</div>
-				<div class="menu__tertiary col-md-2 offset-md-10">
+				<div class="menu__tertiary col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-9 col-xl-2 offset-xl-10">
 					<ul class="nav nav--tertiary">
-						<li><a href="search.html"><svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> Cerca</a></li>
-						<li><a href="wishlist.html"><svg class="icon icon--wishlist"><use xlink:href="#icon--wishlist"></use></svg> Wishlist</a> <span class="wishlist--badge" ng-bind="root.wishlistCount" ng-if="root.wishlistCount"></span></li>
-						<li has-dropdown="span" dropped-in="root.onDroppedIn">
-							<span>IT <svg class="icon icon--plus"><use xlink:href="#icon--plus"></use></svg></span>
-							<!--
-							<ng-include src="'templates/shared/submenu-markets.html'"></ng-include>
-							-->
+						<li class="o-3"><a href="search.html"><svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> <span>Cerca</span></a></li>
+						<li class="o-2"><a href="wishlist.html"><svg class="icon icon--wishlist"><use xlink:href="#icon--wishlist"></use></svg> <span>Wishlist</span></a> <span class="wishlist--badge" ng-bind="root.wishlistCount" ng-if="root.wishlistCount"></span></li>
+						<li class="o-1">
+							<span>
+								<span>IT</span> <svg class="icon icon--plus"><use xlink:href="#icon--plus"></use></svg>
+							</span>
 						</li>
 					</ul>
 				</div>

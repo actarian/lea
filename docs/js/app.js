@@ -21679,7 +21679,7 @@ function () {
         if (opened_ === null) {
           openDropdown();
         } else if (trigger !== node) {
-          closeDropdown();
+          closeDropdown(true);
         }
       };
 
@@ -23244,6 +23244,7 @@ function () {
 
         var endx = (outerWidth - innerWidth) * pow;
         var newx = x + (endx - x) / friction;
+        newx = Math.round(newx * 1000) / 1000;
 
         if (x !== newx) {
           x = newx; // TweenMax.set(scrollableInner, { x: x });
@@ -25733,7 +25734,8 @@ function () {
   }, {
     key: "onPrimaryDroppedOut",
     value: function onPrimaryDroppedOut(node, dropdown) {
-      // console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
+      console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
+
       if (dropdown === this.primary) {
         document.querySelector('body').classList.remove('droppin-in');
         document.querySelector('.section--header').classList.remove('opened');
@@ -25742,8 +25744,7 @@ function () {
   }, {
     key: "onSecondaryDroppedIn",
     value: function onSecondaryDroppedIn(node, dropdown) {
-      // console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
-
+      console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
       /*
       TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
       TweenMax.to(dropdown, 0.8, {
@@ -25756,6 +25757,7 @@ function () {
       	}
       });
       */
+
       var items = _toConsumableArray(dropdown.querySelectorAll('li')).filter(function (x) {
         return x.parentNode === dropdown;
       });
