@@ -23268,17 +23268,17 @@ function () {
         onMove(down + distance);
       }, function (e) {// console.log('up', e);
       });
-      node.addEventListener('mousewheel', function (e) {
-        var direction = e.deltaY / Math.abs(e.deltaY);
+      /*
+      node.addEventListener('mousewheel', (e) => {
+      	const direction = e.deltaY / Math.abs(e.deltaY);
+      	if (direction < 0 && pow > 0 || direction > 0 && pow < 1) {
+      		e.stopPropagation();
+      		e.preventDefault();
+      		onMove(move + direction * 100);
+      	}
+      }, this.domService.hasPassiveEvents ? { passive: false } : false);
+      */
 
-        if (direction < 0 && pow > 0 || direction > 0 && pow < 1) {
-          e.stopPropagation();
-          e.preventDefault();
-          onMove(move + direction * 100);
-        }
-      }, this.domService.hasPassiveEvents ? {
-        passive: false
-      } : false);
       return this.domService.raf$().pipe((0, _operators.map)(function () {
         var outerWidth = _this.domService.getOuterWidth(scrollable);
 

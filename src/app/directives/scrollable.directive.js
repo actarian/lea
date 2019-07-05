@@ -62,6 +62,7 @@ export default class ScrollableDirective {
 			// console.log('up', e);
 		});
 
+		/*
 		node.addEventListener('mousewheel', (e) => {
 			const direction = e.deltaY / Math.abs(e.deltaY);
 			if (direction < 0 && pow > 0 || direction > 0 && pow < 1) {
@@ -70,6 +71,7 @@ export default class ScrollableDirective {
 				onMove(move + direction * 100);
 			}
 		}, this.domService.hasPassiveEvents ? { passive: false } : false);
+		*/
 
 		return this.domService.raf$().pipe(
 			map(() => {
