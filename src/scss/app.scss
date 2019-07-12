@@ -6,23 +6,30 @@
 @import 'components/typography';
 @import 'components/buttons';
 @import 'components/grid';
+@import 'components/groups';
+@import 'components/appear';
+@import 'components/pictures';
+@import 'components/hero';
+@import 'components/gallery';
+
 @import 'components/navs';
 @import 'components/forms';
 @import 'components/loaders';
 @import 'components/media';
 @import 'components/swiper';
-@import 'components/groups';
 @import 'components/listings';
-@import 'components/appear';
-@import 'components/pictures';
 @import 'components/distinct';
-@import 'components/cards';
 
 @import 'views/page';
 @import 'views/header';
 @import 'views/footer';
-@import 'views/hero';
 @import 'views/home';
+@import 'views/designer';
+@import 'views/technology';
+
+@import 'views/listing-magazine';
+@import 'views/listing-collections';
+@import 'views/listing-news';
 
 @import 'components/responsive';
 

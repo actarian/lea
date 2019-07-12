@@ -7,6 +7,8 @@
 
 import Rect from '../shared/rect';
 
+let first = true;
+
 export default class HeroDirective {
 
 	constructor(
@@ -20,7 +22,8 @@ export default class HeroDirective {
 		// console.log('HeroDirective');
 		const node = element[0];
 		const scrollTop = this.domService.scrollTop;
-		if (scrollTop === 0) {
+		if (first && scrollTop === 0) {
+			first = false;
 			scope.$root.$broadcast('onCoverInit');
 			// const brand = document.querySelector('.section--header .brand');
 			const cover = node.querySelector('.picture--cover');

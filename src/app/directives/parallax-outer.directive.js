@@ -4,6 +4,13 @@
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import Rect from '../shared/rect';
 
+function tween(from, to, friction) {
+	if (from === to || Math.abs(to - from) < 0.02) {
+		return to;
+	}
+	return from + (to - from) / friction;
+}
+
 const mx = { x: 0, y: 0 };
 window.addEventListener('mousemove', (e) => {
 	// const x = e.clientX / window.innerWidth * 2 - 1;
@@ -24,6 +31,12 @@ export default class ParallaxOuterDirective {
 	}
 
 	link(scope, element, attributes, controller) {
+		scope.$on('onCoverEnd', ($scope) => {
+			this.init(scope, element, attributes, controller);
+		});
+	}
+
+	init(scope, element, attributes, controller) {
 		const node = element[0];
 		node.top = 0;
 		node.rx = 0;
@@ -34,11 +47,13 @@ export default class ParallaxOuterDirective {
 		const position = style.position;
 		const parallax = (parseInt(attributes.parallaxOuter) || 5) * 2;
 		const subscription = this.parallax$(node, parallax, i).subscribe(top => {
+			/*
+			node.top = tween(node.top, top, 10);
 			if (node.top !== top) {
-				node.top += (top - node.top) / 10;
+				node.setAttribute('style', `transform: translateY(${node.top}%);`);
 			}
-			// node.setAttribute('style', `transform: translateY(${node.top}%)`);
-			this.parallaxAndSkew(node, node.rect);
+			*/
+			this.parallaxAndSkew(node, node.rect, top);
 		});
 		element.on('$destroy', () => {
 			subscription.unsubscribe();
@@ -47,7 +62,7 @@ export default class ParallaxOuterDirective {
 		i++;
 	}
 
-	parallaxAndSkew(node, rect) {
+	parallaxAndSkew(node, rect, top) {
 		node.rect = rect;
 		const angle = 4;
 		const dx = (mx.x - rect.center.x);
@@ -60,12 +75,13 @@ export default class ParallaxOuterDirective {
 			ey = 0;
 			ex = 0;
 		}
-		if (node.rx !== ex || node.ey !== ey) {
-			node.rx += (ex - node.rx) / 20;
-			node.ry += (ey - node.ry) / 20;
+		node.top = tween(node.top, top, 10);
+		node.rx = tween(node.rx, ex, 20);
+		node.ry = tween(node.ry, ey, 20);
+		if (node.top !== top || node.rx !== ex || node.ry !== ey) {
+			// console.log(node.top, top, node.rx, ex, node.ry, ey);
+			node.setAttribute('style', `transform: translateY(${node.top}%) rotateX(${node.rx}deg) rotateY(${node.ry}deg);`);
 		}
-		// console.log(node.top, node.rx, node.ry);
-		node.setAttribute('style', `transform: translateY(${node.top}%) rotateX(${node.rx}deg) rotateY(${node.ry}deg);`);
 	}
 
 	units(value, decimals = 4) {
@@ -78,7 +94,7 @@ export default class ParallaxOuterDirective {
 			map(datas => {
 				const windowRect = datas[1];
 				const rect = Rect.fromNode(node);
-				this.parallaxAndSkew(node, rect);
+				this.parallaxAndSkew(node, rect, node.top);
 				const intersection = rect.intersection(windowRect);
 				if (intersection.y > 0) {
 					return Math.min(1, Math.max(-1, intersection.center.y)); // intersection.center.y;

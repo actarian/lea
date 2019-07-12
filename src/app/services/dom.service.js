@@ -6,6 +6,13 @@ import { animationFrame } from 'rxjs/internal/scheduler/animationFrame';
 import { auditTime, distinctUntilChanged, filter, first, map, shareReplay, startWith } from 'rxjs/operators';
 import Rect from '../shared/rect';
 
+export function tween(from, to, friction) {
+	if (from === to || Math.abs(to - from) < 0.02) {
+		return to;
+	}
+	return from + (to - from) / friction;
+}
+
 export default class DomService {
 
 	constructor() {
@@ -151,12 +158,11 @@ export default class DomService {
 					body.style = `height: ${outerHeight}px`;
 				}
 				const nodeTop = node.top || 0;
-				const top = down ? -this.scrollTop : Math.round((nodeTop + (-this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100;
-				// const top = Math.round((nodeTop + (-this.scrollTop - nodeTop) / (first ? 1 : friction)) * 100) / 100;
-				node.classList.add('smooth-scroll');
+				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));
 				if (node.top !== top) {
 					node.top = top;
 					node.style.transform = `translateX(-50%) translateY(${top}px)`;
+					node.classList.add('smooth-scroll');
 					first = false;
 					return top;
 				} else {

@@ -4,7 +4,9 @@
 
 	img {
 		width: 100%;
+		backface-visibility: hidden;
 		// max-width: 100%;
+		@include _selectNone();
 	}
 }
 

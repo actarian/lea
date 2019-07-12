@@ -59,6 +59,10 @@
 	position: relative;
 	overflow: hidden;
 
+	&:not(.words) {
+		visibility: hidden;
+	}
+
 	.word {
 		display: inline-block;
 	}

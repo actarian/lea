@@ -40,6 +40,10 @@ export default class AppearDirective {
 			}
 			*/
 		});
+		const img = node.querySelector('img');
+		if (img) {
+			img.setAttribute('ondragstart', 'return false;');
+		}
 		element.on('$destroy', () => {
 			subscription.unsubscribe();
 		});

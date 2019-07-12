@@ -106,9 +106,17 @@ button,
 		transition: all ease-in-out 350ms;
 	}
 
-	.icon--arrow {
+	.icon--arrow-left,
+	.icon--arrow-right {
 		width: 8px;
 		height: 13px;
+	}
+
+	.icon--arrow-left {
+		margin-right: 17px;
+	}
+
+	.icon--arrow-right {
 		margin-left: 17px;
 	}
 
@@ -127,483 +135,153 @@ button,
 	}
 }
 
-/*
-.btn--link-secondary {
-	@extend %btn--link;
-}
-
-.btn--category {
-	position: relative;
-	font-size: 15px;
-	font-weight: 500;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	max-width: 100%;
-
-	&,
-	&:active,
-	&:focus,
-	&:hover,
-	&:visited {
-		color: $primary;
-	}
-
-	&:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: -1px;
-		width: 100%;
-		height: 2px;
-		background: $primary;
-		transition: all ease-out 350ms;
-	}
-
-	&:hover {
-		&:after {
-			transform: scale(0, 1);
-			background: $primary;
-		}
-	}
-
-	.section--negative & {
-
-		&,
-		&:active,
-		&:focus,
-		&:hover,
-		&:visited {
-			color: $foreground-negative;
-		}
-
-		&:after {
-			background: $foreground-negative;
-		}
-
-		&:hover {
-			&:after {
-				background: $primary;
-			}
-		}
-	}
-}
-
-.btn--mail {
-	position: relative;
-
-	svg {
-		fill: $foreground;
-	}
-
-	&:after {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: -3px;
-		width: 100%;
-		height: 2px;
-		background: $foreground-secondary;
-		transform: scale(0, 1);
-		transition: all ease-out 350ms;
-	}
-
-	&:hover {
-		&:after {
-			transform: scale(1, 1);
-		}
-	}
-
-	.section--negative & {
-		&:after {
-			background: $background-negative;
-		}
-
-	}
-}
-
-.btn--download {
+.btn--back {
 	display: inline-flex;
-	justify-content: flex-start;
 	align-items: center;
-	font-size: 14px;
-	color: $primary;
-
-	svg {
-		fill: $primary;
-	}
-
-	&,
-	&:active,
-	&:focus,
-	&:hover,
-	&:visited {
-		color: $primary;
-	}
+	font-size: 16px;
+	font-weight: 500;
 
 	span {
-		position: relative;
-		text-transform: uppercase;
+		display: inline-block;
+		opacity: 0.5;
+		transition: all ease-in-out 350ms;
+	}
 
-		&:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: -4px;
-			width: 100%;
-			height: 2px;
-			background: $primary;
-			transition: all ease-out 350ms;
-		}
+	.icon--arrow-left {
+		width: 8px;
+		height: 13px;
+		margin-right: 10px;
+		opacity: 0.5;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: $foreground;
 	}
 
 	&:hover {
 		span {
-			&:after {
-				transform: scale(0, 1);
-			}
+			transform: translateX(10px);
 		}
-	}
-
-	.icon {
-		width: 24px;
-		height: 28px;
-		margin-right: 10px;
 	}
 }
 
-.btn--wishlist,
-.btn--search {
-	display: inline-flex;
-	justify-content: flex-start;
-	align-items: center;
-	font-size: 19px;
-	color: $primary;
+.btn--download {
+	font-size: 0;
 
-	svg {
-		fill: $primary;
+	.icon--download,
+	.icon--issuu {
+		width: 35px;
+		height: 35px;
+		transition: transform 350ms ease-out;
 	}
 
 	&,
 	&:active,
 	&:focus,
 	&:hover,
+	&:visited {}
+
+	&:hover {
+		svg {
+			transform: scale(1.1);
+		}
+	}
+}
+
+.btn--nav {
+	white-space: nowrap;
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
 	&:visited {
-		color: $primary;
+		color: $foreground;
 	}
 
-	b {
-		margin-left: 5px;
+	&>span {
+		display: inline-block;
 		position: relative;
+		font-size: 14px;
+		font-weight: $font-extralight;
 
 		&:after {
 			content: '';
 			position: absolute;
 			left: 0;
-			bottom: -4px;
+			bottom: -1px;
 			width: 100%;
-			height: 2px;
-			background: $primary;
-			transition: all ease-out 350ms;
+			height: 1px;
+			background: $foreground;
+			transform: scale(0, 1);
+			transform-origin: left center;
+			transition: transform ease-out 350ms;
 		}
 	}
 
 	&:hover {
-		b {
-			&:after {
-				transform: scale(0, 1);
+		&>span:after {
+			transform: scale(1, 1);
+			background: $foreground;
+		}
+	}
+
+	.section--negative & {
+		color: $foreground-negative;
+
+		&,
+		&:active,
+		&:focus,
+		&:hover,
+		&:visited {
+			color: $foreground-negative;
+		}
+
+		&>span:after {
+			background: $foreground-negative;
+		}
+
+		&:hover {
+			&>span:after {
+				background: $foreground-negative;
 			}
 		}
 	}
 }
 
-.btn--search {
-	.icon--search {
-		width: 20px;
-		height: 20px;
-	}
-}
-
-.btn--wishlist {
-	.icon--wishlist {
-		width: 25px;
-		height: 22px;
-	}
-
-	.icon--wishlist+span {
-		margin-left: 10px;
-	}
-}
-
-.btn--play {
-	display: block;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 196px;
-	height: 196px;
-	transform: translateX(-50%) translateY(-50%);
-	pointer-events: none;
-	transition: opacity ease-in-out 350ms 200ms;
-
-	.icon--play-progress,
-	.icon--play-progress-background {
-		display: block;
-		position: absolute;
-		width: 196px;
-		height: 196px;
-		top: 0;
-		left: 0;
-		fill: transparent;
-		stroke: $foreground-negative;
-		transition: opacity ease-in-out 350ms;
-	}
-
-	.icon--play {
-		display: block;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		fill: $foreground-negative;
-		width: 30px;
-		height: 30px;
-		margin-left: -13px;
-		margin-top: -14px;
-	}
-
-	&.playing {
-		opacity: 0;
-
-		.icon--play-progress {
-			opacity: 1;
-		}
-	}
-
-	.icon--play-progress-background {
-		opacity: 0.2;
-	}
-
-	@include media-breakpoint-down(md) {
-		width: 150px;
-		height: 150px;
-
-		.icon--play-progress,
-		.icon--play-progress-background {
-			width: 150px;
-			height: 150px;
-		}
-	}
-
-	@include media-breakpoint-down(sm) {
-		width: 100px;
-		height: 100px;
-
-		.icon--play-progress,
-		.icon--play-progress-background {
-			width: 100px;
-			height: 100px;
-		}
-
-		.icon--play {
-			width: 20px;
-			height: 20px;
-			margin-left: -9px;
-			margin-top: -9px;
-		}
-
-		.icon--play-progress-background {
-			opacity: 0.5;
-		}
-
-	}
-
-}
-
-.btn--menu {
+.btn--gallery {
 	position: relative;
-	padding: 10px;
-	background: transparent;
-	z-index: 1;
 
-	.icon--menu,
-	.icon--close {
-		fill: $foreground-negative;
-		stroke: none;
-		width: 26px;
-		height: 16px;
-	}
-}
-
-.btn--secondary {
-	font-size: 15px;
-	font-weight: $font-regular;
-	text-transform: uppercase;
-	border: 2px solid $primary;
-	padding: 10px 15px;
-	white-space: nowrap;
-
-	&,
-	&:active,
-	&:focus,
-	&:hover,
-	&:visited {
-		color: $primary;
-	}
-
-	&>span {
-		display: inline-block;
-		position: relative;
-
-		&:after {
-			content: '';
+	.picture {
+		&:before {
+			content: '+';
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			position: absolute;
 			left: 0;
-			bottom: -3px;
-			width: 100%;
-			height: 2px;
-			background: $primary;
-			transform: scale(0, 1);
-			transition: all ease-out 350ms;
-		}
-	}
-
-	&:hover {
-		&>span:after {
-			transform: scale(1, 1);
-			background: $primary;
-		}
-	}
-
-	.section--negative & {
-		border-color: $foreground-negative;
-
-		&,
-		&:active,
-		&:focus,
-		&:hover,
-		&:visited {
+			bottom: 0;
+			width: 35px;
+			height: 35px;
+			z-index: 1;
+			font-size: 20px;
+			background: $foreground;
 			color: $foreground-negative;
 		}
-
-		&>span:after {
-			background: $foreground-negative;
-		}
-
-		&:hover {
-			&>span:after {
-				background: $primary;
-			}
-		}
-	}
-}
-
-.btn--project {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 50px;
-	font-size: 16px;
-	border-top: 2px solid $border;
-
-	&,
-	&:link,
-	&:focus,
-	&:active {
-		color: $primary;
-	}
-
-	svg {
-		fill: $primary;
-		width: 14px;
-		height: 14px;
-	}
-
-	&:hover {
-		color: $primary;
-
-svg {
-	// fill: white;
-	fill: $primary;
-}
-}
-
-}
-
-.btn--position {
-	display: inline-flex;
-	align-items: center;
-	font-size: 13px;
-	font-weight: $font-bold;
-	text-transform: uppercase;
-	white-space: nowrap;
-
-	.icon--pin {
-		width: 15px;
-		height: 17px;
-		margin-right: 10px;
-		fill: $primary;
 	}
 
 	&,
 	&:active,
 	&:focus,
 	&:hover,
-	&:visited {
-		color: $primary;
-	}
+	&:visited {}
 
-	&>span {
-		display: inline-block;
-		position: relative;
-
-		&:after {
-			content: '';
-			position: absolute;
-			left: 0;
-			bottom: -3px;
-			width: 100%;
-			height: 2px;
-			background: $primary;
-			transform: scale(0, 1);
-			transition: all ease-out 350ms;
-		}
-	}
-
-	&:hover {
-		&>span:after {
-			transform: scale(1, 1);
-			background: $primary;
-		}
-	}
-
-	.section--negative & {
-
-		.icon--pin {
-			fill: $foreground-negative;
-		}
-
-		&,
-		&:active,
-		&:focus,
-		&:hover,
-		&:visited {
-			color: $foreground-negative;
-		}
-
-		&>span:after {
-			background: $foreground-negative;
-		}
-
-		&:hover {
-			&>span:after {
-				background: $primary;
-			}
-		}
-	}
+	&:hover {}
 }
-
-*/
-
 
 @mixin center {
 	position: absolute;

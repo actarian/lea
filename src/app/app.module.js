@@ -34,6 +34,7 @@ import { TrustedFilter } from './filters/trusted.filter';
 import ControlMessagesDirective from './forms/control-messages.directive';
 import ControlDirective from './forms/control.directive';
 import ValidateDirective from './forms/validate.directive';
+import GalleryCtrl from './gallery/gallery.controller';
 import HighwayDirective from './highway/highway.directive';
 import MoodboardDropdownDirective from './moodboard/moodboard-dropdown.directive';
 import MoodboardSearchDirective from './moodboard/moodboard-search.directive';
@@ -113,6 +114,7 @@ app.directive('appear', AppearDirective.factory)
 	.directive('zoomable', ZoomableDirective.factory);
 
 app.controller('RootCtrl', RootCtrl)
+	.controller('GalleryCtrl', GalleryCtrl);
 /*
 	.controller('AdvancedSearchCtrl', AdvancedSearchCtrl)
 	.controller('CollectionsCtrl', CollectionsCtrl)

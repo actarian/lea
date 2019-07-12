@@ -1,0 +1,58 @@
+.section--hero-designer {
+	@extend %section--hero;
+
+	.background {
+		height: 100%;
+
+		&:before {
+			background: #958983;
+		}
+	}
+
+	.group--back {
+		margin-bottom: 50%;
+	}
+
+	.title {
+		position: relative;
+	}
+
+	.abstract {
+		font-size: 16px;
+		font-weight: $font-extralight;
+		margin-top: 35px;
+	}
+
+	@include media-breakpoint-up(sm) {
+		.background {
+			padding-top: 0;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+		.background {
+			padding-top: 0;
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+		.background {
+			padding-top: 0;
+		}
+	}
+
+}
+
+.section--generic-text {
+	padding-top: 70px;
+	padding-bottom: 140px;
+
+	font-size: 16px;
+	font-weight: $font-extralight;
+	line-height: 1.4;
+
+	p {
+		margin-bottom: 2em;
+	}
+
+}

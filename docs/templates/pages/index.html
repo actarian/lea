@@ -1,13 +1,13 @@
 <!--
-	<layout><img src="img/index/layout.jpg"></layout>
+	<layout><img src="img/index/layout@2x.jpg"></layout>
 -->
 
-<section class="section section--hero section--hero-home" hero>
+<section class="section section--hero-home" hero>
 	<div class="background"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-3 col-md-2 o-2">
-				<div class="picture" appear parallax-outer><img src="img/index/02.jpg"></div>
+				<div class="picture" appear parallax-outer><img src="img/index/02@2x.jpg"></div>
 			</div>
 			<div class="col-12 col-md-5 offset-md-1 o-1">
 				<div class="title" title>Concreto.<br>Innovazione e ricerca, adattarsi ad ogni contesto.</div>
@@ -16,18 +16,18 @@
 				</div>
 			</div>
 			<div class="col-3 col-md-2 offset-md-1 o-4">
-				<div class="picture" appear parallax-outer><img src="img/index/03.jpg"></div>
+				<div class="picture" appear parallax-outer><img src="img/index/03@2x.jpg"></div>
 			</div>
 			<div class="col-6 col-md-2 col-lg-1 offset-lg-1 o-6">
 				<div class="picture top-70" appear parallax-outer>
-					<img src="img/index/05.jpg">
+					<img src="img/index/05@2x.jpg">
 				</div>
 			</div>
 			<div class="col-6 col-md-5 offset-md-1 o-3">
-				<div class="picture picture--cover" appear parallax-outer><img src="img/index/01.jpg"></div>
+				<div class="picture picture--cover" appear parallax-outer><img src="img/index/01@2x.jpg"></div>
 			</div>
 			<div class="col-6 col-md-3 offset-md-1 o-5">
-				<div class="picture top-140" appear parallax-outer><img src="img/index/04.jpg"></div>
+				<div class="picture top-140" appear parallax-outer><img src="img/index/04@2x.jpg"></div>
 			</div>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7 o-2">
-				<div class="picture" appear parallax-outer><img src="img/index/06.jpg"></div>
+				<div class="picture" appear parallax-outer><img src="img/index/06@2x.jpg"></div>
 			</div>
 			<div class="col-md-3 offset-md-1 o-1">
 				<div class="group top-140">
@@ -46,12 +46,12 @@
 				</div>
 			</div>
 			<div class="col-3 col-md-2 offset-md-1 o-3">
-				<div class="picture absolute-bottom" appear parallax-outer><img src="img/index/07.jpg"></div>
+				<div class="picture absolute-bottom" appear parallax-outer><img src="img/index/07@2x.jpg"></div>
 			</div>
 			<div class="col-9 offset-3 col-md-3 offset-md-1 o-4">
 				<div class="abstract">Un particolare schema geometrico, amplifica la superficie eliminando la barriera tra lo spazio e l’imponente vista a 360° sulla città.</div>
 				<div class="group--cta">
-					<a href="#" class="btn--link"><span>Leggi la storia del progetto</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
+					<a href="#" class="btn--link"><span>Leggi la storia del progetto</span> <svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg></a>
 				</div>
 			</div>
 		</div>
@@ -65,21 +65,21 @@
 				<div class="group--designer">
 					<div class="title"><span>“L'acqua reagisce naturalmente, organicamente con il cemento è diventato il pattern decorativo che ho proposto a Lea Ceramiche, <b>la squadra perfetta</b> in cui performare”</span></div>
 					<div class="inset">
-						<div class="picture" appear parallax-outer><img src="img/index/10.jpg"></div>
+						<div class="picture" appear parallax-outer><img src="img/index/10@2x.jpg"></div>
 						<div clasS="abstract">La collaborazione di Lea Ceramiche con i grandi designers</div>
 						<div class="group--cta">
-							<a href="#" class="btn--link"><span>Fabio Novembre</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
+							<a href="designer.html" class="btn--link"><span>Fabio Novembre</span> <svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg></a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-6 offset-md-1">
 				<div class="group--article">
-					<div class="picture" appear parallax-outer><img src="img/index/09.jpg"></div>
+					<div class="picture" appear parallax-outer><img src="img/index/09@2x.jpg"></div>
 					<div class="title" title>Carattere e personalità: oltre la semplice decorazione.</div>
 					<div class="abstract">La costante attenzione per la componente estetica e di design attesta l’anima creativa di Lea Ceramiche, un’attitudine a sperimentare sempre nuovi codici e stili diversi, linguaggi espressivi sulla materia ceramica in grado di interpretare e definire tendenze e stili abitativi.</div>
 					<div class="group--cta">
-						<a href="#" class="btn--link"><span>L'articolo completo</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
+						<a href="#" class="btn--link"><span>L'articolo completo</span> <svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg></a>
 					</div>
 				</div>
 			</div>
@@ -87,105 +87,6 @@
 	</div>
 </section>
 
-<section class="section section--news" scrollable=".listing--news" scrollable-inner=".listing--news > .inner" scrollable-track=".listing--scrollbar__track" scrollable-thumb=".listing--scrollbar__thumb">
-	<div class="container">
-		<div class="listing--news">
+<ng-include src="'templates/shared/listing-news.html'"></ng-include>
 
-			<div class="inner">
-				<div class="card card--news">
-					<div class="date">18 dicembre 2018</div>
-					<div class="title" title>Lea Ceramiche a Maison&Objet 2019</div>
-					<div class="abstract">Dal 18 al 22 Gennaio 2019, Lea Ceramiche sarà presente a Maison&Objet, il Salone di riferimento per l’interior design a Parigi. L’appuntamento di gennaio di Maison & Objet rappresenta tradizionalmente la vetrina per scoprire le ultime tendenze dell’abitare. All’importante appuntamento non poteva mancare Lea Ceramiche, da sempre impegnata a tradurre, con eleganza e cura</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">28 novembre 2018</div>
-					<div class="title" title>l design italiano di LEA CERAMICHE alla conquista della Cina. Partendo dal Guandong</div>
-					<div class="abstract">I cinesi vogliono il design italiano: sono i big spenders, i super ricchi miliardari in cerca di beni di lusso, e l’upper middle class, il nuovo ceto medio emergente, che sempre di più chiedono prodotti dalla forte cifra stilistica, altissima qualità e totalmente Made in Italy. È su queste premesse e sulla comunanza di vedute</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">16 novembre 2018</div>
-					<div class="title" title>A Parigi la creatività incontra la perfomance</div>
-					<div class="abstract">Lea Ceramiche torna a Parigi con Lea Lab, lo spazio dedicato a professionisti e operatori del settore per un’esperienza immersiva nella materia ceramica. Nel cuore di Parigi, a pochi passi da Opera, il Lea Lab riapre le porte per accogliere i professionisti e fornire loro un servizio di consulenza su progetti di interior e di</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">18 dicembre 2018</div>
-					<div class="title" title>Lea Ceramiche per “Cersaie disegna la tua casa” 2018</div>
-					<div class="abstract">Lea Ceramiche partecipa alla settima edizione di “Cersaie disegna la tua casa”: le giornate di giovedì 27 e venerdì 28 settembre saranno dedicate ai privati che visiteranno i padiglioni, alla ricerca delle ultime novità nel settore dell’arredo bagno e della ceramica e che intendano ristrutturare la propria casa o acquisirne una nuova. Per maggiori informazioni clicca il banner sotto.</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">18 dicembre 2018</div>
-					<div class="title" title>Lea Ceramiche a Maison&Objet 2019</div>
-					<div class="abstract">Dal 18 al 22 Gennaio 2019, Lea Ceramiche sarà presente a Maison&Objet, il Salone di riferimento per l’interior design a Parigi. L’appuntamento di gennaio di Maison & Objet rappresenta tradizionalmente la vetrina per scoprire le ultime tendenze dell’abitare. All’importante appuntamento non poteva mancare Lea Ceramiche, da sempre impegnata a tradurre, con eleganza e cura</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">28 novembre 2018</div>
-					<div class="title" title>l design italiano di LEA CERAMICHE alla conquista della Cina. Partendo dal Guandong</div>
-					<div class="abstract">I cinesi vogliono il design italiano: sono i big spenders, i super ricchi miliardari in cerca di beni di lusso, e l’upper middle class, il nuovo ceto medio emergente, che sempre di più chiedono prodotti dalla forte cifra stilistica, altissima qualità e totalmente Made in Italy. È su queste premesse e sulla comunanza di vedute</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">16 novembre 2018</div>
-					<div class="title" title>A Parigi la creatività incontra la perfomance</div>
-					<div class="abstract">Lea Ceramiche torna a Parigi con Lea Lab, lo spazio dedicato a professionisti e operatori del settore per un’esperienza immersiva nella materia ceramica. Nel cuore di Parigi, a pochi passi da Opera, il Lea Lab riapre le porte per accogliere i professionisti e fornire loro un servizio di consulenza su progetti di interior e di</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-				<div class="card card--news">
-					<div class="date">18 dicembre 2018</div>
-					<div class="title" title>Lea Ceramiche per “Cersaie disegna la tua casa” 2018</div>
-					<div class="abstract">Lea Ceramiche partecipa alla settima edizione di “Cersaie disegna la tua casa”: le giornate di giovedì 27 e venerdì 28 settembre saranno dedicate ai privati che visiteranno i padiglioni, alla ricerca delle ultime novità nel settore dell’arredo bagno e della ceramica e che intendano ristrutturare la propria casa o acquisirne una nuova. Per maggiori informazioni clicca il banner sotto.</div>
-					<div class="group--cta">
-						<a href="#" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow"><use xlink:href="#icon--arrow"></use></svg></a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="listing--scrollbar">
-			<div class="listing--scrollbar__track"></div>
-			<div class="listing--scrollbar__thumb"></div>
-		</div>
-	</div>
-</section>
-
-<section class="section section--newsletter">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-3 offset-md-1 hidden-sm-down">
-				<div class="picture" appear parallax-outer><img src="img/index/11.jpg"></div>
-			</div>
-			<div class="col-md-5 offset-md-1">
-				<div class="group">
-					<div class="title" title>Costruisci con noi la tua moodboard</div>
-					<form>
-						<div class="control">
-							<input class="control__input" type="text" placeholder="Insert your email">
-							<button class="control__button" type="submit">Iscriviti alla newsletter</button>
-						</div>
-						<div class="control control--checkbox">
-							<input class="control__input control__checkbox" type="checkbox">
-							<label class="control__label"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisi est, maximus eget porttitor et, sodales a tellus.</span></label>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<ng-include src="'templates/shared/newsletter.html'"></ng-include>
