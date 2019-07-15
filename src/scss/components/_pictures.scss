@@ -179,3 +179,14 @@ section {
 	perspective: 50vw;
 	// perspective-origin: 50% 50%;
 }
+
+[lazy] {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity ease-in-out 350ms;
+
+	&.lazyed {
+		visibility: visible;
+		opacity: 1;
+	}
+}

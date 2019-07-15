@@ -14,7 +14,7 @@ footer {
 		align-items: stretch;
 	}
 
-	.col-md-4 {
+	.socialize {
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -35,7 +35,7 @@ footer {
 		}
 	}
 
-	.col-md-8 {
+	.socialize--icons {
 		position: relative;
 		background: #e7e7e7;
 
@@ -118,19 +118,24 @@ footer {
 	.brand {
 		display: block;
 		position: relative;
-		z-index: 1;
 		line-height: 0;
 		font-size: 0;
 		width: 100%;
+		max-width: 160px;
+
+		.aspect {
+			@include aspect-clip(140, 56);
+		}
 
 		.icon--lea-ceramiche {
-			width: 137px;
-			height: 56px;
+			width: 100%;
+			height: 100%;
 		}
 	}
 
 	.nav--footer {
 		flex-direction: column;
+		margin-bottom: 70px;
 
 		&>li {
 
@@ -174,6 +179,11 @@ footer {
 		font-weight: 100;
 		line-height: 1;
 		color: #878887;
+
+		a {
+			display: inline-block;
+			margin-bottom: 15px;
+		}
 
 		.icon--websolute {
 			width: 82px;

@@ -35,6 +35,12 @@
 		}
 	}
 
+	@include media-breakpoint-down(sm) {
+		.group--back {
+			margin-bottom: 35px;
+		}
+	}
+
 	@include media-breakpoint-down(xs) {
 		.background {
 			padding-top: 0;

@@ -1,5 +1,4 @@
 ﻿/* jshint esversion: 6 */
-/* global window, document, angular, Swiper, TweenMax, TimelineMax */
 
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";

@@ -36,6 +36,10 @@
 		.card {
 			flex: 0 0 100%;
 			@include _selectNone();
+
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 
 		@include _selectNone();

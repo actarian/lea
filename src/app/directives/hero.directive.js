@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global window, document, angular, Swiper, TweenMax, TimelineMax */
+
 
 // Import Polyfills
 // See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
@@ -20,6 +20,12 @@ export default class HeroDirective {
 
 	link(scope, element, attributes, controller) {
 		// console.log('HeroDirective');
+		setTimeout(() => {
+			this.init(scope, element, attributes, controller);
+		}, 1);
+	}
+
+	init(scope, element, attributes, controller) {
 		const node = element[0];
 		const scrollTop = this.domService.scrollTop;
 		if (first && scrollTop === 0) {
@@ -65,14 +71,13 @@ export default class HeroDirective {
 	animateCover(node, callback) {
 		const rect = Rect.fromNode(node);
 		const x = (window.innerWidth - rect.width) / 2 - rect.left;
-		const y = window.innerHeight / 2 - rect.top + 40;
+		const y = window.innerHeight / 2 - rect.top + 40 - rect.height * 0.25;
 		// console.log('pos', x, y, window.innerWidth, rect.width);
 		TweenMax.set(node, {
 			x: x,
 			y: y,
 			scaleX: 0.5,
 			scaleY: 0.5,
-			transformOrigin: '50% 0%',
 			opacity: 1
 		});
 		TweenMax.to(node, 0.5, {

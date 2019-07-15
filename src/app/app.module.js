@@ -1,6 +1,6 @@
 ﻿/* jshint esversion: 6 */
-/* global window, document, angular, Swiper, TweenMax, TimelineMax */
 
+import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
 import GlslCanvasDirective from './directives/glsl-canvas.directive';
@@ -15,7 +15,6 @@ import LazyDirective from './directives/lazy.directive';
 import MediaDirective from './directives/media.directive';
 import { MuuriDirective } from './directives/muuri.directive';
 import ParallaxOuterDirective from './directives/parallax-outer.directive';
-import ParallaxOuter2Directive from './directives/parallax-outer2.directive';
 import ParallaxDirective from './directives/parallax.directive';
 import ScrollDirective from './directives/scroll.directive';
 import ScrollableDirective from './directives/scrollable.directive';
@@ -76,7 +75,8 @@ app.factory('ApiService', ApiService.factory)
 	.factory('SessionStorageService', SessionStorageService.factory)
 	.factory('WishlistService', WishlistService.factory);
 
-app.directive('appear', AppearDirective.factory)
+app.directive('abstract', AbstractDirective.factory)
+	.directive('appear', AppearDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
 	.directive('glslCanvas', GlslCanvasDirective.factory)
@@ -95,7 +95,6 @@ app.directive('appear', AppearDirective.factory)
 	.directive('muuri', MuuriDirective.factory)
 	.directive('parallax', ParallaxDirective.factory)
 	.directive('parallaxOuter', ParallaxOuterDirective.factory)
-	.directive('parallaxOuter2', ParallaxOuter2Directive.factory)
 	.directive('scroll', ScrollDirective.factory)
 	.directive('scrollable', ScrollableDirective.factory)
 	.directive('selectWithAutocomplete', AutocompleteDirective.factory)

@@ -1,5 +1,5 @@
 /* jshint esversion: 6 */
-/* global window, document, angular, Swiper, TweenMax, TimelineMax */
+
 
 import Rect from '../shared/rect';
 
@@ -13,6 +13,17 @@ export default class HeaderDirective {
 	}
 
 	link(scope, element, attributes, controller) {
+		const node = element[0];
+		setTimeout(() => {
+			this.init(scope, element, attributes, controller);
+		}, 1);
+		this.addListeners(node);
+		scope.$on('destroy', () => {
+			this.removeListeners(node);
+		});
+	}
+
+	init(scope, element, attributes, controller) {
 		const node = element[0];
 		const brand = node.querySelector('.brand');
 		const primary = [...node.querySelectorAll('.nav--primary > li')];
@@ -61,10 +72,6 @@ export default class HeaderDirective {
 				});
 			});
 		}
-		this.addListeners(node);
-		scope.$on('destroy', () => {
-			this.removeListeners(node);
-		});
 	}
 
 	onOver(event) {
