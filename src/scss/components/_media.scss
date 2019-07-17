@@ -26,10 +26,7 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: 140px;
-			height: 70px;
 			font-family: $font-secondary;
-			font-size: 16px;
 			background: $foreground-negative;
 			color: $foreground;
 			line-height: 1;
@@ -43,7 +40,6 @@
 		align-items: center;
 
 		.btn {
-			margin-left: 40px;
 			opacity: 0;
 			transform: translateX(-100px);
 			transition: all ease-in-out 350ms;
@@ -53,11 +49,62 @@
 	.icon--facebook,
 	.icon--twitter,
 	.icon--pinterest {
-		width: 28px;
-		height: 28px;
 		fill: $foreground-negative;
 	}
 
+	@include media-breakpoint-up(sm) {
+
+		.group--share {
+			.label {
+				width: 140px;
+				height: 70px;
+				font-size: 16px;
+			}
+		}
+
+		.group--actions {
+			.btn {
+				margin-left: 40px;
+			}
+		}
+
+		.icon--facebook,
+		.icon--twitter,
+		.icon--pinterest {
+			width: 28px;
+			height: 28px;
+		}
+
+	}
+
+	@include media-breakpoint-down(xs) {
+
+		.group--share {
+			.label {
+				width: 100px;
+				height: 40px;
+				font-size: 14px;
+			}
+		}
+
+		.group--actions {
+			.btn {
+				margin-left: 20px;
+
+				&:first-child {
+					margin-left: 15px;
+				}
+			}
+		}
+
+		.icon--facebook,
+		.icon--twitter,
+		.icon--pinterest {
+			width: 20px;
+			height: 20px;
+		}
+
+	}
 
 	cursor: pointer;
 

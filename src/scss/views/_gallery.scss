@@ -1,6 +1,5 @@
 .section--hero-gallery {
 	@extend %section--hero;
-	padding: 270px 0 0 0;
 
 	.background {
 		height: 100%;
@@ -72,8 +71,14 @@
 	}
 
 	@include media-breakpoint-up(sm) {
+		padding: 270px 0 0 0;
+
 		.background {
 			padding-top: 0;
+		}
+
+		.group--back {
+			text-align: right;
 		}
 	}
 
@@ -84,8 +89,15 @@
 	}
 
 	@include media-breakpoint-down(xs) {
+		padding: 130px 0 0 0;
+
 		.background {
 			padding-top: 0;
+		}
+
+		.group--back {
+			margin-bottom: 60px;
+			text-align: left;
 		}
 	}
 

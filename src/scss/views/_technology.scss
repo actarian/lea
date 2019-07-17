@@ -42,21 +42,25 @@
 	}
 
 	@include media-breakpoint-down(xs) {
+		padding: 130px 0 70px 0;
+
 		.background {
 			padding-top: 0;
 		}
+
+		.group--back {
+			margin-bottom: 60px;
+		}
+
+		.title {
+			margin-bottom: 35px;
+		}
+
 	}
 
 }
 
 .section--technology {
-	padding-top: 100px;
-	padding-bottom: 100px;
-
-	.content {
-		padding-top: 140px;
-		padding-bottom: 70px;
-	}
 
 	.title {
 		font-size: 32px;
@@ -80,6 +84,27 @@
 			font-size: 16px;
 			line-height: 1.2;
 			font-weight: $font-semibold;
+		}
+	}
+
+	@include media-breakpoint-up(sm) {
+		padding-top: 100px;
+		padding-bottom: 100px;
+
+		.content {
+			padding-top: 140px;
+			padding-bottom: 70px;
+		}
+
+	}
+
+	@include media-breakpoint-down(xs) {
+		padding-top: 70px;
+		padding-bottom: 70px;
+
+		.content {
+			padding-top: 70px;
+			padding-bottom: 0;
 		}
 	}
 
@@ -116,7 +141,6 @@
 .group--inline {
 	display: flex;
 	align-items: center;
-	margin-top: 30px;
 
 	.btn--download {
 		margin-right: 15px;
@@ -125,4 +149,13 @@
 			margin: 0;
 		}
 	}
+
+	@include media-breakpoint-up(sm) {
+		margin-top: 30px;
+	}
+
+	@include media-breakpoint-down(xs) {
+		margin: 10px 0 30px 0;
+	}
+
 }
