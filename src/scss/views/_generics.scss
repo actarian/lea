@@ -1,115 +1,30 @@
-.section--generic {
-	padding: 130px 0;
-
-	.group--cta {
-		text-align: left;
-	}
-}
-
-.section--generic-intro {
+.section--generic-text {
+	font-size: 16px;
+	font-weight: $font-extralight;
+	line-height: 1.4;
 
 	.title {
-		font-size: 24px;
-		line-height: 36px;
-		font-weight: $font-extralight;
-		color: $foreground-secondary;
-		margin-bottom: 40px;
-	}
-
-	.abstract {
-		font-size: 18px;
-		line-height: 32px;
-		font-weight: $font-light;
-		margin-bottom: 60px;
-
-		p {
-			margin-bottom: 10px;
-		}
-	}
-}
-
-.section--generic-intro-02 {
-	padding-top: 140px;
-	padding-bottom: 40px;
-
-	.title {
-		font-size: 68px;
-		line-height: 1.1;
-		font-weight: $font-semibold;
-		color: $foreground;
-		margin-bottom: 60px;
-	}
-
-	.abstract {
-		font-size: 42px;
-		line-height: 1.1;
-		font-weight: $font-regular;
-		color: $foreground;
-		margin-bottom: 60px;
-
-		p {
-			margin-bottom: 10px;
-		}
-	}
-
-	.description {
-		margin-bottom: 60px;
-	}
-
-	.group--cta {
-		text-align: left;
-		margin: 0 0 40px 0;
-	}
-
-}
-
-.group--generic-info {
-	position: sticky;
-	top: 100px;
-
-	.title {
-		font-size: 14px;
-		line-height: 1.5;
-		text-transform: uppercase;
-		color: $foreground-secondary;
-		margin-bottom: 20px;
-	}
-
-	.description {
-		font-size: 15px;
-		line-height: 18px;
-		margin-bottom: 50px;
-	}
-
-	.icon--pin-outline,
-	.icon--project {
-		width: 13px;
-		height: 16px;
-		fill: $foreground;
-		margin-right: 10px;
-	}
-
-}
-
-[swiper-gallery] {
-	.swiper-slide {
+		position: relative;
 		text-align: center;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: auto;
-		background: black;
-
-		img {
-			transition: opacity ease-in-out 350ms;
-			height: calc(100vh - 137px);
-			max-height: 780px;
-		}
-
-		&:not(.swiper-slide-active) {
-			img {
-				opacity: 0.5;
-			}
-		}
+		margin-bottom: 35px;
+		font-size: 56px;
+		line-height: 1.2;
+		color: #232120;
+		font-weight: $font-light;
 	}
+
+	p {
+		margin-bottom: 2em;
+	}
+
+	@include media-breakpoint-up(sm) {
+		padding-top: 70px;
+		padding-bottom: 140px;
+	}
+
+	@include media-breakpoint-down(xs) {
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+
 }

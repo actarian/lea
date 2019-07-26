@@ -81,10 +81,32 @@
 
 		.label {
 			flex: 1 1 auto;
-			font-size: 16px;
+			font-size: 15px;
 			line-height: 1.2;
 			font-weight: $font-semibold;
 		}
+	}
+
+	.group--inline {
+		display: flex;
+		align-items: center;
+
+		.btn--download {
+			margin-right: 15px;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+
+		@include media-breakpoint-up(sm) {
+			margin-top: 30px;
+		}
+
+		@include media-breakpoint-down(xs) {
+			margin: 10px 0 30px 0;
+		}
+
 	}
 
 	@include media-breakpoint-up(sm) {
@@ -136,26 +158,4 @@
 			}
 		}
 	}
-}
-
-.group--inline {
-	display: flex;
-	align-items: center;
-
-	.btn--download {
-		margin-right: 15px;
-
-		&:last-child {
-			margin: 0;
-		}
-	}
-
-	@include media-breakpoint-up(sm) {
-		margin-top: 30px;
-	}
-
-	@include media-breakpoint-down(xs) {
-		margin: 10px 0 30px 0;
-	}
-
 }

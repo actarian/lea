@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import Rect from '../shared/rect';
 
@@ -64,13 +63,14 @@ export default class ParallaxOuterDirective {
 
 	parallaxAndSkew(node, rect, top) {
 		node.rect = rect;
-		const angle = 4;
+		const angle = 300 / rect.width;
+		const maxAngle = 300 / rect.width;
 		const dx = (mx.x - rect.center.x);
 		const dy = (mx.y - rect.center.y);
 		let ex, ey;
 		if (Math.abs(dx) < rect.width * 0.6 && Math.abs(dy) < rect.height * 0.6) {
-			ey = angle * 2 * dx / rect.width;
-			ex = -angle * dy / rect.height;
+			ey = Math.min(maxAngle, Math.max(-maxAngle, angle * 2 * dx / rect.width));
+			ex = Math.min(maxAngle, Math.max(-maxAngle, -angle * dy / rect.height));
 		} else {
 			ey = 0;
 			ex = 0;
@@ -87,6 +87,20 @@ export default class ParallaxOuterDirective {
 	units(value, decimals = 4) {
 		const pow = Math.pow(10, decimals) / 10;
 		return Math.round(value * pow) / pow;
+	}
+
+	parallax$__(node, parallax, i) {
+		return this.domService.rafAndRect$().pipe(
+			map(datas => {
+				const windowRect = datas[1];
+				const rect = Rect.fromNode(node);
+				this.parallaxAndSkew(node, rect, 0);
+				return null;
+			}),
+			filter(y => y !== null && this.domService.ready),
+			distinctUntilChanged(),
+			map(y => 0)
+		);
 	}
 
 	parallax$(node, parallax, i) {

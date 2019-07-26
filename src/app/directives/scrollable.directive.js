@@ -59,7 +59,7 @@ export default class ScrollableDirective {
 			}
 			onMove(down + distance);
 		}, (e) => {
-			// console.log('up', e);
+			// console.log('up', e.originalEvent);
 		});
 
 		/*

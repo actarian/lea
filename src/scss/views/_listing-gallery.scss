@@ -1,0 +1,23 @@
+.section--listing-gallery {
+	overflow: hidden;
+}
+
+.listing--gallery {
+
+	.inner {
+		white-space: nowrap;
+
+		.picture {
+			display: inline-block;
+			margin-right: 35px;
+			@include _selectNone();
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+
+		@include _selectNone();
+	}
+
+}

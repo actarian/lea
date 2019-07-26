@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import Rect from '../shared/rect';
 
 export default class HeaderDirective {
@@ -42,14 +41,14 @@ export default class HeaderDirective {
 					y: y,
 					opacity: 1
 				});
+			});
+			scope.$on('onCoverEnd', ($scope) => {
 				TweenMax.to(brand, 0.65, {
 					x: 0,
 					y: 0,
-					delay: 1.5,
+					opacity: 1,
 					ease: Power2.easeInOut
 				});
-			});
-			scope.$on('onCoverEnd', ($scope) => {
 				menus.forEach((m, i) => {
 					m.forEach((l, j) => {
 						TweenMax.to(l, 0.45, {

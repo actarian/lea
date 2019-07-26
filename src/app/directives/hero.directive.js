@@ -1,10 +1,5 @@
 /* jshint esversion: 6 */
 
-
-// Import Polyfills
-// See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
-// import 'intersection-observer';
-
 import Rect from '../shared/rect';
 
 let first = true;
@@ -51,6 +46,7 @@ export default class HeroDirective {
 		}
 	}
 
+	/*
 	animateBrand(node) {
 		const rect = Rect.fromNode(node);
 		const x = (window.innerWidth - rect.width) / 2 - rect.left;
@@ -67,6 +63,7 @@ export default class HeroDirective {
 			ease: Power2.easeInOut
 		});
 	}
+	*/
 
 	animateCover(node, callback) {
 		const rect = Rect.fromNode(node);

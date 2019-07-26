@@ -1,5 +1,6 @@
 ﻿/* jshint esversion: 6 */
 
+import ColorsCtrl from './colors/colors.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
@@ -14,6 +15,7 @@ import LazyScriptDirective from './directives/lazy-script.directive';
 import LazyDirective from './directives/lazy.directive';
 import MediaDirective from './directives/media.directive';
 import { MuuriDirective } from './directives/muuri.directive';
+import NoHeroDirective from './directives/no-hero.directive';
 import ParallaxOuterDirective from './directives/parallax-outer.directive';
 import ParallaxDirective from './directives/parallax.directive';
 import ScrollDirective from './directives/scroll.directive';
@@ -83,6 +85,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('hasDropdown', HasDropdownDirective.factory)
 	.directive('header', HeaderDirective.factory)
 	.directive('hero', HeroDirective.factory)
+	.directive('noHero', NoHeroDirective.factory)
 	.directive('highway', HighwayDirective.factory)
 	.directive('hilight', HilightDirective.factory)
 	.directive('href', HrefDirective.factory)
@@ -113,6 +116,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('zoomable', ZoomableDirective.factory);
 
 app.controller('RootCtrl', RootCtrl)
+	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl);
 /*
 	.controller('AdvancedSearchCtrl', AdvancedSearchCtrl)

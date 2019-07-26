@@ -17,13 +17,16 @@
 @import 'components/loaders';
 @import 'components/media';
 @import 'components/swiper';
+@import 'components/cards';
 @import 'components/listings';
 @import 'components/distinct';
 
 @import 'views/page';
 @import 'views/header';
 @import 'views/footer';
+@import 'views/generics';
 @import 'views/home';
+@import 'views/product';
 @import 'views/gallery';
 @import 'views/designer';
 @import 'views/technology';
@@ -31,6 +34,8 @@
 @import 'views/listing-magazine';
 @import 'views/listing-collections';
 @import 'views/listing-news';
+@import 'views/listing-gallery';
+@import 'views/listing-decors';
 
 @import 'components/responsive';
 
