@@ -41,6 +41,7 @@ export default class HeroDirective {
 					});
 				}, 100);
 			};
+			img.src = img.src;
 		} else {
 			scope.$root.$broadcast('onCoverEnd');
 		}

@@ -21119,7 +21119,6 @@ var _appModule = _interopRequireDefault(require("./app.module.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* jshint esversion: 6 */
-console.log('bootstrap', document);
 angular.bootstrap(document, [_appModule.default]);
 
 },{"./app.module.js":200}],200:[function(require,module,exports){
@@ -21237,7 +21236,7 @@ import ReferencesCtrl from './references/references.controller';
 import StoreLocatorCtrl from './store-locator/store-locator.controller';
 import WishlistCtrl from './wishlist/wishlist.controller';
 */
-var MODULE_NAME = 'app';
+var MODULE_NAME = 'lea';
 var app = angular.module(MODULE_NAME, ['ngSanitize', 'jsonFormatter']);
 app.config(['$locationProvider', function ($locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('*');
@@ -22258,6 +22257,8 @@ function () {
             });
           }, 100);
         };
+
+        img.src = img.src;
       } else {
         scope.$root.$broadcast('onCoverEnd');
       }

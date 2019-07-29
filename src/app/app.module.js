@@ -59,7 +59,7 @@ import StoreLocatorCtrl from './store-locator/store-locator.controller';
 import WishlistCtrl from './wishlist/wishlist.controller';
 */
 
-const MODULE_NAME = 'app';
+const MODULE_NAME = 'lea';
 
 const app = angular.module(MODULE_NAME, ['ngSanitize', 'jsonFormatter']);
 
