@@ -1,0 +1,84 @@
+.section--magazine {
+	padding: 0;
+	background: #cbc4b9;
+}
+
+.section--magazine-secondary {
+	background: #cfcfcf;
+}
+
+.group--designer {
+	margin-top: 140px;
+	margin-bottom: 140px;
+
+	.title {
+		padding: 70px 0;
+		text-align: center;
+		font-family: Stanley, serif;
+		font-size: 36px;
+		line-height: 1.2;
+		font-weight: 100;
+		position: relative;
+
+		span {
+			position: relative;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: percentage(1 / 5);
+			width: percentage(3 / 5);
+			height: 100%;
+			background: #878887;
+		}
+	}
+
+	.inset {
+		width: percentage(3 / 5);
+		margin-left: percentage(1 / 5);
+	}
+
+	.picture {
+		margin-bottom: 12px;
+	}
+
+	.abstract {
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+	.group--cta {
+		margin: 10px 0 0 0;
+	}
+}
+
+.group--article {
+	margin-bottom: 140px;
+
+	/*
+	.picture {
+		transform-origin: top left;
+		transform: scale(1.1428);
+		margin-bottom: 14.2857%;
+	}
+	*/
+
+	.title {
+		font-size: 36px;
+		padding-top: 25px;
+		line-height: 1.2;
+		margin-bottom: 25px;
+	}
+
+	.abstract {
+		font-size: 15px;
+		line-height: 1.5;
+	}
+
+	.group--cta {
+		margin: 40px 0 0 0;
+	}
+
+}

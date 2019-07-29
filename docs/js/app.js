@@ -23285,8 +23285,8 @@ function () {
       return Math.round(value * pow) / pow;
     }
   }, {
-    key: "parallax$__",
-    value: function parallax$__(node, parallax, i) {
+    key: "parallax$",
+    value: function parallax$(node, parallax, i) {
       var _this3 = this;
 
       return this.domService.rafAndRect$().pipe((0, _operators.map)(function (datas) {
@@ -23304,8 +23304,8 @@ function () {
       }));
     }
   }, {
-    key: "parallax$",
-    value: function parallax$(node, parallax, i) {
+    key: "parallax$___",
+    value: function parallax$___(node, parallax, i) {
       var _this4 = this;
 
       return this.domService.rafAndRect$().pipe((0, _operators.map)(function (datas) {
@@ -26745,14 +26745,6 @@ function () {
       var scrollBarWidth = node.offsetWidth - inner.offsetWidth;
       console.log(node.offsetWidth, inner.offsetWidth);
       body.removeChild(node);
-      /*
-      let rule = `body.droppin-in { padding-right: ${scrollBarWidth}px; }`;
-      sheet.insertRule(rule, 0);
-      rule = `body.droppin-in header { width: calc(100% - ${scrollBarWidth}px); }`;
-      sheet.insertRule(rule, 1);
-      rule = `body.droppin-in .page { width: calc(100% - ${scrollBarWidth}px); }`;
-      sheet.insertRule(rule, 2);
-      */
     }
   }, {
     key: "addCustomSheet",

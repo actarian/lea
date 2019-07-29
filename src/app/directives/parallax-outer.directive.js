@@ -89,7 +89,7 @@ export default class ParallaxOuterDirective {
 		return Math.round(value * pow) / pow;
 	}
 
-	parallax$__(node, parallax, i) {
+	parallax$(node, parallax, i) {
 		return this.domService.rafAndRect$().pipe(
 			map(datas => {
 				const windowRect = datas[1];
@@ -103,7 +103,7 @@ export default class ParallaxOuterDirective {
 		);
 	}
 
-	parallax$(node, parallax, i) {
+	parallax$___(node, parallax, i) {
 		return this.domService.rafAndRect$().pipe(
 			map(datas => {
 				const windowRect = datas[1];

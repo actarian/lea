@@ -60,56 +60,32 @@
 	.listing__content {}
 
 	@include media-breakpoint-up(sm) {
-		.listing__item {
-			margin-right: percentage(1 / 12);
-			margin-bottom: 140px;
+		margin: -35px;
 
-			&:first-child {
-				margin-left: 0;
-			}
+		.listing__item {
+			padding: 35px;
+			// margin-right: percentage(1 / 12);
+			// margin-bottom: 70px; // 140px;
 		}
 	}
 
 	@include media-breakpoint-up(md) {
-		.listing__item {
-			margin-right: percentage(1 / 12);
-			margin-bottom: 140px;
+		margin: -35px;
 
-			&:first-child {
-				margin-left: 0;
-			}
+		.listing__item {
+			padding: 35px;
+			// margin-right: percentage(1 / 12);
+			// margin-bottom: 70px; // 140px;
 		}
 	}
 
 	@include media-breakpoint-down(xs) {
+		margin: -35px;
+
 		.listing__item {
-			margin-left: 0;
-			margin-bottom: 70px;
+			padding: 35px;
+			// margin-left: 0;
+			// margin-bottom: 70px;
 		}
 	}
 }
-
-@include media-breakpoint-up(sm) {
-
-	[muuri] {
-		margin-right: percentage(-1 / 12);
-	}
-
-}
-
-@include media-breakpoint-up(md) {
-
-	[muuri] {
-		margin-right: percentage(-1 / 12);
-
-		@for $i from 1 through 12 {
-			.listing__item.col-md-#{$i} {
-				width: percentage($i / 13);
-				margin-right: percentage(1 / 13);
-			}
-		}
-	}
-
-}
-
-@include media-breakpoint-up(lg) {}

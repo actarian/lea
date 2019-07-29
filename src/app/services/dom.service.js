@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import { combineLatest, fromEvent, range } from 'rxjs';
 import { animationFrame } from 'rxjs/internal/scheduler/animationFrame';
 import { auditTime, distinctUntilChanged, filter, first, map, shareReplay, startWith } from 'rxjs/operators';
@@ -254,14 +253,6 @@ export default class DomService {
 		const scrollBarWidth = (node.offsetWidth - inner.offsetWidth);
 		console.log(node.offsetWidth, inner.offsetWidth);
 		body.removeChild(node);
-		/*
-		let rule = `body.droppin-in { padding-right: ${scrollBarWidth}px; }`;
-		sheet.insertRule(rule, 0);
-		rule = `body.droppin-in header { width: calc(100% - ${scrollBarWidth}px); }`;
-		sheet.insertRule(rule, 1);
-		rule = `body.droppin-in .page { width: calc(100% - ${scrollBarWidth}px); }`;
-		sheet.insertRule(rule, 2);
-		*/
 	}
 
 	addCustomSheet() {

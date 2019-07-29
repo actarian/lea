@@ -5,9 +5,7 @@
 
 	.title {
 		position: relative;
-		text-align: center;
 		margin-bottom: 35px;
-		font-size: 56px;
 		line-height: 1.2;
 		color: #232120;
 		font-weight: $font-light;
@@ -20,11 +18,22 @@
 	@include media-breakpoint-up(sm) {
 		padding-top: 70px;
 		padding-bottom: 140px;
+
+		.title {
+			font-size: 56px;
+			text-align: center;
+		}
 	}
 
 	@include media-breakpoint-down(xs) {
 		padding-top: 70px;
 		padding-bottom: 70px;
+
+		.title {
+			font-size: 48px;
+			text-align: left;
+		}
+
 	}
 
 }

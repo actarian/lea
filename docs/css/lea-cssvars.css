@@ -3454,65 +3454,20 @@ section {
     [muuri] .listing__item.muuri-item-hidden {
       z-index: 0; }
   @media (min-width: 860px) {
-    [muuri] .listing__item {
-      margin-right: 8.33333%;
-      margin-bottom: 140px; }
-      [muuri] .listing__item:first-child {
-        margin-left: 0; } }
+    [muuri] {
+      margin: -35px; }
+      [muuri] .listing__item {
+        padding: 35px; } }
   @media (min-width: 1024px) {
-    [muuri] .listing__item {
-      margin-right: 8.33333%;
-      margin-bottom: 140px; }
-      [muuri] .listing__item:first-child {
-        margin-left: 0; } }
+    [muuri] {
+      margin: -35px; }
+      [muuri] .listing__item {
+        padding: 35px; } }
   @media (max-width: 859.98px) {
-    [muuri] .listing__item {
-      margin-left: 0;
-      margin-bottom: 70px; } }
-
-@media (min-width: 860px) {
-  [muuri] {
-    margin-right: -8.33333%; } }
-
-@media (min-width: 1024px) {
-  [muuri] {
-    margin-right: -8.33333%; }
-    [muuri] .listing__item.col-md-1 {
-      width: 7.69231%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-2 {
-      width: 15.38462%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-3 {
-      width: 23.07692%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-4 {
-      width: 30.76923%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-5 {
-      width: 38.46154%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-6 {
-      width: 46.15385%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-7 {
-      width: 53.84615%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-8 {
-      width: 61.53846%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-9 {
-      width: 69.23077%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-10 {
-      width: 76.92308%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-11 {
-      width: 84.61538%;
-      margin-right: 7.69231%; }
-    [muuri] .listing__item.col-md-12 {
-      width: 92.30769%;
-      margin-right: 7.69231%; } }
+    [muuri] {
+      margin: -35px; }
+      [muuri] .listing__item {
+        padding: 35px; } }
 
 .nav {
   display: -webkit-box;
@@ -5705,9 +5660,7 @@ footer .inner {
   line-height: 1.4; }
   .section--generic-text .title {
     position: relative;
-    text-align: center;
     margin-bottom: 35px;
-    font-size: 56px;
     line-height: 1.2;
     color: #232120;
     font-weight: var(--font-light); }
@@ -5716,11 +5669,17 @@ footer .inner {
   @media (min-width: 860px) {
     .section--generic-text {
       padding-top: 70px;
-      padding-bottom: 140px; } }
+      padding-bottom: 140px; }
+      .section--generic-text .title {
+        font-size: 56px;
+        text-align: center; } }
   @media (max-width: 859.98px) {
     .section--generic-text {
       padding-top: 70px;
-      padding-bottom: 70px; } }
+      padding-bottom: 70px; }
+      .section--generic-text .title {
+        font-size: 48px;
+        text-align: left; } }
 
 .section--hero-home .background:before {
   background: #908E91; }
@@ -5753,64 +5712,6 @@ footer .inner {
   .section--projects .group--cta {
     margin: 20px 0;
     font-size: 10px; }
-
-.section--magazine {
-  padding: 0 0 140px 0;
-  background: #cbc4b9; }
-
-.section--magazine-secondary {
-  background: #cfcfcf; }
-
-.group--designer {
-  padding-top: 140px; }
-  .group--designer .title {
-    padding: 70px 0;
-    text-align: center;
-    font-family: Stanley, serif;
-    font-size: 36px;
-    line-height: 1.2;
-    font-weight: 100;
-    position: relative; }
-    .group--designer .title span {
-      position: relative; }
-    .group--designer .title:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 20%;
-      width: 60%;
-      height: 100%;
-      background: #878887; }
-  .group--designer .inset {
-    width: 60%;
-    margin-left: 20%; }
-  .group--designer .picture {
-    margin-bottom: 12px; }
-  .group--designer .abstract {
-    font-size: 15px;
-    line-height: 1.5; }
-  .group--designer .group--cta {
-    margin: 10px 0 0 0; }
-
-.group--article .picture {
-  -webkit-transform-origin: top left;
-          transform-origin: top left;
-  -webkit-transform: scale(1.1428);
-          transform: scale(1.1428);
-  margin-bottom: 14.2857%; }
-
-.group--article .title {
-  font-size: 36px;
-  padding-top: 25px;
-  line-height: 1.2;
-  margin-bottom: 25px; }
-
-.group--article .abstract {
-  font-size: 15px;
-  line-height: 1.5; }
-
-.group--article .group--cta {
-  margin: 40px 0 0 0; }
 
 .section--newsletter {
   padding: 80px 0;
@@ -5942,6 +5843,65 @@ footer .inner {
 .description {
   position: relative;
   z-index: 1; }
+
+.section--magazine {
+  padding: 0;
+  background: #cbc4b9; }
+
+.section--magazine-secondary {
+  background: #cfcfcf; }
+
+.group--designer {
+  margin-top: 140px;
+  margin-bottom: 140px; }
+  .group--designer .title {
+    padding: 70px 0;
+    text-align: center;
+    font-family: Stanley, serif;
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 100;
+    position: relative; }
+    .group--designer .title span {
+      position: relative; }
+    .group--designer .title:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 20%;
+      width: 60%;
+      height: 100%;
+      background: #878887; }
+  .group--designer .inset {
+    width: 60%;
+    margin-left: 20%; }
+  .group--designer .picture {
+    margin-bottom: 12px; }
+  .group--designer .abstract {
+    font-size: 15px;
+    line-height: 1.5; }
+  .group--designer .group--cta {
+    margin: 10px 0 0 0; }
+
+.group--article {
+  margin-bottom: 140px;
+  /*
+	.picture {
+		transform-origin: top left;
+		transform: scale(1.1428);
+		margin-bottom: 14.2857%;
+	}
+	*/ }
+  .group--article .title {
+    font-size: 36px;
+    padding-top: 25px;
+    line-height: 1.2;
+    margin-bottom: 25px; }
+  .group--article .abstract {
+    font-size: 15px;
+    line-height: 1.5; }
+  .group--article .group--cta {
+    margin: 40px 0 0 0; }
 
 layout {
   position: absolute;
@@ -6213,8 +6173,21 @@ layout {
           -ms-flex-pack: center;
               justify-content: center; }
       .group--certifications .item {
-        min-width: 16.66667%;
-        text-align: center; } }
+        /*
+			min-width: percentage(1 / 6);
+			text-align: center;
+			*/
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        min-width: 40vw;
+        min-height: 30vw; } }
 
 .section--downloads .title {
   position: relative;

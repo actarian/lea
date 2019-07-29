@@ -332,10 +332,19 @@ layout {
 		justify-content: center;
 
 		.item {
+			/*
 			min-width: percentage(1 / 6);
 			text-align: center;
+			*/
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-width: 40vw;
+			min-height: 30vw;
 		}
 	}
+
+
 }
 
 .section--downloads {
