@@ -19,7 +19,7 @@ export default class ScrollableDirective {
 		const scrollableTrack = attributes.scrollableTrack !== undefined ? node.querySelector(attributes.scrollableTrack) : null;
 		const scrollableThumb = attributes.scrollableThumb !== undefined ? node.querySelector(attributes.scrollableThumb) : null;
 		if (scrollable && scrollableInner && scrollableTrack && scrollableThumb) {
-			const subscription = this.scroll$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb).subscribe(() => {
+			const subscription = this.scrollable$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb).subscribe(() => {
 
 			});
 			scope.$on('destroy', () => {
@@ -29,8 +29,7 @@ export default class ScrollableDirective {
 		}
 	}
 
-	scroll$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb, friction = 10) {
-
+	scrollable$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb, friction = 10) {
 		// const pow$ = new BehaviorSubject(0);
 		let pow = 0,
 			down, move = 0,

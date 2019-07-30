@@ -7,12 +7,14 @@ class RootCtrl {
 
 	constructor(
 		$scope,
+		$element,
 		$timeout,
 		DomService,
 		ApiService,
 		WishlistService
 	) {
 		this.$scope = $scope;
+		this.$element = $element;
 		this.$timeout = $timeout;
 		this.domService = DomService;
 		this.apiService = ApiService;
@@ -38,23 +40,29 @@ class RootCtrl {
 	}
 
 	loadingAnimation() {
-		this.$timeout(() => {
-			this.init = true;
+		this.init = true;
+		setTimeout(() => {
 			const view = document.querySelector('.view');
 			TweenMax.set(view, { opacity: 1 });
+			this.setClasses();
 		}, 1);
+		/*
+		this.$timeout(() => {
+
+		}, 1);
+		*/
 		this.$scope.$on('onCoverEnd', (scope) => {
+			setTimeout(() => {
+				this.ready = true;
+				this.domService.ready = true;
+				this.setClasses();
+			}, 100);
+			/*
 			this.$timeout(() => {
 				this.ready = true;
 				this.domService.ready = true;
-				/*
-				TweenMax.to(view, 0.6, {
-					opacity: 1,
-					delay: 0,
-					overwrite: 'all'
-				});
-				*/
 			}, 100);
+			*/
 		});
 	}
 
@@ -96,7 +104,7 @@ class RootCtrl {
 	}
 
 	onPrimaryDroppedOut(node, dropdown) {
-		console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
+		// console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
 		if (dropdown === this.primary) {
 			document.querySelector('body').classList.remove('droppin-in');
 			document.querySelector('.section--header').classList.remove('opened');
@@ -104,7 +112,7 @@ class RootCtrl {
 	}
 
 	onSecondaryDroppedIn(node, dropdown) {
-		console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
+		// console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
 		/*
 		TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
 		TweenMax.to(dropdown, 0.8, {
@@ -138,13 +146,46 @@ class RootCtrl {
 	}
 
 	onScroll(event) {
-		// console.log(event.scroll.direction, event.intersection);
 		const scrolled = event.scroll.scrollTop > 40;
 		if (this.scrolled !== scrolled || this.direction !== event.scroll.direction) {
+			this.scrolled = scrolled;
+			this.direction = event.scroll.direction;
+			this.setClasses();
+			/*
 			this.$timeout(() => {
 				this.scrolled = scrolled;
 				this.direction = event.scroll.direction;
 			});
+			*/
+		}
+	}
+
+	setClasses() {
+		const node = this.$element[0];
+		if (this.init) {
+			node.classList.add('init');
+		} else {
+			node.classList.remove('init');
+		}
+		if (this.ready) {
+			node.classList.add('ready');
+		} else {
+			node.classList.remove('ready');
+		}
+		if (this.scrolled) {
+			node.classList.add('scrolled');
+		} else {
+			node.classList.remove('scrolled');
+		}
+		if (this.direction === -1) {
+			node.classList.add('scrolled-up');
+		} else {
+			node.classList.remove('scrolled-up');
+		}
+		if (this.direction === 1) {
+			node.classList.add('scrolled-down');
+		} else {
+			node.classList.remove('scrolled-down');
 		}
 	}
 
@@ -162,9 +203,6 @@ class RootCtrl {
 		if (this.direction === 1) {
 			classes['scrolled-down'] = true;
 		}
-		if (this.droppinIn) {
-			classes['droppin-in'] = true;
-		}
 		return classes;
 	}
 
@@ -178,6 +216,6 @@ class RootCtrl {
 
 }
 
-RootCtrl.$inject = ['$scope', '$timeout', 'DomService', 'ApiService', 'WishlistService'];
+RootCtrl.$inject = ['$scope', '$element', '$timeout', 'DomService', 'ApiService', 'WishlistService'];
 
 export default RootCtrl;

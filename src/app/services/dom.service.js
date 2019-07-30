@@ -194,9 +194,6 @@ export default class DomService {
 		// console.log('rule', style.cssRules.length, rule.cssText);
 		let outerHeight_ = 0;
 		const node = document.querySelector(selector);
-		node.onscroll = (event) => {
-			console.log('onscroll', event);
-		};
 		node.addEventListener('wheel', (event) => {
 			// console.log('wheel', event);
 			this.scrollTo(0, this.scrollTop + event.deltaY);
@@ -306,7 +303,6 @@ export default class DomService {
 		node.appendChild(inner);
 		body.appendChild(node);
 		const scrollBarWidth = (node.offsetWidth - inner.offsetWidth);
-		console.log(node.offsetWidth, inner.offsetWidth);
 		body.removeChild(node);
 	}
 
@@ -361,7 +357,7 @@ DomService.scroll$ = function() {
 		originalEvent: null,
 	};
 	return fromEvent(target, 'scroll').pipe(
-		auditTime(33), // 30 fps
+		auditTime(16), // 60 fps
 		map((originalEvent) => {
 			event.scrollTop = DomService.getScrollTop(target);
 			event.scrollLeft = DomService.getScrollLeft(target);

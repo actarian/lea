@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 
-const SMOOTH_SCROLL_ENABLED = true;
+const SMOOTH_SCROLL_ENABLED = false;
 
 export default class SmoothScrollDirective {
 

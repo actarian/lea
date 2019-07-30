@@ -33,6 +33,12 @@ html {
 	&.virtual-scrolled {
 		overflow: hidden;
 	}
+
+	&.smooth-scrolled {
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: none;
+	}
 }
 
 body {
@@ -41,11 +47,13 @@ body {
 	height: 100%;
 	padding: 0;
 	margin: 0;
-	-webkit-overflow-scrolling: touch;
-	overscroll-behavior: none;
 
 	.virtual-scrolled>& {
 		overflow: hidden;
+	}
+
+	.smooth-scrolled>& {
+		// overflow-x: hidden;
 	}
 }
 

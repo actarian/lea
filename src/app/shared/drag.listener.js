@@ -24,13 +24,13 @@ export default class DragListener {
 	}
 
 	addListeners() {
-		this.currentTarget.addEventListener('mousedown', this.onMouseDown, false);
 		this.currentTarget.addEventListener('touchstart', this.onTouchStart, false);
+		this.currentTarget.addEventListener('mousedown', this.onMouseDown, false);
 	}
 
 	destroy() {
-		this.currentTarget.removeEventListener('mousedown', this.onMouseDown, false);
 		this.currentTarget.removeEventListener('touchstart', this.onTouchStart, false);
+		this.currentTarget.removeEventListener('mousedown', this.onMouseDown, false);
 		this.removeMouseListeners();
 		this.removeTouchListeners();
 	}

@@ -23408,7 +23408,7 @@ function () {
       var scrollableThumb = attributes.scrollableThumb !== undefined ? node.querySelector(attributes.scrollableThumb) : null;
 
       if (scrollable && scrollableInner && scrollableTrack && scrollableThumb) {
-        var subscription = this.scroll$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb).subscribe(function () {});
+        var subscription = this.scrollable$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb).subscribe(function () {});
         scope.$on('destroy', function () {
           // draglistener.destroy();
           subscription.unsubscribe();
@@ -23416,8 +23416,8 @@ function () {
       }
     }
   }, {
-    key: "scroll$",
-    value: function scroll$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb) {
+    key: "scrollable$",
+    value: function scrollable$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb) {
       var _this = this;
 
       var friction = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 10;
@@ -23514,7 +23514,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /* jshint esversion: 6 */
-var SMOOTH_SCROLL_ENABLED = true;
+var SMOOTH_SCROLL_ENABLED = false;
 
 var SmoothScrollDirective =
 /*#__PURE__*/
@@ -26075,12 +26075,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var RootCtrl =
 /*#__PURE__*/
 function () {
-  function RootCtrl($scope, $timeout, DomService, ApiService, WishlistService) {
+  function RootCtrl($scope, $element, $timeout, DomService, ApiService, WishlistService) {
     var _this = this;
 
     _classCallCheck(this, RootCtrl);
 
     this.$scope = $scope;
+    this.$element = $element;
     this.$timeout = $timeout;
     this.domService = DomService;
     this.apiService = ApiService;
@@ -26109,25 +26110,33 @@ function () {
     value: function loadingAnimation() {
       var _this2 = this;
 
-      this.$timeout(function () {
-        _this2.init = true;
+      this.init = true;
+      setTimeout(function () {
         var view = document.querySelector('.view');
         TweenMax.set(view, {
           opacity: 1
         });
+
+        _this2.setClasses();
       }, 1);
+      /*
+      this.$timeout(() => {
+      	}, 1);
+      */
+
       this.$scope.$on('onCoverEnd', function (scope) {
-        _this2.$timeout(function () {
+        setTimeout(function () {
           _this2.ready = true;
           _this2.domService.ready = true;
-          /*
-          TweenMax.to(view, 0.6, {
-          	opacity: 1,
-          	delay: 0,
-          	overwrite: 'all'
-          });
-          */
+
+          _this2.setClasses();
         }, 100);
+        /*
+        this.$timeout(() => {
+        	this.ready = true;
+        	this.domService.ready = true;
+        }, 100);
+        */
       });
     }
   }, {
@@ -26181,8 +26190,7 @@ function () {
   }, {
     key: "onPrimaryDroppedOut",
     value: function onPrimaryDroppedOut(node, dropdown) {
-      console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
-
+      // console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
       if (dropdown === this.primary) {
         document.querySelector('body').classList.remove('droppin-in');
         document.querySelector('.section--header').classList.remove('opened');
@@ -26191,7 +26199,8 @@ function () {
   }, {
     key: "onSecondaryDroppedIn",
     value: function onSecondaryDroppedIn(node, dropdown) {
-      console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
+      // console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
+
       /*
       TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
       TweenMax.to(dropdown, 0.8, {
@@ -26204,7 +26213,6 @@ function () {
       	}
       });
       */
-
       var items = _toConsumableArray(dropdown.querySelectorAll('li')).filter(function (x) {
         return x.parentNode === dropdown;
       });
@@ -26237,16 +26245,53 @@ function () {
   }, {
     key: "onScroll",
     value: function onScroll(event) {
-      var _this3 = this;
-
-      // console.log(event.scroll.direction, event.intersection);
       var scrolled = event.scroll.scrollTop > 40;
 
       if (this.scrolled !== scrolled || this.direction !== event.scroll.direction) {
-        this.$timeout(function () {
-          _this3.scrolled = scrolled;
-          _this3.direction = event.scroll.direction;
+        this.scrolled = scrolled;
+        this.direction = event.scroll.direction;
+        this.setClasses();
+        /*
+        this.$timeout(() => {
+        	this.scrolled = scrolled;
+        	this.direction = event.scroll.direction;
         });
+        */
+      }
+    }
+  }, {
+    key: "setClasses",
+    value: function setClasses() {
+      var node = this.$element[0];
+
+      if (this.init) {
+        node.classList.add('init');
+      } else {
+        node.classList.remove('init');
+      }
+
+      if (this.ready) {
+        node.classList.add('ready');
+      } else {
+        node.classList.remove('ready');
+      }
+
+      if (this.scrolled) {
+        node.classList.add('scrolled');
+      } else {
+        node.classList.remove('scrolled');
+      }
+
+      if (this.direction === -1) {
+        node.classList.add('scrolled-up');
+      } else {
+        node.classList.remove('scrolled-up');
+      }
+
+      if (this.direction === 1) {
+        node.classList.add('scrolled-down');
+      } else {
+        node.classList.remove('scrolled-down');
       }
     }
   }, {
@@ -26270,10 +26315,6 @@ function () {
         classes['scrolled-down'] = true;
       }
 
-      if (this.droppinIn) {
-        classes['droppin-in'] = true;
-      }
-
       return classes;
     }
   }, {
@@ -26291,7 +26332,7 @@ function () {
   return RootCtrl;
 }();
 
-RootCtrl.$inject = ['$scope', '$timeout', 'DomService', 'ApiService', 'WishlistService'];
+RootCtrl.$inject = ['$scope', '$element', '$timeout', 'DomService', 'ApiService', 'WishlistService'];
 var _default = RootCtrl;
 exports.default = _default;
 
@@ -26611,11 +26652,6 @@ function () {
 
       var outerHeight_ = 0;
       var node = document.querySelector(selector);
-
-      node.onscroll = function (event) {
-        console.log('onscroll', event);
-      };
-
       node.addEventListener('wheel', function (event) {
         // console.log('wheel', event);
         _this2.scrollTo(0, _this2.scrollTop + event.deltaY);
@@ -26737,7 +26773,6 @@ function () {
       node.appendChild(inner);
       body.appendChild(node);
       var scrollBarWidth = node.offsetWidth - inner.offsetWidth;
-      console.log(node.offsetWidth, inner.offsetWidth);
       body.removeChild(node);
     }
   }, {
@@ -26816,7 +26851,7 @@ DomService.scroll$ = function () {
     direction: 0,
     originalEvent: null
   };
-  return (0, _rxjs.fromEvent)(target, 'scroll').pipe((0, _operators.auditTime)(33), // 30 fps
+  return (0, _rxjs.fromEvent)(target, 'scroll').pipe((0, _operators.auditTime)(16), // 60 fps
   (0, _operators.map)(function (originalEvent) {
     event.scrollTop = DomService.getScrollTop(target);
     event.scrollLeft = DomService.getScrollLeft(target);
@@ -27017,14 +27052,14 @@ function () {
   _createClass(DragListener, [{
     key: "addListeners",
     value: function addListeners() {
-      this.currentTarget.addEventListener('mousedown', this.onMouseDown, false);
       this.currentTarget.addEventListener('touchstart', this.onTouchStart, false);
+      this.currentTarget.addEventListener('mousedown', this.onMouseDown, false);
     }
   }, {
     key: "destroy",
     value: function destroy() {
-      this.currentTarget.removeEventListener('mousedown', this.onMouseDown, false);
       this.currentTarget.removeEventListener('touchstart', this.onTouchStart, false);
+      this.currentTarget.removeEventListener('mousedown', this.onMouseDown, false);
       this.removeMouseListeners();
       this.removeTouchListeners();
     }
