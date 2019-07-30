@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import { fromEvent, Subject } from 'rxjs';
 import { debounceTime, map, shareReplay, takeUntil } from 'rxjs/operators';
 
@@ -75,7 +74,7 @@ class FaqCtrl {
 	navTo(category, event) {
 		const node = document.querySelector(`#${category.slug}`);
 		const top = this.domService.scrollTop + node.getBoundingClientRect().top - 100;
-		window.scroll({
+		this.domService.scroll({
 			top: top,
 			left: 0,
 			behavior: 'smooth'
@@ -112,12 +111,6 @@ class FaqCtrl {
 						}
 						return items.length;
 					});
-					// console.log('FaqCtrl.search$', query, filteredFaqCategories);
-					/*
-					const node = document.querySelector('.section--faq');
-					const top = node.getBoundingClientRect().top;
-					window.scrollTo(0, top);
-					*/
 					return filteredFaqCategories;
 				} else {
 					this.flags = {};

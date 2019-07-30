@@ -97,26 +97,28 @@
 	<!-- <link href="https://fonts.googleapis.com/css?family=Muli:200,300,600,700" rel="stylesheet"> -->
 </head>
 
-<body ng-controller="RootCtrl as root" ng-class="root.getClasses()" highway virtual-scroll=".page">
-	<ng-include src="'templates/shared/svg.html'"></ng-include>
-	<div class="wrapper--header">
-		<ng-include src="'templates/shared/header.html'"></ng-include>
-	</div>
-	<div class="page">
-		<div class="wrapper" data-router-wrapper>
-			<div class="view" data-router-view="view" ng-if="first">
-				<div ng-cloak>
-					<ng-include src="'templates/pages/gallery.html'"></ng-include>
+<body ng-controller="RootCtrl as root" ng-class="root.getClasses()" highway>
+	<div virtual-scroll=".page">
+		<ng-include src="'templates/shared/svg.html'"></ng-include>
+		<div class="wrapper--header">
+			<ng-include src="'templates/shared/header.html'"></ng-include>
+		</div>
+		<div class="page">
+			<div class="wrapper" data-router-wrapper>
+				<div class="view" data-router-view="view" ng-if="first">
+					<div ng-cloak>
+						<ng-include src="'templates/pages/gallery.html'"></ng-include>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="modal fade {{modal.customClass ? modal.customClass : ''}}" ng-repeat="modal in modals" ng-class="{ in: modal.active }" ng-if="$last">
-			<div class="modal-background" ng-click="modal.reject()"></div>
-			<div class="modal-dialog" role="document">
-				<div class="modal-content" modal-view="modal"></div>
+			<div class="modal fade {{modal.customClass ? modal.customClass : ''}}" ng-repeat="modal in modals" ng-class="{ in: modal.active }" ng-if="$last">
+				<div class="modal-background" ng-click="modal.reject()"></div>
+				<div class="modal-dialog" role="document">
+					<div class="modal-content" modal-view="modal"></div>
+				</div>
 			</div>
+			<ng-include src="'templates/shared/footer.html'"></ng-include>
 		</div>
-		<ng-include src="'templates/shared/footer.html'"></ng-include>
 	</div>
 	<!--[if IE ]>
 	<script src="js/polyfills.js"></script>

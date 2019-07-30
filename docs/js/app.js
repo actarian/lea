@@ -21137,8 +21137,6 @@ var _appear = _interopRequireDefault(require("./directives/appear.directive"));
 
 var _autocomplete = _interopRequireDefault(require("./directives/autocomplete.directive"));
 
-var _glslCanvas = _interopRequireDefault(require("./directives/glsl-canvas.directive"));
-
 var _hasDropdown = _interopRequireDefault(require("./directives/has-dropdown.directive"));
 
 var _header = _interopRequireDefault(require("./directives/header.directive"));
@@ -21168,6 +21166,8 @@ var _parallax = _interopRequireDefault(require("./directives/parallax.directive"
 var _scroll = _interopRequireDefault(require("./directives/scroll.directive"));
 
 var _scrollable = _interopRequireDefault(require("./directives/scrollable.directive"));
+
+var _smoothScroll = _interopRequireDefault(require("./directives/smooth-scroll.directive"));
 
 var _sticky = _interopRequireDefault(require("./directives/sticky.directive"));
 
@@ -21224,51 +21224,24 @@ var _storage = require("./shared/storage.service");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* jshint esversion: 6 */
-// import TransitionDirective from './directives/transition.directive';
-
-/*
-import FaqCtrl from './faq/faq.controller';
-import MagazineCtrl from './magazine/magazine.controller';
-import MoodboardSectionCtrl from './moodboard/moodboard-section.controller';
-import MoodboardCtrl from './moodboard/moodboard.controller';
-import NewsCtrl from './news/news.controller';
-import ReferencesCtrl from './references/references.controller';
-import StoreLocatorCtrl from './store-locator/store-locator.controller';
-import WishlistCtrl from './wishlist/wishlist.controller';
-*/
 var MODULE_NAME = 'lea';
 var app = angular.module(MODULE_NAME, ['ngSanitize', 'jsonFormatter']);
 app.config(['$locationProvider', function ($locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('*');
 }]);
 app.factory('ApiService', _api.default.factory).factory('DomService', _dom.default.factory).factory('LocationService', _location.default.factory).factory('PromiseService', _promise.default.factory).factory('StateService', _state.default.factory).factory('CookieService', _storage.CookieService.factory).factory('LocalStorageService', _storage.LocalStorageService.factory).factory('SessionStorageService', _storage.SessionStorageService.factory).factory('WishlistService', _wishlist2.default.factory);
-app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('glslCanvas', _glslCanvas.default.factory).directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('sticky', _sticky.default.factory).directive('swiperGallery', _swiper.SwiperGalleryDirective.factory).directive('swiperHero', _swiper.SwiperHeroDirective.factory).directive('swiperProjects', _swiper.SwiperProjectsDirective.factory).directive('swiperTile', _swiper.SwiperTileDirective.factory).directive('title', _title.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory) // .directive('transition', TransitionDirective.factory)
-.directive('zoomable', _zoomable.default.factory);
+app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('sticky', _sticky.default.factory).directive('swiperGallery', _swiper.SwiperGalleryDirective.factory).directive('swiperHero', _swiper.SwiperHeroDirective.factory).directive('swiperProjects', _swiper.SwiperProjectsDirective.factory).directive('swiperTile', _swiper.SwiperTileDirective.factory).directive('title', _title.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
 app.controller('RootCtrl', _root.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default);
-/*
-	.controller('AdvancedSearchCtrl', AdvancedSearchCtrl)
-	.controller('CollectionsCtrl', CollectionsCtrl)
-	.controller('ContactsCtrl', ContactsCtrl)
-	.controller('FaqCtrl', FaqCtrl)
-	.controller('MagazineCtrl', MagazineCtrl)
-	.controller('MoodboardCtrl', MoodboardCtrl)
-	.controller('MoodboardSectionCtrl', MoodboardSectionCtrl)
-	.controller('NewsCtrl', NewsCtrl)
-	.controller('ReferencesCtrl', ReferencesCtrl)
-	.controller('StoreLocatorCtrl', StoreLocatorCtrl)
-	.controller('WishlistCtrl', WishlistCtrl);
-	*/
-
 app.filter('imageWithFeatures', [_imageWithFeatures.ImageWithFeatures]).filter('notIn', ['$filter', _notIn.NotInFilter]).filter('trusted', ['$sce', _trusted.TrustedFilter]); // app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {}]);
 
 app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $rootScope) {
   $rootScope.first = true;
-  $rootScope.firstView = document.querySelector('.view').cloneNode(true); // console.log('$rootScope.firstView', $rootScope.firstView);
+  $rootScope.firstView = document.querySelector('.view').cloneNode(true);
 }]);
 var _default = MODULE_NAME;
 exports.default = _default;
 
-},{"./colors/colors.controller":201,"./directives/abstract.directive":202,"./directives/appear.directive":203,"./directives/autocomplete.directive":204,"./directives/glsl-canvas.directive":205,"./directives/has-dropdown.directive":206,"./directives/header.directive":207,"./directives/hero.directive":208,"./directives/hilight.directive":209,"./directives/href.directive":210,"./directives/last-item.directive":211,"./directives/lazy-script.directive":212,"./directives/lazy.directive":213,"./directives/media.directive":214,"./directives/muuri.directive":215,"./directives/no-hero.directive":216,"./directives/parallax-outer.directive":217,"./directives/parallax.directive":218,"./directives/scroll.directive":219,"./directives/scrollable.directive":220,"./directives/sticky.directive":221,"./directives/swiper.directive":222,"./directives/title.directive":223,"./directives/video.directive":224,"./directives/virtual-scroll.directive":225,"./directives/visibility.directive":226,"./directives/wishlist.directive":227,"./directives/zoomable.directive":228,"./filters/image-with-features.filter":229,"./filters/notIn.filter":230,"./filters/trusted.filter":231,"./forms/control-messages.directive":232,"./forms/control.directive":233,"./forms/validate.directive":234,"./gallery/gallery.controller":235,"./highway/highway.directive":238,"./moodboard/moodboard-dropdown.directive":240,"./moodboard/moodboard-search.directive":241,"./root.controller":242,"./services/api.service":243,"./services/dom.service":244,"./services/wishlist.service":245,"./shared/location.service":247,"./shared/promise.service":248,"./shared/state.service":251,"./shared/storage.service":252}],201:[function(require,module,exports){
+},{"./colors/colors.controller":201,"./directives/abstract.directive":202,"./directives/appear.directive":203,"./directives/autocomplete.directive":204,"./directives/has-dropdown.directive":205,"./directives/header.directive":206,"./directives/hero.directive":207,"./directives/hilight.directive":208,"./directives/href.directive":209,"./directives/last-item.directive":210,"./directives/lazy-script.directive":211,"./directives/lazy.directive":212,"./directives/media.directive":213,"./directives/muuri.directive":214,"./directives/no-hero.directive":215,"./directives/parallax-outer.directive":216,"./directives/parallax.directive":217,"./directives/scroll.directive":218,"./directives/scrollable.directive":219,"./directives/smooth-scroll.directive":220,"./directives/sticky.directive":221,"./directives/swiper.directive":222,"./directives/title.directive":223,"./directives/video.directive":224,"./directives/virtual-scroll.directive":225,"./directives/visibility.directive":226,"./directives/wishlist.directive":227,"./directives/zoomable.directive":228,"./filters/image-with-features.filter":229,"./filters/notIn.filter":230,"./filters/trusted.filter":231,"./forms/control-messages.directive":232,"./forms/control.directive":233,"./forms/validate.directive":234,"./gallery/gallery.controller":235,"./highway/highway.directive":238,"./moodboard/moodboard-dropdown.directive":240,"./moodboard/moodboard-search.directive":241,"./root.controller":242,"./services/api.service":243,"./services/dom.service":244,"./services/wishlist.service":245,"./shared/location.service":247,"./shared/promise.service":248,"./shared/state.service":250,"./shared/storage.service":251}],201:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21780,127 +21753,7 @@ function () {
 exports.default = AutocompleteDirective;
 AutocompleteDirective.factory.$inject = ['$timeout'];
 
-},{"./has-dropdown.directive":206}],205:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _shader = require("../shared/shader");
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var GlslCanvasDirective =
-/*#__PURE__*/
-function () {
-  /*
-  removed "node_modules/glsl-canvas-js/dist/glsl-canvas.js",
-  from gulpfile.config.json
-  */
-  function GlslCanvasDirective(DomService) {
-    _classCallCheck(this, GlslCanvasDirective);
-
-    this.domService = DomService;
-    this.restrict = 'A';
-  }
-
-  _createClass(GlslCanvasDirective, [{
-    key: "link",
-    value: function link(scope, element, attributes, controller) {
-      console.log('GlslCanvasDirective.link');
-      var node = element[0];
-      var canvas = new GlslCanvas(node, {
-        fragmentString: _shader.FRAGMENT_SHADER
-      }); // const canvas = new GlslCanvas(node);
-
-      canvas.setTexture('u_texture', attributes.glslCanvas, {
-        repeat: true
-      });
-      canvas.setUniform('u_pow', 1.0);
-      canvas.setUniform('u_top', 0.0);
-      canvas.setUniform('u_strength', attributes.withVideo !== undefined ? 0.1 : 0.05);
-      var pow = {
-        pow: 1.0
-      };
-      var tween;
-
-      var onOver = function onOver(event) {
-        // console.log('onOver');
-        if (tween) {
-          tween.kill();
-        }
-
-        tween = TweenMax.to(pow, 3, {
-          pow: 0.0,
-          ease: Expo.easeOut,
-          // Back.easeOut.config(1.7),
-          // Elastic.easeOut.config(1, 0.3),
-          overwrite: 'all',
-          onUpdate: function onUpdate() {
-            // console.log(pow.pow);
-            canvas.setUniform('u_pow', pow.pow);
-          }
-        });
-      };
-
-      var onOut = function onOut(event) {
-        // console.log('onOut');
-        if (tween) {
-          tween.kill();
-        }
-
-        tween = TweenMax.to(pow, 3, {
-          pow: 1.0,
-          ease: Expo.easeOut,
-          // Back.easeOut.config(1.7),
-          // Elastic.easeOut.config(1, 0.3),
-          overwrite: 'all',
-          onUpdate: function onUpdate() {
-            // console.log(pow.pow);
-            canvas.setUniform('u_pow', pow.pow);
-          }
-        });
-      };
-
-      node.addEventListener('mouseover', onOver);
-      node.addEventListener('mouseout', onOut);
-      var subscription = this.domService.raf$().subscribe(function (scroll) {
-        canvas.setUniform('u_top', window.scrollY || window.scrollTop || 0);
-      });
-      canvas.on('error', function (error) {
-        console.log(error);
-      });
-      element.on('$destroy', function () {
-        if (tween) {
-          tween.kill();
-        }
-
-        node.removeEventListener('mouseover', onOver);
-        node.removeEventListener('mouseout', onOut);
-        subscription.unsubscribe();
-        canvas.destroy();
-      });
-    }
-  }], [{
-    key: "factory",
-    value: function factory(DomService) {
-      return new GlslCanvasDirective(DomService);
-    }
-  }]);
-
-  return GlslCanvasDirective;
-}();
-
-exports.default = GlslCanvasDirective;
-GlslCanvasDirective.factory.$inject = ['DomService'];
-
-},{"../shared/shader":250}],206:[function(require,module,exports){
+},{"./has-dropdown.directive":205}],205:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22024,7 +21877,7 @@ exports.default = HasDropdownDirective;
 HasDropdownDirective.dropDownUid = 0;
 HasDropdownDirective.factory.$inject = ['$timeout'];
 
-},{}],207:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22187,7 +22040,7 @@ function () {
 exports.default = HeaderDirective;
 HeaderDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":249}],208:[function(require,module,exports){
+},{"../shared/rect":249}],207:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22324,7 +22177,7 @@ function () {
 exports.default = HeroDirective;
 HeroDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":249}],209:[function(require,module,exports){
+},{"../shared/rect":249}],208:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22396,7 +22249,7 @@ function () {
 exports.default = HilightDirective;
 HilightDirective.factory.$inject = [];
 
-},{}],210:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22543,7 +22396,7 @@ function () {
 exports.default = HrefDirective;
 HrefDirective.factory.$inject = [];
 
-},{}],211:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22590,7 +22443,7 @@ function () {
 exports.LastItemDirective = LastItemDirective;
 LastItemDirective.factory.$inject = ['$timeout'];
 
-},{}],212:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22656,7 +22509,7 @@ function () {
 exports.default = LazyScriptDirective;
 LazyScriptDirective.factory.$inject = [];
 
-},{}],213:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22832,7 +22685,7 @@ function () {
 exports.default = LazyDirective;
 LazyDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":249,"rxjs/operators":198}],214:[function(require,module,exports){
+},{"../shared/rect":249,"rxjs/operators":198}],213:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22946,7 +22799,7 @@ function () {
 exports.default = MediaDirective;
 MediaDirective.factory.$inject = ['$timeout', 'WishlistService'];
 
-},{}],215:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23110,7 +22963,7 @@ function () {
 exports.MuuriDirective = MuuriDirective;
 MuuriDirective.factory.$inject = [];
 
-},{}],216:[function(require,module,exports){
+},{}],215:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23163,7 +23016,7 @@ function () {
 exports.default = NoHeroDirective;
 NoHeroDirective.factory.$inject = ['DomService'];
 
-},{}],217:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23344,7 +23197,7 @@ function () {
 exports.default = ParallaxOuterDirective;
 ParallaxOuterDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":249,"rxjs/operators":198}],218:[function(require,module,exports){
+},{"../shared/rect":249,"rxjs/operators":198}],217:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23450,7 +23303,7 @@ function () {
 exports.default = ParallaxDirective;
 ParallaxDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":249,"rxjs/operators":198}],219:[function(require,module,exports){
+},{"../shared/rect":249,"rxjs/operators":198}],218:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23515,7 +23368,7 @@ function () {
 exports.default = ScrollDirective;
 ScrollDirective.factory.$inject = ['DomService'];
 
-},{}],220:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23646,7 +23499,67 @@ function () {
 exports.default = ScrollableDirective;
 ScrollableDirective.factory.$inject = ['DomService'];
 
-},{"../shared/drag.listener":246,"rxjs/operators":198}],221:[function(require,module,exports){
+},{"../shared/drag.listener":246,"rxjs/operators":198}],220:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* jshint esversion: 6 */
+var SMOOTH_SCROLL_ENABLED = true;
+
+var SmoothScrollDirective =
+/*#__PURE__*/
+function () {
+  function SmoothScrollDirective(DomService) {
+    _classCallCheck(this, SmoothScrollDirective);
+
+    this.domService = DomService;
+    this.restrict = 'A';
+  }
+
+  _createClass(SmoothScrollDirective, [{
+    key: "link",
+    value: function link(scope, element, attributes, controller) {
+      var node = element[0];
+
+      if (SMOOTH_SCROLL_ENABLED) {
+        node.classList.add('smooth-scroll');
+        var target = node.querySelector(attributes.smoothScroll);
+        target.classList.add('smooth-scroll-target');
+
+        if (node !== document.body) {
+          document.querySelector('html').classList.add('smooth-scrolled');
+        }
+
+        var subscription = this.domService.smoothScroll$(attributes.smoothScroll).subscribe(function (top) {});
+        element.on('$destroy', function () {
+          subscription.unsubscribe();
+        });
+      }
+    }
+  }], [{
+    key: "factory",
+    value: function factory(DomService) {
+      return new SmoothScrollDirective(DomService);
+    }
+  }]);
+
+  return SmoothScrollDirective;
+}();
+
+exports.default = SmoothScrollDirective;
+SmoothScrollDirective.factory.$inject = ['DomService'];
+
+},{}],221:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24362,6 +24275,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /* jshint esversion: 6 */
+var VIRTUAL_SCROLL_ENABLED = false;
+
 var VirtualScrollDirective =
 /*#__PURE__*/
 function () {
@@ -24376,10 +24291,22 @@ function () {
     key: "link",
     value: function link(scope, element, attributes, controller) {
       var node = element[0];
-      var subscription = this.domService.smoothScroll$(attributes.virtualScroll).subscribe(function (top) {});
-      element.on('$destroy', function () {
-        subscription.unsubscribe();
-      });
+
+      if (VIRTUAL_SCROLL_ENABLED) {
+        node.classList.add('virtual-scroll');
+        DomService.DEFAULT_SCROLL_TARGET = node;
+        var target = node.querySelector(attributes.virtualScroll);
+        target.classList.add('virtual-scroll-target');
+
+        if (node !== document.body) {
+          document.querySelector('html').classList.add('virtual-scrolled');
+        }
+
+        var subscription = this.domService.virtualScroll$(attributes.virtualScroll).subscribe(function (top) {});
+        element.on('$destroy', function () {
+          subscription.unsubscribe();
+        });
+      }
     }
   }], [{
     key: "factory",
@@ -25053,11 +24980,13 @@ function () {
             var node = current[0];
             return Math.min(previous, node.getBoundingClientRect().top);
           }, Number.POSITIVE_INFINITY);
-          window.scroll({
+
+          _this3.domService.scroll({
             top: _this3.domService.scrollTop + top - 100,
             left: 0,
             behavior: 'smooth'
           });
+
           errorElements = [];
         }, 100);
       }
@@ -26499,6 +26428,16 @@ function () {
   }
 
   _createClass(DomService, [{
+    key: "scrollTo",
+    value: function scrollTo(left, top) {
+      DomService.DEFAULT_SCROLL_TARGET.scrollTo(0, top);
+    }
+  }, {
+    key: "scroll",
+    value: function scroll(options) {
+      DomService.DEFAULT_SCROLL_TARGET.scroll(options);
+    }
+  }, {
     key: "hasWebglSupport",
     value: function hasWebglSupport() {
       if (this.isIE()) {
@@ -26626,15 +26565,15 @@ function () {
       var _this = this;
 
       var friction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
-      var body = document.querySelector('body');
+      var target = document.querySelector('.smooth-scroll');
       var node = document.querySelector(selector);
       var down = false;
       var first = true;
       return this.raf$().pipe((0, _operators.map)(function () {
         var outerHeight = _this.getOuterHeight(node);
 
-        if (body.offsetHeight !== outerHeight) {
-          body.style = "height: ".concat(outerHeight, "px");
+        if (parseInt(target.style.height) !== outerHeight) {
+          target.style = "height: ".concat(outerHeight, "px");
         }
 
         var nodeTop = node.top || 0;
@@ -26643,7 +26582,61 @@ function () {
         if (node.top !== top) {
           node.top = top;
           node.style.transform = "translateX(-50%) translateY(".concat(top, "px)");
-          node.classList.add('smooth-scroll');
+          first = false;
+          return top;
+        } else {
+          return null;
+        }
+      }), (0, _operators.filter)(function (x) {
+        return x !== null;
+      }), (0, _operators.shareReplay)());
+    }
+  }, {
+    key: "getStyleSheet",
+    value: function getStyleSheet() {
+      for (var i = 0; i < document.styleSheets.length; i++) {
+        var sheet = document.styleSheets[i];
+        return sheet;
+      }
+    }
+  }, {
+    key: "virtualScroll$",
+    value: function virtualScroll$(selector) {
+      var _this2 = this;
+
+      var friction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 10;
+      var style = this.getStyleSheet();
+      var ruleIndex = style.insertRule(".virtual-scroll:after { content: ''; display:block; width: 100%; height: 1px; }", style.cssRules.length);
+      var rule = style.cssRules[ruleIndex]; // console.log('rule', style.cssRules.length, rule.cssText);
+
+      var outerHeight_ = 0;
+      var node = document.querySelector(selector);
+
+      node.onscroll = function (event) {
+        console.log('onscroll', event);
+      };
+
+      node.addEventListener('wheel', function (event) {
+        // console.log('wheel', event);
+        _this2.scrollTo(0, _this2.scrollTop + event.deltaY);
+      });
+      var down = false;
+      var first = true;
+      return this.raf$().pipe((0, _operators.map)(function () {
+        var outerHeight = _this2.getOuterHeight(node);
+
+        if (outerHeight_ !== outerHeight) {
+          outerHeight_ = outerHeight;
+          rule.style.height = "".concat(outerHeight_, "px"); // console.log(rule.style.height);
+        }
+
+        var nodeTop = node.top || 0;
+        var top = down ? -_this2.scrollTop : tween(nodeTop, -_this2.scrollTop, first ? 1 : friction);
+
+        if (node.top !== top) {
+          node.top = top;
+          node.style.transform = "translateX(-50%) translateY(".concat(top, "px)"); // node.style = `position: fixed; top: 0; transform: translateX(-50%) translateY(${top}px)`;
+
           first = false;
           return top;
         } else {
@@ -26692,13 +26685,13 @@ function () {
   }, {
     key: "appearOnLoad$",
     value: function appearOnLoad$(node) {
-      var _this2 = this;
+      var _this3 = this;
 
       var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.0;
       // -0.5
       var isCover = node.hasAttribute('cover');
       return this.rafIntersection$(node).pipe((0, _operators.filter)(function (x) {
-        return (_this2.ready || isCover) && x.intersection.y > value && x.intersection.x > 0;
+        return (_this3.ready || isCover) && x.intersection.y > value && x.intersection.x > 0;
       }), (0, _operators.first)());
     }
   }, {
@@ -26766,12 +26759,12 @@ function () {
   }, {
     key: "scrollTop",
     get: function get() {
-      return DomService.getScrollTop(window);
+      return DomService.getScrollTop(DomService.DEFAULT_SCROLL_TARGET);
     }
   }, {
     key: "scrollLeft",
     get: function get() {
-      return DomService.getScrollLeft(window);
+      return DomService.getScrollLeft(DomService.DEFAULT_SCROLL_TARGET);
     }
   }], [{
     key: "factory",
@@ -26781,12 +26774,12 @@ function () {
   }, {
     key: "getScrollTop",
     value: function getScrollTop(node) {
-      return node.pageYOffset || node.scrollY || node.scrollTop || 0;
+      return Math.max(0, node.pageYOffset || node.scrollY || node.scrollTop || 0);
     }
   }, {
     key: "getScrollLeft",
     value: function getScrollLeft(node) {
-      return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
+      return Math.max(0, node.pageXOffset || node.scrollX || node.scrollLeft || 0);
     }
   }]);
 
@@ -26795,6 +26788,7 @@ function () {
 
 exports.default = DomService;
 DomService.factory.$inject = [];
+DomService.DEFAULT_SCROLL_TARGET = window;
 DomService.rafIntersection_ = {};
 DomService.scrollIntersection_ = {};
 DomService.raf$ = (0, _rxjs.range)(0, Number.POSITIVE_INFINITY, _animationFrame.animationFrame);
@@ -26814,15 +26808,9 @@ DomService.windowRect$ = function () {
 DomService.rafAndRect$ = (0, _rxjs.combineLatest)(DomService.raf$, DomService.windowRect$);
 
 DomService.scroll$ = function () {
-  var target = window;
+  var target = DomService.DEFAULT_SCROLL_TARGET;
   var previousTop = DomService.getScrollTop(target);
   var event = {
-    /*
-    top: target.offsetTop || 0,
-    left: target.offsetLeft || 0,
-    width: target.offsetWidth || target.innerWidth,
-    height: target.offsetHeight || target.innerHeight,
-    */
     scrollTop: previousTop,
     scrollLeft: DomService.getScrollLeft(target),
     direction: 0,
@@ -26830,16 +26818,10 @@ DomService.scroll$ = function () {
   };
   return (0, _rxjs.fromEvent)(target, 'scroll').pipe((0, _operators.auditTime)(33), // 30 fps
   (0, _operators.map)(function (originalEvent) {
-    /*
-    event.top = target.offsetTop || 0;
-    event.left = target.offsetLeft || 0;
-    event.width = target.offsetWidth || target.innerWidth;
-    event.height = target.offsetHeight || target.innerHeight;
-    */
     event.scrollTop = DomService.getScrollTop(target);
     event.scrollLeft = DomService.getScrollLeft(target);
     var diff = event.scrollTop - previousTop;
-    event.direction = diff / Math.abs(diff);
+    event.direction = diff === 0 ? 0 : diff / Math.abs(diff);
     previousTop = event.scrollTop;
     event.originalEvent = originalEvent;
     return event;
@@ -27513,18 +27495,6 @@ exports.default = Rect;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FRAGMENT_SHADER = void 0;
-
-/* jshint esversion: 6 */
-var FRAGMENT_SHADER = "\n#ifdef GL_ES\nprecision highp float;\n#endif\n\nuniform vec2 u_resolution;\nuniform vec2 u_mouse;\nuniform float u_time;\nuniform float u_pow;\nuniform float u_top;\nuniform float u_strength;\nuniform sampler2D u_texture;\nuniform vec2 u_textureResolution;\n\nfloat random(vec2 st) {\n\treturn fract(sin(dot(st.xy + cos(u_time), vec2(12.9898 , 78.233))) * (43758.5453123));\n}\n\nvoid main() {\n\tvec2 st = gl_FragCoord.xy / u_resolution.xy;\n\tfloat rr = u_resolution.x / u_resolution.y;\n\tfloat tr = u_textureResolution.x / u_textureResolution.y;\n\tif (tr > rr) {\n\t\tst.x = ((st.x - 0.5) * rr / tr) + 0.5;\n\t} else {\n\t\tst.y = ((st.y - 0.5) / rr * tr) + 0.5;\n\t}\n\tfloat top = u_top / u_resolution.y;\n\tvec2 mx = u_mouse / u_resolution;\n\tvec2 dx = vec2(cos(u_time * 0.5), sin(u_time * 0.6)) * 4.0 * u_strength;\n\n\tfloat noise = random(st) * 0.08;\n\n\tfloat c = cos((st.x + dx.x - mx.x * 0.4) * 6.0 + 2.0 * dx.y);\n\tfloat s = sin((st.y + top + dx.y - mx.y * 0.2) * 3.0 + 1.0 * dx.x);\n\tfloat b = (length(vec2(c + s, c)) + 2.0) * u_strength;\n\n\tfloat center = length(st - 0.5);\n\tvec2 sty = vec2(st.x, st.y + top);\n\tfloat scale = 0.95 * (1.0 - b * center * u_pow);\n\tvec2 stb = (sty - 0.5) * scale + 0.5;\n\n\tvec3 video = texture2D(u_texture, stb).rgb;\n\tvec3 bulge = vec3(b);\n\n\tvec3 color = vec3(0.0);\n\tcolor = vec3(video - noise);\n\t// color = vec3(video);\n\t// color = vec3(video - bulge * 0.1 - noise);\n\t// color = vec3(bulge);\n\t// color = vec3(noise);\n\t// color = vec3(center);\n\t// color = vec3(u_pow * center);\n\t// color = vec3(bulge - noise) * length(st - 0.5) * u_pow;\n\n\tgl_FragColor = vec4(color, 1.0);\n}\n";
-exports.FRAGMENT_SHADER = FRAGMENT_SHADER;
-
-},{}],251:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.default = exports.State = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27712,7 +27682,7 @@ function () {
 exports.default = StateService;
 StateService.factory.$inject = ['$timeout', '$rootScope'];
 
-},{}],252:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

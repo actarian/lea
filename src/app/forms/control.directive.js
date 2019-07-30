@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 const formatLabel = function(string = '', prepend = '', expression = undefined) {
 	const splitted = string.split(',');
 	if (splitted.length > 1) {
@@ -177,7 +176,7 @@ export default class ControlDirective {
 					const node = current[0];
 					return Math.min(previous, node.getBoundingClientRect().top);
 				}, Number.POSITIVE_INFINITY);
-				window.scroll({
+				this.domService.scroll({
 					top: this.domService.scrollTop + top - 100,
 					left: 0,
 					behavior: 'smooth'

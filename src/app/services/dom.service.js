@@ -41,11 +41,19 @@ export default class DomService {
 	}
 
 	get scrollTop() {
-		return DomService.getScrollTop(window);
+		return DomService.getScrollTop(DomService.DEFAULT_SCROLL_TARGET);
 	}
 
 	get scrollLeft() {
-		return DomService.getScrollLeft(window);
+		return DomService.getScrollLeft(DomService.DEFAULT_SCROLL_TARGET);
+	}
+
+	scrollTo(left, top) {
+		DomService.DEFAULT_SCROLL_TARGET.scrollTo(0, top);
+	}
+
+	scroll(options) {
+		DomService.DEFAULT_SCROLL_TARGET.scroll(options);
 	}
 
 	hasWebglSupport() {
@@ -146,22 +154,69 @@ export default class DomService {
 	}
 
 	smoothScroll$(selector, friction = 10) {
-		const body = document.querySelector('body');
+		const target = document.querySelector('.smooth-scroll');
 		const node = document.querySelector(selector);
 		let down = false;
 		let first = true;
 		return this.raf$().pipe(
 			map(() => {
 				const outerHeight = this.getOuterHeight(node);
-				if (body.offsetHeight !== outerHeight) {
-					body.style = `height: ${outerHeight}px`;
+				if (parseInt(target.style.height) !== outerHeight) {
+					target.style = `height: ${outerHeight}px`;
 				}
 				const nodeTop = node.top || 0;
 				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));
 				if (node.top !== top) {
 					node.top = top;
 					node.style.transform = `translateX(-50%) translateY(${top}px)`;
-					node.classList.add('smooth-scroll');
+					first = false;
+					return top;
+				} else {
+					return null;
+				}
+			}),
+			filter(x => x !== null),
+			shareReplay()
+		);
+	}
+
+	getStyleSheet() {
+		for (let i = 0; i < document.styleSheets.length; i++) {
+			const sheet = document.styleSheets[i];
+			return sheet;
+		}
+	}
+
+	virtualScroll$(selector, friction = 10) {
+		const style = this.getStyleSheet();
+		const ruleIndex = style.insertRule(`.virtual-scroll:after { content: ''; display:block; width: 100%; height: 1px; }`, style.cssRules.length);
+		const rule = style.cssRules[ruleIndex];
+		// console.log('rule', style.cssRules.length, rule.cssText);
+		let outerHeight_ = 0;
+		const node = document.querySelector(selector);
+		node.onscroll = (event) => {
+			console.log('onscroll', event);
+		};
+		node.addEventListener('wheel', (event) => {
+			// console.log('wheel', event);
+			this.scrollTo(0, this.scrollTop + event.deltaY);
+		});
+		let down = false;
+		let first = true;
+		return this.raf$().pipe(
+			map(() => {
+				const outerHeight = this.getOuterHeight(node);
+				if (outerHeight_ !== outerHeight) {
+					outerHeight_ = outerHeight;
+					rule.style.height = `${outerHeight_}px`;
+					// console.log(rule.style.height);
+				}
+				const nodeTop = node.top || 0;
+				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));
+				if (node.top !== top) {
+					node.top = top;
+					node.style.transform = `translateX(-50%) translateY(${top}px)`;
+					// node.style = `position: fixed; top: 0; transform: translateX(-50%) translateY(${top}px)`;
 					first = false;
 					return top;
 				} else {
@@ -267,16 +322,17 @@ export default class DomService {
 	}
 
 	static getScrollTop(node) {
-		return node.pageYOffset || node.scrollY || node.scrollTop || 0;
+		return Math.max(0, node.pageYOffset || node.scrollY || node.scrollTop || 0);
 	}
 
 	static getScrollLeft(node) {
-		return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
+		return Math.max(0, node.pageXOffset || node.scrollX || node.scrollLeft || 0);
 	}
 
 }
 
 DomService.factory.$inject = [];
+DomService.DEFAULT_SCROLL_TARGET = window;
 DomService.rafIntersection_ = {};
 DomService.scrollIntersection_ = {};
 DomService.raf$ = range(0, Number.POSITIVE_INFINITY, animationFrame);
@@ -296,15 +352,9 @@ DomService.windowRect$ = function() {
 }();
 DomService.rafAndRect$ = combineLatest(DomService.raf$, DomService.windowRect$);
 DomService.scroll$ = function() {
-	const target = window;
+	const target = DomService.DEFAULT_SCROLL_TARGET;
 	let previousTop = DomService.getScrollTop(target);
 	const event = {
-		/*
-		top: target.offsetTop || 0,
-		left: target.offsetLeft || 0,
-		width: target.offsetWidth || target.innerWidth,
-		height: target.offsetHeight || target.innerHeight,
-		*/
 		scrollTop: previousTop,
 		scrollLeft: DomService.getScrollLeft(target),
 		direction: 0,
@@ -313,16 +363,10 @@ DomService.scroll$ = function() {
 	return fromEvent(target, 'scroll').pipe(
 		auditTime(33), // 30 fps
 		map((originalEvent) => {
-			/*
-			event.top = target.offsetTop || 0;
-			event.left = target.offsetLeft || 0;
-			event.width = target.offsetWidth || target.innerWidth;
-			event.height = target.offsetHeight || target.innerHeight;
-			*/
 			event.scrollTop = DomService.getScrollTop(target);
 			event.scrollLeft = DomService.getScrollLeft(target);
 			const diff = event.scrollTop - previousTop;
-			event.direction = diff / Math.abs(diff);
+			event.direction = diff === 0 ? 0 : diff / Math.abs(diff);
 			previousTop = event.scrollTop;
 			event.originalEvent = originalEvent;
 			return event;
@@ -330,4 +374,5 @@ DomService.scroll$ = function() {
 		startWith(event)
 	);
 }();
+
 DomService.scrollAndRect$ = combineLatest(DomService.scroll$, DomService.windowRect$);

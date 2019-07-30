@@ -4,7 +4,6 @@ import ColorsCtrl from './colors/colors.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
-import GlslCanvasDirective from './directives/glsl-canvas.directive';
 import HasDropdownDirective from './directives/has-dropdown.directive';
 import HeaderDirective from './directives/header.directive';
 import HeroDirective from './directives/hero.directive';
@@ -20,10 +19,10 @@ import ParallaxOuterDirective from './directives/parallax-outer.directive';
 import ParallaxDirective from './directives/parallax.directive';
 import ScrollDirective from './directives/scroll.directive';
 import ScrollableDirective from './directives/scrollable.directive';
+import SmoothScrollDirective from './directives/smooth-scroll.directive';
 import StickyDirective from './directives/sticky.directive';
 import { SwiperGalleryDirective, SwiperHeroDirective, SwiperProjectsDirective, SwiperTileDirective } from './directives/swiper.directive';
 import TitleDirective from './directives/title.directive';
-// import TransitionDirective from './directives/transition.directive';
 import VideoDirective from './directives/video.directive';
 import VirtualScrollDirective from './directives/virtual-scroll.directive';
 import VisibilityDirective from './directives/visibility.directive';
@@ -48,17 +47,6 @@ import PromiseService from './shared/promise.service';
 import StateService from './shared/state.service';
 import { CookieService, LocalStorageService, SessionStorageService } from './shared/storage.service';
 
-/*
-import FaqCtrl from './faq/faq.controller';
-import MagazineCtrl from './magazine/magazine.controller';
-import MoodboardSectionCtrl from './moodboard/moodboard-section.controller';
-import MoodboardCtrl from './moodboard/moodboard.controller';
-import NewsCtrl from './news/news.controller';
-import ReferencesCtrl from './references/references.controller';
-import StoreLocatorCtrl from './store-locator/store-locator.controller';
-import WishlistCtrl from './wishlist/wishlist.controller';
-*/
-
 const MODULE_NAME = 'lea';
 
 const app = angular.module(MODULE_NAME, ['ngSanitize', 'jsonFormatter']);
@@ -81,7 +69,6 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('appear', AppearDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
-	.directive('glslCanvas', GlslCanvasDirective.factory)
 	.directive('hasDropdown', HasDropdownDirective.factory)
 	.directive('header', HeaderDirective.factory)
 	.directive('hero', HeroDirective.factory)
@@ -110,27 +97,14 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('validate', ValidateDirective.factory)
 	.directive('video', VideoDirective.factory)
 	.directive('virtualScroll', VirtualScrollDirective.factory)
+	.directive('smoothScroll', SmoothScrollDirective.factory)
 	.directive('visibility', VisibilityDirective.factory)
 	.directive('wishlist', WishlistDirective.factory)
-	// .directive('transition', TransitionDirective.factory)
 	.directive('zoomable', ZoomableDirective.factory);
 
 app.controller('RootCtrl', RootCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl);
-/*
-	.controller('AdvancedSearchCtrl', AdvancedSearchCtrl)
-	.controller('CollectionsCtrl', CollectionsCtrl)
-	.controller('ContactsCtrl', ContactsCtrl)
-	.controller('FaqCtrl', FaqCtrl)
-	.controller('MagazineCtrl', MagazineCtrl)
-	.controller('MoodboardCtrl', MoodboardCtrl)
-	.controller('MoodboardSectionCtrl', MoodboardSectionCtrl)
-	.controller('NewsCtrl', NewsCtrl)
-	.controller('ReferencesCtrl', ReferencesCtrl)
-	.controller('StoreLocatorCtrl', StoreLocatorCtrl)
-	.controller('WishlistCtrl', WishlistCtrl);
-	*/
 
 app.filter('imageWithFeatures', [ImageWithFeatures])
 	.filter('notIn', ['$filter', NotInFilter])
@@ -141,7 +115,6 @@ app.filter('imageWithFeatures', [ImageWithFeatures])
 app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {
 	$rootScope.first = true;
 	$rootScope.firstView = document.querySelector('.view').cloneNode(true);
-	// console.log('$rootScope.firstView', $rootScope.firstView);
 }]);
 
 export default MODULE_NAME;

@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 
+const VIRTUAL_SCROLL_ENABLED = false;
 
 export default class VirtualScrollDirective {
 
@@ -12,12 +13,21 @@ export default class VirtualScrollDirective {
 
 	link(scope, element, attributes, controller) {
 		const node = element[0];
-		const subscription = this.domService.smoothScroll$(attributes.virtualScroll).subscribe(top => {
+		if (VIRTUAL_SCROLL_ENABLED) {
+			node.classList.add('virtual-scroll');
+			DomService.DEFAULT_SCROLL_TARGET = node;
+			const target = node.querySelector(attributes.virtualScroll);
+			target.classList.add('virtual-scroll-target');
+			if (node !== document.body) {
+				document.querySelector('html').classList.add('virtual-scrolled');
+			}
+			const subscription = this.domService.virtualScroll$(attributes.virtualScroll).subscribe(top => {
 
-		});
-		element.on('$destroy', () => {
-			subscription.unsubscribe();
-		});
+			});
+			element.on('$destroy', () => {
+				subscription.unsubscribe();
+			});
+		}
 	}
 
 	static factory(DomService) {

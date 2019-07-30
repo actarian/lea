@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import Highway from '@dogstudio/highway';
 import CustomRenderer from './custom-renderer';
 

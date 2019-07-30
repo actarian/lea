@@ -37,21 +37,66 @@ html {
 	scroll-behavior: smooth;
 }
 */
+/*
 html,
 body {
-  width: 100%;
-  min-height: 100%;
-  padding: 0;
-  margin: 0; }
+	width: 100%;
+	min-height: 100%;
+	padding: 0;
+	margin: 0;
+}
 
 body {
+	overflow-x: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
+
+	&.opened {
+		height: 100vh !important;
+		overflow: hidden;
+	}
+}
+*/
+html {
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  html.virtual-scrolled {
+    overflow: hidden; }
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  -webkit-overflow-scrolling: touch;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: none; }
+  .virtual-scrolled > body {
+    overflow: hidden; }
+
+.virtual-scroll {
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth; }
-  body.opened {
-    height: 100vh !important;
-    overflow: hidden; }
+  -ms-scroll-chaining: none;
+      overscroll-behavior: none;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; }
+  .virtual-scroll .virtual-scroll-target {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 100%; }
+
+.smooth-scroll .smooth-scroll-target {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 100%; }
 
 ng-transclude {
   display: block;
@@ -462,8 +507,8 @@ Keyframe
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .container {
       padding-right: 15px;
@@ -497,8 +542,8 @@ Keyframe
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .container-fluid {
       padding-right: 15px;
@@ -522,8 +567,8 @@ Keyframe
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-right: -10px;
-  margin-left: -10px;
+  margin-right: -12.5px;
+  margin-left: -12.5px;
   min-width: 100%; }
   @media (min-width: 860px) {
     .row {
@@ -543,11 +588,13 @@ Keyframe
       margin-left: 0; } }
 
 .container {
-  position: relative; }
-  @media (max-width: 859.98px) {
-    .container {
-      padding-left: 30px;
-      padding-right: 30px; } }
+  position: relative;
+  /*
+	@include media-breakpoint-down(xs) {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	*/ }
 
 /*
 	%grid-column {
@@ -560,8 +607,8 @@ Keyframe
 .col-1 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-1 {
       padding-right: 15px;
@@ -582,8 +629,8 @@ Keyframe
 .col-2 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-2 {
       padding-right: 15px;
@@ -604,8 +651,8 @@ Keyframe
 .col-3 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-3 {
       padding-right: 15px;
@@ -626,8 +673,8 @@ Keyframe
 .col-4 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-4 {
       padding-right: 15px;
@@ -648,8 +695,8 @@ Keyframe
 .col-5 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-5 {
       padding-right: 15px;
@@ -670,8 +717,8 @@ Keyframe
 .col-6 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-6 {
       padding-right: 15px;
@@ -692,8 +739,8 @@ Keyframe
 .col-7 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-7 {
       padding-right: 15px;
@@ -714,8 +761,8 @@ Keyframe
 .col-8 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-8 {
       padding-right: 15px;
@@ -736,8 +783,8 @@ Keyframe
 .col-9 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-9 {
       padding-right: 15px;
@@ -758,8 +805,8 @@ Keyframe
 .col-10 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-10 {
       padding-right: 15px;
@@ -780,8 +827,8 @@ Keyframe
 .col-11 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-11 {
       padding-right: 15px;
@@ -802,8 +849,8 @@ Keyframe
 .col-12 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-12 {
       padding-right: 15px;
@@ -825,8 +872,8 @@ Keyframe
 .col-auto {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col,
     .col-auto {
@@ -1046,8 +1093,8 @@ Keyframe
 .col-sm-1 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-1 {
       padding-right: 15px;
@@ -1068,8 +1115,8 @@ Keyframe
 .col-sm-2 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-2 {
       padding-right: 15px;
@@ -1090,8 +1137,8 @@ Keyframe
 .col-sm-3 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-3 {
       padding-right: 15px;
@@ -1112,8 +1159,8 @@ Keyframe
 .col-sm-4 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-4 {
       padding-right: 15px;
@@ -1134,8 +1181,8 @@ Keyframe
 .col-sm-5 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-5 {
       padding-right: 15px;
@@ -1156,8 +1203,8 @@ Keyframe
 .col-sm-6 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-6 {
       padding-right: 15px;
@@ -1178,8 +1225,8 @@ Keyframe
 .col-sm-7 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-7 {
       padding-right: 15px;
@@ -1200,8 +1247,8 @@ Keyframe
 .col-sm-8 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-8 {
       padding-right: 15px;
@@ -1222,8 +1269,8 @@ Keyframe
 .col-sm-9 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-9 {
       padding-right: 15px;
@@ -1244,8 +1291,8 @@ Keyframe
 .col-sm-10 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-10 {
       padding-right: 15px;
@@ -1266,8 +1313,8 @@ Keyframe
 .col-sm-11 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-11 {
       padding-right: 15px;
@@ -1288,8 +1335,8 @@ Keyframe
 .col-sm-12 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm-12 {
       padding-right: 15px;
@@ -1311,8 +1358,8 @@ Keyframe
 .col-sm-auto {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-sm,
     .col-sm-auto {
@@ -1496,8 +1543,8 @@ Keyframe
 .col-md-1 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-1 {
       padding-right: 15px;
@@ -1518,8 +1565,8 @@ Keyframe
 .col-md-2 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-2 {
       padding-right: 15px;
@@ -1540,8 +1587,8 @@ Keyframe
 .col-md-3 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-3 {
       padding-right: 15px;
@@ -1562,8 +1609,8 @@ Keyframe
 .col-md-4 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-4 {
       padding-right: 15px;
@@ -1584,8 +1631,8 @@ Keyframe
 .col-md-5 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-5 {
       padding-right: 15px;
@@ -1606,8 +1653,8 @@ Keyframe
 .col-md-6 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-6 {
       padding-right: 15px;
@@ -1628,8 +1675,8 @@ Keyframe
 .col-md-7 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-7 {
       padding-right: 15px;
@@ -1650,8 +1697,8 @@ Keyframe
 .col-md-8 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-8 {
       padding-right: 15px;
@@ -1672,8 +1719,8 @@ Keyframe
 .col-md-9 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-9 {
       padding-right: 15px;
@@ -1694,8 +1741,8 @@ Keyframe
 .col-md-10 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-10 {
       padding-right: 15px;
@@ -1716,8 +1763,8 @@ Keyframe
 .col-md-11 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-11 {
       padding-right: 15px;
@@ -1738,8 +1785,8 @@ Keyframe
 .col-md-12 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md-12 {
       padding-right: 15px;
@@ -1761,8 +1808,8 @@ Keyframe
 .col-md-auto {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-md,
     .col-md-auto {
@@ -1946,8 +1993,8 @@ Keyframe
 .col-lg-1 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-1 {
       padding-right: 15px;
@@ -1968,8 +2015,8 @@ Keyframe
 .col-lg-2 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-2 {
       padding-right: 15px;
@@ -1990,8 +2037,8 @@ Keyframe
 .col-lg-3 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-3 {
       padding-right: 15px;
@@ -2012,8 +2059,8 @@ Keyframe
 .col-lg-4 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-4 {
       padding-right: 15px;
@@ -2034,8 +2081,8 @@ Keyframe
 .col-lg-5 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-5 {
       padding-right: 15px;
@@ -2056,8 +2103,8 @@ Keyframe
 .col-lg-6 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-6 {
       padding-right: 15px;
@@ -2078,8 +2125,8 @@ Keyframe
 .col-lg-7 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-7 {
       padding-right: 15px;
@@ -2100,8 +2147,8 @@ Keyframe
 .col-lg-8 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-8 {
       padding-right: 15px;
@@ -2122,8 +2169,8 @@ Keyframe
 .col-lg-9 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-9 {
       padding-right: 15px;
@@ -2144,8 +2191,8 @@ Keyframe
 .col-lg-10 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-10 {
       padding-right: 15px;
@@ -2166,8 +2213,8 @@ Keyframe
 .col-lg-11 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-11 {
       padding-right: 15px;
@@ -2188,8 +2235,8 @@ Keyframe
 .col-lg-12 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg-12 {
       padding-right: 15px;
@@ -2211,8 +2258,8 @@ Keyframe
 .col-lg-auto {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-lg,
     .col-lg-auto {
@@ -2396,8 +2443,8 @@ Keyframe
 .col-xl-1 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-1 {
       padding-right: 15px;
@@ -2418,8 +2465,8 @@ Keyframe
 .col-xl-2 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-2 {
       padding-right: 15px;
@@ -2440,8 +2487,8 @@ Keyframe
 .col-xl-3 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-3 {
       padding-right: 15px;
@@ -2462,8 +2509,8 @@ Keyframe
 .col-xl-4 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-4 {
       padding-right: 15px;
@@ -2484,8 +2531,8 @@ Keyframe
 .col-xl-5 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-5 {
       padding-right: 15px;
@@ -2506,8 +2553,8 @@ Keyframe
 .col-xl-6 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-6 {
       padding-right: 15px;
@@ -2528,8 +2575,8 @@ Keyframe
 .col-xl-7 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-7 {
       padding-right: 15px;
@@ -2550,8 +2597,8 @@ Keyframe
 .col-xl-8 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-8 {
       padding-right: 15px;
@@ -2572,8 +2619,8 @@ Keyframe
 .col-xl-9 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-9 {
       padding-right: 15px;
@@ -2594,8 +2641,8 @@ Keyframe
 .col-xl-10 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-10 {
       padding-right: 15px;
@@ -2616,8 +2663,8 @@ Keyframe
 .col-xl-11 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-11 {
       padding-right: 15px;
@@ -2638,8 +2685,8 @@ Keyframe
 .col-xl-12 {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl-12 {
       padding-right: 15px;
@@ -2661,8 +2708,8 @@ Keyframe
 .col-xl-auto {
   position: relative;
   width: 100%;
-  padding-right: 10px;
-  padding-left: 10px; }
+  padding-right: 12.5px;
+  padding-left: 12.5px; }
   @media (min-width: 860px) {
     .col-xl,
     .col-xl-auto {
@@ -3323,7 +3370,8 @@ section {
   .section--hero-home .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-technology .abstract {
     font-size: 16px;
     font-weight: 200;
-    margin-top: 35px; }
+    margin-top: 35px;
+    margin-bottom: 35px; }
   .section--hero-home .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-technology .title, .section--hero-home .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-technology .abstract,
   .section--hero-home .group--back,
   .section--hero-product .group--back,
@@ -4650,11 +4698,6 @@ canvas {
   @media (max-width: 859.98px) {
     .page {
       padding: 0; } }
-  .page.smooth-scroll {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    width: 100%; }
 
 .wrapper {
   /*
@@ -5627,14 +5670,14 @@ footer .inner {
       padding-top: 70px;
       padding-bottom: 140px; }
       .section--generic-text .title {
-        font-size: 56px;
+        font-size: 48px;
         text-align: center; } }
   @media (max-width: 859.98px) {
     .section--generic-text {
       padding-top: 70px;
       padding-bottom: 70px; }
       .section--generic-text .title {
-        font-size: 48px;
+        font-size: 42px;
         text-align: left; } }
 
 .section--hero-home .background:before {
@@ -5688,10 +5731,19 @@ footer .inner {
         -ms-flex-pack: center;
             justify-content: center; }
   .section--newsletter .title {
-    font-size: 54px;
     font-weight: 300;
     line-height: 1.2;
     margin-bottom: 40px; }
+  @media (min-width: 860px) {
+    .section--newsletter .title {
+      font-size: 54px; } }
+  @media (min-width: 1024px) {
+    .section--newsletter .title {
+      font-size: 48px; } }
+  @media (max-width: 859.98px) {
+    .section--newsletter .title {
+      font-size: 42px;
+      text-align: left; } }
 
 .control {
   position: relative;
@@ -5814,7 +5866,6 @@ footer .inner {
     padding: 70px 0;
     text-align: center;
     font-family: Stanley, serif;
-    font-size: 36px;
     line-height: 1.2;
     font-weight: 100;
     position: relative; }
@@ -5838,6 +5889,18 @@ footer .inner {
     line-height: 1.5; }
   .group--designer .group--cta {
     margin: 10px 0 0 0; }
+  @media (min-width: 860px) {
+    .group--designer .title {
+      font-size: 36px; } }
+  @media (max-width: 859.98px) {
+    .group--designer .title {
+      font-size: 28px; }
+      .group--designer .title:before {
+        width: calc(100% - 50px);
+        left: 25px; }
+    .group--designer .inset {
+      width: calc(100% - 50px);
+      margin-left: 25px; } }
 
 .group--article {
   margin-bottom: 140px;
@@ -6001,16 +6064,20 @@ layout {
     position: relative;
     text-align: center;
     margin-bottom: 35px;
-    font-size: 56px;
     line-height: 1.2;
     color: #232120;
     font-weight: 300; }
+  @media (min-width: 860px) {
+    .listing--colors > .title {
+      font-size: 48px; } }
+  @media (max-width: 859.98px) {
+    .listing--colors > .title {
+      font-size: 42px; } }
 
 .card--color {
   position: relative;
   cursor: pointer; }
   .card--color .card__body {
-    padding: 50px 35px 35px 35px;
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -6055,7 +6122,6 @@ layout {
     z-index: -1;
     top: 100%;
     left: 0;
-    padding: 35px;
     background: #F7F5F0; }
     .card--color .card__detail > .title {
       color: #232120;
@@ -6083,6 +6149,19 @@ layout {
     display: block; }
   .card--color.active .card__detail {
     display: block; }
+  @media (min-width: 860px) {
+    .card--color .card__body {
+      padding: 50px 35px 35px 35px; }
+    .card--color .card__detail {
+      padding: 35px; } }
+  @media (max-width: 859.98px) {
+    .card--color > .container > .row > div {
+      padding-right: 0;
+      padding-left: 0; }
+    .card--color .card__body {
+      padding: 35px 20px 20px 20px; }
+    .card--color .card__detail {
+      padding: 20px; } }
 
 .group--feature {
   margin-bottom: 100px; }
@@ -6149,7 +6228,6 @@ layout {
   position: relative;
   text-align: center;
   margin-bottom: 35px;
-  font-size: 56px;
   line-height: 1.2;
   color: #232120;
   font-weight: 300; }
@@ -6193,12 +6271,17 @@ layout {
 @media (min-width: 860px) {
   .section--downloads {
     padding-top: 100px;
-    padding-bottom: 100px; } }
+    padding-bottom: 100px; }
+    .section--downloads .title {
+      font-size: 48px; } }
 
 @media (max-width: 859.98px) {
   .section--downloads {
     padding-top: 70px;
-    padding-bottom: 70px; } }
+    padding-bottom: 70px; }
+    .section--downloads .title {
+      font-size: 42px;
+      text-align: left; } }
 
 .section--hero-gallery .background {
   height: 100%; }
@@ -6730,7 +6813,6 @@ layout {
   osition: relative;
   text-align: center;
   margin-bottom: 35px;
-  font-size: 56px;
   line-height: 1.2;
   color: #232120;
   font-weight: 300; }
@@ -6777,6 +6859,14 @@ layout {
     /* Non-prefixed version, currently supported by Chrome and Opera */ }
     .listing--decors .inner .card:last-child {
       margin-right: 0; }
+
+@media (min-width: 860px) {
+  .listing--decors > .title {
+    font-size: 48px; } }
+
+@media (max-width: 859.98px) {
+  .listing--decors > .title {
+    font-size: 42px; } }
 
 @media (min-width: 1024px) {
   .listing--decors .inner {
