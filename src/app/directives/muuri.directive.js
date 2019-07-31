@@ -19,6 +19,7 @@ export class MuuriDirective {
 			if (element.muuri) {
 				element.muuri.destroy();
 			}
+			window.removeEventListener('resize', element.onResize);
 			if (element.onLoad) {
 				// window.removeEventListener('load', element.onLoad);
 				const images = [...node.querySelectorAll('img')];
@@ -41,6 +42,7 @@ export class MuuriDirective {
 			const removeItems = previousItems.filter(x => items.indexOf(x) === -1);
 			element.muuri.remove(removeItems);
 			element.muuri.add(newItems);
+			element.onResize();
 			// element.muuri.refreshItems(items).layout();
 		} else {
 			// The layout data object. Muuri will read this data and position the items
@@ -69,6 +71,15 @@ export class MuuriDirective {
 					alignBottom: false,
 					rounding: false
 				},
+				/*
+				sortData: {
+					order: function(item, element) {
+						const style = window.getComputedStyle(element);
+						console.log(style.order);
+						return 100 - style.order;
+					},
+				}
+				*/
 				/*
 				layout: function(items, gridWidth, gridHeight) {
 					console.log(items, gridWidth, gridHeight);
@@ -103,7 +114,23 @@ export class MuuriDirective {
 				x.onload = element.onLoad;
 			});
 			element.addClass('muuri-init');
+			element.onResize = () => {
+				return this.onResize(element);
+			};
+			element.onResize();
+			window.addEventListener('resize', element.onResize);
 		}
+	}
+
+	onResize(element) {
+		// element.muuri.refreshSortData();
+		// element.muuri.sort('order');
+		element.muuri.sort((itemA, itemB) => {
+			console.log(itemA);
+			const styleA = window.getComputedStyle(itemA._element);
+			const styleB = window.getComputedStyle(itemB._element);
+			return (styleA.order || itemA._id) - (styleB.order || itemB._id);
+		});
 	}
 
 	static factory() {

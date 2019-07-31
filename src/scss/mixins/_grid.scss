@@ -165,3 +165,105 @@
 		}
 	}
 }
+
+@mixin grid-muuri($gutter-widths: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+	position: relative;
+	width: 100%;
+
+	@each $breakpoint,
+	$gutter in $gutter-widths {
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			padding: percentage(1 / 50);
+			margin: 0;
+		}
+	}
+}
+
+@mixin make-muuri-col($size, $columns: $grid-columns) {
+	/*
+	$num: $size * 4 + 2;
+	$cols: $columns * 4 + 2;
+	*/
+	$gutter: percentage(1 / 50);
+	$size: calc(#{100% - $gutter * 2} / #{$columns} * #{$size} + #{$gutter * 2});
+	flex: 0 0 $size;
+	max-width: $size;
+	// box-sizing: content-box;
+}
+
+@mixin make-muuri-col-offset($size, $columns: $grid-columns) {
+	$num: $size / $columns;
+	$gutter: percentage(1 / 50);
+	$size: calc(#{100% - $gutter * 2} / #{$columns} * #{$size});
+	$left: if($num==0, 0, $size);
+	margin-left: $left;
+}
+
+@mixin make-muuri-columns($columns: $grid-columns, $gutter-widths: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+
+	margin-left: - percentage(1 / 50);
+	margin-right: - percentage(1 / 50);
+
+	@each $breakpoint in map-keys($breakpoints) {
+		$infix: breakpoint-infix($breakpoint, $breakpoints);
+
+		// Allow columns to stretch full width below their breakpoints
+		@for $i from 1 through $columns {
+			.col#{$infix}-#{$i} {
+				@include grid-muuri()
+			}
+		}
+
+		.col#{$infix},
+		.col#{$infix}-auto {
+			@include grid-muuri()
+		}
+
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+
+			// Provide basic `.col-{bp}` classes for equal-width flexbox columns
+			.col#{$infix} {
+				flex-basis: 0;
+				flex-grow: 1;
+				max-width: 100%;
+			}
+
+			.col#{$infix}-auto {
+				flex: 0 0 auto;
+				width: auto;
+				max-width: 100%; // Reset earlier grid tiers
+			}
+
+			@for $i from 1 through $columns {
+				.col#{$infix}-#{$i} {
+					@include make-muuri-col($i, $columns);
+				}
+			}
+
+			.order#{$infix}-first {
+				order: -1;
+			}
+
+			.order#{$infix}-last {
+				order: $columns + 1;
+			}
+
+			@for $i from 0 through $columns {
+				.order#{$infix}-#{$i} {
+					order: $i;
+				}
+			}
+
+			// `$columns - 1` because offsetting by the width of an entire row isn't possible
+			@for $i from 0 through ($columns - 1) {
+				@if not ($infix==""and $i==0) {
+
+					// Avoid emitting useless .offset-0
+					.offset#{$infix}-#{$i} {
+						@include make-muuri-col-offset($i, $columns);
+					}
+				}
+			}
+		}
+	}
+}

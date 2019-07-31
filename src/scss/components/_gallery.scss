@@ -36,12 +36,20 @@
 
 [muuri] {
 	position: relative;
+	/*
+	display: flex;
+	flex-wrap: wrap;
+	*/
+
+	@include make-muuri-columns();
 
 	.listing__item {
 		position: absolute;
 		top: 10000px;
 		height: auto;
 		z-index: 1;
+
+		// margin-bottom: 70px;
 
 		&.muuri-item-dragging {
 			z-index: 3;
@@ -55,37 +63,16 @@
 			z-index: 0;
 		}
 
+		/*
+		@include media-breakpoint-up(md) {
+			&.padding-70 {
+				padding: 0 70px;
+			}
+		}
+		*/
+
 	}
 
 	.listing__content {}
 
-	@include media-breakpoint-up(sm) {
-		margin: -35px;
-
-		.listing__item {
-			padding: 35px;
-			// margin-right: percentage(1 / 12);
-			// margin-bottom: 70px; // 140px;
-		}
-	}
-
-	@include media-breakpoint-up(md) {
-		margin: -35px;
-
-		.listing__item {
-			padding: 35px;
-			// margin-right: percentage(1 / 12);
-			// margin-bottom: 70px; // 140px;
-		}
-	}
-
-	@include media-breakpoint-down(xs) {
-		margin: -35px;
-
-		.listing__item {
-			padding: 35px;
-			// margin-left: 0;
-			// margin-bottom: 70px;
-		}
-	}
 }

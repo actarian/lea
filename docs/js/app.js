@@ -22849,6 +22849,8 @@ function () {
           element.muuri.destroy();
         }
 
+        window.removeEventListener('resize', element.onResize);
+
         if (element.onLoad) {
           // window.removeEventListener('load', element.onLoad);
           var images = _toConsumableArray(node.querySelectorAll('img'));
@@ -22862,6 +22864,8 @@ function () {
   }, {
     key: "onMuuri",
     value: function onMuuri(scope, element, attributes) {
+      var _this2 = this;
+
       var node = element[0];
 
       if (element.muuri) {
@@ -22880,7 +22884,8 @@ function () {
           return items.indexOf(x) === -1;
         });
         element.muuri.remove(removeItems);
-        element.muuri.add(newItems); // element.muuri.refreshItems(items).layout();
+        element.muuri.add(newItems);
+        element.onResize(); // element.muuri.refreshItems(items).layout();
       } else {
         // The layout data object. Muuri will read this data and position the items
         // based on it.
@@ -22910,6 +22915,16 @@ function () {
             alignBottom: false,
             rounding: false
           }
+          /*
+          sortData: {
+          	order: function(item, element) {
+          		const style = window.getComputedStyle(element);
+          		console.log(style.order);
+          		return 100 - style.order;
+          	},
+          }
+          */
+
           /*
           layout: function(items, gridWidth, gridHeight) {
           	console.log(items, gridWidth, gridHeight);
@@ -22948,7 +22963,26 @@ function () {
           x.onload = element.onLoad;
         });
         element.addClass('muuri-init');
+
+        element.onResize = function () {
+          return _this2.onResize(element);
+        };
+
+        element.onResize();
+        window.addEventListener('resize', element.onResize);
       }
+    }
+  }, {
+    key: "onResize",
+    value: function onResize(element) {
+      // element.muuri.refreshSortData();
+      // element.muuri.sort('order');
+      element.muuri.sort(function (itemA, itemB) {
+        console.log(itemA);
+        var styleA = window.getComputedStyle(itemA._element);
+        var styleB = window.getComputedStyle(itemB._element);
+        return (styleA.order || itemA._id) - (styleB.order || itemB._id);
+      });
     }
   }], [{
     key: "factory",
