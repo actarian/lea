@@ -90,16 +90,6 @@
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter-widths: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
 
-	// Common properties for all breakpoints
-	/*
-	%grid-column {
-		position: relative;
-		width: 100%;
-		padding-right: $gutter / 2;
-		padding-left: $gutter / 2;
-	}
-	*/
-
 	@each $breakpoint in map-keys($breakpoints) {
 		$infix: breakpoint-infix($breakpoint, $breakpoints);
 
@@ -107,14 +97,14 @@
 		@for $i from 1 through $columns {
 			.col#{$infix}-#{$i} {
 				// @extend %grid-column;
-				@include grid-column()
+				@include grid-column($gutter-widths, $breakpoints)
 			}
 		}
 
 		.col#{$infix},
 		.col#{$infix}-auto {
 			// @extend %grid-column;
-			@include grid-column()
+			@include grid-column($gutter-widths, $breakpoints)
 		}
 
 		@include media-breakpoint-up($breakpoint, $breakpoints) {
@@ -199,7 +189,7 @@
 	margin-left: $left;
 }
 
-@mixin make-muuri-columns($columns: $grid-columns, $gutter-widths: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
+@mixin make-muuri-columns__($columns: $grid-columns, $gutter-widths: $grid-gutter-widths, $breakpoints: $grid-breakpoints) {
 
 	margin-left: - percentage(1 / 50);
 	margin-right: - percentage(1 / 50);

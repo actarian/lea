@@ -14,3 +14,9 @@ $container-max-widths: (sm: 87.5%, // calc(100vw - 120px)
 	lg: 87.5%, // calc(100vw - 240px)
 	xl: 87.5% // calc(100vw - 240px)
 ) !default; // calc(100vw - 240px)) !default;
+$muuri-columns: 12 !default;
+$muuri-gutter-widths: (xs: 25px,
+	sm: 30px,
+	md: 60px,
+	lg: 70px,
+	xl: 70px) !default;

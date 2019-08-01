@@ -41,7 +41,7 @@
 	flex-wrap: wrap;
 	*/
 
-	@include make-muuri-columns();
+	@include make-grid-columns($muuri-columns, $muuri-gutter-widths, $grid-breakpoints);
 
 	.listing__item {
 		position: absolute;
@@ -49,7 +49,7 @@
 		height: auto;
 		z-index: 1;
 
-		// margin-bottom: 70px;
+		margin-bottom: 70px;
 
 		&.muuri-item-dragging {
 			z-index: 3;
