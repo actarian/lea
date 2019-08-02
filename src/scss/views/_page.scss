@@ -11,7 +11,7 @@
 	// background: black;
 	overflow: hidden;
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		padding: 0;
 	}
 

@@ -4,11 +4,13 @@ import ColorsCtrl from './colors/colors.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
+import GalleryItemDirective from './directives/gallery-item.directive';
 import HasDropdownDirective from './directives/has-dropdown.directive';
 import HeaderDirective from './directives/header.directive';
 import HeroDirective from './directives/hero.directive';
 import HilightDirective from './directives/hilight.directive';
 import HrefDirective from './directives/href.directive';
+import LabelDirective from './directives/label.directive';
 import { LastItemDirective } from './directives/last-item.directive';
 import LazyScriptDirective from './directives/lazy-script.directive';
 import LazyDirective from './directives/lazy.directive';
@@ -69,6 +71,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('appear', AppearDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
+	.directive('galleryItem', GalleryItemDirective.factory)
 	.directive('hasDropdown', HasDropdownDirective.factory)
 	.directive('header', HeaderDirective.factory)
 	.directive('hero', HeroDirective.factory)
@@ -76,6 +79,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('highway', HighwayDirective.factory)
 	.directive('hilight', HilightDirective.factory)
 	.directive('href', HrefDirective.factory)
+	.directive('label', LabelDirective.factory)
 	.directive('lastItem', LastItemDirective.factory)
 	.directive('lazy', LazyDirective.factory)
 	.directive('lazyScript', LazyScriptDirective.factory)

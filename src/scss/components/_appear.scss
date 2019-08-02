@@ -38,6 +38,15 @@
 		}
 	}
 
+	&:not(.picture) {
+		opacity: 0;
+		@include transition();
+
+		&.appeared {
+			opacity: 1;
+		}
+	}
+
 	/*
 	&:not(.picture) {
 

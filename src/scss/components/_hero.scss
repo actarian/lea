@@ -2,7 +2,10 @@
 
 %section--hero {
 	position: relative;
-	padding: 270px 0 140px 0;
+
+	.container {
+		padding: 270px 0 140px 0;
+	}
 
 	.background {
 		position: absolute;
@@ -54,19 +57,19 @@
 		}
 	}
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		.background {
 			padding-top: 100%;
 		}
 	}
 
-	@include media-breakpoint-up(lg) {
+	@include media-up(lg) {
 		.background {
 			padding-top: 56.25%;
 		}
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		.background {
 			// height: 100vh;
 			padding-top: 132%;

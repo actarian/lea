@@ -30,6 +30,7 @@ export default class ParallaxOuterDirective {
 	}
 
 	link(scope, element, attributes, controller) {
+		return;
 		scope.$on('onCoverEnd', ($scope) => {
 			this.init(scope, element, attributes, controller);
 		});

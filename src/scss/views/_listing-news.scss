@@ -24,7 +24,7 @@
 
 	}
 
-	@include media-breakpoint-up(md) {
+	@include media-up(md) {
 
 		.inner {
 			width: percentage(3 / 7);
@@ -37,7 +37,7 @@
 
 	}
 
-	@include media-breakpoint-up(lg) {
+	@include media-up(lg) {
 
 		.inner {
 			width: percentage(3 / 11);
@@ -50,7 +50,7 @@
 
 	}
 
-	@include media-breakpoint-up(xl) {
+	@include media-up(xl) {
 
 		.inner {
 			width: percentage(3 / 12);
@@ -63,7 +63,7 @@
 
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 
 		.inner {
 			width: 100%;

@@ -1,11 +1,11 @@
 .section--distinct {
 	background: $background-tertiary;
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		padding-top: 130px;
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		padding-top: 60px;
 	}
 }
@@ -28,7 +28,7 @@
 		margin-bottom: 0;
 	}
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		.title {
 			font-size: 20px;
 			line-height: 1.4;
@@ -38,7 +38,7 @@
 		}
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		.picture {
 			margin-left: -30px;
 			margin-right: -30px;

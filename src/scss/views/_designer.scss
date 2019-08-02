@@ -23,26 +23,28 @@
 		margin-top: 35px;
 	}
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		.background {
 			padding-top: 0;
 		}
 	}
 
-	@include media-breakpoint-up(lg) {
+	@include media-up(lg) {
 		.background {
 			padding-top: 0;
 		}
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 		.group--back {
 			margin-bottom: 35px;
 		}
 	}
 
-	@include media-breakpoint-down(xs) {
-		padding: 130px 0 70px 0;
+	@include media-down(xs) {
+		.container {
+			padding: 130px 0 70px 0;
+		}
 
 		.background {
 			padding-top: 0;

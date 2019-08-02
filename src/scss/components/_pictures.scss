@@ -137,7 +137,7 @@ $diff: 280px;
 	}
 
 	.section--full &:not([video]) {
-		@include media-breakpoint-down(xs) {
+		@include media-down(xs) {
 			&>.media {
 				@include aspect-clip(37, 61);
 			}

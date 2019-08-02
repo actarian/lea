@@ -3,7 +3,7 @@
 	max-width: 1920px;
 	margin: 0 auto;
 
-	@include media-breakpoint-up(md) {
+	@include media-up(md) {
 		position: fixed;
 		top: 0;
 		left: 50%;
@@ -106,7 +106,7 @@
 		height: 20px;
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 		.menu {
 			margin-left: -15px;
 			margin-right: -15px;
@@ -123,7 +123,7 @@
 		}
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		transition: background ease-in-out 350ms;
 
 		.menu__primary {
@@ -138,7 +138,7 @@
 .section--header-fixed {
 	transition: all ease-in-out 350ms;
 
-	@include media-breakpoint-up(md) {
+	@include media-up(md) {
 		position: fixed;
 	}
 
@@ -218,7 +218,7 @@
 .menu__brand {
 	order: 2;
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
@@ -228,7 +228,7 @@
 .menu__primary {
 	order: 3;
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		display: flex;
 		align-items: center;
 	}
@@ -237,7 +237,7 @@
 .menu__secondary {
 	order: 4;
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
@@ -285,13 +285,13 @@
 
 .nav--primary {
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		display: block;
 		justify-content: flex-start;
 	}
@@ -359,13 +359,13 @@
 		transition: fill, stroke, opacity ease-in-out 350ms;
 	}
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		&>li+li {
 			// margin-left: 30px;
 		}
 	}
 
-	@include media-breakpoint-down(md) {
+	@include media-down(md) {
 		&>li {
 
 			&>a,
@@ -379,7 +379,7 @@
 		}
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		&>li {
 			margin-bottom: 20px;
 
@@ -398,12 +398,12 @@
 
 .nav--secondary {
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		display: flex;
 		justify-content: flex-end;
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		display: block;
 		justify-content: flex-start;
 	}
@@ -453,13 +453,13 @@
 	}
 
 	/*
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		&>li+li {
 			margin-left: 30px;
 		}
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		&>li {
 			margin-bottom: 10px;
 
@@ -563,7 +563,7 @@
 	margin-bottom: 0;
 	padding-bottom: 10px;
 
-	@include media-breakpoint-up(xs) {
+	@include media-up(xs) {
 		/*
 		display: flex;
 		justify-content: space-between;
@@ -574,7 +574,7 @@
 		*/
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		/*
 		display: block;
 		justify-content: flex-start;

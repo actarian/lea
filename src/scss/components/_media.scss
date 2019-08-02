@@ -52,7 +52,7 @@
 		fill: $foreground-negative;
 	}
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 
 		.group--share {
 			.label {
@@ -77,7 +77,7 @@
 
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 
 		.group--share {
 			.label {
@@ -237,7 +237,7 @@
 	cursor: pointer;
 }
 
-@include media-breakpoint-up(sm) {
+@include media-up(sm) {
 	[video]:hover {
 		.btn--play.playing {
 			opacity: 1;

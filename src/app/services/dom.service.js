@@ -153,7 +153,7 @@ export default class DomService {
 		return DomService.scrollAndRect$;
 	}
 
-	smoothScroll$(selector, friction = 10) {
+	smoothScroll$(selector, friction = 6) {
 		const target = document.querySelector('.smooth-scroll');
 		const node = document.querySelector(selector);
 		let down = false;

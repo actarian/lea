@@ -8,6 +8,7 @@ export class MuuriDirective {
 
 	link(scope, element, attributes, controller) {
 		const node = element[0];
+		const target = attributes.muuri ? node.querySelector(attributes.muuri) || node : node;
 		scope.$on('lastItem', (slide) => {
 			// console.log('MuuriDirective.lastItem', slide);
 			this.onMuuri(scope, element, attributes);
@@ -15,6 +16,10 @@ export class MuuriDirective {
 		setTimeout(() => {
 			this.onMuuri(scope, element, attributes);
 		}, 1);
+		/*
+		todo
+		onResize as subscription debounced
+		*/
 		element.on('$destroy', () => {
 			if (element.muuri) {
 				element.muuri.destroy();
@@ -22,7 +27,7 @@ export class MuuriDirective {
 			window.removeEventListener('resize', element.onResize);
 			if (element.onLoad) {
 				// window.removeEventListener('load', element.onLoad);
-				const images = [...node.querySelectorAll('img')];
+				const images = [...target.querySelectorAll('img')];
 				images.forEach(x => {
 					x.onload = null;
 				});
@@ -32,11 +37,12 @@ export class MuuriDirective {
 
 	onMuuri(scope, element, attributes) {
 		const node = element[0];
+		const target = attributes.muuri ? node.querySelector(attributes.muuri) || node : node;
 		if (element.muuri) {
 			// const items = scope.$eval(attributes.muuri);
 			const previousItems = element.muuri.getItems().map(x => x.getElement());
 			// console.log('MuuriDirective.previousItems', previousItems);
-			const items = [...node.querySelectorAll('.listing__item')];
+			const items = [...target.querySelectorAll('.listing__item')];
 			// console.log('MuuriDirective.newItems', items);
 			const newItems = items.filter(x => previousItems.indexOf(x) === -1);
 			const removeItems = previousItems.filter(x => items.indexOf(x) === -1);
@@ -61,7 +67,7 @@ export class MuuriDirective {
 				setHeight: true
 			};
 			*/
-			element.muuri = new Muuri(element[0], {
+			element.muuri = new Muuri(target, {
 				layoutDuration: 0, // 400
 				layoutEasing: 'ease',
 				layout: {
@@ -109,7 +115,7 @@ export class MuuriDirective {
 				element.muuri.refreshItems().layout();
 			};
 			// window.addEventListener('load', element.onLoad);
-			const images = [...node.querySelectorAll('img')];
+			const images = [...target.querySelectorAll('img')];
 			images.forEach(x => {
 				x.onload = element.onLoad;
 			});
@@ -126,7 +132,6 @@ export class MuuriDirective {
 		// element.muuri.refreshSortData();
 		// element.muuri.sort('order');
 		element.muuri.sort((itemA, itemB) => {
-			console.log(itemA);
 			const styleA = window.getComputedStyle(itemA._element);
 			const styleB = window.getComputedStyle(itemB._element);
 			return (styleA.order || itemA._id) - (styleB.order || itemB._id);

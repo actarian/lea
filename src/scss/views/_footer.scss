@@ -51,7 +51,7 @@ footer {
 		}
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 		background: #e7e7e7;
 	}
 }
@@ -102,7 +102,7 @@ footer {
 		height: 31px;
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 		padding: 0;
 	}
 }
@@ -192,7 +192,7 @@ footer {
 
 	}
 
-	@include media-breakpoint-down(sm) {
+	@include media-down(sm) {
 		text-align: center;
 
 		.row:first-child {

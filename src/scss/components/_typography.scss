@@ -6,11 +6,11 @@ body {
 	color: $foreground;
 	letter-spacing: 0.05em;
 
-	@include media-breakpoint-up(sm) {
+	@include media-up(sm) {
 		font-size: $font-size;
 	}
 
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		font-size: $font-size-xs;
 	}
 }

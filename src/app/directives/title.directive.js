@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 // Import Polyfills
 // See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
 // import 'intersection-observer';
@@ -18,6 +17,7 @@ export default class TitleDirective {
 
 	link(scope, element, attributes, controller) {
 		const node = element[0];
+		node.setAttribute('data-title', node.innerHTML);
 		const section = this.getSection(node);
 		const index = [].slice.call(section.querySelectorAll('[title]')).indexOf(node);
 		const subscription = this.domService.appearOnLoad$(node, -0.5).subscribe(event => {

@@ -1,5 +1,7 @@
 /* jshint esversion: 6 */
 
+import DomService from '../services/dom.service';
+
 const VIRTUAL_SCROLL_ENABLED = false;
 
 export default class VirtualScrollDirective {

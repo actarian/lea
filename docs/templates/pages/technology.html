@@ -11,11 +11,11 @@
 					<a href="#" class="btn btn--back"><svg class="icon icon--arrow-left"><use xlink:href="#icon--arrow-left"></use></svg> <span>torna a: Tecnologie</span></a>
 				</div>
 				<div class="title" title>Slimtech,<br>il Gres Porcellanato.</div>
-				<div class="abstract">Slimtech è la soluzione che completa il progetto di superfici di Lea Ceramiche offrendo lastre di dimensioni record (100×300 e 120×260 cm) abbinate ad una straordinaria leggerezza grazie allo spessore di soli 3,5mm, 5,5mm e 6mm.</div>
+				<div class="abstract" abstract>Slimtech è la soluzione che completa il progetto di superfici di Lea Ceramiche offrendo lastre di dimensioni record (100×300 e 120×260 cm) abbinate ad una straordinaria leggerezza grazie allo spessore di soli 3,5mm, 5,5mm e 6mm.</div>
 			</div>
 			<div class="col-md-8 offset-md-1">
-				<div class="picture picture--cover" appear parallax-outer><img src="img/technology/hero.jpg"></div>
-				<div clasS="abstract">Text caption - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+				<div class="picture picture--cover" appear parallax-outer><img src="img/technology/hero@2x.jpg"></div>
+				<!-- <div clasS="abstract">Text caption - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div> -->
 			</div>
 		</div>
 	</div>
@@ -25,14 +25,17 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<a href="gallery.html" class="btn btn--gallery">
+				<a href="gallery.html" class="gallery__item gallery__item--gallery btn--gallery" gallery-item='{ "id": 1, "coId": 1 }' parallax-outer>
+					<!-- <a href="gallery.html" class="btn btn--gallery"> -->
 					<div class="picture" appear parallax-outer>
-						<img src="img/technology/01.jpg">
+						<img src="img/technology/01@2x.jpg">
 					</div>
+					<!--
 					<div class="group--action">
 						<div class="info"><span class="current">1</span><span class="total">5</span></div>
 						<div class="btn btn--nav"><span>View the gallery</span></div>
 					</div>
+					-->
 				</a>
 			</div>
 			<div class="col-md-4 offset-md-1 content">
@@ -63,38 +66,45 @@
 <section class="section section--gallery">
 	<div class="container">
 		<div class="title" title>Gallery</div>
-		<div class="listing listing--gallery row" muuri>
-			<div class="listing__item col-md-4">
-				<div class="listing__content">
-					<a class="gallery__item" href="#" parallax-outer>
-						<div class="picture" appear>
-							<img src="img/technology/02.jpg" alt="title" />
+		<div class="listing listing--gallery" muuri=".row">
+			<div class="row">
+				<div class="listing__item col-md-4">
+					<div class="listing__content">
+						<div class="gallery__item" gallery-item='{ "id": 1, "coId": 1 }' parallax-outer>
+							<div class="picture" appear>
+								<img src="img/technology/02@2x.jpg" alt="title" />
+							</div>
+							<!-- <div clasS="abstract">Text caption - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div> -->
 						</div>
-						<!-- <div clasS="abstract">Text caption - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div> -->
-					</a>
+					</div>
 				</div>
-			</div>
-			<div class="listing__item col-md-7">
-				<div class="listing__content">
-					<a class="gallery__item gallery__item--video" href="#" parallax-outer>
-						<div class="picture" appear>
-							<img src="img/technology/03.jpg" alt="title" />
+				<div class="listing__item col-md-8">
+					<div class="listing__content">
+						<div class="gallery__item gallery__item--video" gallery-item='{ "id": 1, "coId": 1 }' parallax-outer>
+							<div class="picture" appear>
+								<img src="img/technology/03@2x.jpg" alt="title" />
+								<!-- <video src="video/concreto-collection.mp4" cover="img/technology/03@2x.jpg" alt="title" playsinline mute></video> -->
+							</div>
+							<!--
+							<div clasS="abstract">E’ facile da installare e risolve, meglio di qualunque altro materiale, le problematiche del rinnovo offrendo risultati estetici eccellenti combinati con un costo complessivo contenuto.</div>
+							-->
 						</div>
-						<div clasS="abstract">E’ facile da installare e risolve, meglio di qualunque altro materiale, le problematiche del rinnovo offrendo risultati estetici eccellenti combinati con un costo complessivo contenuto.</div>
-					</a>
+					</div>
 				</div>
-			</div>
-			<div class="listing__item col-md-4">
-				<div class="listing__content">
-					<a href="gallery.html" class="gallery__item gallery__item--gallery btn--gallery" parallax-outer>
-						<div class="picture" appear>
-							<img src="img/technology/04.jpg" alt="title" />
-						</div>
-						<div class="group--action">
-							<div class="info"><span class="current">1</span><span class="total">5</span></div>
-							<a href="#" class="btn btn--nav"><span>View the gallery</span></a>
-						</div>
-					</a>
+				<div class="listing__item col-md-4">
+					<div class="listing__content">
+						<a href="gallery.html" class="gallery__item gallery__item--gallery btn--gallery" gallery-item='{ "id": 1, "coId": 1 }' parallax-outer>
+							<div class="picture" appear>
+								<img src="img/technology/04@2x.jpg" alt="title" />
+							</div>
+							<!--
+							<div class="group--action">
+								<div class="info"><span class="current">1</span><span class="total">5</span></div>
+								<a href="#" class="btn btn--nav"><span>View the gallery</span></a>
+							</div>
+							-->
+						</a>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -20,7 +20,7 @@
 .container {
 	position: relative;
 	/*
-	@include media-breakpoint-down(xs) {
+	@include media-down(xs) {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
@@ -29,13 +29,4 @@
 
 @include make-grid-columns();
 
-@include media-breakpoint-down(sm) {
-
-	@for $i from 1 through 20 {
-
-		.o-#{$i} {
-			order: $i;
-		}
-	}
-
-}
+@include make-orders();

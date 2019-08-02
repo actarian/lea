@@ -98,7 +98,7 @@
 </head>
 
 <body ng-controller="RootCtrl as root" ng-class="root.getClasses()" highway>
-	<div virtual-scroll=".page">
+	<div smooth-scroll=".page">
 		<ng-include src="'templates/shared/svg.html'"></ng-include>
 		<div class="wrapper--header">
 			<ng-include src="'templates/shared/header.html'"></ng-include>
@@ -120,6 +120,7 @@
 			<ng-include src="'templates/shared/footer.html'"></ng-include>
 		</div>
 	</div>
+	<ng-include src="'templates/shared/gallery.html'"></ng-include>
 	<!--[if IE ]>
 	<script src="js/polyfills.js"></script>
 	<![endif]-->
