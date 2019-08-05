@@ -9191,7 +9191,8 @@ layout {
   background: #C9C0B6; }
 
 .section--hero-showroom .title {
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 20px; }
 
 .section--hero-showroom .abstract {
   text-align: center; }
