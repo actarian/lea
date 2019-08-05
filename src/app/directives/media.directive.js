@@ -14,7 +14,7 @@ export default class MediaDirective {
 	<ng-transclude></ng-transclude>
 </div>
 <div class="group--share">
-	<div class="label">Share</div>
+	<div class="group--share__label">Share</div>
 	<div class="group--actions">
 		<div class="btn btn--facebook" ng-click="onFacebook()" ng-if="onFacebook">
 			<svg class="icon icon--facebook"><use xlink:href="#icon--facebook"></use></svg>

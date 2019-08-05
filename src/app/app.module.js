@@ -117,6 +117,7 @@ app.filter('imageWithFeatures', [ImageWithFeatures])
 // app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {}]);
 
 app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {
+	DomService.detect();
 	$rootScope.first = true;
 	$rootScope.firstView = document.querySelector('.view').cloneNode(true);
 }]);

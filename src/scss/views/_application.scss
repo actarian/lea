@@ -1,0 +1,109 @@
+.section--hero-application {
+	@extend %section--hero;
+
+	.container {
+		padding-bottom: 100px;
+	}
+
+	.background {
+		background: #DEDEDD;
+	}
+
+	.group--back {
+		margin-bottom: 70px;
+	}
+
+	.title {
+		margin-bottom: 30px;
+	}
+
+	.group--info {
+		margin-bottom: 30px;
+
+		&__title {
+			font-family: $font-secondary;
+			font-size: 24px;
+			font-weight: $font-bold;
+			margin-bottom: 15px;
+		}
+
+		&__abstract {
+			font-size: 16px;
+			font-weight: $font-extralight;
+			line-height: 1.375;
+		}
+	}
+
+	@include media-up(sm) {
+		.row {
+			align-items: center;
+		}
+
+		.background {
+			padding-top: 0;
+			height: 100%;
+		}
+
+		.description {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.group--info {
+			flex: 1 1 calc(50% - 35px);
+			max-width: calc(50% - 35px);
+			margin-right: 35px;
+
+			&:first-child {
+				flex: 1 1 100%;
+				max-width: 100%;
+				margin-right: 0;
+			}
+		}
+
+	}
+
+	@include media-up(lg) {
+		.background {
+			padding-top: 0;
+			height: 100%;
+		}
+	}
+
+	@include media-down(xs) {
+		.background {
+			padding-top: 0;
+			height: 100%;
+		}
+	}
+
+}
+
+.section--application {
+	padding-top: 70px;
+	padding-bottom: 70px;
+
+	.description {
+		font-size: 16px;
+		line-height: 1.375;
+		font-weight: $font-extralight;
+		margin-bottom: 70px;
+
+		b,
+		strong {
+			font-weight: $font-semibold;
+			color: #958983;
+		}
+	}
+
+	.group--download {
+
+		.title {
+			font-size: 42px;
+			font-weight: var(--font-light);
+			margin-bottom: 35px;
+		}
+
+	}
+
+}

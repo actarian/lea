@@ -36,7 +36,7 @@ button,
 	margin: 0 5px;
 }
 
-.btn--discover {
+%btn--discover {
 	white-space: nowrap;
 
 	&,
@@ -50,6 +50,8 @@ button,
 	&>span {
 		display: inline-block;
 		position: relative;
+		font-size: 16px;
+		font-weight: $font-semibold;
 
 		&:after {
 			content: '';
@@ -93,6 +95,10 @@ button,
 			}
 		}
 	}
+}
+
+.btn--discover {
+	@extend %btn--discover;
 }
 
 .btn--link {

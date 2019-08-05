@@ -1,0 +1,64 @@
+.section--hero-magazine-detail {
+	@extend %section--hero;
+
+	.container {
+		padding-bottom: 70px;
+	}
+
+	.background {
+		background: #D4D8D5;
+	}
+
+	.title {
+		text-align: center;
+	}
+
+	.abstract {
+		text-align: center;
+	}
+
+	.group--share {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		margin: 60px auto;
+		max-width: 140px;
+
+		.icon--facebook,
+		.icon--twitter,
+		.icon--pinterest {
+			fill: $foreground;
+		}
+
+	}
+
+}
+
+.section--magazine-detail {
+	padding-top: 70px;
+	padding-bottom: 70px;
+
+	.description {
+		font-size: 16px;
+		line-height: 1.375;
+		font-weight: $font-extralight;
+		margin-bottom: 70px;
+
+		b,
+		strong {
+			font-weight: $font-semibold;
+			color: #958983;
+		}
+	}
+
+	.group--download {
+
+		.title {
+			font-size: 42px;
+			font-weight: var(--font-light);
+			margin-bottom: 35px;
+		}
+
+	}
+
+}

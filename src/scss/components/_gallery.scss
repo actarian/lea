@@ -36,6 +36,7 @@
 
 [muuri] {
 	position: relative;
+
 	/*
 	display: flex;
 	flex-wrap: wrap;
@@ -47,6 +48,24 @@
 	}
 
 	@include make-grid-columns($muuri-columns, $muuri-gutter-widths, $grid-breakpoints);
+
+	/*
+	&.no-gutter {
+		.row {
+			@include make-row($grid-gutter-widths, $grid-breakpoints);
+			position: relative;
+		}
+		@include make-grid-columns($muuri-columns, $grid-gutter-widths, $grid-breakpoints);
+	}
+
+	&:not(.no-gutter) {
+		.row {
+			@include make-row($muuri-gutter-widths, $grid-breakpoints);
+			position: relative;
+		}
+		@include make-grid-columns($muuri-columns, $muuri-gutter-widths, $grid-breakpoints);
+	}
+	*/
 
 	.listing__item {
 		position: absolute;
@@ -80,6 +99,11 @@
 
 	.listing__content {}
 
+	@include media-down(xs) {
+		.listing__item {
+			margin-bottom: 35px;
+		}
+	}
 }
 
 [gallery-item] {

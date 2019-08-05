@@ -1,0 +1,46 @@
+.section--job {
+	padding: 70px 0;
+
+	.row {
+		align-items: stretch;
+	}
+
+	.col-md-5 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.title {
+		margin-bottom: 54px;
+		font-family: $font-secondary;
+		line-height: 1.15;
+		font-weight: $font-light;
+	}
+
+	.description {
+		font-size: 16px;
+		line-height: 1.375;
+		font-weight: $font-extralight;
+	}
+
+	@include media-up(sm) {
+		.title {
+			font-size: 54px;
+		}
+	}
+
+	@include media-up(md) {
+		.title {
+			font-size: 48px;
+		}
+	}
+
+	@include media-down(xs) {
+		.title {
+			font-size: 42px;
+			text-align: left;
+		}
+	}
+
+}

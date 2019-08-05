@@ -313,6 +313,10 @@ export default class DomService {
 		return style.sheet;
 	}
 
+	get agent() {
+		return DomService.agent || DomService.detect();
+	}
+
 	static factory() {
 		return new DomService();
 	}
@@ -325,6 +329,77 @@ export default class DomService {
 		return Math.max(0, node.pageXOffset || node.scrollX || node.scrollLeft || 0);
 	}
 
+	static detect() {
+		const userAgent = navigator.userAgent.toLowerCase();
+		const explorer = userAgent.indexOf('msie') > -1;
+		const firefox = userAgent.indexOf('firefox') > -1;
+		const opera = userAgent.toLowerCase().indexOf('op') > -1;
+		let chrome = userAgent.indexOf('chrome') > -1;
+		let safari = userAgent.indexOf('safari') > -1;
+		if ((chrome) && (safari)) {
+			safari = false;
+		}
+		if ((chrome) && (opera)) {
+			chrome = false;
+		}
+		const android = userAgent.match(/android/i);
+		const blackberry = userAgent.match(/blackberry/i);
+		const ios = userAgent.match(/iphone|ipad|ipod/i);
+		const operamini = userAgent.match(/opera mini/i);
+		const iemobile = userAgent.match(/iemobile/i) || navigator.userAgent.match(/wpdesktop/i);
+		const mobile = android || blackberry || ios || operamini || iemobile;
+		const overscroll = navigator.platform === 'MacIntel' && typeof navigator.getBattery === 'function';
+		const agent = this.agent = {
+			chrome,
+			explorer,
+			firefox,
+			safari,
+			opera,
+			android,
+			blackberry,
+			ios,
+			operamini,
+			iemobile,
+			mobile,
+			overscroll,
+		};
+		// Object.assign(DomService, agent);
+		const html = document.querySelector('html');
+		Object.keys(agent).forEach(x => {
+			if (agent[x]) {
+				html.classList.add(x);
+			}
+		});
+		return this.agent;
+		/*
+		const onTouchStart = () => {
+			document.removeEventListener('touchstart', onTouchStart);
+			Dom.touch = true;
+			html.classList.add('touch');
+		};
+		document.addEventListener('touchstart', onTouchStart);
+		const onMouseDown = () => {
+			document.removeEventListener('mousedown', onMouseDown);
+			Dom.mouse = true;
+			html.classList.add('mouse');
+		};
+		document.addEventListener('mousedown', onMouseDown);
+		const onScroll = () => {
+			let now = Utils.now();
+			if (Dom.lastScrollTime) {
+				const diff = now - Dom.lastScrollTime;
+				if (diff < 5) {
+					document.removeEventListener('scroll', onScroll);
+					Dom.fastscroll = true;
+					node.classList.add('fastscroll');
+					console.log('scroll', diff);
+				}
+			}
+			Dom.lastScrollTime = now;
+		};
+		document.addEventListener('scroll', onScroll);
+		*/
+	}
 }
 
 DomService.factory.$inject = [];

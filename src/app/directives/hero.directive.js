@@ -22,12 +22,11 @@ export default class HeroDirective {
 
 	init(scope, element, attributes, controller) {
 		const node = element[0];
-		const scrollTop = this.domService.scrollTop;
-		if (first && scrollTop === 0) {
+		const cover = node.querySelector('.picture--cover');
+		if (cover && first && this.domService.scrollTop === 0) {
 			first = false;
 			scope.$root.$broadcast('onCoverInit');
 			// const brand = document.querySelector('.section--header .brand');
-			const cover = node.querySelector('.picture--cover');
 			cover.classList.add('appeared');
 			// TweenMax.set(brand, { opacity: 0 });
 			TweenMax.set(cover, { opacity: 0 });

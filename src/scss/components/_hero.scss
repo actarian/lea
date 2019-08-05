@@ -4,7 +4,8 @@
 	position: relative;
 
 	.container {
-		padding: 270px 0 140px 0;
+		padding-top: 270px;
+		padding-bottom: 140px;
 	}
 
 	.background {
@@ -70,9 +71,22 @@
 	}
 
 	@include media-down(xs) {
+
 		.background {
-			// height: 100vh;
-			padding-top: 132%;
+			padding-top: 0;
+			height: 132vw;
+		}
+
+		.container {
+			padding-top: 140px;
+		}
+
+		.title {
+			font-size: 36px;
+		}
+
+		.group--cta {
+			margin: 30px 0;
 		}
 	}
 

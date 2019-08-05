@@ -1,0 +1,54 @@
+.section--hero-showroom {
+	@extend %section--hero;
+
+	.container {
+		padding-bottom: 70px;
+	}
+
+	.background {
+		background: #C9C0B6;
+	}
+
+	.title {
+		text-align: center;
+	}
+
+	.abstract {
+		text-align: center;
+	}
+
+}
+
+.section--detail {
+	padding-top: 70px;
+	padding-bottom: 70px;
+
+	.title {
+		font-size: 36px;
+		line-height: 1.375;
+		font-weight: $font-semibold;
+		margin-bottom: 20px;
+	}
+
+	.description {
+		font-size: 16px;
+		font-weight: $font-extralight;
+		line-height: 1.375;
+	}
+
+}
+
+.group--info {
+	margin-bottom: 20px;
+
+	&__title {
+		font-size: 24px;
+		line-height: 1.375;
+		font-weight: $font-semibold;
+	}
+
+	&__abstract {
+		font-size: 24px;
+		line-height: 1.2;
+	}
+}

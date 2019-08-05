@@ -2,15 +2,17 @@
 	<div class="background"></div>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3 offset-md-1">
+			<div class="col-md-2 offset-md-1">
 				<div class="btn btn--back" ng-click="galleryCtrl.onClose()"><svg class="icon icon--arrow-left"><use xlink:href="#icon--arrow-left"></use></svg> <span>Chiudi</span></div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="group--intro">
 					<div class="title" title ng-bind-html="gallery.title"></div>
 					<div class="abstract" ng-bind-html="gallery.abstract"></div>
 				</div>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 o-3">
 				<div ng-repeat="item in gallery.items track by $index">
 					<div class="picture" media="item" appear ng-if="item.type === galleryCtrl.types.PICTURE">

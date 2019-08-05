@@ -24,10 +24,12 @@ export default class GalleryItemDirective {
 		const onClick = (event) => {
 			const items = [...document.querySelectorAll('[gallery-item]:not(.gallery__item--gallery)')];
 			const index = items.indexOf(node);
-			const hero = document.querySelector('[hero]') || document.querySelector('[no-hero]');
+			const hero = document.querySelector('[hero]');
+			const title = hero.querySelector('.title');
+			const abstract = hero.querySelector('.abstract');
 			const data = {
-				title: hero.querySelector('.title').getAttribute('data-title'),
-				abstract: hero.querySelector('.abstract').getAttribute('data-abstract'),
+				title: title ? title.getAttribute('data-title') : '',
+				abstract: abstract ? abstract.getAttribute('data-abstract') : '',
 				url: window.location.href,
 				items: items.map(x => {
 					let item = x.getAttribute('gallery-item');

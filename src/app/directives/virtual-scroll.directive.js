@@ -14,8 +14,8 @@ export default class VirtualScrollDirective {
 	}
 
 	link(scope, element, attributes, controller) {
-		const node = element[0];
-		if (VIRTUAL_SCROLL_ENABLED) {
+		if (!this.domService.agent.mobile && VIRTUAL_SCROLL_ENABLED) {
+			const node = element[0];
 			node.classList.add('virtual-scroll');
 			DomService.DEFAULT_SCROLL_TARGET = node;
 			const target = node.querySelector(attributes.virtualScroll);

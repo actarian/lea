@@ -1,0 +1,41 @@
+.group--download {
+
+	display: flex;
+	flex-direction: column;
+
+	.title {
+		font-size: 32px;
+		font-weight: var(--font-light);
+		margin-bottom: 35px;
+	}
+
+	.group--download__label {
+		flex: 1 1 auto;
+		font-size: 15px;
+		line-height: 1.2;
+		font-weight: $font-semibold;
+	}
+
+	.group--inline {
+		display: flex;
+		align-items: center;
+
+		.btn--download {
+			margin-right: 15px;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+
+		@include media-up(sm) {
+			margin-top: 30px;
+		}
+
+		@include media-down(xs) {
+			margin: 10px 0 30px 0;
+		}
+
+	}
+
+}
