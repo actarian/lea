@@ -1,6 +1,11 @@
 .section--magazine {
 	padding: 0;
 	background: #cbc4b9;
+
+	@include media-down(sm) {
+		padding-top: 70px;
+		padding-bottom: 0;
+	}
 }
 
 .section--magazine-secondary {
@@ -59,19 +64,23 @@
 	}
 
 	@include media-down(xs) {
+		margin-top: 0;
+		margin-bottom: 70px;
 
 		.title {
-			font-size: 28px;
+			font-size: 24px;
+			line-height: 1.35;
+			padding: 20px;
 
 			&:before {
-				width: calc(100% - 50px);
-				left: 25px;
+				width: 100%;
+				left: 0;
 			}
 		}
 
 		.inset {
-			width: calc(100% - 50px);
-			margin-left: 25px;
+			width: 100%;
+			margin-left: 0;
 		}
 
 	}
@@ -103,6 +112,10 @@
 
 	.group--cta {
 		margin: 40px 0 0 0;
+	}
+
+	@include media-down(sm) {
+		margin-bottom: 70px;
 	}
 
 }

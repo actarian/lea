@@ -4,6 +4,7 @@ import ColorsCtrl from './colors/colors.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
+import FaqDirective from './directives/faq.directive';
 import GalleryItemDirective from './directives/gallery-item.directive';
 import HasDropdownDirective from './directives/has-dropdown.directive';
 import HeaderDirective from './directives/header.directive';
@@ -21,9 +22,9 @@ import ParallaxOuterDirective from './directives/parallax-outer.directive';
 import ParallaxDirective from './directives/parallax.directive';
 import ScrollDirective from './directives/scroll.directive';
 import ScrollableDirective from './directives/scrollable.directive';
+import SliderDirective from './directives/slider.directive';
 import SmoothScrollDirective from './directives/smooth-scroll.directive';
 import StickyDirective from './directives/sticky.directive';
-import { SwiperGalleryDirective, SwiperHeroDirective, SwiperProjectsDirective, SwiperTileDirective } from './directives/swiper.directive';
 import TitleDirective from './directives/title.directive';
 import VideoDirective from './directives/video.directive';
 import VirtualScrollDirective from './directives/virtual-scroll.directive';
@@ -71,6 +72,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('appear', AppearDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
+	.directive('faq', FaqDirective.factory)
 	.directive('galleryItem', GalleryItemDirective.factory)
 	.directive('hasDropdown', HasDropdownDirective.factory)
 	.directive('header', HeaderDirective.factory)
@@ -92,11 +94,8 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('scroll', ScrollDirective.factory)
 	.directive('scrollable', ScrollableDirective.factory)
 	.directive('selectWithAutocomplete', AutocompleteDirective.factory)
+	.directive('slider', SliderDirective.factory)
 	.directive('sticky', StickyDirective.factory)
-	.directive('swiperGallery', SwiperGalleryDirective.factory)
-	.directive('swiperHero', SwiperHeroDirective.factory)
-	.directive('swiperProjects', SwiperProjectsDirective.factory)
-	.directive('swiperTile', SwiperTileDirective.factory)
 	.directive('title', TitleDirective.factory)
 	.directive('validate', ValidateDirective.factory)
 	.directive('video', VideoDirective.factory)

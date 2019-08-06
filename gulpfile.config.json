@@ -24,7 +24,6 @@
 				"minify": false
 			}, {
 				"input": [
-					"node_modules/swiper/dist/js/swiper.js",
 					"node_modules/muuri/dist/muuri.js",
 					"node_modules/angular/angular.js",
 					"node_modules/angular-messages/angular-messages.js",
@@ -36,13 +35,6 @@
 					"node_modules/splitting/dist/splitting.js"
 				],
 				"output": "docs/js/vendors.js",
-				"minify": false
-			}, {
-				"input": [
-					"node_modules/animate.css/animate.css",
-					"node_modules/swiper/dist/css/swiper.css"
-				],
-				"output": "docs/css/vendors.css",
 				"minify": false
 			}]
 		}

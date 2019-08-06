@@ -1,0 +1,111 @@
+.section--faq {
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+
+.group--faq {
+	&>.title {
+		font-size: 36px;
+		line-height: 1.375;
+		font-weight: $font-semibold;
+		margin-top: 140px;
+		margin-bottom: 35px;
+		text-align: center;
+	}
+
+	@include media-down(sm) {
+		&>.title {
+			font-size: 32px;
+			font-weight: $font-light;
+		}
+	}
+}
+
+.listing--faq {
+
+	.listing__item {
+		margin-top: -1px;
+		transition: all ease-in-out 500ms;
+
+		.abstract {
+			font-size: 24px;
+			line-height: 1.2;
+			font-weight: $font-light;
+			padding: 35px;
+			display: flex;
+			justify-content: space-between;
+			border: 1px solid #D3D4D3;
+			cursor: pointer;
+
+			.icon {
+				width: 30px;
+				height: 18px;
+				margin: 5px;
+				transition: all ease-in-out 500ms;
+			}
+		}
+
+		@include media-down(sm) {
+			.abstract {
+				font-size: 18px;
+			}
+		}
+
+		.content {
+			position: relative;
+			overflow: hidden;
+		}
+
+		&.active {
+			background: #E7E7E7;
+
+			.abstract {
+				border: 1px solid #E7E7E7;
+
+				.icon {
+					transform: rotateZ(180deg);
+				}
+			}
+
+		}
+
+		.description {
+			padding: 0 35px 35px 35px;
+			font-size: 16px;
+			line-height: 1.375;
+			font-weight: $font-extralight;
+
+			p {
+				margin: 0 0 10px 0;
+			}
+		}
+
+		.group--cta {
+			padding: 35px;
+			margin: 0;
+		}
+
+		.btn--discover {
+
+			.more {
+				display: block;
+			}
+
+			.less {
+				display: none;
+			}
+
+			&.active {
+				.more {
+					display: none;
+				}
+
+				.less {
+					display: block;
+				}
+
+			}
+
+		}
+	}
+}

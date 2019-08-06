@@ -120,7 +120,8 @@
 }
 
 .section--projects {
-	padding: 0 0 140px 0;
+	padding-top: 0;
+	padding-bottom: 140px;
 
 	.category {
 		font-size: 37px;
@@ -145,4 +146,28 @@
 		font-size: 10px;
 	}
 
+	@include media-down(sm) {
+		padding-top: 0;
+		padding-bottom: 70px;
+
+		.category {
+			font-size: 24px;
+			margin-bottom: 15px;
+		}
+
+		.title {
+			font-size: 36px;
+			margin-bottom: 15px;
+		}
+
+	}
+
+}
+
+.col--full {
+	@include media-down(sm) {
+		margin-left: -26px;
+		margin-right: -26px;
+		width: calc(100% + 52px);
+	}
 }

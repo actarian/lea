@@ -120,4 +120,22 @@
 	scroll-behavior: smooth;
 	overscroll-behavior: smooth;
 	-webkit-overflow-scrolling: touch;
+
+	@include media-down(sm) {
+		.container {
+			padding: 120px 0 0 0;
+		}
+
+		.btn--back {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 60px;
+			text-align: center;
+			justify-content: center;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		}
+	}
+
 }

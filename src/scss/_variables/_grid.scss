@@ -1,5 +1,11 @@
 $grid-columns: 12 !default;
-$grid-gutter-widths: (xs: 25px,
+$container-max-widths: (xs: calc(100% - 34px),
+	sm: 87.5%, // calc(100vw - 120px)
+	md: 87.5%, // calc(100vw - 180px)
+	lg: 87.5%, // calc(100vw - 240px)
+	xl: 87.5% // calc(100vw - 240px)
+) !default; // calc(100vw - 240px)) !default;
+$grid-gutter-widths: (xs: 17px,
 	sm: 30px,
 	md: 0,
 	lg: 0,
@@ -9,13 +15,8 @@ $grid-breakpoints: (xs: 0,
 	md: 1024px,
 	lg: 1440px,
 	xl: 1830px) !default;
-$container-max-widths: (sm: 87.5%, // calc(100vw - 120px)
-	md: 87.5%, // calc(100vw - 180px)
-	lg: 87.5%, // calc(100vw - 240px)
-	xl: 87.5% // calc(100vw - 240px)
-) !default; // calc(100vw - 240px)) !default;
 $muuri-columns: 12 !default;
-$muuri-gutter-widths: (xs: 25px,
+$muuri-gutter-widths: (xs: 17px,
 	sm: 30px,
 	md: 60px,
 	lg: 70px,

@@ -21,6 +21,7 @@
 @import 'components/listings';
 @import 'components/distinct';
 @import 'components/share';
+@import 'components/slider';
 
 @import 'views/page';
 @import 'views/header';
@@ -29,6 +30,7 @@
 @import 'views/home';
 @import 'views/magazine';
 @import 'views/magazine-detail';
+@import 'views/download';
 @import 'views/product';
 @import 'views/gallery';
 @import 'views/designer';
@@ -37,10 +39,11 @@
 @import 'views/project';
 @import 'views/application';
 @import 'views/technology';
-@import 'views/download';
 @import 'views/newsletter';
 @import 'views/job';
+@import 'views/faq';
 
+@import 'views/collections';
 @import 'views/listing-magazine';
 @import 'views/listing-collections';
 @import 'views/listing-projects';
@@ -48,7 +51,12 @@
 @import 'views/listing-gallery';
 @import 'views/listing-decors';
 
+@import 'views/slider-projects';
+@import 'views/slider-collections';
+@import 'views/slider-decors';
+
 @import 'components/responsive';
+@import 'components/backgrounds';
 
 .debug {
 	border: 100px solid red;

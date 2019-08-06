@@ -2,7 +2,6 @@
 	padding: 70px 0 140px 0;
 	overflow: hidden;
 	background: #E9E7E3;
-
 }
 
 .listing--collections {
@@ -20,11 +19,6 @@
 		align-items: stretch;
 
 		.card {
-			display: flex;
-			flex-direction: column;
-			flex: 0 0 100%;
-			@include _selectNone();
-
 			&:last-child {
 				margin-right: 0;
 			}
@@ -33,61 +27,45 @@
 		@include _selectNone();
 	}
 
-	.card__body {
-		padding: 35px;
-		background: #F5F5F5;
-	}
 
 	@include media-up(md) {
-
 		.inner {
 			width: percentage(9 / 20);
 
 			.card {
 				margin-right: percentage(2 / 9);
 			}
-
 		}
-
 	}
 
 	@include media-up(lg) {
-
 		.inner {
 			width: percentage(6 / 20);
 
 			.card {
 				margin-right: percentage(1 / 6);
 			}
-
 		}
-
 	}
 
 	@include media-up(xl) {
-
 		.inner {
 			width: percentage(6 / 20);
 
 			.card {
 				margin-right: percentage(1 / 6);
 			}
-
 		}
-
 	}
 
 	@include media-down(sm) {
-
 		.inner {
 			width: 100%;
 
 			.card {
 				margin-right: percentage(1 / 3);
 			}
-
 		}
-
 	}
 
 }

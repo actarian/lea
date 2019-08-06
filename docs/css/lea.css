@@ -242,6 +242,7 @@ button,
 
 .btn--discover, .nav--more li > a,
 .nav--more li > span {
+  padding: 0;
   white-space: nowrap; }
   .btn--discover, .nav--more li > a,
   .nav--more li > span, .btn--discover:active, .nav--more li > a:active,
@@ -527,8 +528,9 @@ Keyframe
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px;
+  max-width: calc(100% - 34px); }
   @media (min-width: 860px) {
     .container {
       padding-right: 15px;
@@ -562,8 +564,8 @@ Keyframe
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .container-fluid {
       padding-right: 15px;
@@ -587,8 +589,8 @@ Keyframe
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-right: -12.5px;
-  margin-left: -12.5px;
+  margin-right: -8.5px;
+  margin-left: -8.5px;
   min-width: 100%; }
   @media (min-width: 860px) {
     .row {
@@ -619,8 +621,8 @@ Keyframe
 .col-1 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-1 {
       padding-right: 15px;
@@ -641,8 +643,8 @@ Keyframe
 .col-2 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-2 {
       padding-right: 15px;
@@ -663,8 +665,8 @@ Keyframe
 .col-3 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-3 {
       padding-right: 15px;
@@ -685,8 +687,8 @@ Keyframe
 .col-4 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-4 {
       padding-right: 15px;
@@ -707,8 +709,8 @@ Keyframe
 .col-5 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-5 {
       padding-right: 15px;
@@ -729,8 +731,8 @@ Keyframe
 .col-6 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-6 {
       padding-right: 15px;
@@ -751,8 +753,8 @@ Keyframe
 .col-7 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-7 {
       padding-right: 15px;
@@ -773,8 +775,8 @@ Keyframe
 .col-8 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-8 {
       padding-right: 15px;
@@ -795,8 +797,8 @@ Keyframe
 .col-9 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-9 {
       padding-right: 15px;
@@ -817,8 +819,8 @@ Keyframe
 .col-10 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-10 {
       padding-right: 15px;
@@ -839,8 +841,8 @@ Keyframe
 .col-11 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-11 {
       padding-right: 15px;
@@ -861,8 +863,8 @@ Keyframe
 .col-12 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-12 {
       padding-right: 15px;
@@ -884,8 +886,8 @@ Keyframe
 .col-auto {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col,
     .col-auto {
@@ -1105,8 +1107,8 @@ Keyframe
 .col-sm-1 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-1 {
       padding-right: 15px;
@@ -1127,8 +1129,8 @@ Keyframe
 .col-sm-2 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-2 {
       padding-right: 15px;
@@ -1149,8 +1151,8 @@ Keyframe
 .col-sm-3 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-3 {
       padding-right: 15px;
@@ -1171,8 +1173,8 @@ Keyframe
 .col-sm-4 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-4 {
       padding-right: 15px;
@@ -1193,8 +1195,8 @@ Keyframe
 .col-sm-5 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-5 {
       padding-right: 15px;
@@ -1215,8 +1217,8 @@ Keyframe
 .col-sm-6 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-6 {
       padding-right: 15px;
@@ -1237,8 +1239,8 @@ Keyframe
 .col-sm-7 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-7 {
       padding-right: 15px;
@@ -1259,8 +1261,8 @@ Keyframe
 .col-sm-8 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-8 {
       padding-right: 15px;
@@ -1281,8 +1283,8 @@ Keyframe
 .col-sm-9 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-9 {
       padding-right: 15px;
@@ -1303,8 +1305,8 @@ Keyframe
 .col-sm-10 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-10 {
       padding-right: 15px;
@@ -1325,8 +1327,8 @@ Keyframe
 .col-sm-11 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-11 {
       padding-right: 15px;
@@ -1347,8 +1349,8 @@ Keyframe
 .col-sm-12 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm-12 {
       padding-right: 15px;
@@ -1370,8 +1372,8 @@ Keyframe
 .col-sm-auto {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-sm,
     .col-sm-auto {
@@ -1555,8 +1557,8 @@ Keyframe
 .col-md-1 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-1 {
       padding-right: 15px;
@@ -1577,8 +1579,8 @@ Keyframe
 .col-md-2 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-2 {
       padding-right: 15px;
@@ -1599,8 +1601,8 @@ Keyframe
 .col-md-3 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-3 {
       padding-right: 15px;
@@ -1621,8 +1623,8 @@ Keyframe
 .col-md-4 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-4 {
       padding-right: 15px;
@@ -1643,8 +1645,8 @@ Keyframe
 .col-md-5 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-5 {
       padding-right: 15px;
@@ -1665,8 +1667,8 @@ Keyframe
 .col-md-6 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-6 {
       padding-right: 15px;
@@ -1687,8 +1689,8 @@ Keyframe
 .col-md-7 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-7 {
       padding-right: 15px;
@@ -1709,8 +1711,8 @@ Keyframe
 .col-md-8 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-8 {
       padding-right: 15px;
@@ -1731,8 +1733,8 @@ Keyframe
 .col-md-9 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-9 {
       padding-right: 15px;
@@ -1753,8 +1755,8 @@ Keyframe
 .col-md-10 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-10 {
       padding-right: 15px;
@@ -1775,8 +1777,8 @@ Keyframe
 .col-md-11 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-11 {
       padding-right: 15px;
@@ -1797,8 +1799,8 @@ Keyframe
 .col-md-12 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md-12 {
       padding-right: 15px;
@@ -1820,8 +1822,8 @@ Keyframe
 .col-md-auto {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-md,
     .col-md-auto {
@@ -2005,8 +2007,8 @@ Keyframe
 .col-lg-1 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-1 {
       padding-right: 15px;
@@ -2027,8 +2029,8 @@ Keyframe
 .col-lg-2 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-2 {
       padding-right: 15px;
@@ -2049,8 +2051,8 @@ Keyframe
 .col-lg-3 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-3 {
       padding-right: 15px;
@@ -2071,8 +2073,8 @@ Keyframe
 .col-lg-4 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-4 {
       padding-right: 15px;
@@ -2093,8 +2095,8 @@ Keyframe
 .col-lg-5 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-5 {
       padding-right: 15px;
@@ -2115,8 +2117,8 @@ Keyframe
 .col-lg-6 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-6 {
       padding-right: 15px;
@@ -2137,8 +2139,8 @@ Keyframe
 .col-lg-7 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-7 {
       padding-right: 15px;
@@ -2159,8 +2161,8 @@ Keyframe
 .col-lg-8 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-8 {
       padding-right: 15px;
@@ -2181,8 +2183,8 @@ Keyframe
 .col-lg-9 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-9 {
       padding-right: 15px;
@@ -2203,8 +2205,8 @@ Keyframe
 .col-lg-10 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-10 {
       padding-right: 15px;
@@ -2225,8 +2227,8 @@ Keyframe
 .col-lg-11 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-11 {
       padding-right: 15px;
@@ -2247,8 +2249,8 @@ Keyframe
 .col-lg-12 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg-12 {
       padding-right: 15px;
@@ -2270,8 +2272,8 @@ Keyframe
 .col-lg-auto {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-lg,
     .col-lg-auto {
@@ -2455,8 +2457,8 @@ Keyframe
 .col-xl-1 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-1 {
       padding-right: 15px;
@@ -2477,8 +2479,8 @@ Keyframe
 .col-xl-2 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-2 {
       padding-right: 15px;
@@ -2499,8 +2501,8 @@ Keyframe
 .col-xl-3 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-3 {
       padding-right: 15px;
@@ -2521,8 +2523,8 @@ Keyframe
 .col-xl-4 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-4 {
       padding-right: 15px;
@@ -2543,8 +2545,8 @@ Keyframe
 .col-xl-5 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-5 {
       padding-right: 15px;
@@ -2565,8 +2567,8 @@ Keyframe
 .col-xl-6 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-6 {
       padding-right: 15px;
@@ -2587,8 +2589,8 @@ Keyframe
 .col-xl-7 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-7 {
       padding-right: 15px;
@@ -2609,8 +2611,8 @@ Keyframe
 .col-xl-8 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-8 {
       padding-right: 15px;
@@ -2631,8 +2633,8 @@ Keyframe
 .col-xl-9 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-9 {
       padding-right: 15px;
@@ -2653,8 +2655,8 @@ Keyframe
 .col-xl-10 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-10 {
       padding-right: 15px;
@@ -2675,8 +2677,8 @@ Keyframe
 .col-xl-11 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-11 {
       padding-right: 15px;
@@ -2697,8 +2699,8 @@ Keyframe
 .col-xl-12 {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl-12 {
       padding-right: 15px;
@@ -2720,8 +2722,8 @@ Keyframe
 .col-xl-auto {
   position: relative;
   width: 100%;
-  padding-right: 12.5px;
-  padding-left: 12.5px; }
+  padding-right: 8.5px;
+  padding-left: 8.5px; }
   @media (min-width: 860px) {
     .col-xl,
     .col-xl-auto {
@@ -3468,11 +3470,13 @@ Keyframe
     user-select: none;
     /* Non-prefixed version, currently supported by Chrome and Opera */ }
 
-.top-70 {
-  margin-top: 70px; }
+@media (min-width: 1024px) {
+  .top-70 {
+    margin-top: 70px; } }
 
-.top-140 {
-  margin-top: 140px; }
+@media (min-width: 1024px) {
+  .top-140 {
+    margin-top: 140px; } }
 
 .absolute-bottom, .absolute-bottom[appear] {
   position: absolute;
@@ -3809,7 +3813,8 @@ section {
       padding-top: 0;
       height: 132vw; }
     .section--hero-generic .container, .section--hero-home .container, .section--hero-magazine-detail .container, .section--hero-product .container, .section--hero-gallery .container, .section--hero-designer .container, .section--hero-showroom .container, .section--hero-project .container, .section--hero-application .container, .section--hero-technology .container {
-      padding-top: 140px; }
+      padding-top: 140px;
+      padding-bottom: 70px; }
     .section--hero-generic .title, .section--hero-home .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
       font-size: 36px; }
     
@@ -3874,8 +3879,8 @@ section {
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    margin-right: -12.5px;
-    margin-left: -12.5px;
+    margin-right: -8.5px;
+    margin-left: -8.5px;
     position: relative; }
     @media (min-width: 860px) {
       [muuri] .row {
@@ -3896,8 +3901,8 @@ section {
   [muuri] .col-1 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-1 {
         padding-right: 15px;
@@ -3917,8 +3922,8 @@ section {
   [muuri] .col-2 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-2 {
         padding-right: 15px;
@@ -3938,8 +3943,8 @@ section {
   [muuri] .col-3 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-3 {
         padding-right: 15px;
@@ -3959,8 +3964,8 @@ section {
   [muuri] .col-4 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-4 {
         padding-right: 15px;
@@ -3980,8 +3985,8 @@ section {
   [muuri] .col-5 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-5 {
         padding-right: 15px;
@@ -4001,8 +4006,8 @@ section {
   [muuri] .col-6 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-6 {
         padding-right: 15px;
@@ -4022,8 +4027,8 @@ section {
   [muuri] .col-7 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-7 {
         padding-right: 15px;
@@ -4043,8 +4048,8 @@ section {
   [muuri] .col-8 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-8 {
         padding-right: 15px;
@@ -4064,8 +4069,8 @@ section {
   [muuri] .col-9 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-9 {
         padding-right: 15px;
@@ -4085,8 +4090,8 @@ section {
   [muuri] .col-10 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-10 {
         padding-right: 15px;
@@ -4106,8 +4111,8 @@ section {
   [muuri] .col-11 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-11 {
         padding-right: 15px;
@@ -4127,8 +4132,8 @@ section {
   [muuri] .col-12 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-12 {
         padding-right: 15px;
@@ -4149,8 +4154,8 @@ section {
   [muuri] .col-auto {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col,
       [muuri] .col-auto {
@@ -4329,8 +4334,8 @@ section {
   [muuri] .col-sm-1 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-1 {
         padding-right: 15px;
@@ -4350,8 +4355,8 @@ section {
   [muuri] .col-sm-2 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-2 {
         padding-right: 15px;
@@ -4371,8 +4376,8 @@ section {
   [muuri] .col-sm-3 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-3 {
         padding-right: 15px;
@@ -4392,8 +4397,8 @@ section {
   [muuri] .col-sm-4 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-4 {
         padding-right: 15px;
@@ -4413,8 +4418,8 @@ section {
   [muuri] .col-sm-5 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-5 {
         padding-right: 15px;
@@ -4434,8 +4439,8 @@ section {
   [muuri] .col-sm-6 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-6 {
         padding-right: 15px;
@@ -4455,8 +4460,8 @@ section {
   [muuri] .col-sm-7 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-7 {
         padding-right: 15px;
@@ -4476,8 +4481,8 @@ section {
   [muuri] .col-sm-8 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-8 {
         padding-right: 15px;
@@ -4497,8 +4502,8 @@ section {
   [muuri] .col-sm-9 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-9 {
         padding-right: 15px;
@@ -4518,8 +4523,8 @@ section {
   [muuri] .col-sm-10 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-10 {
         padding-right: 15px;
@@ -4539,8 +4544,8 @@ section {
   [muuri] .col-sm-11 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-11 {
         padding-right: 15px;
@@ -4560,8 +4565,8 @@ section {
   [muuri] .col-sm-12 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm-12 {
         padding-right: 15px;
@@ -4582,8 +4587,8 @@ section {
   [muuri] .col-sm-auto {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-sm,
       [muuri] .col-sm-auto {
@@ -4765,8 +4770,8 @@ section {
   [muuri] .col-md-1 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-1 {
         padding-right: 15px;
@@ -4786,8 +4791,8 @@ section {
   [muuri] .col-md-2 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-2 {
         padding-right: 15px;
@@ -4807,8 +4812,8 @@ section {
   [muuri] .col-md-3 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-3 {
         padding-right: 15px;
@@ -4828,8 +4833,8 @@ section {
   [muuri] .col-md-4 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-4 {
         padding-right: 15px;
@@ -4849,8 +4854,8 @@ section {
   [muuri] .col-md-5 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-5 {
         padding-right: 15px;
@@ -4870,8 +4875,8 @@ section {
   [muuri] .col-md-6 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-6 {
         padding-right: 15px;
@@ -4891,8 +4896,8 @@ section {
   [muuri] .col-md-7 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-7 {
         padding-right: 15px;
@@ -4912,8 +4917,8 @@ section {
   [muuri] .col-md-8 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-8 {
         padding-right: 15px;
@@ -4933,8 +4938,8 @@ section {
   [muuri] .col-md-9 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-9 {
         padding-right: 15px;
@@ -4954,8 +4959,8 @@ section {
   [muuri] .col-md-10 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-10 {
         padding-right: 15px;
@@ -4975,8 +4980,8 @@ section {
   [muuri] .col-md-11 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-11 {
         padding-right: 15px;
@@ -4996,8 +5001,8 @@ section {
   [muuri] .col-md-12 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md-12 {
         padding-right: 15px;
@@ -5018,8 +5023,8 @@ section {
   [muuri] .col-md-auto {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-md,
       [muuri] .col-md-auto {
@@ -5201,8 +5206,8 @@ section {
   [muuri] .col-lg-1 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-1 {
         padding-right: 15px;
@@ -5222,8 +5227,8 @@ section {
   [muuri] .col-lg-2 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-2 {
         padding-right: 15px;
@@ -5243,8 +5248,8 @@ section {
   [muuri] .col-lg-3 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-3 {
         padding-right: 15px;
@@ -5264,8 +5269,8 @@ section {
   [muuri] .col-lg-4 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-4 {
         padding-right: 15px;
@@ -5285,8 +5290,8 @@ section {
   [muuri] .col-lg-5 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-5 {
         padding-right: 15px;
@@ -5306,8 +5311,8 @@ section {
   [muuri] .col-lg-6 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-6 {
         padding-right: 15px;
@@ -5327,8 +5332,8 @@ section {
   [muuri] .col-lg-7 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-7 {
         padding-right: 15px;
@@ -5348,8 +5353,8 @@ section {
   [muuri] .col-lg-8 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-8 {
         padding-right: 15px;
@@ -5369,8 +5374,8 @@ section {
   [muuri] .col-lg-9 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-9 {
         padding-right: 15px;
@@ -5390,8 +5395,8 @@ section {
   [muuri] .col-lg-10 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-10 {
         padding-right: 15px;
@@ -5411,8 +5416,8 @@ section {
   [muuri] .col-lg-11 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-11 {
         padding-right: 15px;
@@ -5432,8 +5437,8 @@ section {
   [muuri] .col-lg-12 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg-12 {
         padding-right: 15px;
@@ -5454,8 +5459,8 @@ section {
   [muuri] .col-lg-auto {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-lg,
       [muuri] .col-lg-auto {
@@ -5637,8 +5642,8 @@ section {
   [muuri] .col-xl-1 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-1 {
         padding-right: 15px;
@@ -5658,8 +5663,8 @@ section {
   [muuri] .col-xl-2 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-2 {
         padding-right: 15px;
@@ -5679,8 +5684,8 @@ section {
   [muuri] .col-xl-3 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-3 {
         padding-right: 15px;
@@ -5700,8 +5705,8 @@ section {
   [muuri] .col-xl-4 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-4 {
         padding-right: 15px;
@@ -5721,8 +5726,8 @@ section {
   [muuri] .col-xl-5 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-5 {
         padding-right: 15px;
@@ -5742,8 +5747,8 @@ section {
   [muuri] .col-xl-6 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-6 {
         padding-right: 15px;
@@ -5763,8 +5768,8 @@ section {
   [muuri] .col-xl-7 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-7 {
         padding-right: 15px;
@@ -5784,8 +5789,8 @@ section {
   [muuri] .col-xl-8 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-8 {
         padding-right: 15px;
@@ -5805,8 +5810,8 @@ section {
   [muuri] .col-xl-9 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-9 {
         padding-right: 15px;
@@ -5826,8 +5831,8 @@ section {
   [muuri] .col-xl-10 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-10 {
         padding-right: 15px;
@@ -5847,8 +5852,8 @@ section {
   [muuri] .col-xl-11 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-11 {
         padding-right: 15px;
@@ -5868,8 +5873,8 @@ section {
   [muuri] .col-xl-12 {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl-12 {
         padding-right: 15px;
@@ -5890,8 +5895,8 @@ section {
   [muuri] .col-xl-auto {
     position: relative;
     width: 100%;
-    padding-right: 12.5px;
-    padding-left: 12.5px; }
+    padding-right: 8.5px;
+    padding-left: 8.5px; }
     @media (min-width: 860px) {
       [muuri] .col-xl,
       [muuri] .col-xl-auto {
@@ -6828,21 +6833,225 @@ canvas {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end; }
-  .card__body .date {
+  .card__body > .date {
     font-size: 16px;
     font-weight: 300; }
-  .card__body .title {
+  .card__body > .title {
     font-size: 36px;
     line-height: 1.2;
     font-weight: 600;
     text-align: left;
     margin-bottom: 15px; }
-  .card__body .abstract {
+  .card__body > .abstract {
     font-size: 16px;
     line-height: 1.4;
     font-weight: 200; }
-  .card__body .group--cta {
+  .card__body > .group--cta {
     margin: 30px 0 0 0; }
+
+.card--collections {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+  .card--collections .card__body {
+    padding: 35px;
+    background: #F5F5F5; }
+    .card--collections .card__body > .title {
+      font-size: 36px;
+      line-height: 1.2;
+      font-weight: 600;
+      text-align: left;
+      margin-bottom: 15px; }
+
+.card--decors > .card__body {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding-top: 25px;
+  padding-bottom: 25px; }
+  .card--decors > .card__body > .title {
+    text-align: center;
+    color: #232120;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.02em; }
+  .card--decors > .card__body > .abstract {
+    text-align: center;
+    color: #232120;
+    font-size: 21px;
+    letter-spacing: 0.02em; }
+
+.card--projects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+  .card--projects .group--overlay {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    font-family: "Stanley", serif;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    opacity: 0;
+    -webkit-transition: opacity ease-in-out 350ms;
+    transition: opacity ease-in-out 350ms; }
+  .card--projects:hover .group--overlay {
+    opacity: 1; }
+  .card--projects .group--info:last-child {
+    margin-bottom: 0; }
+  .card--projects .group--info__title {
+    font-size: 18px;
+    margin-bottom: 10px; }
+  .card--projects .group--info__abstract {
+    font-size: 16px; }
+  .card--projects > .card__body {
+    padding: 35px;
+    background: #C9C1BF; }
+    .card--projects > .card__body > .title {
+      font-size: 24px;
+      line-height: 1.125; }
+
+.card--color {
+  position: relative;
+  cursor: pointer; }
+  .card--color .card__body {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    -webkit-transition: background ease-in-out 350ms;
+    transition: background ease-in-out 350ms; }
+    .card--color .card__body:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #F7F5F0;
+      -webkit-transform: scale(1, 0);
+              transform: scale(1, 0);
+      -webkit-transform-origin: bottom center;
+              transform-origin: bottom center;
+      -webkit-transition: -webkit-transform ease-in-out 350ms;
+      transition: -webkit-transform ease-in-out 350ms;
+      transition: transform ease-in-out 350ms;
+      transition: transform ease-in-out 350ms, -webkit-transform ease-in-out 350ms; }
+    .card--color .card__body > .title {
+      color: #232120;
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.03em; }
+    .card--color .card__body > .abstract {
+      opacity: 0;
+      -webkit-transition: opacity ease-in-out 350ms;
+      transition: opacity ease-in-out 350ms; }
+    .card--color .card__body > .group--cta {
+      display: none;
+      margin: 0;
+      line-height: 1.4; }
+    .card--color .card__body .btn--share {
+      font-family: "Stanley", serif;
+      opacity: 0.5;
+      margin-right: 15px; }
+  .card--color .card__detail {
+    display: none;
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 0;
+    background: #F7F5F0; }
+    .card--color .card__detail > .title {
+      color: #232120;
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 15px; }
+      .card--color .card__detail > .title img {
+        margin-right: 15px; }
+    .card--color .card__detail > .abstract {
+      color: #232120;
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      margin-bottom: 70px; }
+  .card--color:not(.active):hover .card__body > .abstract {
+    opacity: 1; }
+  .card--color.active .card__body:before {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1); }
+  .card--color.active .card__body > .abstract {
+    display: none; }
+  .card--color.active .card__body > .group--cta {
+    display: block; }
+  .card--color.active .card__detail {
+    display: block; }
+  @media (min-width: 860px) {
+    .card--color .card__body {
+      padding: 50px 35px 35px 35px; }
+    .card--color .card__detail {
+      padding: 35px; } }
+  @media (max-width: 859.98px) {
+    .card--color > .container > .row > div {
+      padding-right: 0;
+      padding-left: 0; }
+    .card--color .card__body {
+      padding: 35px 20px 20px 20px; }
+    .card--color .card__detail {
+      padding: 20px; } }
+
+.card--magazine > .card__body {
+  padding: 35px;
+  background: white; }
 
 .listing--tiles > .listing__item {
   display: block;
@@ -7283,6 +7492,74 @@ canvas {
       width: 20px;
       height: 20px; } }
 
+.slider__left,
+.slider__right {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30px;
+  height: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: opacity ease-in-out 350ms;
+  transition: opacity ease-in-out 350ms;
+  cursor: pointer; }
+  .slider__left svg,
+  .slider__right svg {
+    height: 30px;
+    width: 16px; }
+  .slider__left.disabled,
+  .slider__right.disabled {
+    pointer-events: none;
+    opacity: 0.5; }
+  @media (max-width: 1023.98px) {
+    .slider__left,
+    .slider__right {
+      display: none; } }
+
+.slider__left {
+  left: 0; }
+
+.slider__right {
+  right: 0; }
+
+.slider__bullets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 30px 0; }
+  .slider__bullets > div {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    opacity: 0.5;
+    -webkit-transition: opacity ease-in-out 350ms;
+    transition: opacity ease-in-out 350ms;
+    cursor: pointer; }
+    .slider__bullets > div:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -5px 0 0 -5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #232120; }
+    .slider__bullets > div.active, .slider__bullets > div:hover {
+      opacity: 1; }
+  @media (min-width: 1024px) {
+    .slider__bullets {
+      display: none; } }
+
 .page {
   display: block;
   position: relative;
@@ -7518,9 +7795,6 @@ page-transition {
     width: 20px;
     height: 20px; }
   @media (max-width: 1023.98px) {
-    .section--header .menu {
-      margin-left: -15px;
-      margin-right: -15px; }
     .section--header .brand {
       max-width: 22%;
       min-width: 68px; }
@@ -8344,6 +8618,10 @@ footer .inner {
 .section--hero-home .title {
   position: relative; }
 
+@media (max-width: 1023.98px) {
+  .section--hero-home .group--cta {
+    margin: 30px 0; } }
+
 .section:not(:first-child) {
   opacity: 0; }
   .ready .section:not(:first-child) {
@@ -8459,6 +8737,10 @@ footer .inner {
 .section--magazine {
   padding: 0;
   background: #cbc4b9; }
+  @media (max-width: 1023.98px) {
+    .section--magazine {
+      padding-top: 70px;
+      padding-bottom: 0; } }
 
 .section--magazine-secondary {
   background: #cfcfcf; }
@@ -8497,14 +8779,19 @@ footer .inner {
     .group--designer .title {
       font-size: 36px; } }
   @media (max-width: 859.98px) {
-    .group--designer .title {
-      font-size: 28px; }
-      .group--designer .title:before {
-        width: calc(100% - 50px);
-        left: 25px; }
-    .group--designer .inset {
-      width: calc(100% - 50px);
-      margin-left: 25px; } }
+    .group--designer {
+      margin-top: 0;
+      margin-bottom: 70px; }
+      .group--designer .title {
+        font-size: 24px;
+        line-height: 1.35;
+        padding: 20px; }
+        .group--designer .title:before {
+          width: 100%;
+          left: 0; }
+      .group--designer .inset {
+        width: 100%;
+        margin-left: 0; } }
 
 .group--article {
   margin-bottom: 140px;
@@ -8525,6 +8812,9 @@ footer .inner {
     line-height: 1.5; }
   .group--article .group--cta {
     margin: 40px 0 0 0; }
+  @media (max-width: 1023.98px) {
+    .group--article {
+      margin-bottom: 70px; } }
 
 .section--hero-magazine-detail .container {
   padding-bottom: 70px; }
@@ -8569,6 +8859,43 @@ footer .inner {
     font-size: 42px;
     font-weight: var(--font-light);
     margin-bottom: 35px; }
+
+.group--download {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .group--download .title {
+    font-size: 32px;
+    font-weight: var(--font-light);
+    margin-bottom: 35px; }
+  .group--download .group--download__label {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 600; }
+  .group--download .group--inline {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .group--download .group--inline .btn--download {
+      margin-right: 15px; }
+      .group--download .group--inline .btn--download:last-child {
+        margin: 0; }
+    @media (min-width: 860px) {
+      .group--download .group--inline {
+        margin-top: 30px; } }
+    @media (max-width: 859.98px) {
+      .group--download .group--inline {
+        margin: 10px 0 30px 0; } }
 
 layout {
   position: absolute;
@@ -8690,13 +9017,17 @@ layout {
       .group--colors .card--color .card__detail {
         width: 300%; } }
   @media (max-width: 1023.98px) {
-    .group--colors .card--color {
-      -webkit-box-flex: 1;
-          -ms-flex: 1 1 50%;
-              flex: 1 1 50%;
-      max-width: 50%; }
-      .group--colors .card--color .card__detail {
-        width: 200%; } }
+    .group--colors {
+      margin-left: -26px;
+      margin-right: -26px; }
+      .group--colors .card--color {
+        -webkit-box-flex: 1;
+            -ms-flex: 1 1 50%;
+                flex: 1 1 50%;
+        max-width: 50%; }
+        .group--colors .card--color .card__detail {
+          width: 200%;
+          left: 0 !important; } }
   @media (max-width: 859.98px) {
     .group--colors .card--color {
       -webkit-box-flex: 1;
@@ -8721,95 +9052,6 @@ layout {
   @media (max-width: 859.98px) {
     .listing--colors > .title {
       font-size: 42px; } }
-
-.card--color {
-  position: relative;
-  cursor: pointer; }
-  .card--color .card__body {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    -webkit-transition: background ease-in-out 350ms;
-    transition: background ease-in-out 350ms; }
-    .card--color .card__body:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #F7F5F0;
-      -webkit-transform: scale(1, 0);
-              transform: scale(1, 0);
-      -webkit-transform-origin: bottom center;
-              transform-origin: bottom center;
-      -webkit-transition: -webkit-transform ease-in-out 350ms;
-      transition: -webkit-transform ease-in-out 350ms;
-      transition: transform ease-in-out 350ms;
-      transition: transform ease-in-out 350ms, -webkit-transform ease-in-out 350ms; }
-    .card--color .card__body > .title {
-      color: #232120;
-      font-size: 24px;
-      font-weight: 300;
-      letter-spacing: 0.03em; }
-    .card--color .card__body > .abstract {
-      opacity: 0;
-      -webkit-transition: opacity ease-in-out 350ms;
-      transition: opacity ease-in-out 350ms; }
-    .card--color .card__body > .group--cta {
-      display: none;
-      margin: 0;
-      line-height: 1.4; }
-    .card--color .card__body .btn--share {
-      font-family: "Stanley", serif;
-      opacity: 0.5;
-      margin-right: 15px; }
-  .card--color .card__detail {
-    display: none;
-    position: absolute;
-    z-index: -1;
-    top: 100%;
-    left: 0;
-    background: #F7F5F0; }
-    .card--color .card__detail > .title {
-      color: #232120;
-      font-size: 24px;
-      font-weight: 300;
-      letter-spacing: 0.03em;
-      margin-bottom: 15px; }
-      .card--color .card__detail > .title img {
-        margin-right: 15px; }
-    .card--color .card__detail > .abstract {
-      color: #232120;
-      font-size: 16px;
-      font-weight: 300;
-      letter-spacing: 0.02em;
-      line-height: 1.2;
-      margin-bottom: 70px; }
-  .card--color:not(.active):hover .card__body > .abstract {
-    opacity: 1; }
-  .card--color.active .card__body:before {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1); }
-  .card--color.active .card__body > .abstract {
-    display: none; }
-  .card--color.active .card__body > .group--cta {
-    display: block; }
-  .card--color.active .card__detail {
-    display: block; }
-  @media (min-width: 860px) {
-    .card--color .card__body {
-      padding: 50px 35px 35px 35px; }
-    .card--color .card__detail {
-      padding: 35px; } }
-  @media (max-width: 859.98px) {
-    .card--color > .container > .row > div {
-      padding-right: 0;
-      padding-left: 0; }
-    .card--color .card__body {
-      padding: 35px 20px 20px 20px; }
-    .card--color .card__detail {
-      padding: 20px; } }
 
 .group--feature {
   margin-bottom: 100px; }
@@ -8850,16 +9092,16 @@ layout {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%; }
+  .group--certifications .item {
+    margin: 20px; }
+    .group--certifications .item img {
+      max-height: 80px; }
   @media (max-width: 1023.98px) {
     .group--certifications {
       -webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center; }
       .group--certifications .item {
-        /*
-			min-width: percentage(1 / 6);
-			text-align: center;
-			*/
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -8868,9 +9110,7 @@ layout {
                 justify-content: center;
         -webkit-box-align: center;
             -ms-flex-align: center;
-                align-items: center;
-        min-width: 40vw;
-        min-height: 30vw; } }
+                align-items: center; } }
 
 .section--downloads .title {
   position: relative;
@@ -9018,6 +9258,20 @@ layout {
   -ms-scroll-chaining: smooth;
       overscroll-behavior: smooth;
   -webkit-overflow-scrolling: touch; }
+  @media (max-width: 1023.98px) {
+    .section--fancy .container {
+      padding: 120px 0 0 0; }
+    .section--fancy .btn--back {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2); } }
 
 .section--hero-designer .background {
   height: 100%; }
@@ -9261,7 +9515,8 @@ layout {
       margin-top: -210px; } }
 
 .section--projects {
-  padding: 0 0 140px 0; }
+  padding-top: 0;
+  padding-bottom: 140px; }
   .section--projects .category {
     font-size: 37px;
     line-height: 1.2;
@@ -9277,6 +9532,22 @@ layout {
   .section--projects .group--cta {
     margin: 20px 0;
     font-size: 10px; }
+  @media (max-width: 1023.98px) {
+    .section--projects {
+      padding-top: 0;
+      padding-bottom: 70px; }
+      .section--projects .category {
+        font-size: 24px;
+        margin-bottom: 15px; }
+      .section--projects .title {
+        font-size: 36px;
+        margin-bottom: 15px; } }
+
+@media (max-width: 1023.98px) {
+  .col--full {
+    margin-left: -26px;
+    margin-right: -26px;
+    width: calc(100% + 52px); } }
 
 .section--hero-application .container {
   padding-bottom: 100px; }
@@ -9484,43 +9755,6 @@ layout {
     margin: 0 13px 4px 13px;
     background: #1E1C1C; }
 
-.group--download {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-  .group--download .title {
-    font-size: 32px;
-    font-weight: var(--font-light);
-    margin-bottom: 35px; }
-  .group--download .group--download__label {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    font-size: 15px;
-    line-height: 1.2;
-    font-weight: 600; }
-  .group--download .group--inline {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center; }
-    .group--download .group--inline .btn--download {
-      margin-right: 15px; }
-      .group--download .group--inline .btn--download:last-child {
-        margin: 0; }
-    @media (min-width: 860px) {
-      .group--download .group--inline {
-        margin-top: 30px; } }
-    @media (max-width: 859.98px) {
-      .group--download .group--inline {
-        margin: 10px 0 30px 0; } }
-
 .section--newsletter {
   padding: 80px 0;
   background: #f3f3f3; }
@@ -9591,17 +9825,129 @@ layout {
       font-size: 42px;
       text-align: left; } }
 
+.section--faq {
+  padding-top: 70px;
+  padding-bottom: 70px; }
+
+.group--faq > .title {
+  font-size: 36px;
+  line-height: 1.375;
+  font-weight: 600;
+  margin-top: 140px;
+  margin-bottom: 35px;
+  text-align: center; }
+
+@media (max-width: 1023.98px) {
+  .group--faq > .title {
+    font-size: 32px;
+    font-weight: 300; } }
+
+.listing--faq .listing__item {
+  margin-top: -1px;
+  -webkit-transition: all ease-in-out 500ms;
+  transition: all ease-in-out 500ms; }
+  .listing--faq .listing__item .abstract {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 300;
+    padding: 35px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    border: 1px solid #D3D4D3;
+    cursor: pointer; }
+    .listing--faq .listing__item .abstract .icon {
+      width: 30px;
+      height: 18px;
+      margin: 5px;
+      -webkit-transition: all ease-in-out 500ms;
+      transition: all ease-in-out 500ms; }
+  @media (max-width: 1023.98px) {
+    .listing--faq .listing__item .abstract {
+      font-size: 18px; } }
+  .listing--faq .listing__item .content {
+    position: relative;
+    overflow: hidden; }
+  .listing--faq .listing__item.active {
+    background: #E7E7E7; }
+    .listing--faq .listing__item.active .abstract {
+      border: 1px solid #E7E7E7; }
+      .listing--faq .listing__item.active .abstract .icon {
+        -webkit-transform: rotateZ(180deg);
+                transform: rotateZ(180deg); }
+  .listing--faq .listing__item .description {
+    padding: 0 35px 35px 35px;
+    font-size: 16px;
+    line-height: 1.375;
+    font-weight: 200; }
+    .listing--faq .listing__item .description p {
+      margin: 0 0 10px 0; }
+  .listing--faq .listing__item .group--cta {
+    padding: 35px;
+    margin: 0; }
+  .listing--faq .listing__item .btn--discover .more {
+    display: block; }
+  .listing--faq .listing__item .btn--discover .less {
+    display: none; }
+  .listing--faq .listing__item .btn--discover.active .more {
+    display: none; }
+  .listing--faq .listing__item .btn--discover.active .less {
+    display: block; }
+
+.section--collections {
+  padding: 70px 0 140px 0;
+  overflow: hidden;
+  background: #E9E7E3; }
+  .section--collections .container > .row > div > .title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 70px; }
+
+.collections {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .collections .card {
+    margin-bottom: 70px; }
+  @media (min-width: 1024px) {
+    .collections .card {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 45%;
+              flex: 1 1 45%;
+      max-width: 45%; } }
+  @media (min-width: 1440px) {
+    .collections .card {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 30%;
+              flex: 1 1 30%;
+      max-width: 30%; } }
+  @media (min-width: 1830px) {
+    .collections .card {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 30%;
+              flex: 1 1 30%;
+      max-width: 30%; } }
+
 .section--listing-magazine {
   padding: 70px 0 140px 0;
   overflow: hidden;
   background: #E9E7E3; }
-
-.listing--magazine > .title {
-  font-size: 36px;
-  line-height: 1.2;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 70px; }
+  .section--listing-magazine > .container > .row > div > .title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 70px; }
 
 .listing--magazine .inner {
   display: -webkit-box;
@@ -9645,10 +9991,6 @@ layout {
     /* Non-prefixed version, currently supported by Chrome and Opera */ }
     .listing--magazine .inner .card:last-child {
       margin-right: 0; }
-
-.listing--magazine .card__body {
-  padding: 35px;
-  background: white; }
 
 @media (min-width: 1024px) {
   .listing--magazine .inner {
@@ -9704,34 +10046,8 @@ layout {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently supported by Chrome and Opera */ }
-  .listing--collections .inner .card {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently supported by Chrome and Opera */ }
-    .listing--collections .inner .card:last-child {
-      margin-right: 0; }
-
-.listing--collections .card__body {
-  padding: 35px;
-  background: #F5F5F5; }
+  .listing--collections .inner .card:last-child {
+    margin-right: 0; }
 
 @media (min-width: 1024px) {
   .listing--collections .inner {
@@ -9761,13 +10077,19 @@ layout {
   padding: 70px 0 140px 0;
   overflow: hidden;
   background: #E9E7E3; }
-
-.listing--projects > .title {
-  font-size: 36px;
-  line-height: 1.2;
-  font-weight: 500;
-  text-align: center;
-  margin-bottom: 70px; }
+  .section--listing-projects .container > .row > div > .title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 70px; }
+  .section--listing-projects.variant-02 {
+    background: none; }
+    .section--listing-projects.variant-02 .container > .row > div > .title {
+      font-size: 42px;
+      font-weight: var(--font-light);
+      margin-bottom: 35px;
+      text-align: left; }
 
 .listing--projects .inner {
   display: -webkit-box;
@@ -9787,74 +10109,8 @@ layout {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently supported by Chrome and Opera */ }
-  .listing--projects .inner .card {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 100%;
-            flex: 0 0 100%;
-    -webkit-touch-callout: none;
-    /* iOS Safari */
-    -webkit-user-select: none;
-    /* Safari */
-    /* Konqueror HTML */
-    -moz-user-select: none;
-    /* Firefox */
-    -ms-user-select: none;
-    /* Internet Explorer/Edge */
-    user-select: none;
-    /* Non-prefixed version, currently supported by Chrome and Opera */ }
-    .listing--projects .inner .card:last-child {
-      margin-right: 0; }
-
-.listing--projects .group--overlay {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 35px;
-  font-family: "Stanley", serif;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  opacity: 0;
-  -webkit-transition: opacity ease-in-out 350ms;
-  transition: opacity ease-in-out 350ms; }
-
-.listing--projects .card:hover .group--overlay {
-  opacity: 1; }
-
-.listing--projects .group--info:last-child {
-  margin-bottom: 0; }
-
-.listing--projects .group--info__title {
-  font-size: 18px;
-  margin-bottom: 10px; }
-
-.listing--projects .group--info__abstract {
-  font-size: 16px; }
-
-.listing--projects .card__body {
-  padding: 35px;
-  background: #C9C1BF; }
-  .listing--projects .card__body .title {
-    font-size: 24px;
-    line-height: 1.125; }
+  .listing--projects .inner .card:last-child {
+    margin-right: 0; }
 
 @media (min-width: 1024px) {
   .listing--projects .inner {
@@ -9883,6 +10139,9 @@ layout {
 .section--news {
   padding: 140px 0;
   overflow: hidden; }
+  @media (max-width: 1023.98px) {
+    .section--news {
+      padding: 30px 0; } }
 
 .listing--news {
   background: white; }
@@ -9945,17 +10204,18 @@ layout {
 .listing--scrollbar {
   position: relative;
   height: 140px; }
-  .listing--scrollbar__track {
+  .listing--scrollbar .listing--scrollbar__track {
     position: absolute;
     width: 100%;
     height: 4px;
     background: #232120;
     bottom: 8px; }
-  .listing--scrollbar__thumb {
+  .listing--scrollbar .listing--scrollbar__thumb {
     position: absolute;
     bottom: 10px;
-    left: 40px; }
-    .listing--scrollbar__thumb:before {
+    left: 40px;
+    cursor: pointer; }
+    .listing--scrollbar .listing--scrollbar__thumb:before {
       content: '';
       display: block;
       position: absolute;
@@ -9968,6 +10228,9 @@ layout {
       border-radius: 50%;
       -webkit-box-sizing: border-box;
               box-sizing: border-box; }
+  @media (max-width: 1023.98px) {
+    .listing--scrollbar {
+      height: 70px; } }
 
 .section--listing-gallery {
   overflow: hidden; }
@@ -9996,14 +10259,19 @@ layout {
 .section--listing-decors {
   padding: 70px 0 70px 0;
   overflow: hidden; }
-
-.listing--decors > .title {
-  osition: relative;
-  text-align: center;
-  margin-bottom: 35px;
-  line-height: 1.2;
-  color: #232120;
-  font-weight: 300; }
+  .section--listing-decors > .container > .row > div > .title {
+    osition: relative;
+    text-align: center;
+    margin-bottom: 35px;
+    line-height: 1.2;
+    color: #232120;
+    font-weight: 300; }
+  @media (min-width: 860px) {
+    .section--listing-decors > .container > .row > div > .title {
+      font-size: 48px; } }
+  @media (max-width: 859.98px) {
+    .section--listing-decors > .container > .row > div > .title {
+      font-size: 42px; } }
 
 .listing--decors .inner {
   display: -webkit-box;
@@ -10048,14 +10316,6 @@ layout {
     .listing--decors .inner .card:last-child {
       margin-right: 0; }
 
-@media (min-width: 860px) {
-  .listing--decors > .title {
-    font-size: 48px; } }
-
-@media (max-width: 859.98px) {
-  .listing--decors > .title {
-    font-size: 42px; } }
-
 @media (min-width: 1024px) {
   .listing--decors .inner {
     width: 45%; }
@@ -10086,23 +10346,258 @@ layout {
     .listing--decors .inner .card {
       margin-right: 33.33333%; } }
 
-.card--decors > .card__body {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding-top: 25px;
-  padding-bottom: 25px; }
-  .card--decors > .card__body > .title {
+.section--slider-projects {
+  padding: 70px 0 140px 0;
+  overflow: hidden;
+  background: #E9E7E3; }
+  .section--slider-projects .container > .row > div > .title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 500;
     text-align: center;
-    color: #232120;
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: 0.02em; }
-  .card--decors > .card__body > .abstract {
+    margin-bottom: 70px; }
+  .section--slider-projects.variant-02 {
+    background: none; }
+    .section--slider-projects.variant-02 .container > .row > div > .title {
+      font-size: 42px;
+      font-weight: var(--font-light);
+      margin-bottom: 35px;
+      text-align: left; }
+
+.slider--projects {
+  overflow: hidden; }
+  .slider--projects .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */ }
+    .slider--projects .inner .card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 100%;
+              flex: 0 0 100%;
+      -webkit-touch-callout: none;
+      /* iOS Safari */
+      -webkit-user-select: none;
+      /* Safari */
+      /* Konqueror HTML */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* Internet Explorer/Edge */
+      user-select: none;
+      /* Non-prefixed version, currently supported by Chrome and Opera */ }
+      .slider--projects .inner .card:last-child {
+        margin-right: 0; }
+  @media (min-width: 1024px) {
+    .slider--projects .inner {
+      width: 45%; }
+      .slider--projects .inner .card {
+        margin-right: 22.22222%; } }
+  @media (min-width: 1440px) {
+    .slider--projects .inner {
+      width: 30%; }
+      .slider--projects .inner .card {
+        margin-right: 16.66667%; } }
+  @media (min-width: 1830px) {
+    .slider--projects .inner {
+      width: 30%; }
+      .slider--projects .inner .card {
+        margin-right: 16.66667%; } }
+  @media (max-width: 1023.98px) {
+    .slider--projects .inner {
+      width: 100%; }
+      .slider--projects .inner .card {
+        margin-right: 33.33333%; } }
+
+.section--slider-collections {
+  padding: 70px 0 140px 0;
+  overflow: hidden;
+  background: #E9E7E3; }
+  .section--slider-collections .container > .row > div > .title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 500;
     text-align: center;
+    margin-bottom: 70px; }
+  .section--slider-collections.variant-02 {
+    background: none; }
+    .section--slider-collections.variant-02 .container > .row > div > .title {
+      font-size: 42px;
+      font-weight: var(--font-light);
+      margin-bottom: 35px;
+      text-align: left; }
+  @media (max-width: 1023.98px) {
+    .section--slider-collections {
+      padding: 70px 0 35px 0; }
+      .section--slider-collections .container > .row > div > .title {
+        margin-bottom: 35px; } }
+
+.slider--collections {
+  overflow: hidden; }
+  .slider--collections .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */ }
+    .slider--collections .inner .card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 100%;
+              flex: 0 0 100%;
+      -webkit-touch-callout: none;
+      /* iOS Safari */
+      -webkit-user-select: none;
+      /* Safari */
+      /* Konqueror HTML */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* Internet Explorer/Edge */
+      user-select: none;
+      /* Non-prefixed version, currently supported by Chrome and Opera */ }
+      .slider--collections .inner .card:last-child {
+        margin-right: 0; }
+  @media (min-width: 1024px) {
+    .slider--collections .inner {
+      width: 45%; }
+      .slider--collections .inner .card {
+        margin-right: 22.22222%; } }
+  @media (min-width: 1440px) {
+    .slider--collections .inner {
+      width: 30%; }
+      .slider--collections .inner .card {
+        margin-right: 16.66667%; } }
+  @media (min-width: 1830px) {
+    .slider--collections .inner {
+      width: 30%; }
+      .slider--collections .inner .card {
+        margin-right: 16.66667%; } }
+  @media (max-width: 1023.98px) {
+    .slider--collections .inner {
+      width: 100%; }
+      .slider--collections .inner .card {
+        margin-right: 33.33333%; } }
+
+.section--slider-decors {
+  padding: 70px 0 70px 0;
+  overflow: hidden; }
+  .section--slider-decors > .container > .row > div > .title {
+    osition: relative;
+    text-align: center;
+    margin-bottom: 35px;
+    line-height: 1.2;
     color: #232120;
-    font-size: 21px;
-    letter-spacing: 0.02em; }
+    font-weight: 300; }
+  @media (min-width: 860px) {
+    .section--slider-decors > .container > .row > div > .title {
+      font-size: 48px; } }
+  @media (max-width: 859.98px) {
+    .section--slider-decors > .container > .row > div > .title {
+      font-size: 42px; } }
+
+.slider--decors {
+  overflow: hidden; }
+  .slider--decors .inner {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */ }
+    .slider--decors .inner .card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 100%;
+              flex: 0 0 100%;
+      -webkit-touch-callout: none;
+      /* iOS Safari */
+      -webkit-user-select: none;
+      /* Safari */
+      /* Konqueror HTML */
+      -moz-user-select: none;
+      /* Firefox */
+      -ms-user-select: none;
+      /* Internet Explorer/Edge */
+      user-select: none;
+      /* Non-prefixed version, currently supported by Chrome and Opera */ }
+      .slider--decors .inner .card:last-child {
+        margin-right: 0; }
+  @media (min-width: 1024px) {
+    .slider--decors .inner {
+      width: 45%; }
+      .slider--decors .inner .card {
+        margin-right: 22.22222%; } }
+  @media (min-width: 1440px) {
+    .slider--decors .inner {
+      width: 30%; }
+      .slider--decors .inner .card {
+        margin-right: 16.66667%; } }
+  @media (min-width: 1830px) {
+    .slider--decors .inner {
+      width: 30%; }
+      .slider--decors .inner .card {
+        margin-right: 16.66667%; } }
+  @media (max-width: 1023.98px) {
+    .slider--decors .inner {
+      width: 100%; }
+      .slider--decors .inner .card {
+        margin-right: 33.33333%; } }
 
 @media (max-width: 859.98px) {
   .hidden-xs-down {
@@ -10141,6 +10636,66 @@ layout {
 @media (min-width: 1830px) {
   .hidden-xl-up {
     display: none !important; } }
+
+.background--01,
+.background--01 .background:before {
+  background: none; }
+
+.background--02,
+.background--02 .background:before {
+  background: #D6D0C8; }
+
+.background--03,
+.background--03 .background:before {
+  background: none; }
+
+.background--04,
+.background--04 .background:before {
+  background: none; }
+
+.background--05,
+.background--05 .background:before {
+  background: none; }
+
+.background--06,
+.background--06 .background:before {
+  background: none; }
+
+.background--07,
+.background--07 .background:before {
+  background: none; }
+
+.background--08,
+.background--08 .background:before {
+  background: none; }
+
+.background--09,
+.background--09 .background:before {
+  background: none; }
+
+.background--10,
+.background--10 .background:before {
+  background: none; }
+
+.background--11,
+.background--11 .background:before {
+  background: none; }
+
+.background--12,
+.background--12 .background:before {
+  background: none; }
+
+.background--13,
+.background--13 .background:before {
+  background: none; }
+
+.background--14,
+.background--14 .background:before {
+  background: none; }
+
+.background--15,
+.background--15 .background:before {
+  background: #908F8F; }
 
 .debug {
   border: 100px solid red; }
