@@ -40,6 +40,9 @@
     .page {
       padding: 0; } }
 
+ng-include {
+  display: block; }
+
 .wrapper {
   /*
 	&:before {
@@ -8096,7 +8099,10 @@ canvas {
            object-fit: cover; }
     .section--header .brand .icon--lea-ceramiche {
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
   .section--header .icon--wishlist {
     width: 16px;
     height: 14px; }
@@ -8123,11 +8129,16 @@ canvas {
 
 .section--header-fixed {
   -webkit-transition: all ease-in-out 350ms;
-  transition: all ease-in-out 350ms; }
+  transition: all ease-in-out 350ms;
+  /*
+	.scrolled-down & {
+		transform: translateY(-100%);
+	}
+	*/ }
   @media (min-width: 1024px) {
     .section--header-fixed {
       position: fixed; } }
-  .scrolled-down .section--header-fixed {
+  .scrolled .section--header-fixed {
     -webkit-transform: translateY(-100%);
             transform: translateY(-100%); }
   .scrolled .section--header-fixed .inner {
@@ -8760,7 +8771,10 @@ footer .inner {
            object-fit: cover; }
     .section--footer .brand .icon--lea-ceramiche {
       width: 100%;
-      height: 100%; }
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
   .section--footer .nav--footer {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

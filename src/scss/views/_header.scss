@@ -88,6 +88,9 @@
 		.icon--lea-ceramiche {
 			width: 100%;
 			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 	}
 
@@ -137,7 +140,13 @@
 		position: fixed;
 	}
 
+	/*
 	.scrolled-down & {
+		transform: translateY(-100%);
+	}
+	*/
+
+	.scrolled & {
 		transform: translateY(-100%);
 	}
 
