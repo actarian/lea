@@ -73,11 +73,17 @@ layout {
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
+		margin-right: 10px;
+
+		&:last-child {
+			margin-right: 0;
+		}
 	}
 
 	.icon {
 		width: 70px;
 		height: 70px;
+		max-width: 100%;
 		margin-bottom: 10px;
 	}
 
@@ -234,12 +240,16 @@ layout {
 	align-items: center;
 	flex-wrap: wrap;
 	width: 100%;
+	max-width: 1120px;
+	margin: 0 auto;
 
 	.item {
 		margin: 20px;
+		min-width: 80px;
 
 		img {
-			max-height: 80px;
+			max-height: 90px;
+			max-width: 80px;
 		}
 	}
 

@@ -7021,8 +7021,12 @@ canvas {
   .card--collections .group--info__abstract {
     font-size: 16px; }
   @media (max-width: 1023.98px) {
-    .card--collections .card__body > .title {
-      font-size: 27px; } }
+    .card--collections .group--overlay {
+      padding: 20px; }
+    .card--collections .card__body {
+      padding: 20px 20px 35px 20px; }
+      .card--collections .card__body > .title {
+        font-size: 27px; } }
 
 .card--decors > .card__body {
   -webkit-box-pack: start;
@@ -8159,10 +8163,13 @@ canvas {
   @media (max-width: 1023.98px) {
     .section--header .brand {
       max-width: 22%;
-      min-width: 68px; }
-      .section--header .brand .icon--lea-ceramiche {
-        width: 100%;
-        height: auto; } }
+      min-width: 68px;
+      /*
+			.icon--lea-ceramiche {
+				width: 100%;
+				height: auto;
+			}
+			*/ } }
   @media (max-width: 859.98px) {
     .section--header {
       -webkit-transition: background ease-in-out 350ms;
@@ -9330,10 +9337,14 @@ layout {
             justify-content: space-between;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center; }
+            align-items: center;
+    margin-right: 10px; }
+    .nav--features li:last-child {
+      margin-right: 0; }
   .nav--features .icon {
     width: 70px;
     height: 70px;
+    max-width: 100%;
     margin-bottom: 10px; }
   .nav--features .number {
     font-size: 16px;
@@ -9460,11 +9471,15 @@ layout {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%; }
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto; }
   .group--certifications .item {
-    margin: 20px; }
+    margin: 20px;
+    min-width: 80px; }
     .group--certifications .item img {
-      max-height: 80px; }
+      max-height: 90px;
+      max-width: 80px; }
   @media (max-width: 1023.98px) {
     .group--certifications {
       -webkit-box-pack: center;

@@ -106,9 +106,15 @@
 		}
 	}
 
-
 	@include media-down(sm) {
+
+		.group--overlay {
+			padding: 20px;
+		}
+
 		.card__body {
+			padding: 20px 20px 35px 20px;
+
 			&>.title {
 				font-size: 27px;
 			}
