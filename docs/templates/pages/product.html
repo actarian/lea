@@ -142,7 +142,7 @@
 				<div class="listing--colors" ng-controller="ColorsCtrl as colorsCtrl">
 					<div class="title">Colori</div>
 					<div class="group--colors">
-						<div class="card card--color" ng-click="colorsCtrl.onToggle(0)">
+						<div class="card card--color" ng-click="colorsCtrl.onToggle(0, $event)">
 							<div class="picture" appear>
 								<img src="img/product/color-01.jpg" alt="title" />
 							</div>
@@ -157,7 +157,7 @@
 							</div>
 							<ng-include src="'templates/shared/product-detail.html'"></ng-include>
 						</div>
-						<div class="card card--color" ng-click="colorsCtrl.onToggle(1)">
+						<div class="card card--color" ng-click="colorsCtrl.onToggle(1, $event)">
 							<div class="picture" appear>
 								<img src="img/product/color-02.jpg" alt="title" />
 							</div>
@@ -172,7 +172,7 @@
 							</div>
 							<ng-include src="'templates/shared/product-detail.html'"></ng-include>
 						</div>
-						<div class="card card--color" ng-click="colorsCtrl.onToggle(2)">
+						<div class="card card--color" ng-click="colorsCtrl.onToggle(2, $event)">
 							<div class="picture" appear>
 								<img src="img/product/color-03.jpg" alt="title" />
 							</div>
@@ -187,7 +187,7 @@
 							</div>
 							<ng-include src="'templates/shared/product-detail.html'"></ng-include>
 						</div>
-						<div class="card card--color" ng-click="colorsCtrl.onToggle(3)">
+						<div class="card card--color" ng-click="colorsCtrl.onToggle(3, $event)">
 							<div class="picture" appear>
 								<img src="img/product/color-04.jpg" alt="title" />
 							</div>
@@ -202,7 +202,7 @@
 							</div>
 							<ng-include src="'templates/shared/product-detail.html'"></ng-include>
 						</div>
-						<div class="card card--color" ng-click="colorsCtrl.onToggle(4)">
+						<div class="card card--color" ng-click="colorsCtrl.onToggle(4, $event)">
 							<div class="picture" appear>
 								<img src="img/product/color-05.jpg" alt="title" />
 							</div>

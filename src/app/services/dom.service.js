@@ -321,6 +321,10 @@ export default class DomService {
 		return style.sheet;
 	}
 
+	isDescendantOf(node, target) {
+		return DomService.isDescendantOf(node, target);
+	}
+
 	get agent() {
 		return DomService.agent || DomService.detect();
 	}
@@ -408,6 +412,17 @@ export default class DomService {
 		document.addEventListener('scroll', onScroll);
 		*/
 	}
+
+	static isDescendantOf(node, target) {
+		if (node === document) {
+			return false;
+		}
+		if (node === target) {
+			return true;
+		} else if (node.parentNode) {
+			return this.isDescendantOf(node.parentNode, target);
+		}
+	}
 }
 
 DomService.factory.$inject = [];
@@ -453,5 +468,4 @@ DomService.scroll$ = function() {
 		startWith(event)
 	);
 }();
-
 DomService.scrollAndRect$ = combineLatest(DomService.scroll$, DomService.windowRect$);

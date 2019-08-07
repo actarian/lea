@@ -7127,6 +7127,8 @@ canvas {
       letter-spacing: 0.02em;
       line-height: 1.2;
       margin-bottom: 70px; }
+  .card--color .listing--scrollbar {
+    height: 40px; }
   .card--color:not(.active):hover .card__body > .abstract {
     opacity: 1; }
   .card--color.active .card__body:before {
@@ -9391,6 +9393,8 @@ layout {
 
 .group--feature {
   margin-bottom: 100px; }
+  .group--feature:last-child {
+    margin-bottom: 0; }
   .group--feature > .title {
     color: #232120;
     font-size: 24px;
@@ -10578,27 +10582,36 @@ layout {
 .section--listing-gallery {
   overflow: hidden; }
 
-/*
-.listing--gallery {
+.listing--gallery .inner {
+  white-space: nowrap;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+  .listing--gallery .inner .picture {
+    display: inline-block;
+    margin-right: 35px;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */ }
+    .listing--gallery .inner .picture:last-child {
+      margin-right: 0; }
 
-	.inner {
-		white-space: nowrap;
-
-		.picture {
-			display: inline-block;
-			margin-right: 35px;
-			@include _selectNone();
-
-			&:last-child {
-				margin-right: 0;
-			}
-		}
-
-		@include _selectNone();
-	}
-
-}
-*/
 .section--listing-decors {
   padding: 70px 0 70px 0;
   overflow: hidden; }

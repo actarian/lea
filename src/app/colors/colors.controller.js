@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 
-import Rect from "../shared/rect";
+import DomService from '../services/dom.service';
+import Rect from '../shared/rect';
 
 class ColorsCtrl {
 
@@ -10,7 +11,6 @@ class ColorsCtrl {
 	) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
-
 		this.onWindowResize = this.onWindowResize.bind(this);
 		window.addEventListener('resize', this.onWindowResize);
 		$scope.$on('$destroy', () => {
@@ -36,8 +36,14 @@ class ColorsCtrl {
 		}
 	}
 
-	onToggle(active) {
+	onToggle(active, event) {
 		if (this.active === active) {
+			const colors = [...document.querySelectorAll('.group--colors > .card--color')];
+			const color = colors[this.active];
+			const detail = color.querySelector('.card__detail');
+			if (DomService.isDescendantOf(event.target, detail)) {
+				return;
+			}
 			this.onClose();
 			this.active = undefined;
 		} else {

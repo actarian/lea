@@ -31,11 +31,12 @@ export default class ScrollableDirective {
 
 	scrollable$(node, scrollable, scrollableInner, scrollableTrack, scrollableThumb, friction = 10) {
 		// const pow$ = new BehaviorSubject(0);
+		const computedStyle = window.getComputedStyle(scrollableThumb);
 		let pow = 0,
 			down, move = 0,
 			x = 0,
 			target,
-			offset = parseInt(scrollableThumb.offsetLeft);
+			offset = parseInt(computedStyle.left);
 		const onMove = ($move) => {
 			const width = scrollableTrack.offsetWidth - offset * 2;
 			move = Math.max(0, Math.min(width, $move));
@@ -48,6 +49,11 @@ export default class ScrollableDirective {
 			// console.log('down', e);
 			target = e.target;
 			down = move;
+			/*
+			e.originalEvent.preventDefault();
+			e.originalEvent.stopPropagation();
+			e.originalEvent.stopImmediatePropagation();
+			*/
 		}, (e) => {
 			// console.log('move', e);
 			let distance = e.distance.x;
@@ -59,6 +65,11 @@ export default class ScrollableDirective {
 			onMove(down + distance);
 		}, (e) => {
 			// console.log('up', e.originalEvent);
+			/*
+			e.originalEvent.preventDefault();
+			e.originalEvent.stopPropagation();
+			e.originalEvent.stopImmediatePropagation();
+			*/
 		});
 
 		/*

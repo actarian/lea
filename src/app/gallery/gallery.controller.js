@@ -1,7 +1,7 @@
 ﻿/* jshint esversion: 6 */
 
 import { GALLERY_TYPES } from '../directives/gallery-item.directive';
-import Rect from '../shared/rect';
+// import Rect from '../shared/rect';
 
 class GalleryCtrl {
 
@@ -29,6 +29,7 @@ class GalleryCtrl {
 				node.setAttribute('style', '');
 				setTimeout(() => {
 					// video ???
+					/*
 					const items = [...node.querySelectorAll('.picture')];
 					const item = items[$scope.$root.galleryIndex];
 					// console.log(items, item, $scope.$root.galleryIndex);
@@ -36,6 +37,7 @@ class GalleryCtrl {
 						const rect = Rect.fromNode(item);
 						node.scrollTo(0, rect.top - 70);
 					}
+					*/
 				}, 1500);
 			}
 		});

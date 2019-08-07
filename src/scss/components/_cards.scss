@@ -282,6 +282,10 @@
 		}
 	}
 
+	.listing--scrollbar {
+		height: 40px;
+	}
+
 	&:not(.active):hover {
 		.card__body {
 			&>.abstract {

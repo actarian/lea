@@ -21484,6 +21484,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _dom = _interopRequireDefault(require("../services/dom.service"));
+
 var _rect = _interopRequireDefault(require("../shared/rect"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -21550,8 +21552,17 @@ function () {
     }
   }, {
     key: "onToggle",
-    value: function onToggle(active) {
+    value: function onToggle(active, event) {
       if (this.active === active) {
+        var colors = _toConsumableArray(document.querySelectorAll('.group--colors > .card--color'));
+
+        var color = colors[this.active];
+        var detail = color.querySelector('.card__detail');
+
+        if (_dom.default.isDescendantOf(event.target, detail)) {
+          return;
+        }
+
         this.onClose();
         this.active = undefined;
       } else {
@@ -21681,7 +21692,7 @@ ColorsCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'
 var _default = ColorsCtrl;
 exports.default = _default;
 
-},{"../shared/rect":253}],203:[function(require,module,exports){
+},{"../services/dom.service":248,"../shared/rect":253}],203:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23943,12 +23954,13 @@ function () {
 
       var friction = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 10;
       // const pow$ = new BehaviorSubject(0);
+      var computedStyle = window.getComputedStyle(scrollableThumb);
       var pow = 0,
           down,
           move = 0,
           x = 0,
           target,
-          offset = parseInt(scrollableThumb.offsetLeft);
+          offset = parseInt(computedStyle.left);
 
       var onMove = function onMove($move) {
         var width = scrollableTrack.offsetWidth - offset * 2;
@@ -23963,6 +23975,11 @@ function () {
         // console.log('down', e);
         target = e.target;
         down = move;
+        /*
+        e.originalEvent.preventDefault();
+        e.originalEvent.stopPropagation();
+        e.originalEvent.stopImmediatePropagation();
+        */
       }, function (e) {
         // console.log('move', e);
         var distance = e.distance.x; // console.log(target === scrollableThumb);
@@ -23974,6 +23991,12 @@ function () {
 
         onMove(down + distance);
       }, function (e) {// console.log('up', e.originalEvent);
+
+        /*
+        e.originalEvent.preventDefault();
+        e.originalEvent.stopPropagation();
+        e.originalEvent.stopImmediatePropagation();
+        */
       });
       /*
       node.addEventListener('mousewheel', (e) => {
@@ -25652,24 +25675,13 @@ exports.default = void 0;
 
 var _galleryItem = require("../directives/gallery-item.directive");
 
-var _rect = _interopRequireDefault(require("../shared/rect"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+// import Rect from '../shared/rect';
 var GalleryCtrl =
 /*#__PURE__*/
 function () {
@@ -25693,17 +25705,17 @@ function () {
       ease: Power2.easeInOut,
       onComplete: function onComplete() {
         node.setAttribute('style', '');
-        setTimeout(function () {
-          // video ???
-          var items = _toConsumableArray(node.querySelectorAll('.picture'));
+        setTimeout(function () {// video ???
 
-          var item = items[$scope.$root.galleryIndex]; // console.log(items, item, $scope.$root.galleryIndex);
-
+          /*
+          const items = [...node.querySelectorAll('.picture')];
+          const item = items[$scope.$root.galleryIndex];
+          // console.log(items, item, $scope.$root.galleryIndex);
           if (item) {
-            var rect = _rect.default.fromNode(item);
-
-            node.scrollTo(0, rect.top - 70);
+          	const rect = Rect.fromNode(item);
+          	node.scrollTo(0, rect.top - 70);
           }
+          */
         }, 1500);
       }
     });
@@ -25741,7 +25753,7 @@ GalleryCtrl.$inject = ['$scope', '$timeout', '$element'];
 var _default = GalleryCtrl;
 exports.default = _default;
 
-},{"../directives/gallery-item.directive":207,"../shared/rect":253}],240:[function(require,module,exports){
+},{"../directives/gallery-item.directive":207}],240:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27157,6 +27169,11 @@ function () {
       return style.sheet;
     }
   }, {
+    key: "isDescendantOf",
+    value: function isDescendantOf(node, target) {
+      return DomService.isDescendantOf(node, target);
+    }
+  }, {
     key: "ready",
     get: function get() {
       return this.ready_;
@@ -27269,6 +27286,19 @@ function () {
       };
       document.addEventListener('scroll', onScroll);
       */
+    }
+  }, {
+    key: "isDescendantOf",
+    value: function isDescendantOf(node, target) {
+      if (node === document) {
+        return false;
+      }
+
+      if (node === target) {
+        return true;
+      } else if (node.parentNode) {
+        return this.isDescendantOf(node.parentNode, target);
+      }
     }
   }]);
 
