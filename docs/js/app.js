@@ -26468,6 +26468,7 @@ function () {
       _this.wishlistCount = count;
     });
     this.loadingAnimation();
+    this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onPrimaryDroppedIn = this.onPrimaryDroppedIn.bind(this);
     this.onPrimaryDroppedOut = this.onPrimaryDroppedOut.bind(this);
     this.onSecondaryDroppedIn = this.onSecondaryDroppedIn.bind(this);
@@ -26514,6 +26515,43 @@ function () {
         }, 100);
         */
       });
+    }
+  }, {
+    key: "onMenuToggle",
+    value: function onMenuToggle() {
+      this.menuOpened = !this.menuOpened;
+
+      if (this.menuOpened) {
+        var primary = document.querySelector('.nav--primary');
+
+        var items = _toConsumableArray(primary.querySelectorAll('li')).filter(function (x) {
+          return x.parentNode === primary;
+        });
+
+        TweenMax.set(items, {
+          opacity: 0
+        });
+        items.forEach(function (x, i) {
+          var s = x.querySelector('a, span');
+          TweenMax.set(s, {
+            x: '-100%',
+            transition: 'none'
+          });
+          TweenMax.to(x, 0.8, {
+            opacity: 1,
+            delay: 0.1 + 0.08 * i,
+            ease: Power2.easeInOut,
+            onUpdate: function onUpdate() {
+              TweenMax.set(s, {
+                x: "".concat((1 - x.style.opacity) * -100, "%")
+              });
+            },
+            onComplete: function onComplete() {
+              s.removeAttribute('style');
+            }
+          });
+        });
+      }
     }
   }, {
     key: "onPrimaryDroppedIn",
