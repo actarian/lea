@@ -3748,7 +3748,6 @@ Keyframe
     padding-top: 100%;
     overflow: hidden; }
     .picture--square > .media img,
-    .picture--square > .media svg,
     .picture--square > .media video,
     .picture--square > .media canvas,
     .picture--square > .media ng-transclude {
@@ -3771,7 +3770,6 @@ Keyframe
     padding-top: 132.35294%;
     overflow: hidden; }
     .picture--vertical > .media img,
-    .picture--vertical > .media svg,
     .picture--vertical > .media video,
     .picture--vertical > .media canvas,
     .picture--vertical > .media ng-transclude {
@@ -3794,7 +3792,6 @@ Keyframe
     padding-top: 57.51634%;
     overflow: hidden; }
     .picture--horizontal > .media img,
-    .picture--horizontal > .media svg,
     .picture--horizontal > .media video,
     .picture--horizontal > .media canvas,
     .picture--horizontal > .media ng-transclude {
@@ -3812,7 +3809,6 @@ Keyframe
       padding-top: 164.86486%;
       overflow: hidden; }
       .section--full .picture--horizontal:not([video]) > .media img,
-      .section--full .picture--horizontal:not([video]) > .media svg,
       .section--full .picture--horizontal:not([video]) > .media video,
       .section--full .picture--horizontal:not([video]) > .media canvas,
       .section--full .picture--horizontal:not([video]) > .media ng-transclude {
@@ -3832,7 +3828,6 @@ Keyframe
   padding-top: 66.73961%;
   overflow: hidden; }
   .picture--with-category img,
-  .picture--with-category svg,
   .picture--with-category video,
   .picture--with-category canvas,
   .picture--with-category ng-transclude {
@@ -6960,7 +6955,6 @@ canvas {
     padding-top: 66.66667%;
     overflow: hidden; }
     .card--collections .picture img,
-    .card--collections .picture svg,
     .card--collections .picture video,
     .card--collections .picture canvas,
     .card--collections .picture ng-transclude {
@@ -6980,6 +6974,49 @@ canvas {
       font-weight: var(--font-semibold);
       text-align: left;
       margin-bottom: 15px; }
+  .card--collections .group--overlay {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    font-family: var(--font-secondary);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    opacity: 0;
+    -webkit-transition: opacity ease-in-out 350ms;
+    transition: opacity ease-in-out 350ms; }
+  .card--collections:hover .group--overlay {
+    opacity: 1; }
+  .card--collections .group--info:last-child {
+    margin-bottom: 0; }
+  .card--collections .group--info__protect {
+    font-size: 0;
+    margin-bottom: 10px; }
+    .card--collections .group--info__protect .icon--protect {
+      width: 96px;
+      height: 10px;
+      fill: white; }
+  .card--collections .group--info__data {
+    font-size: 16px;
+    line-height: 1.2;
+    font-family: var(--font-primary); }
+  .card--collections .group--info__title {
+    font-size: 18px;
+    margin-bottom: 10px; }
+  .card--collections .group--info__abstract {
+    font-size: 16px; }
   @media (max-width: 1023.98px) {
     .card--collections .card__body > .title {
       font-size: 27px; } }
@@ -7170,7 +7207,6 @@ canvas {
     -webkit-transition: all ease-in-out 400ms;
     transition: all ease-in-out 400ms; }
     .listing--tiles > .listing__item .picture img,
-    .listing--tiles > .listing__item .picture svg,
     .listing--tiles > .listing__item .picture video,
     .listing--tiles > .listing__item .picture canvas,
     .listing--tiles > .listing__item .picture ng-transclude {
@@ -8092,7 +8128,6 @@ canvas {
       padding-top: 40%;
       overflow: hidden; }
       .section--header .brand .aspect img,
-      .section--header .brand .aspect svg,
       .section--header .brand .aspect video,
       .section--header .brand .aspect canvas,
       .section--header .brand .aspect ng-transclude {
@@ -8757,7 +8792,6 @@ footer .inner {
       padding-top: 40%;
       overflow: hidden; }
       .section--footer .brand .aspect img,
-      .section--footer .brand .aspect svg,
       .section--footer .brand .aspect video,
       .section--footer .brand .aspect canvas,
       .section--footer .brand .aspect ng-transclude {
