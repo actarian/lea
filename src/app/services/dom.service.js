@@ -160,15 +160,23 @@ export default class DomService {
 		let first = true;
 		return this.raf$().pipe(
 			map(() => {
-				const outerHeight = this.getOuterHeight(node);
-				if (parseInt(target.style.height) !== outerHeight) {
-					target.style = `height: ${outerHeight}px`;
+				// const outerHeight = this.getOuterHeight(node);
+				const innerHeight = node.lastElementChild.offsetTop + node.lastElementChild.offsetHeight;
+				if (parseInt(target.style.height) !== innerHeight) {
+					target.style = `height: ${innerHeight}px`;
 				}
 				const nodeTop = node.top || 0;
 				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));
+				const left = (node.parentNode.offsetWidth - node.offsetWidth) / 2;
+				if (node.left !== left) {
+					node.left = left;
+					node.style.left = `${left}px`;
+				}
 				if (node.top !== top) {
 					node.top = top;
-					node.style.transform = `translateX(-50%) translateY(${top}px)`;
+					// node.style.transform = `translateX(-50%) translateY(${top}px)`;
+					// node.style.top = `${top}px`;
+					node.scrollTop = -top;
 					first = false;
 					return top;
 				} else {

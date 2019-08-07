@@ -33,28 +33,28 @@ button {
 		align-items: center;
 
 		.icon--search {
-			width: 16px;
-			height: 16px;
+			width: 18px;
+			height: 20px;
 			line-height: 1;
-			fill: $primary;
 		}
 
-		.icon--close {
-			width: 20px;
-			height: 30px;
-			padding: 10px 10px 10px 0;
-			fill: $primary;
+		.icon--remove {
+			width: 8px;
+			height: 8px;
+			margin-right: 7px;
 		}
 
 		.value {
 			outline: none !important;
 			line-height: inherit;
+			font-weight: $font-extralight;
+			color: $foreground;
 		}
 
-		.icon--arrow-down {
+		.icon--caret-down {
 			position: absolute;
-			width: 13px;
-			height: 9px;
+			width: 16px;
+			height: 10px;
 			right: 15px;
 			top: 50%;
 			margin-top: -5px;
@@ -72,7 +72,7 @@ button {
 
 				&,
 				&::placeholder {
-					font-weight: $font-regular;
+					font-weight: $font-extralight;
 					color: $foreground;
 				}
 			}
@@ -180,7 +180,7 @@ $success: $blue;
 	border-bottom: 1px solid $foreground;
 	appearance: none;
 	font-size: 16px;
-	font-weight: $font-regular;
+	font-weight: $font-extralight;
 	background: $background;
 	color: $foreground-secondary;
 

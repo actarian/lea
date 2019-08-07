@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import HasDropdownDirective from "./has-dropdown.directive";
 
 export default class AutocompleteDirective {
@@ -21,8 +20,7 @@ export default class AutocompleteDirective {
 			<ul class="nav nav--select">
 				<li ng-repeat="item in items track by $index" ng-class="{ active: item.value == filter.value, disabled: item.disabled }">
 					<span class="option" ng-class="{ 'option--picture': item.image }" ng-click="setItem(item)">
-						<img ng-src="{{item.image}}" ng-if="item.image" />
-						<span ng-bind="item.label"></span>
+						<img ng-src="{{item.image}}" ng-if="item.image" /> <span class="icon--check" ng-if="!item.image"></span> <span ng-bind="item.label"></span>
 					</span>
 				</li>
 			</ul>
@@ -30,10 +28,10 @@ export default class AutocompleteDirective {
 		<label class="label" ng-bind="filter.label"></label>
 		<div class="control control--select" ng-class="{ selected: filter.value }">
 			<div class="input">
-				<svg class="icon icon--search" ng-if="!filter.value"><use xlink:href="#search"></use></svg>
-				<svg class="icon icon--close" ng-if="filter.value" ng-click="removeItem()"><use xlink:href="#close"></use></svg>
+				<svg class="icon icon--search" ng-if="!filter.value"><use xlink:href="#icon--search"></use></svg>
+				<svg class="icon icon--remove" ng-if="filter.value" ng-click="removeItem()"><use xlink:href="#icon--remove"></use></svg>
 				<input type="text" class="value" ng-model="autocomplete.query" ng-model-options="{ debounce: 200 }" ng-disabled="filter.value" placeholder="{{filter.placeholder}}" ng-change="onChange($event)" ng-click="onClick($event)"></input>
-				<svg class="icon icon--arrow-down"><use xlink:href="#arrow-down"></use></svg>
+				<svg class="icon icon--caret-down"><use xlink:href="#icon--caret-down"></use></svg>
 			</div>
 		</div>
 		`;

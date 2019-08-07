@@ -1,5 +1,6 @@
 ﻿/* jshint esversion: 6 */
 
+import CollectionsCtrl from './collections/collections.controller';
 import ColorsCtrl from './colors/colors.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
@@ -106,6 +107,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('zoomable', ZoomableDirective.factory);
 
 app.controller('RootCtrl', RootCtrl)
+	.controller('CollectionsCtrl', CollectionsCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl);
 

@@ -1,6 +1,7 @@
 @import 'fonts';
 @import 'mixins';
 
+@import 'components/page';
 @import 'components/reset';
 @import 'components/base';
 @import 'components/typography';
@@ -22,8 +23,8 @@
 @import 'components/distinct';
 @import 'components/share';
 @import 'components/slider';
+@import 'components/filters';
 
-@import 'views/page';
 @import 'views/header';
 @import 'views/footer';
 @import 'views/generics';

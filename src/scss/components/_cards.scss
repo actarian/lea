@@ -34,6 +34,10 @@
 	flex: 0 0 100%;
 	@include _selectNone();
 
+	.picture {
+		@include aspect-clip(420, 280);
+	}
+
 	.card__body {
 		padding: 35px;
 		background: #F5F5F5;
@@ -44,6 +48,14 @@
 			font-weight: $font-semibold;
 			text-align: left;
 			margin-bottom: 15px;
+		}
+	}
+
+	@include media-down(sm) {
+		.card__body {
+			&>.title {
+				font-size: 27px;
+			}
 		}
 	}
 }

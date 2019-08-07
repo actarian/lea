@@ -96,6 +96,14 @@ button,
 			}
 		}
 	}
+
+	@include media-down(sm) {
+		white-space: normal;
+
+		&>span {
+			font-size: 14px;
+		}
+	}
 }
 
 .btn--discover {
