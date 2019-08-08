@@ -53,9 +53,11 @@ export default class SliderDirective {
 		const slideToIndex = (index) => {
 			const x = -(outerWidth + gutter) * index;
 			if (x_ !== x) {
+				const distance = Math.abs(x_ - x);
+				const time = Math.min(2, distance / (outerWidth + gutter) * 0.7);
 				x_ = x;
 				// console.log(outerWidth, innerWidth, slides, index);
-				TweenMax.to(sliderInner, 0.7, {
+				TweenMax.to(sliderInner, time, {
 					x: x,
 					ease: Power2.easeInOut,
 					onComplete: () => {
@@ -99,6 +101,36 @@ export default class SliderDirective {
 			index = Array.from(sliderBullets.children).indexOf(event.target);
 			slideToIndex(index);
 		};
+		const onSnap = () => {
+			const children = [...sliderInner.children];
+			const newIndex = children.reduce((p, c, i) => {
+				const x = x_ * -1;
+				const prevLeft = children[index].offsetLeft;
+				const currLeft = c.offsetLeft;
+				const newDist = Math.abs(currLeft - x);
+				const prevDist = Math.abs(prevLeft - x);
+				if (newDist < prevDist) {
+					return i;
+				} else {
+					return p;
+				}
+			}, index);
+			index = newIndex;
+			slideToIndex(newIndex);
+		};
+		let down;
+		const draglistener = new DragListener(node, (e) => {
+			down = x_;
+		}, (e) => {
+			if (down !== undefined && Math.abs(e.distance.x) > Math.abs(e.distance.y)) {
+				const x = e.distance.x;
+				x_ = down + x;
+				TweenMax.set(sliderInner, { x: x_ });
+			}
+		}, (e) => {
+			down = undefined;
+			onSnap();
+		});
 		const addListeners = () => {
 			window.addEventListener('resize', onResize);
 			sliderLeft.addEventListener('click', onLeft);
@@ -125,7 +157,7 @@ export default class SliderDirective {
 			*/
 			scope.$on('destroy', () => {
 				removeListeners();
-				// draglistener.destroy();
+				draglistener.destroy();
 				// subscription.unsubscribe();
 			});
 		}
