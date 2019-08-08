@@ -45,25 +45,41 @@ export default class ScrollableDirective {
 			// pow$.next(pow);
 		};
 		const onSnap = () => {
+			/*
 			const firstChild = scrollableInner.firstElementChild;
 			const itemOuterWidth = this.domService.getOuterWidth(firstChild);
 			const itemWidth = firstChild.offsetWidth;
 			const gutter = itemOuterWidth - itemWidth;
-			const width = scrollableTrack.offsetWidth - offset * 2;
 			const newx = Math.round(-x / (itemWidth + gutter)) * (itemWidth + gutter);
-			const outerWidth = this.domService.getOuterWidth(scrollable);
-			const innerWidth = scrollableInner.lastElementChild.offsetLeft + this.domService.getOuterWidth(scrollableInner.lastElementChild);
-			let ePow = newx / (innerWidth - outerWidth);
-			ePow = Math.max(0, Math.min(1, ePow));
-			const item = { pow: pow };
-			TweenMax.to(item, 0.5, {
-				pow: ePow,
-				onUpdate: () => {
-					pow = item.pow;
-					TweenMax.set(scrollableThumb, { x: width * pow });
-				},
-				ease: Power2.easeInOut,
-			});
+			*/
+			const children = [...scrollableInner.children];
+			const newx = children.reduce((p, c, i) => {
+				const prevLeft = x * -1;
+				const currLeft = c.offsetLeft;
+				const newDist = Math.abs(currLeft - prevLeft);
+				const prevDist = Math.abs(p - prevLeft);
+				if (newDist < prevDist) {
+					return currLeft;
+				} else {
+					return p;
+				}
+			}, Number.POSITIVE_INFINITY);
+			if (newx !== Number.POSITIVE_INFINITY) {
+				const outerWidth = this.domService.getOuterWidth(scrollable);
+				const innerWidth = scrollableInner.lastElementChild.offsetLeft + this.domService.getOuterWidth(scrollableInner.lastElementChild);
+				let ePow = newx / (innerWidth - outerWidth);
+				ePow = Math.max(0, Math.min(1, ePow));
+				const item = { pow: pow };
+				const width = scrollableTrack.offsetWidth - offset * 2;
+				TweenMax.to(item, 0.5, {
+					pow: ePow,
+					onUpdate: () => {
+						pow = item.pow;
+						TweenMax.set(scrollableThumb, { x: width * pow });
+					},
+					ease: Power2.easeInOut,
+				});
+			}
 			// pow$.next(pow);
 		};
 

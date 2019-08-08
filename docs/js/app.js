@@ -23914,6 +23914,14 @@ var _drag = _interopRequireDefault(require("../shared/drag.listener"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -23972,34 +23980,51 @@ function () {
       };
 
       var onSnap = function onSnap() {
-        var firstChild = scrollableInner.firstElementChild;
+        /*
+        const firstChild = scrollableInner.firstElementChild;
+        const itemOuterWidth = this.domService.getOuterWidth(firstChild);
+        const itemWidth = firstChild.offsetWidth;
+        const gutter = itemOuterWidth - itemWidth;
+        const newx = Math.round(-x / (itemWidth + gutter)) * (itemWidth + gutter);
+        */
+        var children = _toConsumableArray(scrollableInner.children);
 
-        var itemOuterWidth = _this.domService.getOuterWidth(firstChild);
+        var newx = children.reduce(function (p, c, i) {
+          var prevLeft = x * -1;
+          var currLeft = c.offsetLeft;
+          var newDist = Math.abs(currLeft - prevLeft);
+          var prevDist = Math.abs(p - prevLeft);
 
-        var itemWidth = firstChild.offsetWidth;
-        var gutter = itemOuterWidth - itemWidth;
-        var width = scrollableTrack.offsetWidth - offset * 2;
-        var newx = Math.round(-x / (itemWidth + gutter)) * (itemWidth + gutter);
+          if (newDist < prevDist) {
+            return currLeft;
+          } else {
+            return p;
+          }
+        }, Number.POSITIVE_INFINITY);
 
-        var outerWidth = _this.domService.getOuterWidth(scrollable);
+        if (newx !== Number.POSITIVE_INFINITY) {
+          var outerWidth = _this.domService.getOuterWidth(scrollable);
 
-        var innerWidth = scrollableInner.lastElementChild.offsetLeft + _this.domService.getOuterWidth(scrollableInner.lastElementChild);
+          var innerWidth = scrollableInner.lastElementChild.offsetLeft + _this.domService.getOuterWidth(scrollableInner.lastElementChild);
 
-        var ePow = newx / (innerWidth - outerWidth);
-        ePow = Math.max(0, Math.min(1, ePow));
-        var item = {
-          pow: pow
-        };
-        TweenMax.to(item, 0.5, {
-          pow: ePow,
-          onUpdate: function onUpdate() {
-            pow = item.pow;
-            TweenMax.set(scrollableThumb, {
-              x: width * pow
-            });
-          },
-          ease: Power2.easeInOut
-        }); // pow$.next(pow);
+          var ePow = newx / (innerWidth - outerWidth);
+          ePow = Math.max(0, Math.min(1, ePow));
+          var item = {
+            pow: pow
+          };
+          var width = scrollableTrack.offsetWidth - offset * 2;
+          TweenMax.to(item, 0.5, {
+            pow: ePow,
+            onUpdate: function onUpdate() {
+              pow = item.pow;
+              TweenMax.set(scrollableThumb, {
+                x: width * pow
+              });
+            },
+            ease: Power2.easeInOut
+          });
+        } // pow$.next(pow);
+
       };
 
       var draglistener = new _drag.default(node, function (e) {
