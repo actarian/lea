@@ -54,7 +54,7 @@ export default class SliderDirective {
 			const x = -(outerWidth + gutter) * index;
 			if (x_ !== x) {
 				const distance = Math.abs(x_ - x);
-				const time = Math.min(2, distance / (outerWidth + gutter) * 0.7);
+				const time = Math.min(1.4, distance / (outerWidth + gutter) * 0.7);
 				x_ = x;
 				// console.log(outerWidth, innerWidth, slides, index);
 				TweenMax.to(sliderInner, time, {
@@ -122,14 +122,16 @@ export default class SliderDirective {
 		const draglistener = new DragListener(node, (e) => {
 			down = x_;
 		}, (e) => {
-			if (down !== undefined && Math.abs(e.distance.x) > Math.abs(e.distance.y)) {
+			if (window.innerWidth < 1024 && down !== undefined && Math.abs(e.distance.x) > Math.abs(e.distance.y)) {
 				const x = e.distance.x;
 				x_ = down + x;
 				TweenMax.set(sliderInner, { x: x_ });
 			}
 		}, (e) => {
 			down = undefined;
-			onSnap();
+			if (window.innerWidth < 1024) {
+				onSnap();
+			}
 		});
 		const addListeners = () => {
 			window.addEventListener('resize', onResize);

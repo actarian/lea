@@ -24190,7 +24190,7 @@ function () {
 
         if (x_ !== x) {
           var distance = Math.abs(x_ - x);
-          var time = Math.min(2, distance / (outerWidth + gutter) * 0.7);
+          var time = Math.min(1.4, distance / (outerWidth + gutter) * 0.7);
           x_ = x; // console.log(outerWidth, innerWidth, slides, index);
 
           TweenMax.to(sliderInner, time, {
@@ -24269,7 +24269,7 @@ function () {
       var draglistener = new _drag.default(node, function (e) {
         down = x_;
       }, function (e) {
-        if (down !== undefined && Math.abs(e.distance.x) > Math.abs(e.distance.y)) {
+        if (window.innerWidth < 1024 && down !== undefined && Math.abs(e.distance.x) > Math.abs(e.distance.y)) {
           var x = e.distance.x;
           x_ = down + x;
           TweenMax.set(sliderInner, {
@@ -24278,7 +24278,10 @@ function () {
         }
       }, function (e) {
         down = undefined;
-        onSnap();
+
+        if (window.innerWidth < 1024) {
+          onSnap();
+        }
       });
 
       var addListeners = function addListeners() {

@@ -8971,19 +8971,20 @@ footer .inner {
   .section--text .description p {
     margin-bottom: 2em; }
 
-@media (min-width: 860px) {
+@media (min-width: 1024px) {
   .section--text {
     padding-top: 70px;
     padding-bottom: 70px; }
     .section--text .title {
       font-size: 36px; } }
 
-@media (max-width: 859.98px) {
+@media (max-width: 1023.98px) {
   .section--text {
     padding-top: 70px;
     padding-bottom: 70px; }
     .section--text .title {
-      font-size: 32px; } }
+      font-size: 32px;
+      margin-top: 15px; } }
 
 .section--text-center .title {
   position: relative;
@@ -9809,6 +9810,10 @@ layout {
 .section--alternate .abstract {
   font-size: 16px;
   line-height: 1.375; }
+
+@media (max-width: 1023.98px) {
+  .section--alternate .title {
+    margin-top: 15px; } }
 
 .section--hero-showroom .container {
   padding-bottom: 70px; }

@@ -63,7 +63,7 @@
 		}
 	}
 
-	@include media-up(sm) {
+	@include media-up(md) {
 		padding-top: 70px;
 		padding-bottom: 70px;
 
@@ -72,12 +72,13 @@
 		}
 	}
 
-	@include media-down(xs) {
+	@include media-down(sm) {
 		padding-top: 70px;
 		padding-bottom: 70px;
 
 		.title {
 			font-size: 32px;
+			margin-top: 15px;
 		}
 	}
 

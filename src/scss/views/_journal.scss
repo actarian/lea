@@ -22,4 +22,10 @@
 		line-height: 1.375;
 	}
 
+	@include media-down(sm) {
+		.title {
+			margin-top: 15px;
+		}
+	}
+
 }
