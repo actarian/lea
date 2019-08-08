@@ -23971,6 +23971,37 @@ function () {
         pow = move / width; // pow$.next(pow);
       };
 
+      var onSnap = function onSnap() {
+        var firstChild = scrollableInner.firstElementChild;
+
+        var itemOuterWidth = _this.domService.getOuterWidth(firstChild);
+
+        var itemWidth = firstChild.offsetWidth;
+        var gutter = itemOuterWidth - itemWidth;
+        var width = scrollableTrack.offsetWidth - offset * 2;
+        var newx = Math.round(-x / (itemWidth + gutter)) * (itemWidth + gutter);
+
+        var outerWidth = _this.domService.getOuterWidth(scrollable);
+
+        var innerWidth = scrollableInner.lastElementChild.offsetLeft + _this.domService.getOuterWidth(scrollableInner.lastElementChild);
+
+        var ePow = newx / (innerWidth - outerWidth);
+        ePow = Math.max(0, Math.min(1, ePow));
+        var item = {
+          pow: pow
+        };
+        TweenMax.to(item, 0.5, {
+          pow: ePow,
+          onUpdate: function onUpdate() {
+            pow = item.pow;
+            TweenMax.set(scrollableThumb, {
+              x: width * pow
+            });
+          },
+          ease: Power2.easeInOut
+        }); // pow$.next(pow);
+      };
+
       var draglistener = new _drag.default(node, function (e) {
         // console.log('down', e);
         target = e.target;
@@ -23990,8 +24021,9 @@ function () {
         }
 
         onMove(down + distance);
-      }, function (e) {// console.log('up', e.originalEvent);
-
+      }, function (e) {
+        // console.log('up', e.originalEvent);
+        setTimeout(onSnap, 300);
         /*
         e.originalEvent.preventDefault();
         e.originalEvent.stopPropagation();
@@ -27544,6 +27576,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var DragListener =
 /*#__PURE__*/
 function () {
+  _createClass(DragListener, [{
+    key: "passive",
+    get: function get() {
+      var _this = this;
+
+      if (this.passive_ !== undefined) {
+        return this.passive_;
+      } else {
+        this.passive_ = false;
+
+        try {
+          var options = Object.defineProperty({}, 'passive', {
+            get: function get() {
+              _this.passive_ = !0;
+            }
+          });
+          window.addEventListener('test', null, options);
+        } catch (err) {}
+
+        return this.passive_;
+      }
+    }
+  }, {
+    key: "options",
+    get: function get() {
+      if (this.passive) {
+        return {
+          passive: false,
+          capture: true
+        };
+      } else {
+        return false;
+      }
+    }
+  }]);
+
   function DragListener(currentTarget, downCallback, moveCallback, upCallback) {
     _classCallCheck(this, DragListener);
 
@@ -27574,14 +27642,14 @@ function () {
   _createClass(DragListener, [{
     key: "addListeners",
     value: function addListeners() {
-      this.currentTarget.addEventListener('touchstart', this.onTouchStart, false);
-      this.currentTarget.addEventListener('mousedown', this.onMouseDown, false);
+      this.currentTarget.addEventListener('touchstart', this.onTouchStart, this.options);
+      this.currentTarget.addEventListener('mousedown', this.onMouseDown, this.options);
     }
   }, {
     key: "destroy",
     value: function destroy() {
-      this.currentTarget.removeEventListener('touchstart', this.onTouchStart, false);
-      this.currentTarget.removeEventListener('mousedown', this.onMouseDown, false);
+      this.currentTarget.removeEventListener('touchstart', this.onTouchStart);
+      this.currentTarget.removeEventListener('mousedown', this.onMouseDown);
       this.removeMouseListeners();
       this.removeTouchListeners();
     }
@@ -27606,31 +27674,34 @@ function () {
   }, {
     key: "onDrag",
     value: function onDrag(position) {
-      this.dragging = this.down !== undefined;
-      var currentTarget = this.currentTarget;
-      var distance = {
-        x: position.x - this.down.x,
-        y: position.y - this.down.y
-      };
-      var strength = {
-        x: distance.x / window.innerWidth * 2,
-        y: distance.y / window.innerHeight * 2
-      };
-      var speed = {
-        x: this.speed.x + (strength.x - this.strength.x) * 0.1,
-        y: this.speed.y + (strength.y - this.strength.y) * 0.1
-      };
-      this.position = position;
-      this.distance = distance;
-      this.strength = strength;
-      this.speed = speed;
-      this.moveCallback({
-        position: position,
-        distance: distance,
-        strength: strength,
-        speed: speed,
-        currentTarget: currentTarget
-      });
+      this.dragging = position && this.down !== undefined;
+
+      if (this.dragging) {
+        var currentTarget = this.currentTarget;
+        var distance = {
+          x: position.x - this.down.x,
+          y: position.y - this.down.y
+        };
+        var strength = {
+          x: distance.x / window.innerWidth * 2,
+          y: distance.y / window.innerHeight * 2
+        };
+        var speed = {
+          x: this.speed.x + (strength.x - this.strength.x) * 0.1,
+          y: this.speed.y + (strength.y - this.strength.y) * 0.1
+        };
+        this.position = position;
+        this.distance = distance;
+        this.strength = strength;
+        this.speed = speed;
+        this.moveCallback({
+          position: position,
+          distance: distance,
+          strength: strength,
+          speed: speed,
+          currentTarget: currentTarget
+        });
+      }
     }
   }, {
     key: "onUp",
@@ -27683,8 +27754,8 @@ function () {
       this.target = e.target;
       this.currentTarget.removeEventListener('mousedown', this.onMouseDown);
 
-      if (e.touches.length > 1) {
-        e.preventDefault();
+      if (e.touches.length > 0) {
+        // e.preventDefault();
         this.onDown({
           x: e.touches[0].pageX,
           y: e.touches[0].pageY
@@ -27699,7 +27770,7 @@ function () {
       this.target = e.target;
 
       if (e.touches.length > 0) {
-        e.preventDefault();
+        // e.preventDefault();
         this.onDrag({
           x: e.touches[0].pageX,
           y: e.touches[0].pageY
@@ -27718,14 +27789,14 @@ function () {
   }, {
     key: "addMouseListeners",
     value: function addMouseListeners() {
-      document.addEventListener('mousemove', this.onMouseMove, false);
-      document.addEventListener('mouseup', this.onMouseUp, false);
+      document.addEventListener('mousemove', this.onMouseMove, this.options);
+      document.addEventListener('mouseup', this.onMouseUp, this.options);
     }
   }, {
     key: "addTouchListeners",
     value: function addTouchListeners() {
-      document.addEventListener('touchend', this.onTouchEnd, false);
-      document.addEventListener('touchmove', this.onTouchMove, false);
+      document.addEventListener('touchend', this.onTouchEnd, this.options);
+      document.addEventListener('touchmove', this.onTouchMove, this.options);
     }
   }, {
     key: "removeMouseListeners",

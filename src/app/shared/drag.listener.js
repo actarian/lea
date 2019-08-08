@@ -2,6 +2,33 @@
 
 export default class DragListener {
 
+	get passive() {
+		if (this.passive_ !== undefined) {
+			return this.passive_;
+		} else {
+			this.passive_ = false;
+			try {
+				const options = Object.defineProperty({}, 'passive', {
+					get: () => {
+						this.passive_ = !0;
+					}
+				});
+				window.addEventListener('test', null, options);
+			} catch (err) {
+
+			}
+			return this.passive_;
+		}
+	}
+
+	get options() {
+		if (this.passive) {
+			return { passive: false, capture: true };
+		} else {
+			return false;
+		}
+	}
+
 	constructor(currentTarget, downCallback, moveCallback, upCallback) {
 		this.currentTarget = currentTarget || document;
 		this.downCallback = downCallback || function(e) {
@@ -24,13 +51,13 @@ export default class DragListener {
 	}
 
 	addListeners() {
-		this.currentTarget.addEventListener('touchstart', this.onTouchStart, false);
-		this.currentTarget.addEventListener('mousedown', this.onMouseDown, false);
+		this.currentTarget.addEventListener('touchstart', this.onTouchStart, this.options);
+		this.currentTarget.addEventListener('mousedown', this.onMouseDown, this.options);
 	}
 
 	destroy() {
-		this.currentTarget.removeEventListener('touchstart', this.onTouchStart, false);
-		this.currentTarget.removeEventListener('mousedown', this.onMouseDown, false);
+		this.currentTarget.removeEventListener('touchstart', this.onTouchStart);
+		this.currentTarget.removeEventListener('mousedown', this.onMouseDown);
 		this.removeMouseListeners();
 		this.removeTouchListeners();
 	}
@@ -44,22 +71,24 @@ export default class DragListener {
 	}
 
 	onDrag(position) {
-		this.dragging = this.down !== undefined;
-		var currentTarget = this.currentTarget;
-		var distance = { x: position.x - this.down.x, y: position.y - this.down.y };
-		var strength = { x: distance.x / window.innerWidth * 2, y: distance.y / window.innerHeight * 2 };
-		var speed = { x: this.speed.x + (strength.x - this.strength.x) * 0.1, y: this.speed.y + (strength.y - this.strength.y) * 0.1 };
-		this.position = position;
-		this.distance = distance;
-		this.strength = strength;
-		this.speed = speed;
-		this.moveCallback({
-			position: position,
-			distance: distance,
-			strength: strength,
-			speed: speed,
-			currentTarget: currentTarget,
-		});
+		this.dragging = position && this.down !== undefined;
+		if (this.dragging) {
+			const currentTarget = this.currentTarget;
+			const distance = { x: position.x - this.down.x, y: position.y - this.down.y };
+			const strength = { x: distance.x / window.innerWidth * 2, y: distance.y / window.innerHeight * 2 };
+			const speed = { x: this.speed.x + (strength.x - this.strength.x) * 0.1, y: this.speed.y + (strength.y - this.strength.y) * 0.1 };
+			this.position = position;
+			this.distance = distance;
+			this.strength = strength;
+			this.speed = speed;
+			this.moveCallback({
+				position: position,
+				distance: distance,
+				strength: strength,
+				speed: speed,
+				currentTarget: currentTarget,
+			});
+		}
 	}
 
 	onUp() {
@@ -105,8 +134,8 @@ export default class DragListener {
 		this.originalEvent = e;
 		this.target = e.target;
 		this.currentTarget.removeEventListener('mousedown', this.onMouseDown);
-		if (e.touches.length > 1) {
-			e.preventDefault();
+		if (e.touches.length > 0) {
+			// e.preventDefault();
 			this.onDown({
 				x: e.touches[0].pageX,
 				y: e.touches[0].pageY
@@ -119,7 +148,7 @@ export default class DragListener {
 		this.originalEvent = e;
 		this.target = e.target;
 		if (e.touches.length > 0) {
-			e.preventDefault();
+			// e.preventDefault();
 			this.onDrag({
 				x: e.touches[0].pageX,
 				y: e.touches[0].pageY
@@ -136,13 +165,13 @@ export default class DragListener {
 	}
 
 	addMouseListeners() {
-		document.addEventListener('mousemove', this.onMouseMove, false);
-		document.addEventListener('mouseup', this.onMouseUp, false);
+		document.addEventListener('mousemove', this.onMouseMove, this.options);
+		document.addEventListener('mouseup', this.onMouseUp, this.options);
 	}
 
 	addTouchListeners() {
-		document.addEventListener('touchend', this.onTouchEnd, false);
-		document.addEventListener('touchmove', this.onTouchMove, false);
+		document.addEventListener('touchend', this.onTouchEnd, this.options);
+		document.addEventListener('touchmove', this.onTouchMove, this.options);
 	}
 
 	removeMouseListeners() {

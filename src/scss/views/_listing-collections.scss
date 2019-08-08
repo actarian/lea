@@ -2,6 +2,10 @@
 	padding: 70px 0 140px 0;
 	overflow: hidden;
 	background: #E9E7E3;
+
+	@include media-down(sm) {
+		padding: 70px 0 70px 0;
+	}
 }
 
 .listing--collections {

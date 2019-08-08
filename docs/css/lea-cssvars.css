@@ -3995,6 +3995,18 @@ section {
     .section--hero-generic .container, .section--hero-home .container, .section--hero-magazine-detail .container, .section--hero-product .container, .section--hero-gallery .container, .section--hero-designer .container, .section--hero-showroom .container, .section--hero-project .container, .section--hero-application .container, .section--hero-technology .container {
       padding-top: 140px;
       padding-bottom: 70px; }
+    
+    .section--hero-generic .group--back,
+    .section--hero-home .group--back,
+    .section--hero-magazine-detail .group--back,
+    .section--hero-product .group--back,
+    .section--hero-gallery .group--back,
+    .section--hero-designer .group--back,
+    .section--hero-showroom .group--back,
+    .section--hero-project .group--back,
+    .section--hero-application .group--back,
+    .section--hero-technology .group--back {
+      display: none; }
     .section--hero-generic .title, .section--hero-home .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
       font-size: 36px; }
     
@@ -8166,8 +8178,9 @@ canvas {
     .section--header .inner:before {
       display: none; }
     .section--header .brand {
-      max-width: 22%;
+      width: 22%;
       min-width: 68px;
+      max-width: 110px;
       /*
 			.icon--lea-ceramiche {
 				width: 100%;
@@ -8178,20 +8191,8 @@ canvas {
     .section--header {
       -webkit-transition: background ease-in-out 350ms;
       transition: background ease-in-out 350ms; }
-      .section--header .menu__primary {
-        min-height: 60px;
-        padding: 0;
-        z-index: 99; }
       .section--header .btn--menu {
-        z-index: 100; }
-      .section--header.opened .menu__primary {
-        position: fixed;
-        display: block !important;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white; } }
+        z-index: 100; } }
 
 .section--header-fixed {
   -webkit-transition: all ease-in-out 350ms;
@@ -8205,8 +8206,7 @@ canvas {
     .section--header-fixed {
       position: fixed; } }
   .scrolled .section--header-fixed {
-    -webkit-transform: translateY(-100%);
-            transform: translateY(-100%); }
+    top: -100%; }
   .scrolled .section--header-fixed .inner {
     height: 125px; }
   .scrolled .section--header-fixed .menu {
@@ -8266,6 +8266,11 @@ canvas {
           -ms-flex-align: start;
               align-items: flex-start; } }
 
+.menu__primary,
+.menu__secondary,
+.menu__tertiary {
+  position: static; }
+
 .menu__primary {
   -webkit-box-ordinal-group: 4;
       -ms-flex-order: 3;
@@ -8278,6 +8283,38 @@ canvas {
       -webkit-box-align: center;
           -ms-flex-align: center;
               align-items: center; } }
+  @media (max-width: 1023.98px) {
+    .menu__primary {
+      position: fixed;
+      display: block !important;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
+      pointer-events: none;
+      padding: 0;
+      z-index: 99; }
+      .menu__primary:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #ffffff;
+        -webkit-transform-origin: left top;
+                transform-origin: left top;
+        -webkit-transform: scale(0, 1);
+                transform: scale(0, 1);
+        -webkit-transition: all ease-in-out 600ms;
+        transition: all ease-in-out 600ms; }
+      .opened .menu__primary {
+        visibility: visible;
+        pointer-events: all; }
+        .opened .menu__primary:before {
+          -webkit-transform: scale(1, 1);
+                  transform: scale(1, 1); } }
 
 .menu__secondary {
   -webkit-box-ordinal-group: 5;
@@ -8303,11 +8340,6 @@ canvas {
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
   width: 100%; }
-
-.menu__primary,
-.menu__secondary,
-.menu__tertiary {
-  position: static; }
 
 .nav--primary > li,
 .nav--secondary > li,
@@ -9351,7 +9383,7 @@ layout {
 
 @media (max-width: 859.98px) {
   .section--hero-product .container {
-    padding: 130px 0 0 0; }
+    padding: 170px 0 0 0; }
   .section--hero-product .background {
     padding-top: 0; }
   .section--hero-product .group--back {
@@ -9665,7 +9697,7 @@ layout {
 
 @media (max-width: 859.98px) {
   .section--hero-gallery .container {
-    padding: 130px 0 0 0; }
+    padding: 170px 0 0 0; }
   .section--hero-gallery .background {
     padding-top: 0; }
   .section--hero-gallery .group--back {
@@ -9688,7 +9720,7 @@ layout {
   -webkit-overflow-scrolling: touch; }
   @media (max-width: 1023.98px) {
     .section--fancy .container {
-      padding: 120px 0 0 0; }
+      padding: 170px 0 0 0; }
     .section--fancy .btn--back {
       position: fixed;
       top: 0;
@@ -9731,7 +9763,7 @@ layout {
 
 @media (max-width: 859.98px) {
   .section--hero-designer .container {
-    padding-top: 130px;
+    padding-top: 170px;
     padding-bottom: 70px; }
   .section--hero-designer .background {
     padding-top: 0; }
@@ -10085,7 +10117,7 @@ layout {
 
 @media (max-width: 859.98px) {
   .section--hero-technology .container {
-    padding: 130px 0 70px 0; }
+    padding: 170px 0 70px 0; }
   .section--hero-technology .background {
     padding-top: 0; }
   .section--hero-technology .group--back {
@@ -10379,6 +10411,9 @@ layout {
     font-weight: 500;
     text-align: center;
     margin-bottom: 70px; }
+  @media (max-width: 1023.98px) {
+    .section--listing-magazine {
+      padding: 70px 0 70px 0; } }
 
 .listing--magazine .inner {
   display: -webkit-box;
@@ -10451,6 +10486,9 @@ layout {
   padding: 70px 0 140px 0;
   overflow: hidden;
   background: #E9E7E3; }
+  @media (max-width: 1023.98px) {
+    .section--listing-collections {
+      padding: 70px 0 70px 0; } }
 
 .listing--collections > .title {
   font-size: 36px;
@@ -10521,6 +10559,9 @@ layout {
       font-weight: var(--font-light);
       margin-bottom: 35px;
       text-align: left; }
+  @media (max-width: 1023.98px) {
+    .section--listing-projects {
+      padding: 70px 0 70px 0; } }
 
 .listing--projects .inner {
   display: -webkit-box;

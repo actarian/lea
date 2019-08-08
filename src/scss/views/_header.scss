@@ -117,8 +117,9 @@
 		}
 
 		.brand {
-			max-width: 22%;
+			width: 22%;
 			min-width: 68px;
+			max-width: 110px;
 
 			/*
 			.icon--lea-ceramiche {
@@ -132,27 +133,8 @@
 	@include media-down(xs) {
 		transition: background ease-in-out 350ms;
 
-		.menu__primary {
-			min-height: 60px;
-			padding: 0;
-			z-index: 99;
-		}
-
 		.btn--menu {
 			z-index: 100;
-		}
-
-		&.opened {
-			.menu__primary {
-				position: fixed;
-				display: block !important;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: white;
-			}
-
 		}
 
 	}
@@ -173,7 +155,8 @@
 	*/
 
 	.scrolled & {
-		transform: translateY(-100%);
+		top: -100%;
+		// transform: translateY(-100%);
 	}
 
 	.scrolled & {
@@ -255,6 +238,12 @@
 	}
 }
 
+.menu__primary,
+.menu__secondary,
+.menu__tertiary {
+	position: static;
+}
+
 .menu__primary {
 	order: 3;
 
@@ -262,6 +251,43 @@
 		display: flex;
 		align-items: center;
 	}
+
+	@include media-down(sm) {
+		position: fixed;
+		display: block !important;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		visibility: hidden;
+		pointer-events: none;
+		padding: 0;
+		z-index: 99;
+
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #ffffff;
+			transform-origin: left top;
+			transform: scale(0, 1);
+			transition: all ease-in-out 600ms;
+		}
+
+		.opened & {
+			visibility: visible;
+			pointer-events: all;
+
+			&:before {
+				transform: scale(1, 1);
+			}
+		}
+
+	}
+
 }
 
 .menu__secondary {
@@ -278,12 +304,6 @@
 	order: 1;
 	flex: 1 1 100%;
 	width: 100%;
-}
-
-.menu__primary,
-.menu__secondary,
-.menu__tertiary {
-	position: static;
 }
 
 .nav--primary,

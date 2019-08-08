@@ -44,6 +44,28 @@ export default class ScrollableDirective {
 			pow = move / width;
 			// pow$.next(pow);
 		};
+		const onSnap = () => {
+			const firstChild = scrollableInner.firstElementChild;
+			const itemOuterWidth = this.domService.getOuterWidth(firstChild);
+			const itemWidth = firstChild.offsetWidth;
+			const gutter = itemOuterWidth - itemWidth;
+			const width = scrollableTrack.offsetWidth - offset * 2;
+			const newx = Math.round(-x / (itemWidth + gutter)) * (itemWidth + gutter);
+			const outerWidth = this.domService.getOuterWidth(scrollable);
+			const innerWidth = scrollableInner.lastElementChild.offsetLeft + this.domService.getOuterWidth(scrollableInner.lastElementChild);
+			let ePow = newx / (innerWidth - outerWidth);
+			ePow = Math.max(0, Math.min(1, ePow));
+			const item = { pow: pow };
+			TweenMax.to(item, 0.5, {
+				pow: ePow,
+				onUpdate: () => {
+					pow = item.pow;
+					TweenMax.set(scrollableThumb, { x: width * pow });
+				},
+				ease: Power2.easeInOut,
+			});
+			// pow$.next(pow);
+		};
 
 		const draglistener = new DragListener(node, (e) => {
 			// console.log('down', e);
@@ -65,6 +87,7 @@ export default class ScrollableDirective {
 			onMove(down + distance);
 		}, (e) => {
 			// console.log('up', e.originalEvent);
+			setTimeout(onSnap, 300);
 			/*
 			e.originalEvent.preventDefault();
 			e.originalEvent.stopPropagation();

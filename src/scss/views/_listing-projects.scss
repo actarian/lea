@@ -21,6 +21,10 @@
 			text-align: left;
 		}
 	}
+
+	@include media-down(sm) {
+		padding: 70px 0 70px 0;
+	}
 }
 
 .listing--projects {
