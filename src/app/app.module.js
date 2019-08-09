@@ -18,6 +18,7 @@ import LazyScriptDirective from './directives/lazy-script.directive';
 import LazyDirective from './directives/lazy.directive';
 import MediaDirective from './directives/media.directive';
 import { MuuriDirective } from './directives/muuri.directive';
+import NoBounceDirective from './directives/no-bounce.directive';
 import NoHeroDirective from './directives/no-hero.directive';
 import ParallaxOuterDirective from './directives/parallax-outer.directive';
 import ParallaxDirective from './directives/parallax.directive';
@@ -90,6 +91,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('moodboardDropdown', MoodboardDropdownDirective.factory)
 	.directive('moodboardSearch', MoodboardSearchDirective.factory)
 	.directive('muuri', MuuriDirective.factory)
+	.directive('noBounce', NoBounceDirective.factory)
 	.directive('parallax', ParallaxDirective.factory)
 	.directive('parallaxOuter', ParallaxOuterDirective.factory)
 	.directive('scroll', ScrollDirective.factory)

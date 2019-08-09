@@ -3,7 +3,7 @@ $container-max-widths: (xs: calc(100% - 34px),
 	sm: 87.5%, // calc(100vw - 120px)
 	md: 87.5%, // calc(100vw - 180px)
 	lg: 87.5%, // calc(100vw - 240px)
-	xl: 87.5% // calc(100vw - 240px)
+	xl: 1680px // 87.5% // calc(100vw - 240px)
 ) !default; // calc(100vw - 240px)) !default;
 $grid-gutter-widths: (xs: 17px,
 	sm: 30px,

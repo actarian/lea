@@ -1,10 +1,9 @@
 .wrapper--header {
 	display: block;
-	max-width: 1920px;
 	margin: 0 auto;
 
 	@include media-up(md) {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 50%;
 		width: 100%;
@@ -26,7 +25,6 @@
 	.inner {
 		position: relative;
 		width: 100%;
-		max-width: 1920px;
 		height: 190px;
 		margin: 0 auto;
 
@@ -131,7 +129,7 @@
 	}
 
 	@include media-down(xs) {
-		transition: background ease-in-out 350ms;
+		// transition: background ease-in-out 350ms;
 
 		.btn--menu {
 			z-index: 100;
@@ -142,26 +140,22 @@
 }
 
 .section--header-fixed {
+
+	/*
 	transition: all ease-in-out 350ms;
 
 	@include media-up(md) {
 		position: fixed;
 	}
 
-	/*
-	.scrolled-down & {
-		transform: translateY(-100%);
-	}
-	*/
-
 	.scrolled & {
 		top: -100%;
 		// transform: translateY(-100%);
 	}
+	*/
 
+	/*
 	.scrolled & {
-		// background: white;
-		// border-bottom: 1px solid $border;
 
 		.inner {
 			height: 125px;
@@ -189,6 +183,7 @@
 		}
 
 	}
+	*/
 
 }
 

@@ -25,6 +25,7 @@ body {
 	}
 }
 */
+
 html {
 	position: relative;
 	width: 100%;
@@ -36,20 +37,20 @@ html {
 
 	&.smooth-scrolled {
 		overflow-x: hidden;
-		-webkit-overflow-scrolling: touch;
 		overscroll-behavior: none;
+		// -webkit-overflow-scrolling: touch;
 	}
 }
 
 body {
 	position: relative;
 	width: 100%;
-	height: 100%;
 	padding: 0;
 	margin: 0;
 
 	.virtual-scrolled>& {
 		overflow: hidden;
+		height: 100%;
 	}
 
 	.smooth-scrolled>& {
@@ -130,4 +131,27 @@ ng-transclude {
 
 .border-top {
 	border-top: 2px solid $border;
+}
+
+.strict {
+	.page {
+		max-width: 1920px;
+	}
+
+	.wrapper--header {
+		max-width: 1920px;
+	}
+
+	.section--header {
+		.inner {
+			max-width: 1920px;
+		}
+	}
+
+	footer {
+		.inner {
+			width: 100%;
+			margin: 0 auto;
+		}
+	}
 }
