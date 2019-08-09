@@ -103,7 +103,7 @@ export default class NoBounceDirective {
 
 		const supportSmoothScroll = this.supportSmoothScroll();
 		if (supportSmoothScroll) {
-			enable();
+			// enable();
 		}
 
 		console.log('supportsPassiveOption', supportsPassiveOption, 'supportSmoothScroll', supportSmoothScroll);

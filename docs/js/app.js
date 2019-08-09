@@ -23615,8 +23615,7 @@ function () {
 
       var supportSmoothScroll = this.supportSmoothScroll();
 
-      if (supportSmoothScroll) {
-        enable();
+      if (supportSmoothScroll) {// enable();
       }
 
       console.log('supportsPassiveOption', supportsPassiveOption, 'supportSmoothScroll', supportSmoothScroll);
