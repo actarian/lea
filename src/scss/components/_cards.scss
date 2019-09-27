@@ -4,14 +4,9 @@
 	flex-direction: column;
 	justify-content: flex-end;
 
-	&>.date {
-		font-size: 16px;
-		font-weight: 300;
-	}
-
 	&>.title {
-		font-size: 36px;
-		line-height: 1.2;
+		font-size: 24px;
+		line-height: 1.125;
 		font-weight: $font-semibold;
 		text-align: left;
 		margin-bottom: 15px;
@@ -347,5 +342,36 @@
 	&>.card__body {
 		padding: 35px;
 		background: white;
+	}
+}
+
+.card--designer {
+
+	@include media-up(sm) {
+		margin-bottom: 140px;
+	}
+
+	@include media-down(xs) {
+		margin-bottom: 70px;
+	}
+
+	&>.card__body {
+		padding-top: 40px;
+	}
+}
+
+.card--journal {
+	display: flex;
+	flex-direction: column;
+	flex: 0 0 100%;
+	@include _selectNone();
+
+	&>.card__body {
+		padding: 35px 0;
+
+		&>.title {
+			font-size: 24px;
+			line-height: 1.125;
+		}
 	}
 }

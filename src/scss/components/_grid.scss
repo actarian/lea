@@ -27,6 +27,19 @@
 	*/
 }
 
+.container--gutter {
+	margin-left: auto;
+	margin-right: auto;
+
+	.row {
+		@include make-row($muuri-gutter-widths, $grid-breakpoints);
+		position: relative;
+	}
+
+	@include make-grid-columns($muuri-columns, $muuri-gutter-widths, $grid-breakpoints);
+	@include make-container-max-widths();
+}
+
 @include make-grid-columns();
 
 @include make-orders();

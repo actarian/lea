@@ -126,6 +126,13 @@
 
 .section--designers-secondary {
 
+	&>.container>.row>div>.title {
+		font-size: 36px;
+		line-height: 1.2;
+		font-weight: 500;
+		margin-bottom: 70px;
+	}
+
 	.container {
 		padding-top: 70px;
 		padding-bottom: 70px;

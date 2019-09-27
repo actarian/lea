@@ -108,6 +108,37 @@
 <section class="section section--designers-secondary">
 	<div class="container">
 		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div class="title">Other collaboration</div>
+				<div class="row">
+					<div class="container--gutter">
+						<div class="row">
+							<div class="col-md-6 col-lg-4" ng-repeat="item in ['Istituto Marangoni', 'Zaha Hadid', 'Adi Design Index', 'Aldo Cibic', 'Assoposa', 'Effegibi', 'Fritz Hansen', 'Hok Product Design', 'Lago', 'Marco Piva'] track by $index">
+								<a class="card card--designer" href="designer.html">
+									<div class="picture" appear>
+										<img ng-src="img/designers/other-{{$index < 9 ? '0' + ($index + 1) : ($index + 1)}}@2x.jpg" alt="title" />
+									</div>
+									<div class="card__body">
+										<div class="title" title>{{item}}</div>
+										<div class="abstract">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a odio egestas, efficitur elit ut, gravida tellus. Donec cursus quam sed lacinia aliquam.</div>
+										<div class="group--cta">
+											<div class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg></div>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--
+<section class="section section--designers-secondary">
+	<div class="container">
+		<div class="row">
 			<div class="col-md-3">
 				<div class="group--designer">
 					<div class="picture" appear parallax-outer><img lazy data-src="img/designers/07@2x.jpg"></div>
@@ -142,5 +173,6 @@
 		</div>
 	</div>
 </section>
+-->
 
 <ng-include src="'templates/shared/newsletter.html'"></ng-include>

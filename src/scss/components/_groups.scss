@@ -5,8 +5,14 @@
 	color: black;
 
 	@include media-up(sm) {
-		.btn:not(:last-child) {
-			margin-right: 15px;
+
+		.btn,
+		[class^='btn--'],
+		[class*=' btn--'] {
+			&:not(:last-child) {
+				margin-right: 15px;
+				margin-bottom: 15px;
+			}
 		}
 	}
 
@@ -16,8 +22,15 @@
 		justify-content: flex-start;
 		align-items: flex-start;
 
-		&>.btn+.btn {
-			margin-top: 15px;
+		&>.btn,
+		&>[class^='btn--'],
+		&>[class*=' btn--'] {
+
+			&+.btn,
+			&+[class^='btn--'],
+			&+[class*=' btn--'] {
+				margin-top: 15px;
+			}
 		}
 	}
 }
