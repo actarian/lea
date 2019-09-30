@@ -97,10 +97,20 @@
 					<ul class="nav nav--tertiary">
 						<li class="o-3"><a href="search.html"><svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> <span>Cerca</span></a></li>
 						<li class="o-2"><a href="wishlist.html"><svg class="icon icon--wishlist"><use xlink:href="#icon--wishlist"></use></svg> <span>Wishlist</span></a> <span class="wishlist--badge" ng-bind="root.wishlistCount" ng-if="root.wishlistCount"></span></li>
-						<li class="o-1">
+						<li class="o-1" has-dropdown="span" dropped-in="root.onPrimaryDroppedIn" dropped-out="root.onPrimaryDroppedOut">
 							<span>
 								<span>IT</span> <svg class="icon icon--plus"><use xlink:href="#icon--plus"></use></svg>
 							</span>
+							<ul class="nav nav--submenu-tertiary" dropdown>
+								<li class="title"><span>Choose your network</span></li>
+								<li class="active"><a href="#">Italiano</a></li>
+								<li><a href="#">English | International</a></li>
+								<li><a href="#">English | Usa</a></li>
+								<li><a href="#">Français</a></li>
+								<li><a href="#">Deutsch</a></li>
+								<li><a href="#">Español</a></li>
+								<li><a href="#">Vlaams</a></li>
+							</ul>
 						</li>
 					</ul>
 				</div>
