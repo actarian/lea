@@ -12336,13 +12336,14 @@ layout {
         -ms-flex: 1 1 calc(50% - 35px);
             flex: 1 1 calc(50% - 35px);
     max-width: calc(50% - 35px);
-    margin-right: 35px; }
-    .section--hero-project .group--info:first-child {
-      -webkit-box-flex: 1;
-          -ms-flex: 1 1 100%;
-              flex: 1 1 100%;
-      max-width: 100%;
-      margin-right: 0; } }
+    margin-right: 35px;
+    /*
+			&:first-child {
+				flex: 1 1 100%;
+				max-width: 100%;
+				margin-right: 0;
+			}
+			*/ } }
 
 @media (min-width: 1440px) {
   .section--hero-project .background {
