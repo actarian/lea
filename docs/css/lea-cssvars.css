@@ -6139,6 +6139,7 @@ section {
   .section--hero-generic .title, .section--hero-home .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
     position: relative;
     font-size: 56px;
+    font-weight: inherit;
     line-height: 1.2;
     color: #232120; }
   .section--hero-generic .abstract, .section--hero-home .abstract, .section--hero-magazine-detail .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-showroom .abstract, .section--hero-project .abstract, .section--hero-application .abstract, .section--hero-technology .abstract {
