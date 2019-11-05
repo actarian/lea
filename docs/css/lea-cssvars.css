@@ -11915,22 +11915,26 @@ layout {
     .group--descriptions > .group--description + .group--description {
       margin-left: 15px; } }
 
-.group--description > .title {
-  color: #232120;
-  font-size: 24px;
-  font-weight: 300;
-  letter-spacing: 0.03em;
-  margin-bottom: 15px; }
-  .group--description > .title img {
-    margin-right: 15px; }
-
-.group--description > .abstract {
-  color: #232120;
-  font-size: 16px;
-  font-weight: 300;
-  letter-spacing: 0.02em;
-  line-height: 1.2;
-  margin-bottom: 70px; }
+.group--description {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  min-width: 50%; }
+  .group--description > .title {
+    color: #232120;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    margin-bottom: 15px; }
+    .group--description > .title img {
+      margin-right: 15px; }
+  .group--description > .abstract {
+    color: #232120;
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: 70px; }
 
 .group--feature {
   margin-bottom: 100px; }
