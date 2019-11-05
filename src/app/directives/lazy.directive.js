@@ -1,11 +1,5 @@
 /* jshint esversion: 6 */
 
-
-import { map } from 'rxjs/operators';
-import Rect from '../shared/rect';
-
-// let INDEX = 0;
-
 export default class LazyDirective {
 
 	// src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" lazy lazy-src="
@@ -25,52 +19,15 @@ export default class LazyDirective {
 	link(scope, element, attributes, controller) {
 		const image = element[0];
 		image.classList.remove('lazying', 'lazyed');
-		// image.index = INDEX++;
-		// empty picture
-		// image.setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
 		const subscription = this.domService.appear$(image).subscribe(event => {
 			if (!image.classList.contains('lazying')) {
 				image.classList.add('lazying');
 				this.onAppearsInViewport(image, scope, attributes);
 			}
 		});
-		/*
-		element.subscription = this.lazy$(image).subscribe(intersection => {
-			if (intersection.y > -0.5) {
-				if (!image.classList.contains('lazyed')) {
-					image.classList.add('lazyed');
-					this.onAppearsInViewport(image, scope, attributes);
-					setTimeout(() => {
-						element.subscription.unsubscribe();
-						element.subscription = null;
-					}, 1);
-				}
-			}
-		});
-		*/
 		element.on('$destroy', () => {
 			subscription.unsubscribe();
 		});
-	}
-
-	getThronSrc(image, src) {
-		const splitted = src.split('/std/');
-		if (splitted.length > 1) {
-			// Contenuto Thron
-			if (splitted[1].match(/^0x0\//)) {
-				// se non sono state richieste dimensioni specifiche, imposto le dimensioni necessarie alla pagina
-				src = splitted[0] + '/std/' + Math.floor(image.width * 1.1).toString() + 'x' + Math.floor(image.height * 1.1).toString() + splitted[1].substr(3);
-				if (!src.match(/[&?]scalemode=?/)) {
-					src += src.indexOf('?') !== -1 ? '&' : '?';
-					src += 'scalemode=centered';
-				}
-				if (window.devicePixelRatio > 1) {
-					src += src.indexOf('?') !== -1 ? '&' : '?';
-					src += 'dpr=' + Math.floor(window.devicePixelRatio * 100).toString();
-				}
-			}
-		}
-		return src;
 	}
 
 	onAppearsInViewport(image, scope, attributes) {
@@ -80,27 +37,27 @@ export default class LazyDirective {
 			image.removeAttribute('data-srcset');
 			if (scope.src) {
 				// attributes.$set('src', scope.src);
-				image.setAttribute('src', this.getThronSrc(image, scope.src));
+				image.setAttribute('src', scope.src);
 				image.removeAttribute('data-src');
 			}
 			image.classList.remove('lazying');
 			image.classList.add('lazyed');
 		} else if (scope.src) {
 			image.removeAttribute('data-src');
-			const src = this.getThronSrc(image, scope.src);
-			this.onImagePreload(image, src, (srcOrUndefined) => {
+			this.onImagePreload(image, scope.src, (srcOrUndefined) => {
 				// image.setAttribute('src', src);
 				image.classList.remove('lazying');
 				image.classList.add('lazyed');
 			});
 		} else if (scope.backgroundSrc) {
-			image.setStyle('background-image', `url(${this.getThronSrc(image, scope.backgroundSrc)})`);
+			image.setStyle('background-image', `url(${scope.backgroundSrc})`);
 			image.removeAttribute('data-background-src');
 			image.classList.remove('lazying');
 			image.classList.add('lazyed');
 		}
 	}
 
+	/*
 	lazy$(node) {
 		return this.domService.rafAndRect$().pipe(
 			map(datas => {
@@ -111,6 +68,7 @@ export default class LazyDirective {
 			})
 		);
 	}
+	*/
 
 	onImagePreload(image, src, callback) {
 		// const img = new Image();

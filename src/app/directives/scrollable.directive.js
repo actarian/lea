@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 
-import { filter, map, shareReplay } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, shareReplay } from 'rxjs/operators';
 import DragListener from "../shared/drag.listener";
 
 export default class ScrollableDirective {
@@ -139,6 +139,7 @@ export default class ScrollableDirective {
 				}
 			}),
 			filter(x => x !== null),
+			distinctUntilChanged((a, b) => Math.round(a * 100) === Math.round(b * 100)),
 			shareReplay()
 		);
 	}

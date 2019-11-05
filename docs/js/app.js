@@ -21215,6 +21215,8 @@ var _moodboardDropdown = _interopRequireDefault(require("./moodboard/moodboard-d
 
 var _moodboardSearch = _interopRequireDefault(require("./moodboard/moodboard-search.directive"));
 
+var _projects = _interopRequireDefault(require("./projects/projects.controller"));
+
 var _root = _interopRequireDefault(require("./root.controller"));
 
 var _api = _interopRequireDefault(require("./services/api.service"));
@@ -21241,7 +21243,7 @@ app.config(['$locationProvider', function ($locationProvider) {
 }]);
 app.factory('ApiService', _api.default.factory).factory('DomService', _dom.default.factory).factory('LocationService', _location.default.factory).factory('PromiseService', _promise.default.factory).factory('StateService', _state.default.factory).factory('CookieService', _storage.CookieService.factory).factory('LocalStorageService', _storage.LocalStorageService.factory).factory('SessionStorageService', _storage.SessionStorageService.factory).factory('WishlistService', _wishlist2.default.factory);
 app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('faq', _faq.default.factory).directive('galleryItem', _galleryItem.default.factory).directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('label', _label.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('noBounce', _noBounce.default.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('slider', _slider.default.factory).directive('sticky', _sticky.default.factory).directive('title', _title.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
-app.controller('RootCtrl', _root.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default);
+app.controller('RootCtrl', _root.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default).controller('ProjectsCtrl', _projects.default);
 app.filter('imageWithFeatures', [_imageWithFeatures.ImageWithFeatures]).filter('notIn', ['$filter', _notIn.NotInFilter]).filter('trusted', ['$sce', _trusted.TrustedFilter]); // app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {}]);
 
 app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $rootScope) {
@@ -21253,7 +21255,7 @@ app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $ro
 var _default = MODULE_NAME;
 exports.default = _default;
 
-},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./directives/abstract.directive":203,"./directives/appear.directive":204,"./directives/autocomplete.directive":205,"./directives/faq.directive":206,"./directives/gallery-item.directive":207,"./directives/has-dropdown.directive":208,"./directives/header.directive":209,"./directives/hero.directive":210,"./directives/hilight.directive":211,"./directives/href.directive":212,"./directives/label.directive":213,"./directives/last-item.directive":214,"./directives/lazy-script.directive":215,"./directives/lazy.directive":216,"./directives/media.directive":217,"./directives/muuri.directive":218,"./directives/no-bounce.directive":219,"./directives/no-hero.directive":220,"./directives/parallax-outer.directive":221,"./directives/parallax.directive":222,"./directives/scroll.directive":223,"./directives/scrollable.directive":224,"./directives/slider.directive":225,"./directives/smooth-scroll.directive":226,"./directives/sticky.directive":227,"./directives/title.directive":228,"./directives/video.directive":229,"./directives/virtual-scroll.directive":230,"./directives/visibility.directive":231,"./directives/wishlist.directive":232,"./directives/zoomable.directive":233,"./filters/image-with-features.filter":234,"./filters/notIn.filter":235,"./filters/trusted.filter":236,"./forms/control-messages.directive":237,"./forms/control.directive":238,"./forms/validate.directive":239,"./gallery/gallery.controller":240,"./highway/highway.directive":243,"./moodboard/moodboard-dropdown.directive":245,"./moodboard/moodboard-search.directive":246,"./root.controller":247,"./services/api.service":248,"./services/dom.service":249,"./services/wishlist.service":250,"./shared/location.service":252,"./shared/promise.service":253,"./shared/state.service":255,"./shared/storage.service":256}],201:[function(require,module,exports){
+},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./directives/abstract.directive":203,"./directives/appear.directive":204,"./directives/autocomplete.directive":205,"./directives/faq.directive":206,"./directives/gallery-item.directive":207,"./directives/has-dropdown.directive":208,"./directives/header.directive":209,"./directives/hero.directive":210,"./directives/hilight.directive":211,"./directives/href.directive":212,"./directives/label.directive":213,"./directives/last-item.directive":214,"./directives/lazy-script.directive":215,"./directives/lazy.directive":216,"./directives/media.directive":217,"./directives/muuri.directive":218,"./directives/no-bounce.directive":219,"./directives/no-hero.directive":220,"./directives/parallax-outer.directive":221,"./directives/parallax.directive":222,"./directives/scroll.directive":223,"./directives/scrollable.directive":224,"./directives/slider.directive":225,"./directives/smooth-scroll.directive":226,"./directives/sticky.directive":227,"./directives/title.directive":228,"./directives/video.directive":229,"./directives/virtual-scroll.directive":230,"./directives/visibility.directive":231,"./directives/wishlist.directive":232,"./directives/zoomable.directive":233,"./filters/image-with-features.filter":234,"./filters/notIn.filter":235,"./filters/trusted.filter":236,"./forms/control-messages.directive":237,"./forms/control.directive":238,"./forms/validate.directive":239,"./gallery/gallery.controller":240,"./highway/highway.directive":243,"./moodboard/moodboard-dropdown.directive":245,"./moodboard/moodboard-search.directive":246,"./projects/projects.controller":247,"./root.controller":248,"./services/api.service":249,"./services/dom.service":250,"./services/wishlist.service":251,"./shared/location.service":253,"./shared/promise.service":254,"./shared/state.service":256,"./shared/storage.service":257}],201:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21286,64 +21288,13 @@ function () {
   }
 
   _createClass(CollectionsCtrl, [{
-    key: "initData__",
-    value: function initData__() {
-      var _this = this;
-
-      // options > label, value (id)
-      var uid = 1;
-
-      var getStoredValue = function getStoredValue(items, label) {
-        return items.find(function (x) {
-          return x.label === label;
-        });
-      };
-
-      var toTitleCase = function toTitleCase(text) {
-        return text.replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
-      };
-
-      Object.keys(this.filters).forEach(function (key) {
-        var filter = _this.filters[key];
-        var options = filter.options;
-
-        _this.collections.forEach(function (x) {
-          var values = x[key];
-
-          if (values) {
-            x[key] = values.map(function (value) {
-              var label = toTitleCase(value);
-              var storedValue = getStoredValue(options, label);
-              var id;
-
-              if (storedValue !== undefined) {
-                id = storedValue.value;
-              } else {
-                id = uid++;
-                options.push({
-                  label: label,
-                  value: id
-                });
-              }
-
-              return id;
-            });
-          }
-        });
-      });
-      console.log(JSON.stringify(this.filters));
-      console.log(JSON.stringify(this.collections));
-    }
-  }, {
     key: "deserializeFilters",
     value: function deserializeFilters() {
-      var _this2 = this;
+      var _this = this;
 
       var locationFilters = this.locationService.deserialize('filters') || {};
       Object.keys(this.filters).forEach(function (x) {
-        var filter = _this2.filters[x];
+        var filter = _this.filters[x];
 
         switch (x) {
           default:
@@ -21355,7 +21306,7 @@ function () {
         }
 
         filter.options.unshift({
-          label: _this2.filters[x].placeholder,
+          label: _this.filters[x].placeholder,
           value: null
         });
         var selectedOption = filter.options.find(function (o) {
@@ -21369,11 +21320,11 @@ function () {
   }, {
     key: "serializeFilters",
     value: function serializeFilters() {
-      var _this3 = this;
+      var _this2 = this;
 
       var filters = {};
       Object.keys(this.filters).forEach(function (x) {
-        var filter = _this3.filters[x];
+        var filter = _this2.filters[x];
 
         if (filter.value !== null) {
           filters[x] = filter.value;
@@ -21386,11 +21337,11 @@ function () {
   }, {
     key: "applyFilters",
     value: function applyFilters() {
-      var _this4 = this;
+      var _this3 = this;
 
       this.serializeFilters();
       var selectedFilters = Object.keys(this.filters).map(function (x) {
-        return _this4.filters[x];
+        return _this3.filters[x];
       }).filter(function (x) {
         return x.value !== null;
       });
@@ -21410,20 +21361,20 @@ function () {
       this.selectedFilters = selectedFilters;
       this.filteredItems = [];
       this.$timeout(function () {
-        _this4.filteredItems = filteredItems;
+        _this3.filteredItems = filteredItems;
 
-        _this4.updateFilterStates(filteredItems); // delayer for image update
+        _this3.updateFilterStates(filteredItems); // delayer for image update
 
       }, 50);
     }
   }, {
     key: "updateFilterStates",
     value: function updateFilterStates(collections) {
-      var _this5 = this;
+      var _this4 = this;
 
       // console.log('updateFilterStates', collections);
       Object.keys(this.filters).forEach(function (x) {
-        var filter = _this5.filters[x];
+        var filter = _this4.filters[x];
         filter.options.forEach(function (option) {
           var has = false;
 
@@ -21460,14 +21411,65 @@ function () {
   }, {
     key: "removeAll",
     value: function removeAll() {
+      var _this5 = this;
+
+      Object.keys(this.filters).forEach(function (key) {
+        var filter = _this5.filters[key];
+
+        _this5.removeFilter(filter);
+      });
+      this.applyFilters();
+    }
+  }, {
+    key: "initData__",
+    value: function initData__() {
       var _this6 = this;
+
+      // options > label, value (id)
+      var uid = 1;
+
+      var getStoredValue = function getStoredValue(items, label) {
+        return items.find(function (x) {
+          return x.label === label;
+        });
+      };
+
+      var toTitleCase = function toTitleCase(text) {
+        return text.replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+      };
 
       Object.keys(this.filters).forEach(function (key) {
         var filter = _this6.filters[key];
+        var options = filter.options;
 
-        _this6.removeFilter(filter);
+        _this6.collections.forEach(function (x) {
+          var values = x[key];
+
+          if (values) {
+            x[key] = values.map(function (value) {
+              var label = toTitleCase(value);
+              var storedValue = getStoredValue(options, label);
+              var id;
+
+              if (storedValue !== undefined) {
+                id = storedValue.value;
+              } else {
+                id = uid++;
+                options.push({
+                  label: label,
+                  value: id
+                });
+              }
+
+              return id;
+            });
+          }
+        });
       });
-      this.applyFilters();
+      console.log(JSON.stringify(this.filters));
+      console.log(JSON.stringify(this.collections));
     }
   }]);
 
@@ -21694,7 +21696,7 @@ ColorsCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'
 var _default = ColorsCtrl;
 exports.default = _default;
 
-},{"../services/dom.service":249,"../shared/rect":254}],203:[function(require,module,exports){
+},{"../services/dom.service":250,"../shared/rect":255}],203:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22486,7 +22488,7 @@ function () {
 exports.default = HeaderDirective;
 HeaderDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":254}],210:[function(require,module,exports){
+},{"../shared/rect":255}],210:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22622,7 +22624,7 @@ function () {
 exports.default = HeroDirective;
 HeroDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":254}],211:[function(require,module,exports){
+},{"../shared/rect":255}],211:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23013,19 +23015,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _operators = require("rxjs/operators");
-
-var _rect = _interopRequireDefault(require("../shared/rect"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-// let INDEX = 0;
+/* jshint esversion: 6 */
 var LazyDirective =
 /*#__PURE__*/
 function () {
@@ -23048,10 +23044,7 @@ function () {
       var _this = this;
 
       var image = element[0];
-      image.classList.remove('lazying', 'lazyed'); // image.index = INDEX++;
-      // empty picture
-      // image.setAttribute('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-
+      image.classList.remove('lazying', 'lazyed');
       var subscription = this.domService.appear$(image).subscribe(function (event) {
         if (!image.classList.contains('lazying')) {
           image.classList.add('lazying');
@@ -23059,49 +23052,9 @@ function () {
           _this.onAppearsInViewport(image, scope, attributes);
         }
       });
-      /*
-      element.subscription = this.lazy$(image).subscribe(intersection => {
-      	if (intersection.y > -0.5) {
-      		if (!image.classList.contains('lazyed')) {
-      			image.classList.add('lazyed');
-      			this.onAppearsInViewport(image, scope, attributes);
-      			setTimeout(() => {
-      				element.subscription.unsubscribe();
-      				element.subscription = null;
-      			}, 1);
-      		}
-      	}
-      });
-      */
-
       element.on('$destroy', function () {
         subscription.unsubscribe();
       });
-    }
-  }, {
-    key: "getThronSrc",
-    value: function getThronSrc(image, src) {
-      var splitted = src.split('/std/');
-
-      if (splitted.length > 1) {
-        // Contenuto Thron
-        if (splitted[1].match(/^0x0\//)) {
-          // se non sono state richieste dimensioni specifiche, imposto le dimensioni necessarie alla pagina
-          src = splitted[0] + '/std/' + Math.floor(image.width * 1.1).toString() + 'x' + Math.floor(image.height * 1.1).toString() + splitted[1].substr(3);
-
-          if (!src.match(/[&?]scalemode=?/)) {
-            src += src.indexOf('?') !== -1 ? '&' : '?';
-            src += 'scalemode=centered';
-          }
-
-          if (window.devicePixelRatio > 1) {
-            src += src.indexOf('?') !== -1 ? '&' : '?';
-            src += 'dpr=' + Math.floor(window.devicePixelRatio * 100).toString();
-          }
-        }
-      }
-
-      return src;
     }
   }, {
     key: "onAppearsInViewport",
@@ -23113,7 +23066,7 @@ function () {
 
         if (scope.src) {
           // attributes.$set('src', scope.src);
-          image.setAttribute('src', this.getThronSrc(image, scope.src));
+          image.setAttribute('src', scope.src);
           image.removeAttribute('data-src');
         }
 
@@ -23121,31 +23074,31 @@ function () {
         image.classList.add('lazyed');
       } else if (scope.src) {
         image.removeAttribute('data-src');
-        var src = this.getThronSrc(image, scope.src);
-        this.onImagePreload(image, src, function (srcOrUndefined) {
+        this.onImagePreload(image, scope.src, function (srcOrUndefined) {
           // image.setAttribute('src', src);
           image.classList.remove('lazying');
           image.classList.add('lazyed');
         });
       } else if (scope.backgroundSrc) {
-        image.setStyle('background-image', "url(".concat(this.getThronSrc(image, scope.backgroundSrc), ")"));
+        image.setStyle('background-image', "url(".concat(scope.backgroundSrc, ")"));
         image.removeAttribute('data-background-src');
         image.classList.remove('lazying');
         image.classList.add('lazyed');
       }
     }
-  }, {
-    key: "lazy$",
-    value: function lazy$(node) {
-      return this.domService.rafAndRect$().pipe((0, _operators.map)(function (datas) {
-        var windowRect = datas[1];
-
-        var rect = _rect.default.fromNode(node);
-
-        var intersection = rect.intersection(windowRect);
-        return intersection;
-      }));
+    /*
+    lazy$(node) {
+    	return this.domService.rafAndRect$().pipe(
+    		map(datas => {
+    			const windowRect = datas[1];
+    			const rect = Rect.fromNode(node);
+    			const intersection = rect.intersection(windowRect);
+    			return intersection;
+    		})
+    	);
     }
+    */
+
   }, {
     key: "onImagePreload",
     value: function onImagePreload(image, src, callback) {
@@ -23181,7 +23134,7 @@ function () {
 exports.default = LazyDirective;
 LazyDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":254,"rxjs/operators":198}],217:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23900,7 +23853,7 @@ function () {
 exports.default = ParallaxOuterDirective;
 ParallaxOuterDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":254,"rxjs/operators":198}],222:[function(require,module,exports){
+},{"../shared/rect":255,"rxjs/operators":198}],222:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24006,7 +23959,7 @@ function () {
 exports.default = ParallaxDirective;
 ParallaxDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":254,"rxjs/operators":198}],223:[function(require,module,exports){
+},{"../shared/rect":255,"rxjs/operators":198}],223:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24256,6 +24209,8 @@ function () {
         }
       }), (0, _operators.filter)(function (x) {
         return x !== null;
+      }), (0, _operators.distinctUntilChanged)(function (a, b) {
+        return Math.round(a * 100) === Math.round(b * 100);
       }), (0, _operators.shareReplay)());
     }
   }], [{
@@ -24271,7 +24226,7 @@ function () {
 exports.default = ScrollableDirective;
 ScrollableDirective.factory.$inject = ['DomService'];
 
-},{"../shared/drag.listener":251,"rxjs/operators":198}],225:[function(require,module,exports){
+},{"../shared/drag.listener":252,"rxjs/operators":198}],225:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24573,7 +24528,7 @@ function () {
 exports.default = SliderDirective;
 SliderDirective.factory.$inject = ['DomService'];
 
-},{"../shared/drag.listener":251,"rxjs/operators":198}],226:[function(require,module,exports){
+},{"../shared/drag.listener":252,"rxjs/operators":198}],226:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24741,7 +24696,7 @@ function () {
 exports.default = StickyDirective;
 StickyDirective.factory.$inject = ['$timeout', 'DomService'];
 
-},{"../shared/rect":254,"rxjs/operators":198}],228:[function(require,module,exports){
+},{"../shared/rect":255,"rxjs/operators":198}],228:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25057,7 +25012,7 @@ function () {
 exports.default = VirtualScrollDirective;
 VirtualScrollDirective.factory.$inject = ['DomService'];
 
-},{"../services/dom.service":249}],231:[function(require,module,exports){
+},{"../services/dom.service":250}],231:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25357,7 +25312,7 @@ function () {
 exports.default = ZoomableDirective;
 ZoomableDirective.factory.$inject = ['$timeout', 'DomService'];
 
-},{"../shared/rect":254}],234:[function(require,module,exports){
+},{"../shared/rect":255}],234:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26707,6 +26662,231 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+/* jshint esversion: 6 */
+var ProjectsCtrl =
+/*#__PURE__*/
+function () {
+  function ProjectsCtrl($scope, $timeout, LocationService) {
+    _classCallCheck(this, ProjectsCtrl);
+
+    this.$scope = $scope;
+    this.$timeout = $timeout;
+    this.locationService = LocationService;
+    this.filters = window.filters || {};
+    this.projects = window.projects || [];
+    this.selectedFilters = []; // this.initData__();
+
+    this.deserializeFilters();
+    this.applyFilters();
+  }
+
+  _createClass(ProjectsCtrl, [{
+    key: "deserializeFilters",
+    value: function deserializeFilters() {
+      var _this = this;
+
+      var locationFilters = this.locationService.deserialize('filters') || {};
+      Object.keys(this.filters).forEach(function (x) {
+        var filter = _this.filters[x];
+
+        switch (x) {
+          default:
+            filter.doFilter = function (item, value) {
+              var features = item[x];
+              return features.indexOf(value) !== -1;
+            };
+
+        }
+
+        filter.options.unshift({
+          label: _this.filters[x].placeholder,
+          value: null
+        });
+        var selectedOption = filter.options.find(function (o) {
+          return Boolean(o.value === (locationFilters[x] || null));
+        });
+        filter.value = selectedOption.value;
+        filter.placeholder = selectedOption.label;
+      });
+      return filters;
+    }
+  }, {
+    key: "serializeFilters",
+    value: function serializeFilters() {
+      var _this2 = this;
+
+      var filters = {};
+      Object.keys(this.filters).forEach(function (x) {
+        var filter = _this2.filters[x];
+
+        if (filter.value !== null) {
+          filters[x] = filter.value;
+        }
+      }); // console.log('ReferenceCtrl.serializeFilters', filters);
+
+      this.locationService.serialize('filters', filters);
+      return filters;
+    }
+  }, {
+    key: "applyFilters",
+    value: function applyFilters() {
+      var _this3 = this;
+
+      this.serializeFilters();
+      var selectedFilters = Object.keys(this.filters).map(function (x) {
+        return _this3.filters[x];
+      }).filter(function (x) {
+        return x.value !== null;
+      });
+      var filteredItems = this.projects.slice(); // console.log(filteredItems);
+
+      if (selectedFilters.length) {
+        filteredItems = filteredItems.filter(function (reference) {
+          var has = true;
+          selectedFilters.forEach(function (filter) {
+            has = has && filter.doFilter(reference, filter.value);
+          });
+          return has;
+        });
+      } // console.log(filteredItems, selectedFilters);
+
+
+      this.selectedFilters = selectedFilters;
+      this.filteredItems = [];
+      this.$timeout(function () {
+        _this3.filteredItems = filteredItems;
+
+        _this3.updateFilterStates(filteredItems); // delayer for image update
+
+      }, 50);
+    }
+  }, {
+    key: "updateFilterStates",
+    value: function updateFilterStates(projects) {
+      var _this4 = this;
+
+      // console.log('updateFilterStates', projects);
+      Object.keys(this.filters).forEach(function (x) {
+        var filter = _this4.filters[x];
+        filter.options.forEach(function (option) {
+          var has = false;
+
+          if (option.value) {
+            var i = 0;
+
+            while (i < projects.length && !has) {
+              var reference = projects[i];
+              has = filter.doFilter(reference, option.value);
+              i++;
+            }
+          } else {
+            has = true;
+          }
+
+          option.disabled = !has;
+        }); // console.log(filter.options);
+      });
+    }
+  }, {
+    key: "setFilter",
+    value: function setFilter(item, filter) {
+      item = item || filter.options[0];
+      filter.value = item.value;
+      filter.placeholder = item.label;
+      this.applyFilters();
+      this.$scope.$broadcast('onCloseDropdown');
+    }
+  }, {
+    key: "removeFilter",
+    value: function removeFilter(filter) {
+      this.setFilter(null, filter);
+    }
+  }, {
+    key: "removeAll",
+    value: function removeAll() {
+      var _this5 = this;
+
+      Object.keys(this.filters).forEach(function (key) {
+        var filter = _this5.filters[key];
+
+        _this5.removeFilter(filter);
+      });
+      this.applyFilters();
+    }
+  }, {
+    key: "initData__",
+    value: function initData__() {
+      var _this6 = this;
+
+      // options > label, value (id)
+      var uid = 1;
+
+      var getStoredValue = function getStoredValue(items, label) {
+        return items.find(function (x) {
+          return x.label === label;
+        });
+      };
+
+      var toTitleCase = function toTitleCase(text) {
+        return text.replace(/-/g, ' ').replace(/\w\S*/g, function (txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+      };
+
+      Object.keys(this.filters).forEach(function (key) {
+        var filter = _this6.filters[key];
+        var options = filter.options;
+
+        _this6.projects.forEach(function (x) {
+          var values = x[key];
+
+          if (values) {
+            x[key] = values.map(function (value) {
+              var label = toTitleCase(value);
+              var storedValue = getStoredValue(options, label);
+              var id;
+
+              if (storedValue !== undefined) {
+                id = storedValue.value;
+              } else {
+                id = uid++;
+                options.push({
+                  label: label,
+                  value: id
+                });
+              }
+
+              return id;
+            });
+          }
+        });
+      });
+      console.log(JSON.stringify(this.filters));
+      console.log(JSON.stringify(this.projects));
+    }
+  }]);
+
+  return ProjectsCtrl;
+}();
+
+ProjectsCtrl.$inject = ['$scope', '$timeout', 'LocationService'];
+var _default = ProjectsCtrl;
+exports.default = _default;
+
+},{}],248:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
 var _rxjs = require("rxjs");
 
 var _operators = require("rxjs/operators");
@@ -27027,7 +27207,7 @@ RootCtrl.$inject = ['$scope', '$element', '$timeout', 'DomService', 'ApiService'
 var _default = RootCtrl;
 exports.default = _default;
 
-},{"rxjs":2,"rxjs/operators":198}],248:[function(require,module,exports){
+},{"rxjs":2,"rxjs/operators":198}],249:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27098,7 +27278,7 @@ function () {
 exports.default = ApiService;
 ApiService.factory.$inject = ['$http'];
 
-},{"rxjs":2}],249:[function(require,module,exports){
+},{"rxjs":2}],250:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27287,6 +27467,11 @@ function () {
       return DomService.scroll$;
     }
   }, {
+    key: "secondaryScroll$",
+    value: function secondaryScroll$(target) {
+      return DomService.secondaryScroll$(target);
+    }
+  }, {
     key: "scrollAndRect$",
     value: function scrollAndRect$() {
       return DomService.scrollAndRect$;
@@ -27328,8 +27513,12 @@ function () {
         } else {
           return null;
         }
-      }), (0, _operators.filter)(function (x) {
-        return x !== null;
+      }), (0, _operators.filter)(function (y) {
+        return y !== null;
+      }), (0, _operators.distinctUntilChanged)(function (a, b) {
+        return Math.round(a * 100) === Math.round(b * 100);
+      }), (0, _operators.tap)(function (y) {
+        return DomService.smoothScroll$_.next(y);
       }), (0, _operators.shareReplay)());
     }
   }, {
@@ -27378,8 +27567,12 @@ function () {
         } else {
           return null;
         }
-      }), (0, _operators.filter)(function (x) {
-        return x !== null;
+      }), (0, _operators.filter)(function (y) {
+        return y !== null;
+      }), (0, _operators.distinctUntilChanged)(function (a, b) {
+        return Math.round(a * 100) === Math.round(b * 100);
+      }), (0, _operators.tap)(function (y) {
+        return DomService.virtualScroll$_.next(y);
       }), (0, _operators.shareReplay)());
     }
   }, {
@@ -27391,32 +27584,44 @@ function () {
 
         var rect = _rect.default.fromNode(node);
 
-        var intersection = rect.intersection(windowRect);
-        var response = DomService.rafIntersection_;
-        response.scroll = datas[0];
-        response.windowRect = datas[1];
-        response.rect = rect;
-        response.intersection = intersection;
-        return response;
+        if (rect.height) {
+          var intersection = rect.intersection(windowRect);
+          var response = DomService.rafIntersection_;
+          response.scroll = datas[0];
+          response.windowRect = datas[1];
+          response.rect = rect;
+          response.intersection = intersection;
+          return response;
+        }
+      }), (0, _operators.filter)(function (response) {
+        return response !== undefined;
       }));
     }
   }, {
     key: "scrollIntersection$",
     value: function scrollIntersection$(node) {
-      return this.scrollAndRect$().pipe((0, _operators.map)(function (datas) {
+      var o = this.scrollAndRect$().pipe((0, _operators.map)(function (datas) {
         // const scrollTop = datas[0];
         var windowRect = datas[1];
 
         var rect = _rect.default.fromNode(node);
 
-        var intersection = rect.intersection(windowRect);
-        var response = DomService.scrollIntersection_;
-        response.scroll = datas[0];
-        response.windowRect = datas[1];
-        response.rect = rect;
-        response.intersection = intersection;
-        return response;
+        if (rect.height) {
+          var intersection = rect.intersection(windowRect);
+          var response = DomService.scrollIntersection_;
+          response.scroll = datas[0];
+          response.windowRect = datas[1];
+          response.rect = rect;
+          response.intersection = intersection;
+          return response;
+        }
+      }), (0, _operators.filter)(function (response) {
+        return response !== undefined;
       }));
+      DomService.secondaryScroll$_.next({
+        target: window
+      });
+      return o;
     }
   }, {
     key: "appearOnLoad$",
@@ -27443,7 +27648,7 @@ function () {
     key: "visibility$",
     value: function visibility$(node) {
       var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0.5;
-      return this.rafIntersection$(node).pipe((0, _operators.map)(function (x) {
+      return this.scrollIntersection$(node).pipe((0, _operators.map)(function (x) {
         return x.intersection.y > value;
       }), (0, _operators.distinctUntilChanged)());
     }
@@ -27474,6 +27679,17 @@ function () {
       body.appendChild(node);
       var scrollBarWidth = node.offsetWidth - inner.offsetWidth;
       body.removeChild(node);
+      /*
+      const sheet = this.addCustomSheet();
+      const body = document.querySelector('body');
+      const scrollBarWidth = window.innerWidth - body.clientWidth;
+      let rule = `body.droppin-in { padding-right: ${scrollBarWidth}px; }`;
+      sheet.insertRule(rule, 0);
+      rule = `body.droppin-in header { width: calc(100% - ${scrollBarWidth}px); }`;
+      sheet.insertRule(rule, 1);
+      rule = `body.droppin-in menu--product { width: calc(100% - ${scrollBarWidth}px); }`;
+      sheet.insertRule(rule, 2);
+      */
     }
   }, {
     key: "addCustomSheet",
@@ -27519,12 +27735,28 @@ function () {
   }, {
     key: "getScrollTop",
     value: function getScrollTop(node) {
-      return Math.max(0, node.pageYOffset || node.scrollY || node.scrollTop || 0);
+      if (!node) {
+        return 0;
+      }
+
+      if (node === document || node === window) {
+        return this.getScrollTop(document.scrollingElement || document.documentElement || document.body);
+      }
+
+      return node.pageYOffset || node.scrollY || node.scrollTop || 0;
     }
   }, {
     key: "getScrollLeft",
     value: function getScrollLeft(node) {
-      return Math.max(0, node.pageXOffset || node.scrollX || node.scrollLeft || 0);
+      if (!node) {
+        return 0;
+      }
+
+      if (node === document || node === window) {
+        return this.getScrollLeft(document.scrollingElement || document.documentElement || document.body);
+      }
+
+      return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
     }
   }, {
     key: "detect",
@@ -27573,34 +27805,6 @@ function () {
         }
       });
       return this.agent;
-      /*
-      const onTouchStart = () => {
-      	document.removeEventListener('touchstart', onTouchStart);
-      	Dom.touch = true;
-      	html.classList.add('touch');
-      };
-      document.addEventListener('touchstart', onTouchStart);
-      const onMouseDown = () => {
-      	document.removeEventListener('mousedown', onMouseDown);
-      	Dom.mouse = true;
-      	html.classList.add('mouse');
-      };
-      document.addEventListener('mousedown', onMouseDown);
-      const onScroll = () => {
-      	let now = Utils.now();
-      	if (Dom.lastScrollTime) {
-      		const diff = now - Dom.lastScrollTime;
-      		if (diff < 5) {
-      			document.removeEventListener('scroll', onScroll);
-      			Dom.fastscroll = true;
-      			node.classList.add('fastscroll');
-      			console.log('scroll', diff);
-      		}
-      	}
-      	Dom.lastScrollTime = now;
-      };
-      document.addEventListener('scroll', onScroll);
-      */
     }
   }, {
     key: "isDescendantOf",
@@ -27615,14 +27819,21 @@ function () {
         return this.isDescendantOf(node.parentNode, target);
       }
     }
+  }, {
+    key: "secondaryScroll$",
+    value: function secondaryScroll$(target) {
+      return (0, _rxjs.fromEvent)(target, 'scroll').pipe((0, _operators.tap)(function (event) {
+        return DomService.secondaryScroll$_.next(event);
+      }));
+    }
   }]);
 
   return DomService;
 }();
 
 exports.default = DomService;
-DomService.factory.$inject = [];
 DomService.DEFAULT_SCROLL_TARGET = window;
+DomService.factory.$inject = [];
 DomService.rafIntersection_ = {};
 DomService.scrollIntersection_ = {};
 DomService.raf$ = (0, _rxjs.range)(0, Number.POSITIVE_INFINITY, _animationFrame.animationFrame);
@@ -27636,10 +27847,19 @@ DomService.windowRect$ = function () {
     windowRect.width = window.innerWidth;
     windowRect.height = window.innerHeight;
     return windowRect;
-  }), (0, _operators.startWith)(windowRect));
+  }), (0, _operators.startWith)(windowRect), (0, _operators.shareReplay)());
 }();
 
-DomService.rafAndRect$ = (0, _rxjs.combineLatest)(DomService.raf$, DomService.windowRect$);
+DomService.rafAndRect$ = (0, _rxjs.combineLatest)(DomService.raf$, DomService.windowRect$).pipe((0, _operators.shareReplay)());
+
+DomService.mainScroll$ = function () {
+  var target = DomService.DEFAULT_SCROLL_TARGET;
+  return (0, _rxjs.fromEvent)(target, 'scroll').pipe((0, _operators.shareReplay)());
+}();
+
+DomService.smoothScroll$_ = new _rxjs.Subject();
+DomService.virtualScroll$_ = new _rxjs.Subject();
+DomService.secondaryScroll$_ = new _rxjs.Subject();
 
 DomService.scroll$ = function () {
   var target = DomService.DEFAULT_SCROLL_TARGET;
@@ -27650,21 +27870,20 @@ DomService.scroll$ = function () {
     direction: 0,
     originalEvent: null
   };
-  return (0, _rxjs.fromEvent)(target, 'scroll').pipe((0, _operators.auditTime)(16), // 60 fps
-  (0, _operators.map)(function (originalEvent) {
-    event.scrollTop = DomService.getScrollTop(target);
-    event.scrollLeft = DomService.getScrollLeft(target);
+  return (0, _rxjs.merge)(DomService.smoothScroll$_, DomService.secondaryScroll$_).pipe((0, _operators.auditTime)(1000 / 60), (0, _operators.map)(function (originalEvent) {
+    event.scrollTop = DomService.getScrollTop(originalEvent.target);
+    event.scrollLeft = DomService.getScrollLeft(originalEvent.target);
     var diff = event.scrollTop - previousTop;
-    event.direction = diff === 0 ? 0 : diff / Math.abs(diff);
+    event.direction = diff ? diff / Math.abs(diff) : 0;
     previousTop = event.scrollTop;
     event.originalEvent = originalEvent;
     return event;
-  }), (0, _operators.startWith)(event));
+  }), (0, _operators.startWith)(event), (0, _operators.shareReplay)());
 }();
 
-DomService.scrollAndRect$ = (0, _rxjs.combineLatest)(DomService.scroll$, DomService.windowRect$);
+DomService.scrollAndRect$ = (0, _rxjs.combineLatest)(DomService.scroll$, DomService.windowRect$).pipe((0, _operators.shareReplay)());
 
-},{"../shared/rect":254,"rxjs":2,"rxjs/internal/scheduler/animationFrame":161,"rxjs/operators":198}],250:[function(require,module,exports){
+},{"../shared/rect":255,"rxjs":2,"rxjs/internal/scheduler/animationFrame":161,"rxjs/operators":198}],251:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27803,7 +28022,7 @@ exports.default = WishlistService;
 WishlistService.count$ = new _rxjs.BehaviorSubject(0);
 WishlistService.factory.$inject = ['$http', 'PromiseService', 'LocalStorageService', 'ApiService'];
 
-},{"rxjs":2}],251:[function(require,module,exports){
+},{"rxjs":2}],252:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28062,7 +28281,7 @@ function () {
 
 exports.default = DragListener;
 
-},{}],252:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28163,7 +28382,7 @@ function () {
 exports.default = LocationService;
 LocationService.factory.$inject = ['$location'];
 
-},{}],253:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28216,7 +28435,7 @@ function () {
 exports.default = PromiseService;
 PromiseService.factory.$inject = ['$q'];
 
-},{}],254:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28287,38 +28506,11 @@ function () {
       var dx = this.left > rect.left ? 0 : Math.abs(rect.left - this.left);
       var dy = this.top > rect.top ? 0 : Math.abs(rect.top - this.top);
       var x = dx ? 1 - dx / this.width : (rect.left + rect.width - this.left) / this.width;
-      var y = dy ? 1 - dy / this.height : (rect.top + rect.height - this.top) / this.height;
+      var y = dy ? 1 - dy / this.height : (rect.top + rect.height - this.top) / this.height; // console.log(this.top, this.height, rect.top, rect.height);
+
       intersection.x = x;
       intersection.y = y;
       return intersection;
-    }
-  }, {
-    key: "intersection___",
-    value: function intersection___(rect) {
-      var center = {
-        x: (this.center.x - rect.center.x) / (rect.width / 2),
-        y: (this.center.y - rect.center.y) / (rect.height / 2)
-      };
-
-      if (this.intersect(rect)) {
-        var dx = this.left > rect.left ? 0 : Math.abs(rect.left - this.left);
-        var dy = this.top > rect.top ? 0 : Math.abs(rect.top - this.top);
-        var x = dx ? 1 - dx / this.width : (rect.left + rect.width - this.left) / this.width;
-        var y = dy ? 1 - dy / this.height : (rect.top + rect.height - this.top) / this.height;
-        x = Math.min(1, x);
-        y = Math.min(1, y);
-        return {
-          x: x,
-          y: y,
-          center: center
-        };
-      } else {
-        return {
-          x: 0,
-          y: 0,
-          center: center
-        };
-      }
     }
   }], [{
     key: "contains",
@@ -28362,7 +28554,7 @@ function () {
 
 exports.default = Rect;
 
-},{}],255:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28555,7 +28747,7 @@ function () {
 exports.default = StateService;
 StateService.factory.$inject = ['$timeout', '$rootScope'];
 
-},{}],256:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

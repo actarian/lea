@@ -1,8 +1,8 @@
 /* jshint esversion: 6 */
 
-import { combineLatest, fromEvent, range } from 'rxjs';
+import { combineLatest, fromEvent, merge, range, Subject } from 'rxjs';
 import { animationFrame } from 'rxjs/internal/scheduler/animationFrame';
-import { auditTime, distinctUntilChanged, filter, first, map, shareReplay, startWith } from 'rxjs/operators';
+import { auditTime, distinctUntilChanged, filter, first, map, shareReplay, startWith, tap } from 'rxjs/operators';
 import Rect from '../shared/rect';
 
 export function tween(from, to, friction) {
@@ -149,6 +149,10 @@ export default class DomService {
 		return DomService.scroll$;
 	}
 
+	secondaryScroll$(target) {
+		return DomService.secondaryScroll$(target);
+	}
+
 	scrollAndRect$() {
 		return DomService.scrollAndRect$;
 	}
@@ -183,7 +187,9 @@ export default class DomService {
 					return null;
 				}
 			}),
-			filter(x => x !== null),
+			filter(y => y !== null),
+			distinctUntilChanged((a, b) => Math.round(a * 100) === Math.round(b * 100)),
+			tap(y => DomService.smoothScroll$_.next(y)),
 			shareReplay()
 		);
 	}
@@ -228,7 +234,9 @@ export default class DomService {
 					return null;
 				}
 			}),
-			filter(x => x !== null),
+			filter(y => y !== null),
+			distinctUntilChanged((a, b) => Math.round(a * 100) === Math.round(b * 100)),
+			tap(y => DomService.virtualScroll$_.next(y)),
 			shareReplay()
 		);
 	}
@@ -239,32 +247,40 @@ export default class DomService {
 				// const scrollTop = datas[0];
 				const windowRect = datas[1];
 				const rect = Rect.fromNode(node);
-				const intersection = rect.intersection(windowRect);
-				const response = DomService.rafIntersection_;
-				response.scroll = datas[0];
-				response.windowRect = datas[1];
-				response.rect = rect;
-				response.intersection = intersection;
-				return response;
-			})
+				if (rect.height) {
+					const intersection = rect.intersection(windowRect);
+					const response = DomService.rafIntersection_;
+					response.scroll = datas[0];
+					response.windowRect = datas[1];
+					response.rect = rect;
+					response.intersection = intersection;
+					return response;
+				}
+			}),
+			filter(response => response !== undefined)
 		);
 	}
 
 	scrollIntersection$(node) {
-		return this.scrollAndRect$().pipe(
+		const o = this.scrollAndRect$().pipe(
 			map(datas => {
 				// const scrollTop = datas[0];
 				const windowRect = datas[1];
 				const rect = Rect.fromNode(node);
-				const intersection = rect.intersection(windowRect);
-				const response = DomService.scrollIntersection_;
-				response.scroll = datas[0];
-				response.windowRect = datas[1];
-				response.rect = rect;
-				response.intersection = intersection;
-				return response;
-			})
+				if (rect.height) {
+					const intersection = rect.intersection(windowRect);
+					const response = DomService.scrollIntersection_;
+					response.scroll = datas[0];
+					response.windowRect = datas[1];
+					response.rect = rect;
+					response.intersection = intersection;
+					return response;
+				}
+			}),
+			filter(response => response !== undefined)
 		);
+		DomService.secondaryScroll$_.next({ target: window });
+		return o;
 	}
 
 	appearOnLoad$(node, value = 0.0) { // -0.5
@@ -283,7 +299,7 @@ export default class DomService {
 	}
 
 	visibility$(node, value = 0.5) {
-		return this.rafIntersection$(node).pipe(
+		return this.scrollIntersection$(node).pipe(
 			map(x => x.intersection.y > value),
 			distinctUntilChanged()
 		);
@@ -312,6 +328,17 @@ export default class DomService {
 		body.appendChild(node);
 		const scrollBarWidth = (node.offsetWidth - inner.offsetWidth);
 		body.removeChild(node);
+		/*
+		const sheet = this.addCustomSheet();
+		const body = document.querySelector('body');
+		const scrollBarWidth = window.innerWidth - body.clientWidth;
+		let rule = `body.droppin-in { padding-right: ${scrollBarWidth}px; }`;
+		sheet.insertRule(rule, 0);
+		rule = `body.droppin-in header { width: calc(100% - ${scrollBarWidth}px); }`;
+		sheet.insertRule(rule, 1);
+		rule = `body.droppin-in menu--product { width: calc(100% - ${scrollBarWidth}px); }`;
+		sheet.insertRule(rule, 2);
+		*/
 	}
 
 	addCustomSheet() {
@@ -334,11 +361,23 @@ export default class DomService {
 	}
 
 	static getScrollTop(node) {
-		return Math.max(0, node.pageYOffset || node.scrollY || node.scrollTop || 0);
+		if (!node) {
+			return 0;
+		}
+		if (node === document || node === window) {
+			return this.getScrollTop(document.scrollingElement || document.documentElement || document.body);
+		}
+		return node.pageYOffset || node.scrollY || node.scrollTop || 0;
 	}
 
 	static getScrollLeft(node) {
-		return Math.max(0, node.pageXOffset || node.scrollX || node.scrollLeft || 0);
+		if (!node) {
+			return 0;
+		}
+		if (node === document || node === window) {
+			return this.getScrollLeft(document.scrollingElement || document.documentElement || document.body);
+		}
+		return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
 	}
 
 	static detect() {
@@ -383,34 +422,6 @@ export default class DomService {
 			}
 		});
 		return this.agent;
-		/*
-		const onTouchStart = () => {
-			document.removeEventListener('touchstart', onTouchStart);
-			Dom.touch = true;
-			html.classList.add('touch');
-		};
-		document.addEventListener('touchstart', onTouchStart);
-		const onMouseDown = () => {
-			document.removeEventListener('mousedown', onMouseDown);
-			Dom.mouse = true;
-			html.classList.add('mouse');
-		};
-		document.addEventListener('mousedown', onMouseDown);
-		const onScroll = () => {
-			let now = Utils.now();
-			if (Dom.lastScrollTime) {
-				const diff = now - Dom.lastScrollTime;
-				if (diff < 5) {
-					document.removeEventListener('scroll', onScroll);
-					Dom.fastscroll = true;
-					node.classList.add('fastscroll');
-					console.log('scroll', diff);
-				}
-			}
-			Dom.lastScrollTime = now;
-		};
-		document.addEventListener('scroll', onScroll);
-		*/
 	}
 
 	static isDescendantOf(node, target) {
@@ -423,10 +434,17 @@ export default class DomService {
 			return this.isDescendantOf(node.parentNode, target);
 		}
 	}
+
+	static secondaryScroll$(target) {
+		return fromEvent(target, 'scroll').pipe(
+			tap(event => DomService.secondaryScroll$_.next(event))
+		);
+	}
+
 }
 
-DomService.factory.$inject = [];
 DomService.DEFAULT_SCROLL_TARGET = window;
+DomService.factory.$inject = [];
 DomService.rafIntersection_ = {};
 DomService.scrollIntersection_ = {};
 DomService.raf$ = range(0, Number.POSITIVE_INFINITY, animationFrame);
@@ -441,10 +459,22 @@ DomService.windowRect$ = function() {
 			windowRect.height = window.innerHeight;
 			return windowRect;
 		}),
-		startWith(windowRect)
+		startWith(windowRect),
+		shareReplay()
 	);
 }();
-DomService.rafAndRect$ = combineLatest(DomService.raf$, DomService.windowRect$);
+DomService.rafAndRect$ = combineLatest(DomService.raf$, DomService.windowRect$).pipe(
+	shareReplay()
+);
+DomService.mainScroll$ = function() {
+	const target = DomService.DEFAULT_SCROLL_TARGET;
+	return fromEvent(target, 'scroll').pipe(
+		shareReplay()
+	);
+}();
+DomService.smoothScroll$_ = new Subject();
+DomService.virtualScroll$_ = new Subject();
+DomService.secondaryScroll$_ = new Subject();
 DomService.scroll$ = function() {
 	const target = DomService.DEFAULT_SCROLL_TARGET;
 	let previousTop = DomService.getScrollTop(target);
@@ -454,18 +484,21 @@ DomService.scroll$ = function() {
 		direction: 0,
 		originalEvent: null,
 	};
-	return fromEvent(target, 'scroll').pipe(
-		auditTime(16), // 60 fps
+	return merge(DomService.smoothScroll$_, DomService.secondaryScroll$_).pipe(
+		auditTime(1000 / 60),
 		map((originalEvent) => {
-			event.scrollTop = DomService.getScrollTop(target);
-			event.scrollLeft = DomService.getScrollLeft(target);
+			event.scrollTop = DomService.getScrollTop(originalEvent.target);
+			event.scrollLeft = DomService.getScrollLeft(originalEvent.target);
 			const diff = event.scrollTop - previousTop;
-			event.direction = diff === 0 ? 0 : diff / Math.abs(diff);
+			event.direction = diff ? diff / Math.abs(diff) : 0;
 			previousTop = event.scrollTop;
 			event.originalEvent = originalEvent;
 			return event;
 		}),
-		startWith(event)
+		startWith(event),
+		shareReplay()
 	);
 }();
-DomService.scrollAndRect$ = combineLatest(DomService.scroll$, DomService.windowRect$);
+DomService.scrollAndRect$ = combineLatest(DomService.scroll$, DomService.windowRect$).pipe(
+	shareReplay()
+);

@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 
-class CollectionsCtrl {
+class ProjectsCtrl {
 
 	constructor(
 		$scope,
@@ -11,7 +11,7 @@ class CollectionsCtrl {
 		this.$timeout = $timeout;
 		this.locationService = LocationService;
 		this.filters = window.filters || {};
-		this.collections = window.collections || [];
+		this.projects = window.projects || [];
 		this.selectedFilters = [];
 		// this.initData__();
 		this.deserializeFilters();
@@ -56,7 +56,7 @@ class CollectionsCtrl {
 	applyFilters() {
 		this.serializeFilters();
 		const selectedFilters = Object.keys(this.filters).map((x) => this.filters[x]).filter(x => x.value !== null);
-		let filteredItems = this.collections.slice();
+		let filteredItems = this.projects.slice();
 		// console.log(filteredItems);
 		if (selectedFilters.length) {
 			filteredItems = filteredItems.filter(reference => {
@@ -77,16 +77,16 @@ class CollectionsCtrl {
 		}, 50);
 	}
 
-	updateFilterStates(collections) {
-		// console.log('updateFilterStates', collections);
+	updateFilterStates(projects) {
+		// console.log('updateFilterStates', projects);
 		Object.keys(this.filters).forEach(x => {
 			const filter = this.filters[x];
 			filter.options.forEach(option => {
 				let has = false;
 				if (option.value) {
 					let i = 0;
-					while (i < collections.length && !has) {
-						const reference = collections[i];
+					while (i < projects.length && !has) {
+						const reference = projects[i];
 						has = filter.doFilter(reference, option.value);
 						i++;
 					}
@@ -133,7 +133,7 @@ class CollectionsCtrl {
 		Object.keys(this.filters).forEach(key => {
 			const filter = this.filters[key];
 			const options = filter.options;
-			this.collections.forEach(x => {
+			this.projects.forEach(x => {
 				const values = x[key];
 				if (values) {
 					x[key] = values.map(value => {
@@ -155,11 +155,11 @@ class CollectionsCtrl {
 			});
 		});
 		console.log(JSON.stringify(this.filters));
-		console.log(JSON.stringify(this.collections));
+		console.log(JSON.stringify(this.projects));
 	}
 
 }
 
-CollectionsCtrl.$inject = ['$scope', '$timeout', 'LocationService'];
+ProjectsCtrl.$inject = ['$scope', '$timeout', 'LocationService'];
 
-export default CollectionsCtrl;
+export default ProjectsCtrl;

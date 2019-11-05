@@ -188,6 +188,8 @@ section {
 	visibility: hidden;
 	opacity: 0;
 	transition: opacity ease-in-out 350ms;
+	min-height: 1px;
+	min-width: 1px;
 
 	&.lazyed {
 		visibility: visible;

@@ -43,6 +43,7 @@ import GalleryCtrl from './gallery/gallery.controller';
 import HighwayDirective from './highway/highway.directive';
 import MoodboardDropdownDirective from './moodboard/moodboard-dropdown.directive';
 import MoodboardSearchDirective from './moodboard/moodboard-search.directive';
+import ProjectsCtrl from './projects/projects.controller';
 import RootCtrl from './root.controller';
 import ApiService from './services/api.service';
 import DomService from './services/dom.service';
@@ -111,7 +112,8 @@ app.directive('abstract', AbstractDirective.factory)
 app.controller('RootCtrl', RootCtrl)
 	.controller('CollectionsCtrl', CollectionsCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
-	.controller('GalleryCtrl', GalleryCtrl);
+	.controller('GalleryCtrl', GalleryCtrl)
+	.controller('ProjectsCtrl', ProjectsCtrl);
 
 app.filter('imageWithFeatures', [ImageWithFeatures])
 	.filter('notIn', ['$filter', NotInFilter])

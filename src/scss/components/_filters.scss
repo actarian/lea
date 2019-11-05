@@ -11,7 +11,7 @@
 	}
 
 	@include media-up(sm) {
-		z-index: 100;
+		z-index: 99;
 		min-height: 70px;
 
 		&.sticky {

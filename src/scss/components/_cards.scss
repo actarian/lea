@@ -149,6 +149,10 @@
 	flex: 0 0 100%;
 	@include _selectNone();
 
+	.picture {
+		@include aspect-clip(420, 280);
+	}
+
 	.group--overlay {
 		display: flex;
 		flex-direction: column;
@@ -254,27 +258,6 @@
 		top: 100%;
 		left: 0;
 		background: #F7F5F0;
-
-		&>.title {
-			color: #232120;
-			font-size: 24px;
-			font-weight: 300;
-			letter-spacing: 0.03em;
-			margin-bottom: 15px;
-
-			img {
-				margin-right: 15px;
-			}
-		}
-
-		&>.abstract {
-			color: #232120;
-			font-size: 16px;
-			font-weight: 300;
-			letter-spacing: 0.02em;
-			line-height: 1.2;
-			margin-bottom: 70px;
-		}
 	}
 
 	.listing--scrollbar {
@@ -282,8 +265,9 @@
 	}
 
 	&.card--dark-bg:not(.active) {
-		.card__body > .title,
-		.card__body > .abstract {
+
+		.card__body>.title,
+		.card__body>.abstract {
 			color: #fff;
 		}
 	}
