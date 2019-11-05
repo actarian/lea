@@ -22144,6 +22144,9 @@ function () {
       }
 
       var onClick = function onClick(event) {
+        // Rivisto comportamento gallery: ora apre le immagini si aprono con Flexbox
+        return;
+
         var items = _toConsumableArray(document.querySelectorAll('[gallery-item]:not(.gallery__item--gallery)'));
 
         var index = items.indexOf(node);

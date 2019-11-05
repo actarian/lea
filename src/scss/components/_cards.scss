@@ -281,6 +281,13 @@
 		height: 40px;
 	}
 
+	&.card--dark-bg:not(.active) {
+		.card__body > .title,
+		.card__body > .abstract {
+			color: #fff;
+		}
+	}
+
 	&:not(.active):hover {
 		.card__body {
 			&>.abstract {
