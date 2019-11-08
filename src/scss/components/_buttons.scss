@@ -150,6 +150,48 @@ button,
 	}
 }
 
+.btn--submit {
+    display: inline-flex;
+	align-items: center;
+	padding: 25px;
+    font-size: 16px;
+    font-weight: $font-bold;
+    background: #232120;
+
+	span {
+		display: inline-block;
+		transition: all ease-in-out 350ms;
+	}
+
+	.icon--arrow-left,
+	.icon--arrow-right {
+		width: 8px;
+		height: 13px;
+	}
+
+	.icon--arrow-left {
+		margin-right: 17px;
+	}
+
+	.icon--arrow-right {
+		margin-left: 17px;
+	}
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: white;
+	}
+
+	&:hover {
+		span {
+			transform: translateY(5px);
+		}
+	}
+}
+
 .btn--back {
 	display: inline-flex;
 	align-items: center;

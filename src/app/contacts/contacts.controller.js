@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 class ContactsCtrl {
 
 	constructor(
@@ -25,13 +24,14 @@ class ContactsCtrl {
 
 	setProvinces() {
 		this.$timeout(() => {
-			this.provinces = this.data.provinces.filter(x => x.idstato === this.model.country);
+			this.provinces = this.data.provinces.filter(x => x.countryId === this.model.country);
 		});
 	}
 
 	onSubmit() {
 		console.log('ContactsCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
+			/*
 			this.$http.post('/WS/wsForms.asmx/SaveForm', this.model).then(
 				success => {
 
@@ -42,11 +42,10 @@ class ContactsCtrl {
 			).finally(() => {
 				this.state.ready();
 			});
-			/*
+			*/
 			this.$timeout(() => {
 				this.state.ready();
 			}, 2000);
-			*/
 		}
 	}
 

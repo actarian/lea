@@ -2,6 +2,7 @@
 
 import CollectionsCtrl from './collections/collections.controller';
 import ColorsCtrl from './colors/colors.controller';
+import ContactsCtrl from './contacts/contacts.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
@@ -26,8 +27,8 @@ import ScrollDirective from './directives/scroll.directive';
 import ScrollableDirective from './directives/scrollable.directive';
 import SliderDirective from './directives/slider.directive';
 import SmoothScrollDirective from './directives/smooth-scroll.directive';
+import SplitDirective from './directives/split.directive';
 import StickyDirective from './directives/sticky.directive';
-import TitleDirective from './directives/title.directive';
 import VideoDirective from './directives/video.directive';
 import VirtualScrollDirective from './directives/virtual-scroll.directive';
 import VisibilityDirective from './directives/visibility.directive';
@@ -100,7 +101,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('selectWithAutocomplete', AutocompleteDirective.factory)
 	.directive('slider', SliderDirective.factory)
 	.directive('sticky', StickyDirective.factory)
-	.directive('title', TitleDirective.factory)
+	.directive('split', SplitDirective.factory)
 	.directive('validate', ValidateDirective.factory)
 	.directive('video', VideoDirective.factory)
 	.directive('virtualScroll', VirtualScrollDirective.factory)
@@ -110,6 +111,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('zoomable', ZoomableDirective.factory);
 
 app.controller('RootCtrl', RootCtrl)
+	.controller('ContactsCtrl', ContactsCtrl)
 	.controller('CollectionsCtrl', CollectionsCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl)

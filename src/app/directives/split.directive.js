@@ -6,7 +6,7 @@
 
 // import Splitting from "splitting";
 
-export default class TitleDirective {
+export default class SplitDirective {
 
 	constructor(
 		DomService
@@ -66,9 +66,9 @@ export default class TitleDirective {
 	}
 
 	static factory(DomService) {
-		return new TitleDirective(DomService);
+		return new SplitDirective(DomService);
 	}
 
 }
 
-TitleDirective.factory.$inject = ['DomService'];
+SplitDirective.factory.$inject = ['DomService'];
