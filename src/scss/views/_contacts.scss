@@ -1,0 +1,30 @@
+.section--form {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	border-bottom: 2px solid $border;
+	background: #F3F3F3;
+
+	.group--cta {
+		margin: 60px 0 0 0;
+	}
+}
+
+.section--contacts {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	background: #F3F3F3;
+
+	.group--contact {
+		font-size: 16px;
+		color: #282525;
+		padding-right: 30px;
+
+		.title {
+			font-weight: $font-semibold;
+		}
+
+		a {
+			color: black;
+		}
+	}
+}

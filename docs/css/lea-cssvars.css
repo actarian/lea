@@ -8711,14 +8711,6 @@ button {
   background: transparent;
   border: none; }
 
-.section--form {
-  padding-top: 70px;
-  padding-bottom: 70px;
-  border-bottom: 2px solid var(--border);
-  background: #F3F3F3; }
-  .section--form .group--cta {
-    margin: 60px 0 0 0; }
-
 .group--control {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12939,6 +12931,27 @@ layout {
     display: none; }
   .listing--faq .listing__item .btn--discover.active .less {
     display: block; }
+
+.section--form {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  border-bottom: 2px solid var(--border);
+  background: #F3F3F3; }
+  .section--form .group--cta {
+    margin: 60px 0 0 0; }
+
+.section--contacts {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  background: #F3F3F3; }
+  .section--contacts .group--contact {
+    font-size: 16px;
+    color: #282525;
+    padding-right: 30px; }
+    .section--contacts .group--contact .title {
+      font-weight: var(--font-semibold); }
+    .section--contacts .group--contact a {
+      color: black; }
 
 .section--collections {
   padding: 70px 0 140px 0;
