@@ -140,6 +140,17 @@ layout {
 		}
 	}
 
+	@include media-up(lg) {
+		.card--color-sm {
+			flex: 1 1 percentage(1 / 4);
+			max-width: percentage(1 / 4);
+
+			.card__detail {
+				width: 400%;
+			}
+		}
+	}
+
 	@include media-down(sm) {
 		margin-left: -26px;
 		margin-right: -26px;
@@ -202,7 +213,8 @@ layout {
 
 	@include media-up(sm) {
 		&>.group--description+.group--description {
-			margin-left: 15px;
+			padding-left: 35px;
+			border-left: 1px solid black;
 		}
 	}
 }
@@ -210,6 +222,8 @@ layout {
 .group--description {
 	flex: 1 1 50%;
 	min-width: 50%;
+	padding-right: 35px;
+	padding-bottom: 35px;
 
 	&>.title {
 		color: #232120;
@@ -273,6 +287,8 @@ layout {
 		font-size: 15px;
 		font-weight: 300;
 	}
+
+	margin-bottom: 15px;
 }
 
 .group--certifications {

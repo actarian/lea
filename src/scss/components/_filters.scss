@@ -145,20 +145,19 @@
 
 .form--filters {
 	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin-right: -35px;
 
 	&>.form__group,
 	&>.btn--filter,
 	&>.btn--toggle {
 		position: relative;
-		max-width: 25%;
-		flex: 1 1 25%;
-		margin-right: 35px;
+		max-width: calc(25% - 35px);
+		flex: 1 1 calc(25% - 35px);
+		margin: 0 35px 25px 0;
 		background: #E7E7E7;
 		padding: 8px;
-
-		&:last-child {
-			margin-right: 0;
-		}
 	}
 
 	&>.form__group {}
