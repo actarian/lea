@@ -16,6 +16,11 @@
 	}
 
 	@include media-down(sm) {
+
+		.background {
+			height: 132vw;
+		}
+
 		.group--cta {
 			margin: 30px 0;
 		}

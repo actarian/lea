@@ -11,8 +11,8 @@
 	.background {
 		position: absolute;
 		top: 0;
-		left: 0;
-		width: 100%;
+		left: -50%;
+		width: 200%;
 
 		&:before {
 			content: '';
@@ -60,6 +60,7 @@
 		}
 	}
 
+	/*
 	@include media-up(sm) {
 		.background {
 			padding-top: 100%;
@@ -71,17 +72,48 @@
 			padding-top: 56.25%;
 		}
 	}
+	*/
+
+	.container+.container {
+		margin-top: 0;
+		padding-top: 0;
+	}
+
+	@include media-up(sm) {
+
+		.background {
+			height: 100%;
+		}
+
+		.container {
+			&:nth-child(2) {
+				.background {
+					height: 50%;
+				}
+			}
+		}
+
+	}
 
 	@include media-down(xs) {
 
 		.background {
-			padding-top: 0;
-			height: 132vw;
+			height: 100%;
 		}
 
 		.container {
 			padding-top: 140px;
 			padding-bottom: 70px;
+
+			&:nth-child(2) {
+				margin-top: 0;
+				padding-top: 0;
+
+				.background {
+					height: 50%;
+				}
+			}
+
 		}
 
 		.group--back {
