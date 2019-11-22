@@ -130,6 +130,10 @@
 		z-index: 1;
 	}
 
+	&.has-dropdown--opened {
+		z-index: 2;
+	}
+
 	.control {
 		margin: 0;
 	}

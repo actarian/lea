@@ -10186,6 +10186,8 @@ canvas {
   cursor: pointer; }
   .form__group.opened {
     z-index: 1; }
+  .form__group.has-dropdown--opened {
+    z-index: 2; }
   .form__group .control {
     margin: 0; }
   .form__group .control--select .input {

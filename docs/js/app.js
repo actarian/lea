@@ -22368,8 +22368,16 @@ function () {
 
         if (opened) {
           node.classList.add('opened');
+
+          if (node.parentNode) {
+            node.parentNode.classList.add('has-dropdown--opened');
+          }
         } else {
           node.classList.remove('opened');
+
+          if (node.parentNode) {
+            node.parentNode.classList.remove('has-dropdown--opened');
+          }
         }
       });
       scope.$on('onCloseDropdown', closeDropdown);
