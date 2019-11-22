@@ -161,7 +161,7 @@ layout {
 
 			.card__detail {
 				width: 200%;
-				left: 0 !important;
+				margin-left: -25px;
 			}
 		}
 
@@ -209,12 +209,16 @@ layout {
 }
 
 .group--descriptions {
-	display: flex;
 
 	@include media-up(sm) {
+		display: flex;
+		flex-wrap: wrap;
+
 		&>.group--description+.group--description {
-			padding-left: 35px;
-			border-left: 1px solid black;
+			&:nth-child(even) {
+				padding-left: 35px;
+				border-left: 1px solid black;
+			}
 		}
 	}
 }
@@ -245,7 +249,6 @@ layout {
 		line-height: 1.2;
 		margin-bottom: 70px;
 	}
-
 }
 
 .group--feature {
