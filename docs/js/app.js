@@ -26753,7 +26753,7 @@ MoodboardSearchDirective.factory.$inject = ['$compile'];
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.ITEMS_PER_PAGE = void 0;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -26762,6 +26762,9 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /* jshint esversion: 6 */
+var ITEMS_PER_PAGE = 15;
+exports.ITEMS_PER_PAGE = ITEMS_PER_PAGE;
+
 var ProjectsCtrl =
 /*#__PURE__*/
 function () {
@@ -26852,8 +26855,11 @@ function () {
 
       this.selectedFilters = selectedFilters;
       this.filteredItems = [];
+      this.visibleItems = [];
+      this.maxItems = ITEMS_PER_PAGE;
       this.$timeout(function () {
         _this3.filteredItems = filteredItems;
+        _this3.visibleItems = filteredItems.slice(0, _this3.maxItems);
 
         _this3.updateFilterStates(filteredItems); // delayer for image update
 
@@ -26913,9 +26919,29 @@ function () {
       this.applyFilters();
     }
   }, {
+    key: "onScroll",
+    value: function onScroll(event) {
+      var _this6 = this;
+
+      if (event.rect.top + event.rect.height < event.windowRect.bottom) {
+        if (!this.busy && this.maxItems < this.filteredItems.length) {
+          console.log('more!!');
+          this.$timeout(function () {
+            _this6.busy = true;
+
+            _this6.$timeout(function () {
+              _this6.maxItems += ITEMS_PER_PAGE;
+              _this6.visibleItems = _this6.filteredItems.slice(0, _this6.maxItems);
+              _this6.busy = false; // console.log(this.visibleItems.length);
+            }, 1000);
+          }, 0);
+        }
+      }
+    }
+  }, {
     key: "initData__",
     value: function initData__() {
-      var _this6 = this;
+      var _this7 = this;
 
       // options > label, value (id)
       var uid = 1;
@@ -26933,10 +26959,10 @@ function () {
       };
 
       Object.keys(this.filters).forEach(function (key) {
-        var filter = _this6.filters[key];
+        var filter = _this7.filters[key];
         var options = filter.options;
 
-        _this6.projects.forEach(function (x) {
+        _this7.projects.forEach(function (x) {
           var values = x[key];
 
           if (values) {

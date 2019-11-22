@@ -122,6 +122,10 @@
 		"abstract": "Nextone è una collezione con spessore tradizionale che riproduce un effetto pietra ingegnerizzato. Combinando 4 pietre di differenti cave, le cui caratteristiche sono state fuse tra loro, si è giunti alla definizione di grafiche inedite che ricreano una pietra non esistente in natura, ma dall’effetto estetico naturale e molto equilibrato. Un orientamento decorativo attraversa la collezione e..."
 }];
 
+	while (window.projects.length < 200) {
+		window.projects = window.projects.concat(window.projects);
+	}
+
 </script>
 
 <div ng-controller="ProjectsCtrl as projectsCtrl">
@@ -172,10 +176,10 @@
 	</section>
 
 	<section class="section section--projects">
-		<div class="container">
+		<div class="container" scroll="projectsCtrl.onScroll($event)">
 			<div class="row">
 				<div class="col-md-10 offset-md-1">
-					<div class="projects" ng-if="!projectsCtrl.filteredItems">
+					<div class="projects" ng-if="!projectsCtrl.visibleItems">
 						<!-- VERSIONE SEO -->
 						<a class="card card--projects" href="project.html">
 							<div class="picture" appear>
@@ -200,9 +204,8 @@
 						</a>
 						<!-- VERSIONE SEO -->
 					</div>
-					<div class="projects" ng-if="projectsCtrl.filteredItems">
-
-						<a class="card card--projects" href="{{item.url}}" ng-repeat="item in projectsCtrl.filteredItems track by $index">
+					<div class="projects" ng-if="projectsCtrl.visibleItems">
+						<a class="card card--projects" href="{{item.url}}" ng-repeat="item in projectsCtrl.visibleItems track by $index">
 							<div class="picture" appear>
 								<img lazy data-src="{{item.image}}" alt="{{item.title}}" />
 								<div class="group--overlay">
@@ -224,7 +227,16 @@
 								</div>
 							</div>
 						</a>
-
+					</div>
+					<div class="loader" ng-if="projectsCtrl.busy">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ring">
+							<circle cx="50" cy="50" fill="none" r="15" stroke-width="2"></circle>
+							<circle cx="50" cy="50" fill="none" r="15" stroke-width="2" stroke-linecap="square" transform="rotate(502.497 50 50)">
+								<animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;180 50 50;720 50 50" keyTimes="0;0.5;1" dur="2s" begin="0s" repeatCount="indefinite"></animateTransform>
+								<animate attributeName="stroke-dasharray" calcMode="linear" values="9.42477796076938 84.82300164692441;47.1238898038469 47.123889803846886;9.42477796076938 84.82300164692441" keyTimes="0;0.5;1" dur="2" begin="0s" repeatCount="indefinite"></animate>
+							</circle>
+						</svg>
+						<div>load more</div>
 					</div>
 				</div>
 			</div>

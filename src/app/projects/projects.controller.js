@@ -1,5 +1,7 @@
 /* jshint esversion: 6 */
 
+export const ITEMS_PER_PAGE = 15;
+
 class ProjectsCtrl {
 
 	constructor(
@@ -70,8 +72,11 @@ class ProjectsCtrl {
 		// console.log(filteredItems, selectedFilters);
 		this.selectedFilters = selectedFilters;
 		this.filteredItems = [];
+		this.visibleItems = [];
+		this.maxItems = ITEMS_PER_PAGE;
 		this.$timeout(() => {
 			this.filteredItems = filteredItems;
+			this.visibleItems = filteredItems.slice(0, this.maxItems);
 			this.updateFilterStates(filteredItems);
 			// delayer for image update
 		}, 50);
@@ -117,6 +122,23 @@ class ProjectsCtrl {
 			this.removeFilter(filter);
 		});
 		this.applyFilters();
+	}
+
+	onScroll(event) {
+		if (event.rect.top + event.rect.height < event.windowRect.bottom) {
+			if (!this.busy && this.maxItems < this.filteredItems.length) {
+				console.log('more!!');
+				this.$timeout(() => {
+					this.busy = true;
+					this.$timeout(() => {
+						this.maxItems += ITEMS_PER_PAGE;
+						this.visibleItems = this.filteredItems.slice(0, this.maxItems);
+						this.busy = false;
+						// console.log(this.visibleItems.length);
+					}, 1000);
+				}, 0);
+			}
+		}
 	}
 
 	initData__() {

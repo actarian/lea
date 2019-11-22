@@ -9033,15 +9033,15 @@ control-messages {
   font-size: 15px;
   font-weight: var(--font-semibold);
   text-transform: lowercase;
-  color: var(--primary); }
+  color: #c9c1bf; }
   .loader svg {
     width: 100px;
     height: 100px;
     margin: 0 auto; }
     .loader svg circle:first-child {
-      stroke: var(--background-tertiary); }
+      stroke: rgba(201, 193, 191, 0.5); }
     .loader svg circle:last-child {
-      stroke: var(--primary); }
+      stroke: #c9c1bf; }
 
 [media],
 [video] {

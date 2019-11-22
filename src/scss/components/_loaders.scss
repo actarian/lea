@@ -4,7 +4,7 @@
 	font-size: 15px;
 	font-weight: $font-semibold;
 	text-transform: lowercase;
-	color: $primary;
+	color: #c9c1bf;
 
 	svg {
 		width: 100px;
@@ -12,11 +12,11 @@
 		margin: 0 auto;
 
 		circle:first-child {
-			stroke: $background-tertiary; // #f1d3d9;
+			stroke: rgba(#c9c1bf, 0.5);
 		}
 
 		circle:last-child {
-			stroke: $primary; // #b92442;
+			stroke: #c9c1bf;
 		}
 	}
 
