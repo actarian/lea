@@ -7,7 +7,7 @@ import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
 import FaqDirective from './directives/faq.directive';
-// import GalleryItemDirective from './directives/gallery-item.directive';
+import GalleryItemDirective from './directives/gallery-item.directive';
 import HasDropdownDirective from './directives/has-dropdown.directive';
 import HeaderDirective from './directives/header.directive';
 import HeroDirective from './directives/hero.directive';
@@ -53,6 +53,7 @@ import LocationService from './shared/location.service';
 import PromiseService from './shared/promise.service';
 import StateService from './shared/state.service';
 import { CookieService, LocalStorageService, SessionStorageService } from './shared/storage.service';
+import StoreLocatorCtrl from './store-locator/store-locator.controller';
 
 const MODULE_NAME = 'lea';
 
@@ -77,7 +78,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
 	.directive('faq', FaqDirective.factory)
-	// .directive('galleryItem', GalleryItemDirective.factory)
+	.directive('galleryItem', GalleryItemDirective.factory)
 	.directive('hasDropdown', HasDropdownDirective.factory)
 	.directive('header', HeaderDirective.factory)
 	.directive('hero', HeroDirective.factory)
@@ -115,7 +116,8 @@ app.controller('RootCtrl', RootCtrl)
 	.controller('CollectionsCtrl', CollectionsCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl)
-	.controller('ProjectsCtrl', ProjectsCtrl);
+	.controller('ProjectsCtrl', ProjectsCtrl)
+	.controller('StoreLocatorCtrl', StoreLocatorCtrl);
 
 app.filter('imageWithFeatures', [ImageWithFeatures])
 	.filter('notIn', ['$filter', NotInFilter])

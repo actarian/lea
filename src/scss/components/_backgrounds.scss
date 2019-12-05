@@ -149,3 +149,11 @@
 		background: #dedfde;
 	}
 }
+
+.background--20 {
+
+	&,
+	& .background:before {
+		background: #d6d2ce;
+	}
+}

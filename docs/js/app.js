@@ -21143,6 +21143,8 @@ var _autocomplete = _interopRequireDefault(require("./directives/autocomplete.di
 
 var _faq = _interopRequireDefault(require("./directives/faq.directive"));
 
+var _galleryItem = _interopRequireDefault(require("./directives/gallery-item.directive"));
+
 var _hasDropdown = _interopRequireDefault(require("./directives/has-dropdown.directive"));
 
 var _header = _interopRequireDefault(require("./directives/header.directive"));
@@ -21233,19 +21235,19 @@ var _state = _interopRequireDefault(require("./shared/state.service"));
 
 var _storage = require("./shared/storage.service");
 
+var _storeLocator = _interopRequireDefault(require("./store-locator/store-locator.controller"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* jshint esversion: 6 */
-// import GalleryItemDirective from './directives/gallery-item.directive';
 var MODULE_NAME = 'lea';
 var app = angular.module(MODULE_NAME, ['ngSanitize', 'jsonFormatter']);
 app.config(['$locationProvider', function ($locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('*');
 }]);
 app.factory('ApiService', _api.default.factory).factory('DomService', _dom.default.factory).factory('LocationService', _location.default.factory).factory('PromiseService', _promise.default.factory).factory('StateService', _state.default.factory).factory('CookieService', _storage.CookieService.factory).factory('LocalStorageService', _storage.LocalStorageService.factory).factory('SessionStorageService', _storage.SessionStorageService.factory).factory('WishlistService', _wishlist2.default.factory);
-app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('faq', _faq.default.factory) // .directive('galleryItem', GalleryItemDirective.factory)
-.directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('label', _label.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('noBounce', _noBounce.default.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('slider', _slider.default.factory).directive('sticky', _sticky.default.factory).directive('split', _split.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
-app.controller('RootCtrl', _root.default).controller('ContactsCtrl', _contacts.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default).controller('ProjectsCtrl', _projects.default);
+app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('faq', _faq.default.factory).directive('galleryItem', _galleryItem.default.factory).directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('label', _label.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('noBounce', _noBounce.default.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('slider', _slider.default.factory).directive('sticky', _sticky.default.factory).directive('split', _split.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
+app.controller('RootCtrl', _root.default).controller('ContactsCtrl', _contacts.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default).controller('ProjectsCtrl', _projects.default).controller('StoreLocatorCtrl', _storeLocator.default);
 app.filter('imageWithFeatures', [_imageWithFeatures.ImageWithFeatures]).filter('notIn', ['$filter', _notIn.NotInFilter]).filter('trusted', ['$sce', _trusted.TrustedFilter]); // app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {}]);
 
 app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $rootScope) {
@@ -21257,7 +21259,7 @@ app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $ro
 var _default = MODULE_NAME;
 exports.default = _default;
 
-},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./contacts/contacts.controller":203,"./directives/abstract.directive":204,"./directives/appear.directive":205,"./directives/autocomplete.directive":206,"./directives/faq.directive":207,"./directives/has-dropdown.directive":209,"./directives/header.directive":210,"./directives/hero.directive":211,"./directives/hilight.directive":212,"./directives/href.directive":213,"./directives/label.directive":214,"./directives/last-item.directive":215,"./directives/lazy-script.directive":216,"./directives/lazy.directive":217,"./directives/media.directive":218,"./directives/muuri.directive":219,"./directives/no-bounce.directive":220,"./directives/no-hero.directive":221,"./directives/parallax-outer.directive":222,"./directives/parallax.directive":223,"./directives/scroll.directive":224,"./directives/scrollable.directive":225,"./directives/slider.directive":226,"./directives/smooth-scroll.directive":227,"./directives/split.directive":228,"./directives/sticky.directive":229,"./directives/video.directive":230,"./directives/virtual-scroll.directive":231,"./directives/visibility.directive":232,"./directives/wishlist.directive":233,"./directives/zoomable.directive":234,"./filters/image-with-features.filter":235,"./filters/notIn.filter":236,"./filters/trusted.filter":237,"./forms/control-messages.directive":238,"./forms/control.directive":239,"./forms/validate.directive":240,"./gallery/gallery.controller":241,"./highway/highway.directive":244,"./moodboard/moodboard-dropdown.directive":246,"./moodboard/moodboard-search.directive":247,"./projects/projects.controller":248,"./root.controller":249,"./services/api.service":250,"./services/dom.service":251,"./services/wishlist.service":252,"./shared/location.service":254,"./shared/promise.service":255,"./shared/state.service":257,"./shared/storage.service":258}],201:[function(require,module,exports){
+},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./contacts/contacts.controller":203,"./directives/abstract.directive":204,"./directives/appear.directive":205,"./directives/autocomplete.directive":206,"./directives/faq.directive":207,"./directives/gallery-item.directive":208,"./directives/has-dropdown.directive":209,"./directives/header.directive":210,"./directives/hero.directive":211,"./directives/hilight.directive":212,"./directives/href.directive":213,"./directives/label.directive":214,"./directives/last-item.directive":215,"./directives/lazy-script.directive":216,"./directives/lazy.directive":217,"./directives/media.directive":218,"./directives/muuri.directive":219,"./directives/no-bounce.directive":220,"./directives/no-hero.directive":221,"./directives/parallax-outer.directive":222,"./directives/parallax.directive":223,"./directives/scroll.directive":224,"./directives/scrollable.directive":225,"./directives/slider.directive":226,"./directives/smooth-scroll.directive":227,"./directives/split.directive":228,"./directives/sticky.directive":229,"./directives/video.directive":230,"./directives/virtual-scroll.directive":231,"./directives/visibility.directive":232,"./directives/wishlist.directive":233,"./directives/zoomable.directive":234,"./filters/image-with-features.filter":235,"./filters/notIn.filter":236,"./filters/trusted.filter":237,"./forms/control-messages.directive":238,"./forms/control.directive":239,"./forms/validate.directive":240,"./gallery/gallery.controller":241,"./highway/highway.directive":244,"./moodboard/moodboard-dropdown.directive":246,"./moodboard/moodboard-search.directive":247,"./projects/projects.controller":248,"./root.controller":249,"./services/api.service":250,"./services/dom.service":251,"./services/wishlist.service":252,"./shared/location.service":254,"./shared/promise.service":255,"./shared/state.service":257,"./shared/storage.service":258,"./store-locator/store-locator.controller":259}],201:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22228,9 +22230,6 @@ function () {
       }
 
       var onClick = function onClick(event) {
-        // Rivisto comportamento gallery: ora apre le immagini si aprono con Flexbox
-        return;
-
         var items = _toConsumableArray(document.querySelectorAll('[gallery-item]:not(.gallery__item--gallery)'));
 
         var index = items.indexOf(node);
@@ -27482,7 +27481,8 @@ function () {
       },
       storeLocator: {
         all: function all() {
-          return $http.get(API_HREF + '/api/store/json'); // return $http.get('data/store-locator.json');
+          // return $http.get(API_HREF + '/api/store/json');
+          return $http.get('data/store-locator.json');
         }
       }
     };
@@ -29379,5 +29379,530 @@ function () {
 exports.SessionStorageService = SessionStorageService;
 SessionStorageService.factory.$inject = ['PromiseService'];
 
-},{}]},{},[199]);
+},{}],259:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = exports.ITEMS_PER_PAGE = void 0;
+
+var _rxjs = require("rxjs");
+
+var _operators = require("rxjs/operators");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var IS_DEV = window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0';
+var GTM_CAT = 'store-locator';
+var ZOOM_LEVEL = 13;
+var SHOW_INFO_WINDOW = false;
+var MAX_DISTANCE = 100;
+var GOOGLE_MAPS = null;
+var ITEMS_PER_PAGE = 15;
+exports.ITEMS_PER_PAGE = ITEMS_PER_PAGE;
+
+var StoreLocatorCtrl =
+/*#__PURE__*/
+function () {
+  function StoreLocatorCtrl($scope, $timeout, DomService, ApiService) {
+    var _this = this;
+
+    _classCallCheck(this, StoreLocatorCtrl);
+
+    this.$scope = $scope;
+    this.$timeout = $timeout;
+    this.domService = DomService;
+    this.apiService = ApiService;
+
+    if (!window.apiKey && !IS_DEV) {
+      throw "Missing Google Map Api Key";
+    }
+
+    this.apiKey = window.apiKey;
+    this.model = {};
+    this.busyFind = false;
+    this.busyLocation = false;
+    this.visibleStores = [];
+    this.mapCenter$ = new _rxjs.Subject();
+    this.labels = window.labels || {
+      approximately: "Approximately",
+      moreInfo: "More Info",
+      reachStore: "Reach Store"
+    };
+
+    if (GOOGLE_MAPS !== null) {
+      this.initMap();
+    } else {
+      window.onGoogleMapsLoaded = function () {
+        GOOGLE_MAPS = google.maps;
+
+        _this.initMap();
+      };
+
+      var script = document.createElement('script');
+      script.setAttribute('type', 'text/javascript');
+      script.setAttribute('src', "https://maps.googleapis.com/maps/api/js?".concat(this.apiKey ? "key=".concat(this.apiKey, "&") : '', "callback=onGoogleMapsLoaded"));
+      (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script);
+    }
+
+    this.unsubscribe = new _rxjs.Subject();
+    this.mapCenter$.pipe((0, _operators.debounceTime)(1000), (0, _operators.takeUntil)(this.unsubscribe)).subscribe(function (position) {
+      _this.findNearStores(_this.stores, position);
+    });
+    $scope.$on('destroy', function () {
+      _this.unsubscribe.next();
+
+      _this.unsubscribe.complete();
+    });
+  }
+
+  _createClass(StoreLocatorCtrl, [{
+    key: "initMap",
+    value: function initMap() {
+      var _this2 = this;
+
+      var mapOptions = {
+        zoom: 7,
+        center: new google.maps.LatLng(44.5416713, 10.8259022),
+        // prima ricerca vicino a casa madre
+        styles: [{
+          "featureType": "administrative",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "visibility": "on"
+          }]
+        }, {
+          "featureType": "administrative",
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "color": "#444444"
+          }]
+        }, {
+          "featureType": "landscape",
+          "elementType": "all",
+          "stylers": [{
+            "color": "#f2f2f2"
+          }]
+        }, {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "road",
+          "elementType": "all",
+          "stylers": [{
+            "saturation": -100
+          }, {
+            "lightness": 45
+          }]
+        }, {
+          "featureType": "road.highway",
+          "elementType": "all",
+          "stylers": [{
+            "visibility": "simplified"
+          }]
+        }, {
+          "featureType": "road.arterial",
+          "elementType": "labels.icon",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "transit",
+          "elementType": "all",
+          "stylers": [{
+            "visibility": "off"
+          }]
+        }, {
+          "featureType": "water",
+          "elementType": "all",
+          "stylers": [{
+            "color": "#ffffff"
+          }, {
+            "visibility": "on"
+          }]
+        }]
+      };
+      var mapElement = document.getElementById('map');
+
+      if (!mapElement) {
+        return;
+      }
+
+      var map = new google.maps.Map(mapElement, mapOptions);
+      map.addListener('dragend', function () {
+        var position = map.getCenter();
+
+        _this2.mapCenter$.next(position);
+      });
+      this.position = mapOptions.center;
+      this.$timeout(function () {
+        _this2.map = map;
+
+        _this2.searchPosition(mapOptions.center);
+      });
+    }
+  }, {
+    key: "calculateDistance",
+    value: function calculateDistance(lat1, lon1, lat2, lon2, unit) {
+      if (lat1 == lat2 && lon1 == lon2) {
+        return 0;
+      } else {
+        var radlat1 = Math.PI * lat1 / 180;
+        var radlat2 = Math.PI * lat2 / 180;
+        var theta = lon1 - lon2;
+        var radtheta = Math.PI * theta / 180;
+        var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+
+        if (dist > 1) {
+          dist = 1;
+        }
+
+        dist = Math.acos(dist);
+        dist = dist * 180 / Math.PI;
+        dist = dist * 60 * 1.1515;
+
+        if (unit == "K") {
+          dist = dist * 1.609344;
+        }
+
+        if (unit == "N") {
+          dist = dist * 0.8684;
+        }
+
+        return dist;
+      }
+    }
+  }, {
+    key: "addMarkers",
+    value: function addMarkers(stores) {
+      var _this3 = this;
+
+      var markers = stores.map(function (store) {
+        var position = new google.maps.LatLng(store.latitude, store.longitude);
+        var content = "<div class=\"marker__content\">\n\t\t\t\t<div class=\"title\"><span>".concat(store.title, "</span></div>\n\t\t\t\t<div class=\"group group--info\">\n\t\t\t\t\t<div class=\"address\">\n\t\t\t\t\t\t").concat(store.address, "<br>\n\t\t\t\t\t\t").concat(store.zip, " ").concat(store.city, " ").concat(store.provinceCode, " ").concat(store.country, "<br>\n\t\t\t\t\t\t").concat(store.telephone ? "<span>".concat(store.telephone, "<br></span>") : '', "\n\t\t\t\t\t\t").concat(store.email ? "<span><a href=\"mailto:".concat(store.email, "\">").concat(store.email, "</a><br></span>") : '', "\n\t\t\t\t\t\t").concat(store.website ? "<span><a target=\"_blank\" href=\"".concat(store.website, "\">").concat(store.website, "</a></span>") : '', "\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"distance\">").concat(_this3.labels.approximately, " <b>").concat(Math.floor(store.distance), " km</b></div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"group group--cta\">\n\t\t\t\t\t<a id=\"locator-marker\" href=\"https://www.google.it/maps/dir/").concat(position.lat(), ",").concat(position.lng(), "/").concat(store.title, "/@").concat(store.latitude, ",").concat(store.longitude, "/\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.reachStore, "</span></a>\n\t\t\t\t</div>\n\t\t\t</div>");
+        var icon = ['./img/store-locator/pin-showroom.png', './img/store-locator/pin-top-store.png', './img/store-locator/pin-reseller.png'][store.type - 1];
+        var marker = new google.maps.Marker({
+          position: position,
+          // map: this.map,
+          icon: icon,
+          title: store.title,
+          store: store,
+          content: content
+        });
+        marker.addListener('click', function () {
+          _this3.setMarkerWindow(marker.position, content);
+
+          _this3.scrollToStore(store); // GtmService.push({ event: 'dealerlocator', action: 'marker-click', label: store.title });
+
+        });
+        store.marker = marker;
+        return marker;
+      });
+      var markerCluster = new MarkerClusterer(this.map, markers, {
+        imagePath: '/img/store-locator/cluster-'
+      });
+      var styles = markerCluster.getStyles();
+      styles.forEach(function (style) {
+        return style.textColor = '#ffffff';
+      });
+      markerCluster.setStyles(styles);
+      this.markers = markers;
+      this.markerCluster = markerCluster;
+    }
+  }, {
+    key: "getGeolocation",
+    value: function getGeolocation(map) {
+      var _this4 = this;
+
+      this.error = null;
+      this.busyLocation = true;
+      var position = this.map.getCenter(); // Try HTML5 geolocation.
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (location) {
+          // console.log(location.coords);
+          position = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+
+          _this4.setInfoWindow(position, 1);
+
+          _this4.searchPosition(position).finally(function () {
+            return _this4.busyLocation = false;
+          });
+
+          _this4.map.setCenter(position);
+
+          _this4.map.setZoom(ZOOM_LEVEL);
+        }, function () {
+          _this4.setInfoWindow(position, 2);
+
+          _this4.searchPosition(position).finally(function () {
+            return _this4.busyLocation = false;
+          });
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        this.setInfoWindow(position, 3);
+        this.searchPosition(position).finally(function () {
+          return _this4.busyLocation = false;
+        });
+      }
+    }
+  }, {
+    key: "loadStoresByPosition",
+    value: function loadStoresByPosition(position) {
+      var _this5 = this;
+
+      return this.apiService.storeLocator.position(position).then(function (success) {
+        var stores = success.data;
+        _this5.visibleItems = [];
+        _this5.maxItems = ITEMS_PER_PAGE;
+
+        _this5.$timeout(function () {
+          _this5.stores = stores;
+          _this5.visibleItems = stores.slice(0, _this5.maxItems);
+        }, 50); // console.log('StoreLocatorCtrl.loadStoresByPosition', position, stores);
+
+
+        _this5.addMarkers(stores);
+      });
+    }
+  }, {
+    key: "loadAllStores",
+    value: function loadAllStores() {
+      var _this6 = this;
+
+      if (this.stores) {
+        return Promise.resolve(this.stores);
+      }
+
+      return this.apiService.storeLocator.all().then(function (success) {
+        var stores = success.data;
+        stores.forEach(function (store) {
+          return store.distance = _this6.position ? _this6.calculateDistance(store.latitude, store.longitude, _this6.position.lat(), _this6.position.lng(), 'K') : '';
+        });
+
+        _this6.addMarkers(stores);
+
+        _this6.visibleItems = [];
+        _this6.maxItems = ITEMS_PER_PAGE;
+
+        _this6.$timeout(function () {
+          _this6.stores = stores;
+          _this6.visibleItems = stores.slice(0, _this6.maxItems);
+        }, 50);
+
+        return stores;
+      });
+    }
+  }, {
+    key: "fitBounds",
+    value: function fitBounds(stores) {
+      if (stores.length) {
+        var bounds = new google.maps.LatLngBounds();
+        stores.forEach(function (store) {
+          var position = new google.maps.LatLng(store.latitude, store.longitude);
+          bounds.extend(position);
+        });
+        this.map.fitBounds(bounds); // console.log('fitBounds');
+      }
+    }
+  }, {
+    key: "findNearStores",
+    value: function findNearStores(stores, position) {
+      var _this7 = this;
+
+      if (stores) {
+        stores.forEach(function (store) {
+          store.distance = _this7.calculateDistance(store.latitude, store.longitude, position.lat(), position.lng(), 'K');
+          store.visible = (store.cod_stato == window.userCountry || !window.userCountry) && store.distance <= MAX_DISTANCE
+          /* Km */
+          ;
+
+          if (store.visible) {
+            if (store.removed) _this7.markerCluster.addMarker(store.marker);
+            delete store.removed;
+          } else {
+            _this7.markerCluster.removeMarker(store.marker);
+
+            store.removed = true;
+          }
+        });
+        stores = stores.slice();
+        stores.sort(function (a, b) {
+          return a.distance * (a.importante ? 0.5 : 1) - b.distance * (b.importante ? 0.5 : 1);
+        });
+        var visibleStores = stores.filter(function (store) {
+          return store.visible;
+        }).slice(0, 50);
+        this.$timeout(function () {
+          _this7.visibleStores = visibleStores;
+        }, 1); // console.log('findNearStores', visibleStores);
+
+        return visibleStores;
+      }
+    }
+  }, {
+    key: "searchPosition",
+    value: function searchPosition(position) {
+      var _this8 = this;
+
+      this.position = position;
+      this.map.setCenter(position);
+      this.map.setZoom(ZOOM_LEVEL);
+      this.setInfoWindow(position, 1);
+      return this.loadAllStores().then(function (stores) {
+        var visibleStores = _this8.findNearStores(stores, position);
+        /*
+        if (visibleStores) {
+        	this.fitBounds(visibleStores);
+        }
+        */
+
+      });
+    }
+  }, {
+    key: "panTo",
+    value: function panTo(store) {
+      var position = new google.maps.LatLng(store.latitude, store.longitude);
+      this.map.setZoom(ZOOM_LEVEL);
+      this.map.panTo(position);
+      var marker = this.markers.find(function (x) {
+        return x.store === store;
+      });
+      this.setMarkerWindow(marker.position, marker.content);
+    }
+  }, {
+    key: "onSubmit",
+    value: function onSubmit() {
+      var _this9 = this;
+
+      this.error = null;
+      this.busyFind = true;
+      /*
+      const fakeFilter = {
+      	'': {
+      		value: this.model.address,
+      		options: [
+      			{
+      				value: this.model.address,
+      				key: this.model.address
+      			}
+      		]
+      	}
+      };
+      GtmService.pageViewFilters(GTM_CAT, fakeFilter);
+      */
+
+      var geocoder = this.geocoder || new google.maps.Geocoder();
+      this.geocoder = geocoder;
+      geocoder.geocode({
+        address: this.model.address
+      }, function (results, status) {
+        _this9.model = {};
+
+        if (status == 'OK') {
+          var position = results[0].geometry.location; // console.log('location', location);
+          // const position = new google.maps.LatLng(location);
+
+          _this9.searchPosition(position).finally(function () {
+            return _this9.busyFind = false;
+          });
+        } else {
+          _this9.$timeout(function () {
+            var message = 'Geocode was not successful for the following reason: ' + status; // console.log('StoreLocatorCtrl.onSubmit.error', message);
+
+            _this9.error = {
+              message: message
+            };
+            _this9.busyFind = false;
+          });
+        }
+      });
+    }
+  }, {
+    key: "setInfoWindow",
+    value: function setInfoWindow(position, mode) {
+      if (SHOW_INFO_WINDOW) {
+        var infoWindow = this.infoWindow || new google.maps.InfoWindow();
+        this.infoWindow = infoWindow;
+        infoWindow.setPosition(position);
+
+        switch (mode) {
+          case 1:
+            infoWindow.setContent('Current location');
+            break;
+
+          case 2:
+            infoWindow.setContent('Error: The Geolocation service failed.');
+            break;
+
+          default:
+            infoWindow.setContent('Error: Your browser doesn\'t support geolocation.');
+        }
+
+        infoWindow.open(this.map);
+      }
+    }
+  }, {
+    key: "setMarkerWindow",
+    value: function setMarkerWindow(position, content) {
+      if (position) {
+        var markerWindow = this.markerWindow || new google.maps.InfoWindow({
+          pixelOffset: new google.maps.Size(0, -35)
+        });
+        this.markerWindow = markerWindow;
+        markerWindow.setPosition(position);
+        markerWindow.setContent(content);
+        markerWindow.open(this.map);
+      } else {
+        if (this.markerWindow) {
+          this.markerWindow.close();
+        }
+      }
+    }
+  }, {
+    key: "scrollToStore",
+    value: function scrollToStore(store) {
+      var storesNode = document.querySelector('.section--stores');
+      var storeNode = document.querySelector("#store-".concat(store.id)); // console.log(storesNode, storeNode);
+
+      storesNode.scrollTo(0, storeNode.offsetTop);
+    }
+  }, {
+    key: "onScroll",
+    value: function onScroll(event) {
+      var _this10 = this;
+
+      if (event.rect.top + event.rect.height < event.windowRect.bottom) {
+        if (!this.busy && this.maxItems < this.stores.length) {
+          this.$timeout(function () {
+            _this10.busy = true;
+
+            _this10.$timeout(function () {
+              _this10.maxItems += ITEMS_PER_PAGE;
+              _this10.visibleItems = _this10.stores.slice(0, _this10.maxItems);
+              _this10.busy = false; // console.log(this.visibleItems.length);
+            }, 1000);
+          }, 0);
+        }
+      }
+    }
+  }]);
+
+  return StoreLocatorCtrl;
+}();
+
+StoreLocatorCtrl.$inject = ['$scope', '$timeout', 'DomService', 'ApiService'];
+var _default = StoreLocatorCtrl;
+exports.default = _default;
+
+},{"rxjs":2,"rxjs/operators":198}]},{},[199]);
 //# sourceMappingURL=app.js.map

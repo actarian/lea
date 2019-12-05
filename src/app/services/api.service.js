@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import { from } from 'rxjs';
 
 const API_HREF = window.location.port === '6001' ? 'https://leaconcorde.wslabs.it' : '';
@@ -36,8 +35,8 @@ export default class ApiService {
 			},
 			storeLocator: {
 				all: () => {
-					return $http.get(API_HREF + '/api/store/json');
-					// return $http.get('data/store-locator.json');
+					// return $http.get(API_HREF + '/api/store/json');
+					return $http.get('data/store-locator.json');
 				},
 			},
 		};

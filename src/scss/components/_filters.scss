@@ -164,7 +164,53 @@
 		padding: 8px;
 	}
 
-	&>.form__group {}
+	&>.form__group {
+
+		&.form__group--control,
+		&.form__group--cta,
+		&.form__group--legends {
+			max-width: 100%;
+			flex: 1 1 auto;
+			padding: 0;
+		}
+
+		&.form__group--control {
+			.group--text {
+				margin: 0;
+			}
+		}
+
+		&.form__group--cta,
+		&.form__group--legends {
+			background: transparent;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+		&.form__group--cta {
+			justify-content: center;
+		}
+
+		&.form__group--legends {
+			flex: 1 1 auto;
+			justify-content: flex-end;
+
+			.legend {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				margin-right: 15px;
+				font-size: 10px;
+			}
+
+			.icon {
+				width: 18px;
+				height: 22.5px;
+				margin-right: 10px;
+			}
+		}
+	}
 
 	.label {
 		position: relative;

@@ -1,12 +1,17 @@
 /* jshint esversion: 6 */
 
-
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
+const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
+
+const GTM_CAT = 'store-locator';
 const ZOOM_LEVEL = 13;
 const SHOW_INFO_WINDOW = false;
+const MAX_DISTANCE = 100;
 let GOOGLE_MAPS = null;
+
+export const ITEMS_PER_PAGE = 15;
 
 class StoreLocatorCtrl {
 
@@ -20,14 +25,20 @@ class StoreLocatorCtrl {
 		this.$timeout = $timeout;
 		this.domService = DomService;
 		this.apiService = ApiService;
+		if (!window.apiKey && !IS_DEV) {
+			throw (`Missing Google Map Api Key`);
+		}
+		this.apiKey = window.apiKey;
 		this.model = {};
-		this.apiKey = window.apiKey || 'AIzaSyC9ZjpjjpaaDRZYkK5sjeyJahSUzKckgOM';
 		this.busyFind = false;
 		this.busyLocation = false;
 		this.visibleStores = [];
 		this.mapCenter$ = new Subject();
-		//
-		// When the window has finished loading create our google map below
+		this.labels = window.labels || {
+			approximately: `Approximately`,
+			moreInfo: `More Info`,
+			reachStore: `Reach Store`,
+		};
 		if (GOOGLE_MAPS !== null) {
 			this.initMap();
 		} else {
@@ -37,16 +48,9 @@ class StoreLocatorCtrl {
 			};
 			const script = document.createElement('script');
 			script.setAttribute('type', 'text/javascript');
-			script.setAttribute('src', `https://maps.googleapis.com/maps/api/js?key=${this.apiKey}&callback=onGoogleMapsLoaded`);
+			script.setAttribute('src', `https://maps.googleapis.com/maps/api/js?${this.apiKey ? `key=${this.apiKey}&` : ''}callback=onGoogleMapsLoaded`);
 			(document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script);
-			/*
-			google.maps.event.addDomListener(window, 'load', () => {
-				GOOGLE_MAPS = google.maps;
-				this.initMap();
-			});
-			*/
 		}
-		//
 		this.unsubscribe = new Subject();
 		this.mapCenter$.pipe(
 			debounceTime(1000),
@@ -55,40 +59,31 @@ class StoreLocatorCtrl {
 			this.findNearStores(this.stores, position);
 		});
 		$scope.$on('destroy', () => {
-			// console.log('destroy');
 			this.unsubscribe.next();
 			this.unsubscribe.complete();
 		});
 	}
 
 	initMap() {
-		// Basic options for a simple Google Map
-		// For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 		var mapOptions = {
-			// How zoomed in you want the map to start at (always required)
 			zoom: 7,
-			// The latitude and longitude to center the map (always required)
-			center: new google.maps.LatLng(41.4632232, 14.3898072), // New York
-			// How you would like to style the map.
-			// This is where you would paste any style found on Snazzy Maps.
+			center: new google.maps.LatLng(44.5416713, 10.8259022), // prima ricerca vicino a casa madre
 			styles: [{ "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": -100 }, { "lightness": 45 }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#ffffff" }, { "visibility": "on" }] }]
 		};
-		// Get the HTML DOM element that will contain your map
-		// We are using a div with id="map" seen below in the <body>
 		var mapElement = document.getElementById('map');
 		if (!mapElement) {
 			return;
 		}
-		// Create the Google Map using our element and options defined above
 		var map = new google.maps.Map(mapElement, mapOptions);
 		map.addListener('dragend', () => {
 			const position = map.getCenter();
 			this.mapCenter$.next(position);
 		});
+		this.position = mapOptions.center;
 		this.$timeout(() => {
 			this.map = map;
+			this.searchPosition(mapOptions.center);
 		});
-		// console.log('timeout');
 	}
 
 	calculateDistance(lat1, lon1, lat2, lon2, unit) {
@@ -119,60 +114,48 @@ class StoreLocatorCtrl {
 	addMarkers(stores) {
 		const markers = stores.map((store) => {
 			const position = new google.maps.LatLng(store.latitude, store.longitude);
-			const content = `<div class="marker__content">
-				<div class="title"><span>${store.name}</span></div>
+			let content = `<div class="marker__content">
+				<div class="title"><span>${store.title}</span></div>
 				<div class="group group--info">
 					<div class="address">
 						${store.address}<br>
-						${store.zip} ${store.city} ${store.cod_provincia} ${store.stato_IT}<br>
-						<span ng-if="store.tel">${store.tel}<br></span>
-						<span ng-if="store.email"><a ng-href="mailto:${store.email}">${store.email}</a></span>
+						${store.zip} ${store.city} ${store.provinceCode} ${store.country}<br>
+						${store.telephone ? `<span>${store.telephone}<br></span>` : ''}
+						${store.email ? `<span><a href="mailto:${store.email}">${store.email}</a><br></span>` : ''}
+						${store.website ? `<span><a target="_blank" href="${store.website}">${store.website}</a></span>` : ''}
 					</div>
-					<div class="distance">At approx. <b>${Math.floor(store.distance)} km</b></div>
+					<div class="distance">${this.labels.approximately} <b>${Math.floor(store.distance)} km</b></div>
 				</div>
 				<div class="group group--cta">
-					<a href="${store.webSite}" target="_blank" class="btn btn--link" ng-if="store.webSite"><span>More info</span></a>
-					<a href="https://www.google.it/maps/dir/${this.position.lat()},${this.position.lng()}/${store.name}/@${store.latitude},${store.longitude}/" target="_blank" class="btn btn--link"><span>How to reach the store</span></a>
+					<a id="locator-marker" href="https://www.google.it/maps/dir/${position.lat()},${position.lng()}/${store.title}/@${store.latitude},${store.longitude}/" target="_blank" class="btn btn--link"><span>${this.labels.reachStore}</span></a>
 				</div>
 			</div>`;
+
+			const icon = ['./img/store-locator/pin-showroom.png', './img/store-locator/pin-top-store.png', './img/store-locator/pin-reseller.png'][store.type - 1];
+
 			const marker = new google.maps.Marker({
 				position: position,
 				// map: this.map,
-				icon: store.importante ? './img/store-locator/store-primary.png' : './img/store-locator/store-secondary.png',
-				title: store.name,
+				icon: icon,
+				title: store.title,
 				store: store,
 				content: content,
 			});
 			marker.addListener('click', () => {
 				this.setMarkerWindow(marker.position, content);
 				this.scrollToStore(store);
+				// GtmService.push({ event: 'dealerlocator', action: 'marker-click', label: store.title });
 			});
-			/*
-			marker.addListener('mouseout', () => {
-				this.setMarkerWindow(null);
-			});
-			*/
+			store.marker = marker;
 			return marker;
-			/*
-			function panTo(e) {
-				if (current !== marker) {
-					current = marker;
-					var ll = new google.maps.LatLng(latlng[0], latlng[1]);
-					map.panTo(ll);
-					onMarkerDidSelect();
-				}
-			}
-			node.addEventListener('click', panTo);
-			node.addEventListener('mouseover', panTo);
-			*/
 		});
+
 		const markerCluster = new MarkerClusterer(this.map, markers, {
-			imagePath: 'img/store-locator/cluster-',
+			imagePath: '/img/store-locator/cluster-',
 		});
 		const styles = markerCluster.getStyles();
 		styles.forEach(style => style.textColor = '#ffffff');
 		markerCluster.setStyles(styles);
-		// console.log('StoreLocatorCtrl.searchPosition', position, stores);
 		this.markers = markers;
 		this.markerCluster = markerCluster;
 	}
@@ -204,7 +187,12 @@ class StoreLocatorCtrl {
 	loadStoresByPosition(position) {
 		return this.apiService.storeLocator.position(position).then(success => {
 			const stores = success.data;
-			this.stores = stores;
+			this.visibleItems = [];
+			this.maxItems = ITEMS_PER_PAGE;
+			this.$timeout(() => {
+				this.stores = stores;
+				this.visibleItems = stores.slice(0, this.maxItems);
+			}, 50);
 			// console.log('StoreLocatorCtrl.loadStoresByPosition', position, stores);
 			this.addMarkers(stores);
 		});
@@ -216,9 +204,14 @@ class StoreLocatorCtrl {
 		}
 		return this.apiService.storeLocator.all().then(success => {
 			const stores = success.data;
-			stores.forEach(store => store.distance = this.calculateDistance(store.latitude, store.longitude, this.position.lat(), this.position.lng(), 'K'));
+			stores.forEach(store => store.distance = this.position ? this.calculateDistance(store.latitude, store.longitude, this.position.lat(), this.position.lng(), 'K') : '');
 			this.addMarkers(stores);
-			this.stores = stores;
+			this.visibleItems = [];
+			this.maxItems = ITEMS_PER_PAGE;
+			this.$timeout(() => {
+				this.stores = stores;
+				this.visibleItems = stores.slice(0, this.maxItems);
+			}, 50);
 			return stores;
 		});
 	}
@@ -237,13 +230,22 @@ class StoreLocatorCtrl {
 
 	findNearStores(stores, position) {
 		if (stores) {
+			stores.forEach((store) => {
+				store.distance = this.calculateDistance(store.latitude, store.longitude, position.lat(), position.lng(), 'K');
+				store.visible = (store.cod_stato == window.userCountry || !window.userCountry) && store.distance <= MAX_DISTANCE /* Km */ ;
+				if (store.visible) {
+					if (store.removed) this.markerCluster.addMarker(store.marker);
+					delete store.removed;
+				} else {
+					this.markerCluster.removeMarker(store.marker);
+					store.removed = true;
+				}
+			});
 			stores = stores.slice();
 			stores.sort((a, b) => {
-				const da = this.calculateDistance(a.latitude, a.longitude, position.lat(), position.lng(), 'K');
-				const db = this.calculateDistance(b.latitude, b.longitude, position.lat(), position.lng(), 'K');
-				return da * (a.importante ? 0.5 : 1) - db * (b.importante ? 0.5 : 1);
+				return a.distance * (a.importante ? 0.5 : 1) - b.distance * (b.importante ? 0.5 : 1);
 			});
-			const visibleStores = stores.slice(0, 50);
+			const visibleStores = stores.filter(store => store.visible).slice(0, 50);
 			this.$timeout(() => {
 				this.visibleStores = visibleStores;
 			}, 1);
@@ -278,6 +280,20 @@ class StoreLocatorCtrl {
 	onSubmit() {
 		this.error = null;
 		this.busyFind = true;
+		/*
+		const fakeFilter = {
+			'': {
+				value: this.model.address,
+				options: [
+					{
+						value: this.model.address,
+						key: this.model.address
+					}
+				]
+			}
+		};
+		GtmService.pageViewFilters(GTM_CAT, fakeFilter);
+		*/
 		const geocoder = this.geocoder || new google.maps.Geocoder();
 		this.geocoder = geocoder;
 		geocoder.geocode({ address: this.model.address }, (results, status) => {
@@ -335,9 +351,25 @@ class StoreLocatorCtrl {
 
 	scrollToStore(store) {
 		const storesNode = document.querySelector('.section--stores');
-		const storeNode = document.querySelector(`#store-${store.id_SF}`);
+		const storeNode = document.querySelector(`#store-${store.id}`);
 		// console.log(storesNode, storeNode);
 		storesNode.scrollTo(0, storeNode.offsetTop);
+	}
+
+	onScroll(event) {
+		if (event.rect.top + event.rect.height < event.windowRect.bottom) {
+			if (!this.busy && this.maxItems < this.stores.length) {
+				this.$timeout(() => {
+					this.busy = true;
+					this.$timeout(() => {
+						this.maxItems += ITEMS_PER_PAGE;
+						this.visibleItems = this.stores.slice(0, this.maxItems);
+						this.busy = false;
+						// console.log(this.visibleItems.length);
+					}, 1000);
+				}, 0);
+			}
+		}
 	}
 
 }

@@ -9588,6 +9588,105 @@ canvas {
       font-size: 24px;
       line-height: 1.125; }
 
+.card--store {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+  .card--store .picture {
+    position: relative;
+    width: 100%;
+    padding-top: 66.66667%;
+    overflow: hidden; }
+    .card--store .picture img,
+    .card--store .picture video,
+    .card--store .picture canvas,
+    .card--store .picture ng-transclude {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+         object-fit: cover; }
+  .card--store .group--overlay {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 35px;
+    font-family: var(--font-secondary);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    opacity: 0;
+    -webkit-transition: opacity ease-in-out 350ms;
+    transition: opacity ease-in-out 350ms; }
+  .card--store:hover .group--overlay {
+    opacity: 1; }
+  .card--store .group--info:last-child {
+    margin-bottom: 0; }
+  .card--store .group--info__title {
+    font-size: 18px;
+    margin-bottom: 10px; }
+  .card--store .group--info__abstract {
+    font-size: 16px; }
+  .card--store > .card__body {
+    padding: 0; }
+    .card--store > .card__body .address {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+      margin: 30px 0 0 0;
+      font-size: 15px;
+      line-height: 1.4; }
+      .card--store > .card__body .address .icon {
+        width: 20px;
+        height: 24px;
+        margin: 3px 8px 0 0; }
+    .card--store > .card__body > .title {
+      font-size: 24px;
+      line-height: 1.125; }
+  .card--store.card--store-image > .card__body {
+    padding: 35px;
+    background: #D3D4D3; }
+    .card--store.card--store-image > .card__body > .title {
+      font-size: 24px;
+      line-height: 1.125; }
+
 .card--color {
   position: relative;
   cursor: pointer; }
@@ -10360,6 +10459,52 @@ canvas {
     margin: 0 35px 25px 0;
     background: #E7E7E7;
     padding: 8px; }
+  .form--filters > .form__group.form__group--control, .form--filters > .form__group.form__group--cta, .form--filters > .form__group.form__group--legends {
+    max-width: 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    padding: 0; }
+  .form--filters > .form__group.form__group--control .group--text {
+    margin: 0; }
+  .form--filters > .form__group.form__group--cta, .form--filters > .form__group.form__group--legends {
+    background: transparent;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .form--filters > .form__group.form__group--cta {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .form--filters > .form__group.form__group--legends {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+    .form--filters > .form__group.form__group--legends .legend {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: start;
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      margin-right: 15px;
+      font-size: 10px; }
+    .form--filters > .form__group.form__group--legends .icon {
+      width: 18px;
+      height: 22.5px;
+      margin-right: 10px; }
   .form--filters .label {
     position: relative;
     display: block;
@@ -11674,16 +11819,15 @@ footer .inner {
   position: relative;
   margin: 0; }
 
-.section--hero-home .group--cta {
-  margin: 30px 0 140px 0; }
-
 @media (min-width: 1024px) {
   .section--hero-home {
     margin-bottom: 280px; }
     .section--hero-home .container {
       padding-bottom: 0; }
     .section--hero-home .picture {
-      margin-bottom: -140px; } }
+      margin-bottom: -140px; }
+    .section--hero-home .group--cta {
+      margin: 15px 0 70px 0; } }
 
 @media (max-width: 1023.98px) {
   .section--hero-home {
@@ -13135,6 +13279,45 @@ layout {
     .section--contacts .group--contact a {
       color: black; }
 
+.section--stores {
+  padding: 70px 0 140px 0; }
+
+.map {
+  display: block;
+  background: #D6D2CE;
+  width: 100%;
+  height: 700px; }
+
+.stores {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+  .stores .card {
+    margin-bottom: 70px; }
+  @media (min-width: 1024px) {
+    .stores .card {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 45%;
+              flex: 1 1 45%;
+      max-width: 45%; } }
+  @media (min-width: 1440px) {
+    .stores .card {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 30%;
+              flex: 1 1 30%;
+      max-width: 30%; } }
+  @media (min-width: 1830px) {
+    .stores .card {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 30%;
+              flex: 1 1 30%;
+      max-width: 30%; } }
+
 .section--collections {
   padding: 70px 0 140px 0;
   overflow: hidden; }
@@ -14015,6 +14198,10 @@ layout {
 .background--19,
 .background--19 .background:before {
   background: #dedfde; }
+
+.background--20,
+.background--20 .background:before {
+  background: #d6d2ce; }
 
 .debug {
   border: 100px solid red; }
