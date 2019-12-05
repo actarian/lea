@@ -28866,7 +28866,6 @@ function () {
       this.isErroring = true;
       this.isSuccess = false;
       this.isSuccessing = false;
-      this.isSubmitted = true;
       this.errors.push(_error);
       $timeout(function () {
         _this.isErroring = false;
@@ -28932,11 +28931,10 @@ function () {
       this.isErroring = false;
       this.isSuccess = true;
       this.isSuccessing = true;
-      this.isSubmitted = true;
       this.errors = [];
       this.$timeout(function () {
         _this2.isSuccessing = false;
-      }, 200);
+      }, DELAY);
     }
   }]);
 
