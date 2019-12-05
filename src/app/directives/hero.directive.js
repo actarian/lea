@@ -31,19 +31,27 @@ export default class HeroDirective {
 			// TweenMax.set(brand, { opacity: 0 });
 			TweenMax.set(cover, { opacity: 0 });
 			const img = node.querySelector('img');
-			img.onload = () => {
-				// this.animateBrand(brand);
-				setTimeout(() => {
-					scope.$root.$broadcast('onCoverStart');
-					this.animateCover(cover, () => {
-						scope.$root.$broadcast('onCoverEnd');
-					});
-				}, 100);
-			};
-			img.src = img.src;
+			if (img) {
+				img.onload = () => {
+					this.onLoad(scope, cover);
+				};
+				img.src = img.src;
+			} else {
+				this.onLoad(scope, cover);
+			}
 		} else {
 			scope.$root.$broadcast('onCoverEnd');
 		}
+	}
+
+	onLoad(scope, cover) {
+		// this.animateBrand(brand);
+		setTimeout(() => {
+			scope.$root.$broadcast('onCoverStart');
+			this.animateCover(cover, () => {
+				scope.$root.$broadcast('onCoverEnd');
+			});
+		}, 100);
 	}
 
 	/*

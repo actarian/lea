@@ -151,12 +151,12 @@ button,
 }
 
 .btn--submit {
-    display: inline-flex;
+	display: inline-flex;
 	align-items: center;
 	padding: 25px;
-    font-size: 16px;
-    font-weight: $font-bold;
-    background: #232120;
+	font-size: 16px;
+	font-weight: $font-bold;
+	background: #232120;
 
 	span {
 		display: inline-block;
@@ -408,6 +408,90 @@ button,
 			margin-left: 10px;
 			animation-delay: .3s;
 		}
+	}
+
+}
+
+.btn--play {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 196px;
+	height: 196px;
+	transform: translateX(-50%) translateY(-50%);
+	pointer-events: none;
+	transition: opacity ease-in-out 350ms 200ms;
+
+	.icon--play-progress,
+	.icon--play-progress-background {
+		display: block;
+		position: absolute;
+		width: 196px;
+		height: 196px;
+		top: 0;
+		left: 0;
+		fill: transparent;
+		stroke: $foreground-negative;
+		transition: opacity ease-in-out 350ms;
+	}
+
+	.icon--play {
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		fill: $foreground-negative;
+		width: 30px;
+		height: 30px;
+		margin-left: -13px;
+		margin-top: -14px;
+	}
+
+	&.playing {
+		opacity: 0;
+
+		.icon--play-progress {
+			opacity: 1;
+		}
+	}
+
+	.icon--play-progress-background {
+		opacity: 0.2;
+	}
+
+	@include media-down(md) {
+		width: 150px;
+		height: 150px;
+
+		.icon--play-progress,
+		.icon--play-progress-background {
+			width: 150px;
+			height: 150px;
+		}
+	}
+
+	@include media-down(sm) {
+		width: 100px;
+		height: 100px;
+
+		.icon--play-progress,
+		.icon--play-progress-background {
+			width: 100px;
+			height: 100px;
+		}
+
+		.icon--play {
+			width: 20px;
+			height: 20px;
+			margin-left: -9px;
+			margin-top: -9px;
+		}
+
+		.icon--play-progress-background {
+			opacity: 0.5;
+		}
+
 	}
 
 }

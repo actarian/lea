@@ -21143,8 +21143,6 @@ var _autocomplete = _interopRequireDefault(require("./directives/autocomplete.di
 
 var _faq = _interopRequireDefault(require("./directives/faq.directive"));
 
-var _galleryItem = _interopRequireDefault(require("./directives/gallery-item.directive"));
-
 var _hasDropdown = _interopRequireDefault(require("./directives/has-dropdown.directive"));
 
 var _header = _interopRequireDefault(require("./directives/header.directive"));
@@ -21238,13 +21236,15 @@ var _storage = require("./shared/storage.service");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* jshint esversion: 6 */
+// import GalleryItemDirective from './directives/gallery-item.directive';
 var MODULE_NAME = 'lea';
 var app = angular.module(MODULE_NAME, ['ngSanitize', 'jsonFormatter']);
 app.config(['$locationProvider', function ($locationProvider) {
   $locationProvider.html5Mode(true).hashPrefix('*');
 }]);
 app.factory('ApiService', _api.default.factory).factory('DomService', _dom.default.factory).factory('LocationService', _location.default.factory).factory('PromiseService', _promise.default.factory).factory('StateService', _state.default.factory).factory('CookieService', _storage.CookieService.factory).factory('LocalStorageService', _storage.LocalStorageService.factory).factory('SessionStorageService', _storage.SessionStorageService.factory).factory('WishlistService', _wishlist2.default.factory);
-app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('faq', _faq.default.factory).directive('galleryItem', _galleryItem.default.factory).directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('label', _label.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('noBounce', _noBounce.default.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('slider', _slider.default.factory).directive('sticky', _sticky.default.factory).directive('split', _split.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
+app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('faq', _faq.default.factory) // .directive('galleryItem', GalleryItemDirective.factory)
+.directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('label', _label.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('noBounce', _noBounce.default.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('slider', _slider.default.factory).directive('sticky', _sticky.default.factory).directive('split', _split.default.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
 app.controller('RootCtrl', _root.default).controller('ContactsCtrl', _contacts.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default).controller('ProjectsCtrl', _projects.default);
 app.filter('imageWithFeatures', [_imageWithFeatures.ImageWithFeatures]).filter('notIn', ['$filter', _notIn.NotInFilter]).filter('trusted', ['$sce', _trusted.TrustedFilter]); // app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {}]);
 
@@ -21257,7 +21257,7 @@ app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $ro
 var _default = MODULE_NAME;
 exports.default = _default;
 
-},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./contacts/contacts.controller":203,"./directives/abstract.directive":204,"./directives/appear.directive":205,"./directives/autocomplete.directive":206,"./directives/faq.directive":207,"./directives/gallery-item.directive":208,"./directives/has-dropdown.directive":209,"./directives/header.directive":210,"./directives/hero.directive":211,"./directives/hilight.directive":212,"./directives/href.directive":213,"./directives/label.directive":214,"./directives/last-item.directive":215,"./directives/lazy-script.directive":216,"./directives/lazy.directive":217,"./directives/media.directive":218,"./directives/muuri.directive":219,"./directives/no-bounce.directive":220,"./directives/no-hero.directive":221,"./directives/parallax-outer.directive":222,"./directives/parallax.directive":223,"./directives/scroll.directive":224,"./directives/scrollable.directive":225,"./directives/slider.directive":226,"./directives/smooth-scroll.directive":227,"./directives/split.directive":228,"./directives/sticky.directive":229,"./directives/video.directive":230,"./directives/virtual-scroll.directive":231,"./directives/visibility.directive":232,"./directives/wishlist.directive":233,"./directives/zoomable.directive":234,"./filters/image-with-features.filter":235,"./filters/notIn.filter":236,"./filters/trusted.filter":237,"./forms/control-messages.directive":238,"./forms/control.directive":239,"./forms/validate.directive":240,"./gallery/gallery.controller":241,"./highway/highway.directive":244,"./moodboard/moodboard-dropdown.directive":246,"./moodboard/moodboard-search.directive":247,"./projects/projects.controller":248,"./root.controller":249,"./services/api.service":250,"./services/dom.service":251,"./services/wishlist.service":252,"./shared/location.service":254,"./shared/promise.service":255,"./shared/state.service":257,"./shared/storage.service":258}],201:[function(require,module,exports){
+},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./contacts/contacts.controller":203,"./directives/abstract.directive":204,"./directives/appear.directive":205,"./directives/autocomplete.directive":206,"./directives/faq.directive":207,"./directives/has-dropdown.directive":209,"./directives/header.directive":210,"./directives/hero.directive":211,"./directives/hilight.directive":212,"./directives/href.directive":213,"./directives/label.directive":214,"./directives/last-item.directive":215,"./directives/lazy-script.directive":216,"./directives/lazy.directive":217,"./directives/media.directive":218,"./directives/muuri.directive":219,"./directives/no-bounce.directive":220,"./directives/no-hero.directive":221,"./directives/parallax-outer.directive":222,"./directives/parallax.directive":223,"./directives/scroll.directive":224,"./directives/scrollable.directive":225,"./directives/slider.directive":226,"./directives/smooth-scroll.directive":227,"./directives/split.directive":228,"./directives/sticky.directive":229,"./directives/video.directive":230,"./directives/virtual-scroll.directive":231,"./directives/visibility.directive":232,"./directives/wishlist.directive":233,"./directives/zoomable.directive":234,"./filters/image-with-features.filter":235,"./filters/notIn.filter":236,"./filters/trusted.filter":237,"./forms/control-messages.directive":238,"./forms/control.directive":239,"./forms/validate.directive":240,"./gallery/gallery.controller":241,"./highway/highway.directive":244,"./moodboard/moodboard-dropdown.directive":246,"./moodboard/moodboard-search.directive":247,"./projects/projects.controller":248,"./root.controller":249,"./services/api.service":250,"./services/dom.service":251,"./services/wishlist.service":252,"./shared/location.service":254,"./shared/promise.service":255,"./shared/state.service":257,"./shared/storage.service":258}],201:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22642,21 +22642,32 @@ function () {
         });
         var img = node.querySelector('img');
 
-        img.onload = function () {
-          // this.animateBrand(brand);
-          setTimeout(function () {
-            scope.$root.$broadcast('onCoverStart');
+        if (img) {
+          img.onload = function () {
+            _this2.onLoad(scope, cover);
+          };
 
-            _this2.animateCover(cover, function () {
-              scope.$root.$broadcast('onCoverEnd');
-            });
-          }, 100);
-        };
-
-        img.src = img.src;
+          img.src = img.src;
+        } else {
+          this.onLoad(scope, cover);
+        }
       } else {
         scope.$root.$broadcast('onCoverEnd');
       }
+    }
+  }, {
+    key: "onLoad",
+    value: function onLoad(scope, cover) {
+      var _this3 = this;
+
+      // this.animateBrand(brand);
+      setTimeout(function () {
+        scope.$root.$broadcast('onCoverStart');
+
+        _this3.animateCover(cover, function () {
+          scope.$root.$broadcast('onCoverEnd');
+        });
+      }, 100);
     }
     /*
     animateBrand(node) {
@@ -24899,13 +24910,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _gtm = _interopRequireDefault(require("../gtm/gtm.service"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/* jshint esversion: 6 */
 var VideoDirective =
 /*#__PURE__*/
 function () {
@@ -24916,7 +24938,9 @@ function () {
     this.wishlistService = WishlistService;
     this.restrict = 'A';
     this.transclude = true;
-    this.template = "<div class=\"media\">\n\t<ng-transclude></ng-transclude>\n</div>\n<div class=\"overlay\" ng-click=\"onOverlay()\"></div>\n<div class=\"btn btn--play\" ng-class=\"{ playing: playing }\">\n\t<svg class=\"icon icon--play-progress-background\"><use xlink:href=\"#play-progress\"></use></svg>\n\t<svg class=\"icon icon--play-progress\" viewBox=\"0 0 196 196\">\n\t\t<path xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"2px\" stroke-dasharray=\"1\" stroke-dashoffset=\"1\" pathLength=\"1\" stroke-linecap=\"square\" d=\"M195.5,98c0,53.8-43.7,97.5-97.5,97.5S0.5,151.8,0.5,98S44.2,0.5,98,0.5S195.5,44.2,195.5,98z\"/>\n\t</svg>\n\t<svg class=\"icon icon--play\" ng-if=\"!playing\"><use xlink:href=\"#play\"></use></svg>\n\t<svg class=\"icon icon--play\" ng-if=\"playing\"><use xlink:href=\"#pause\"></use></svg>\n</div><div class=\"btn btn--pinterest\" ng-click=\"onPin()\" ng-if=\"onPin\">\n<svg class=\"icon icon--pinterest\"><use xlink:href=\"#pinterest\"></use></svg>\n</div>\n<div class=\"btn btn--wishlist\" ng-class=\"{ active: wishlistActive, activated: wishlistActivated, deactivated: wishlistDeactivated }\" ng-click=\"onClickWishlist($event)\">\n\t<svg class=\"icon icon--wishlist\" ng-if=\"!wishlistActive\"><use xlink:href=\"#wishlist\"></use></svg>\n\t<svg class=\"icon icon--wishlist\" ng-if=\"wishlistActive\"><use xlink:href=\"#wishlist-added\"></use></svg>\n</div>";
+    this.template =
+    /* html */
+    "\n\t\t\t<div class=\"media\">\n\t\t\t\t<ng-transclude></ng-transclude>\n\t\t\t</div>\n\t\t\t<div class=\"overlay\" ng-click=\"onOverlay($event)\"></div>\n\t\t\t<div class=\"btn btn--play\" ng-class=\"{ playing: playing }\">\n\t\t\t\t<svg class=\"icon icon--play-progress-background\" viewBox=\"0 0 196 196\">\n\t\t\t\t\t<path xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"2px\" d=\"M195.5,98c0,53.8-43.7,97.5-97.5,97.5S0.5,151.8,0.5,98S44.2,0.5,98,0.5S195.5,44.2,195.5,98z\"/>\n\t\t\t\t</svg>\n\t\t\t\t<svg class=\"icon icon--play-progress\" viewBox=\"0 0 196 196\">\n\t\t\t\t\t<path xmlns=\"http://www.w3.org/2000/svg\" stroke-width=\"2px\" stroke-dasharray=\"1\" stroke-dashoffset=\"1\" pathLength=\"1\" stroke-linecap=\"square\" d=\"M195.5,98c0,53.8-43.7,97.5-97.5,97.5S0.5,151.8,0.5,98S44.2,0.5,98,0.5S195.5,44.2,195.5,98z\"/>\n\t\t\t\t</svg>\n\t\t\t\t<svg class=\"icon icon--play\" ng-if=\"!playing\" viewBox=\"0 0 16 20\">\n\t\t\t\t\t<path xmlns=\"http://www.w3.org/2000/svg\" fill-rule=\"evenodd\" d=\"M0,0v19.8l15.4-11L0,0z\" clip-rule=\"evenodd\" />\n\t\t\t\t</svg>\n\t\t\t\t<svg class=\"icon icon--play\" ng-if=\"playing\" viewBox=\"0 0 16 20\">\n\t\t\t\t\t<path xmlns=\"http://www.w3.org/2000/svg\" d=\"M0 0.9H4V18.9H0z\"/>\n\t\t\t\t\t<path xmlns=\"http://www.w3.org/2000/svg\" d=\"M11.4 0.9H15.4V18.9H11.4z\"/>\n\t\t\t\t</svg>\n\t\t\t</div>\n\t\t\t<!--\n\t\t\t<div class=\"btn btn--pinterest\" ng-click=\"onPin()\" ng-if=\"onPin\">\n\t\t\t\t<svg class=\"icon icon--pinterest\"><use xlink:href=\"#pinterest\"></use></svg>\n\t\t\t</div>\n\t\t\t<div class=\"btn btn--wishlist\" ng-class=\"{ active: wishlistActive, activated: wishlistActivated, deactivated: wishlistDeactivated }\" ng-click=\"onClickWishlist($event)\">\n\t\t\t\t<svg class=\"icon icon--wishlist\" ng-if=\"!wishlistActive\"><use xlink:href=\"#wishlist\"></use></svg>\n\t\t\t\t<svg class=\"icon icon--wishlist\" ng-if=\"wishlistActive\"><use xlink:href=\"#wishlist-added\"></use></svg>\n\t\t\t</div>\n\t\t\t<div class=\"btn btn--zoom\" ng-click=\"onClickZoom($event)\">\n\t\t\t\t<svg class=\"icon icon--zoom\"><use xlink:href=\"#zoom\"></use></svg>\n\t\t\t</div>\n\t\t\t-->\n";
     this.scope = {
       item: '=?video'
     };
@@ -24927,6 +24951,7 @@ function () {
     value: function link(scope, element, attributes, controller) {
       var _this = this;
 
+      scope.item = scope.item || {};
       var node = element[0];
       var video = node.querySelector('video');
 
@@ -24938,7 +24963,14 @@ function () {
             url: window.location.href,
             media: video.poster,
             description: video.title || pageTitle
-          }; // console.log('VideoDirective.onPin', pin);
+          };
+
+          _gtm.default.push({
+            event: 'Pinterest',
+            wish_name: scope.item.name || scope.item.coId,
+            wish_type: scope.item.typeName || scope.item.type
+          }); // console.log('VideoDirective.onPin', pin);
+
 
           PinUtils.pinOne(pin);
         };
@@ -24947,20 +24979,42 @@ function () {
       var progress = node.querySelector('.icon--play-progress path');
       scope.item = scope.item || {};
 
-      scope.onOverlay = function () {
+      scope.onOverlay = function (event) {
         if (video) {
           if (video.paused) {
+            var gallery = document.querySelector('.section--gallery');
+            video.muted = gallery ? false : true;
             video.play();
           } else {
             video.pause();
           }
         }
+        /*
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        */
+
       };
 
       var onPlay = function onPlay() {
         _this.$timeout(function () {
           scope.playing = true;
         });
+      };
+
+      var onPlayGtm = function onPlayGtm() {
+        var sources = video.querySelectorAll('source');
+
+        if (sources.length) {
+          var src = sources[sources.length - 1].getAttribute('src');
+
+          if (src) {
+            _gtm.default.push({
+              event: 'video play',
+              video_name: src
+            });
+          }
+        }
       };
 
       var onPause = function onPause() {
@@ -24977,7 +25031,7 @@ function () {
 
       var onTimeUpdate = function onTimeUpdate() {
         // console.log(video.currentTime, video.duration);
-        progress.style.strokeDashoffset = video.currentTime / video.duration;
+        progress.style.strokeDashoffset = 1 - video.currentTime / video.duration;
       };
 
       scope.$watch(function () {
@@ -25008,14 +25062,69 @@ function () {
           console.log('VideoDirective.onClickWishlist', has);
         }, function (error) {
           console.log(error);
-        });
+        }); // event.preventDefault();
+        // event.stopPropagation();
 
-        event.preventDefault();
-        event.stopPropagation();
+      };
+
+      scope.onClickZoom = function (event) {
+        if (scope.$root.gallery) {
+          _this.$timeout(function () {
+            scope.$root.gallery = null;
+          });
+        } else if (node.classList.contains('picture--vertical') || node.classList.contains('picture--horizontal')) {
+          _this.$timeout(function () {
+            var index = 0;
+
+            var items = _toConsumableArray(document.querySelectorAll('.picture--vertical[media], .picture--vertical[video], .picture--horizontal[media], .picture--horizontal[video]')).map(function (itemNode, i) {
+              if (itemNode == node) {
+                index = i;
+              }
+
+              var item = {};
+              item.type = itemNode.hasAttribute('media') ? 'media' : 'video';
+
+              if (item.type === 'media') {
+                var img = itemNode.querySelector('img');
+                item.src = img.getAttribute('src') || img.getAttribute('data-src');
+                item.title = img.getAttribute('alt');
+                var wishlist = itemNode.getAttribute('media');
+
+                if (wishlist) {
+                  item.wishlist = JSON.parse(wishlist.indexOf('"') === -1 ? wishlist.split(/[^\d\W]+/g).join('"') : wishlist);
+                }
+              } else {
+                var _video = itemNode.querySelector('video');
+
+                var sources = _video.querySelectorAll('source');
+
+                item.poster = _video.getAttribute('poster');
+                item.src = sources[sources.length - 1].getAttribute('src');
+                item.title = _video.getAttribute('alt');
+
+                var _wishlist = itemNode.getAttribute('video');
+
+                if (_wishlist) {
+                  item.wishlist = JSON.parse(_wishlist.indexOf('"') === -1 ? _wishlist.split(/[^\d\W]+/g).join('"') : _wishlist);
+                }
+              }
+
+              return item;
+            });
+
+            scope.$root.gallery = {
+              index: index,
+              items: items
+            };
+          });
+        } // event.preventDefault();
+        // event.stopPropagation();
+
       };
 
       if (video) {
         video.addEventListener('play', onPlay);
+        video.addEventListener('play', onPlayGtm);
         video.addEventListener('pause', onPause);
         video.addEventListener('ended', onEnded);
         video.addEventListener('timeupdate', onTimeUpdate);
@@ -25023,8 +25132,9 @@ function () {
 
       element.on('$destroy', function () {
         if (video) {
-          console.log('VideoDirective.$destroy');
+          // console.log('VideoDirective.$destroy');
           video.removeEventListener('play', onPlay);
+          video.removeEventListener('play', onPlayGtm);
           video.removeEventListener('pause', onPause);
           video.removeEventListener('ended', onEnded);
           video.removeEventListener('timeupdate', onTimeUpdate);
@@ -25044,7 +25154,7 @@ function () {
 exports.default = VideoDirective;
 VideoDirective.factory.$inject = ['$timeout', 'WishlistService'];
 
-},{}],231:[function(require,module,exports){
+},{"../gtm/gtm.service":242}],231:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

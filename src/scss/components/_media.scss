@@ -1,7 +1,12 @@
 [media],
 [video] {
 
-	/*
+	video {
+		object-fit: cover;
+		width: 100%;
+		height: auto;
+	}
+
 	.overlay {
 		display: block;
 		position: absolute;
@@ -13,64 +18,6 @@
 		opacity: 0;
 		transition: all 700ms 0ms cubic-bezier(0.320, 0.000, 0.290, 0.990) !important;
 	}
-	*/
-
-	/*
-	.btn--wishlist {
-		display: block;
-		position: absolute;
-		right: 20px;
-		bottom: 20px;
-		opacity: 0;
-
-		.icon--wishlist {
-			width: 25px;
-			height: 20px;
-			fill: $foreground-negative;
-		}
-
-		&.active {
-			opacity: 1;
-
-			.icon--wishlist {
-				fill: $primary;
-			}
-		}
-
-		&.activated {
-			animation: activated 350ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-		}
-
-		&.deactivated {
-			animation: deactivated 350ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-		}
-
-	}
-
-	@keyframes activated {
-		0% {
-			opacity: 0;
-			transform: scale(2.0);
-		}
-
-		100% {
-			opacity: 1;
-			transform: scale(1.0);
-		}
-	}
-
-	@keyframes deactivated {
-		0% {
-			opacity: 1;
-			transform: scale(1.0);
-		}
-
-		100% {
-			opacity: 0;
-			transform: scale(1.5);
-		}
-	}
-	*/
 
 	ng-transclude {
 		display: block;
@@ -83,22 +30,57 @@
 			transform: scale(1.1, 1.1);
 		}
 
-		/*
 		.overlay {
 			opacity: 1;
 		}
-		*/
+	}
+}
+
+[video] {
+	cursor: pointer;
+
+	@include media-up(sm) {
+		&:hover {
+			.btn--play.playing {
+				opacity: 1;
+			}
+		}
+	}
+}
+
+canvas {
+	top: 0;
+	cursor: pointer;
+}
+
+iframe {
+	max-width: 100%;
+	max-height: calc(9 / 16 * 100vw);
+}
+
+img {
+	max-width: 100%;
+}
+
+/*
+
+[media],
+[video] {
+
+	ng-transclude {
+		display: block;
+		position: relative;
+		transition: all 700ms 0ms cubic-bezier(0.320, 0.000, 0.290, 0.990) !important;
+	}
+
+	&:hover {
+		ng-transclude {
+			transform: scale(1.1, 1.1);
+		}
 
 		.btn--pinterest {
 			opacity: 1;
 		}
-
-		/*
-		.btn--wishlist {
-			opacity: 1;
-		}
-		*/
-
 	}
 
 	.section--negative & {
@@ -107,14 +89,6 @@
 				fill: $foreground-negative;
 			}
 		}
-
-		/*
-		.btn--wishlist {
-			.icon--wishlist {
-				fill: $foreground-negative;
-			}
-		}
-		*/
 	}
 
 }
@@ -135,3 +109,5 @@ canvas {
 	top: 0;
 	cursor: pointer;
 }
+
+*/

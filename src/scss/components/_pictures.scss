@@ -185,14 +185,18 @@ section {
 }
 
 [lazy] {
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity ease-in-out 350ms;
-	min-height: 1px;
+	display: inline-block;
 	min-width: 1px;
+	min-height: 1px;
 
-	&.lazyed {
-		visibility: visible;
-		opacity: 1;
+	@media screen {
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity ease-in-out 350ms;
+
+		&.lazyed {
+			visibility: visible;
+			opacity: 1;
+		}
 	}
 }

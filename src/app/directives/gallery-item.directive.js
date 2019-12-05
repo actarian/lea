@@ -24,7 +24,6 @@ export default class GalleryItemDirective {
 		const onClick = (event) => {
 			// Rivisto comportamento gallery: ora apre le immagini si aprono con Flexbox
 			return;
-
 			const items = [...document.querySelectorAll('[gallery-item]:not(.gallery__item--gallery)')];
 			const index = items.indexOf(node);
 			const hero = document.querySelector('[hero]');

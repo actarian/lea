@@ -7,7 +7,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="group--intro">
-					<div class="title" title ng-bind-html="gallery.title"></div>
+					<div class="title" split ng-bind-html="gallery.title"></div>
 					<div class="abstract" ng-bind-html="gallery.abstract"></div>
 				</div>
 			</div>
@@ -17,7 +17,7 @@
 				<div ng-repeat="item in gallery.items track by $index">
 					<div class="picture" media="item" appear ng-if="item.type === galleryCtrl.types.PICTURE">
 						<img ng-src="{{item.src}}" />
-						<!-- <div class="label" label="label.position" ng-for="label in item.labels track by $index"><span>{{label.name}}</span></div> -->
+						<!-- <div class="label" label="label.position" ng-repeat="label in item.labels track by $index"><span>{{label.name}}</span></div> -->
 					</div>
 					<div class="video" video="item" appear ng-if="item.type === galleryCtrl.types.VIDEO">
 						<video ng-src="{{item.src}}" cover="{{item.cover}}"></video>

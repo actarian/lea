@@ -687,6 +687,70 @@ button,
     -webkit-animation-delay: .3s;
             animation-delay: .3s; }
 
+.btn--play {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 196px;
+  height: 196px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  -webkit-transition: opacity ease-in-out 350ms 200ms;
+  transition: opacity ease-in-out 350ms 200ms; }
+  .btn--play .icon--play-progress,
+  .btn--play .icon--play-progress-background {
+    display: block;
+    position: absolute;
+    width: 196px;
+    height: 196px;
+    top: 0;
+    left: 0;
+    fill: transparent;
+    stroke: #ffffff;
+    -webkit-transition: opacity ease-in-out 350ms;
+    transition: opacity ease-in-out 350ms; }
+  .btn--play .icon--play {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    fill: #ffffff;
+    width: 30px;
+    height: 30px;
+    margin-left: -13px;
+    margin-top: -14px; }
+  .btn--play.playing {
+    opacity: 0; }
+    .btn--play.playing .icon--play-progress {
+      opacity: 1; }
+  .btn--play .icon--play-progress-background {
+    opacity: 0.2; }
+  @media (max-width: 1439.98px) {
+    .btn--play {
+      width: 150px;
+      height: 150px; }
+      .btn--play .icon--play-progress,
+      .btn--play .icon--play-progress-background {
+        width: 150px;
+        height: 150px; } }
+  @media (max-width: 1023.98px) {
+    .btn--play {
+      width: 100px;
+      height: 100px; }
+      .btn--play .icon--play-progress,
+      .btn--play .icon--play-progress-background {
+        width: 100px;
+        height: 100px; }
+      .btn--play .icon--play {
+        width: 20px;
+        height: 20px;
+        margin-left: -9px;
+        margin-top: -9px; }
+      .btn--play .icon--play-progress-background {
+        opacity: 0.5; } }
+
 /*--------------------
 Keyframe
 --------------------*/
@@ -6096,17 +6160,20 @@ section {
           perspective: 500px; }
 
 [lazy] {
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: opacity ease-in-out 350ms;
-  transition: opacity ease-in-out 350ms;
-  min-height: 1px;
-  min-width: 1px; }
-  [lazy].lazyed {
-    visibility: visible;
-    opacity: 1; }
+  display: inline-block;
+  min-width: 1px;
+  min-height: 1px; }
+  @media screen {
+    [lazy] {
+      visibility: hidden;
+      opacity: 0;
+      -webkit-transition: opacity ease-in-out 350ms;
+      transition: opacity ease-in-out 350ms; }
+      [lazy].lazyed {
+        visibility: visible;
+        opacity: 1; } }
 
-.section--hero-generic, .section--hero-home, .section--hero-magazine-detail, .section--hero-product, .section--hero-gallery, .section--hero-designer, .section--hero-showroom, .section--hero-project, .section--hero-application, .section--hero-technology {
+.section--hero-generic, .section--hero-home, .section--hero-home-v1, .section--hero-magazine-detail, .section--hero-product, .section--hero-gallery, .section--hero-designer, .section--hero-showroom, .section--hero-project, .section--hero-application, .section--hero-technology {
   position: relative;
   /*
 	@include media-up(sm) {
@@ -6121,36 +6188,37 @@ section {
 		}
 	}
 	*/ }
-  .section--hero-generic .container, .section--hero-home .container, .section--hero-magazine-detail .container, .section--hero-product .container, .section--hero-gallery .container, .section--hero-designer .container, .section--hero-showroom .container, .section--hero-project .container, .section--hero-application .container, .section--hero-technology .container {
+  .section--hero-generic .container, .section--hero-home .container, .section--hero-home-v1 .container, .section--hero-magazine-detail .container, .section--hero-product .container, .section--hero-gallery .container, .section--hero-designer .container, .section--hero-showroom .container, .section--hero-project .container, .section--hero-application .container, .section--hero-technology .container {
     padding-top: 270px;
     padding-bottom: 140px; }
-  .section--hero-generic .background, .section--hero-home .background, .section--hero-magazine-detail .background, .section--hero-product .background, .section--hero-gallery .background, .section--hero-designer .background, .section--hero-showroom .background, .section--hero-project .background, .section--hero-application .background, .section--hero-technology .background {
+  .section--hero-generic .background, .section--hero-home .background, .section--hero-home-v1 .background, .section--hero-magazine-detail .background, .section--hero-product .background, .section--hero-gallery .background, .section--hero-designer .background, .section--hero-showroom .background, .section--hero-project .background, .section--hero-application .background, .section--hero-technology .background {
     position: absolute;
     top: 0;
     left: -50%;
     width: 200%; }
-    .section--hero-generic .background:before, .section--hero-home .background:before, .section--hero-magazine-detail .background:before, .section--hero-product .background:before, .section--hero-gallery .background:before, .section--hero-designer .background:before, .section--hero-showroom .background:before, .section--hero-project .background:before, .section--hero-application .background:before, .section--hero-technology .background:before {
+    .section--hero-generic .background:before, .section--hero-home .background:before, .section--hero-home-v1 .background:before, .section--hero-magazine-detail .background:before, .section--hero-product .background:before, .section--hero-gallery .background:before, .section--hero-designer .background:before, .section--hero-showroom .background:before, .section--hero-project .background:before, .section--hero-application .background:before, .section--hero-technology .background:before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%; }
-  .section--hero-generic .title, .section--hero-home .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
+  .section--hero-generic .title, .section--hero-home .title, .section--hero-home-v1 .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
     position: relative;
     font-size: 56px;
     font-weight: inherit;
     line-height: 1.2;
     color: #232120; }
-  .section--hero-generic .abstract, .section--hero-home .abstract, .section--hero-magazine-detail .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-showroom .abstract, .section--hero-project .abstract, .section--hero-application .abstract, .section--hero-technology .abstract {
+  .section--hero-generic .abstract, .section--hero-home .abstract, .section--hero-home-v1 .abstract, .section--hero-magazine-detail .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-showroom .abstract, .section--hero-project .abstract, .section--hero-application .abstract, .section--hero-technology .abstract {
     margin-top: 35px;
     margin-bottom: 35px;
     font-size: 16px;
     font-weight: 200;
     line-height: 1.3; }
-  .section--hero-generic .title, .section--hero-home .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title, .section--hero-generic .abstract, .section--hero-home .abstract, .section--hero-magazine-detail .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-showroom .abstract, .section--hero-project .abstract, .section--hero-application .abstract, .section--hero-technology .abstract,
+  .section--hero-generic .title, .section--hero-home .title, .section--hero-home-v1 .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title, .section--hero-generic .abstract, .section--hero-home .abstract, .section--hero-home-v1 .abstract, .section--hero-magazine-detail .abstract, .section--hero-product .abstract, .section--hero-gallery .abstract, .section--hero-designer .abstract, .section--hero-showroom .abstract, .section--hero-project .abstract, .section--hero-application .abstract, .section--hero-technology .abstract,
   .section--hero-generic .group--back,
   .section--hero-home .group--back,
+  .section--hero-home-v1 .group--back,
   .section--hero-magazine-detail .group--back,
   .section--hero-product .group--back,
   .section--hero-gallery .group--back,
@@ -6161,6 +6229,7 @@ section {
   .section--hero-technology .group--back,
   .section--hero-generic .group--cta,
   .section--hero-home .group--cta,
+  .section--hero-home-v1 .group--cta,
   .section--hero-magazine-detail .group--cta,
   .section--hero-product .group--cta,
   .section--hero-gallery .group--cta,
@@ -6171,6 +6240,7 @@ section {
   .section--hero-technology .group--cta,
   .section--hero-generic .picture:not(.picture--cover),
   .section--hero-home .picture:not(.picture--cover),
+  .section--hero-home-v1 .picture:not(.picture--cover),
   .section--hero-magazine-detail .picture:not(.picture--cover),
   .section--hero-product .picture:not(.picture--cover),
   .section--hero-gallery .picture:not(.picture--cover),
@@ -6183,9 +6253,10 @@ section {
     -webkit-transition: all 800ms 100ms cubic-bezier(0.885, 0.005, 0.125, 1);
     transition: all 800ms 100ms cubic-bezier(0.885, 0.005, 0.125, 1);
     /* custom */ }
-  .ready .section--hero-generic .title, .ready .section--hero-home .title, .ready .section--hero-magazine-detail .title, .ready .section--hero-product .title, .ready .section--hero-gallery .title, .ready .section--hero-designer .title, .ready .section--hero-showroom .title, .ready .section--hero-project .title, .ready .section--hero-application .title, .ready .section--hero-technology .title,
+  .ready .section--hero-generic .title, .ready .section--hero-home .title, .ready .section--hero-home-v1 .title, .ready .section--hero-magazine-detail .title, .ready .section--hero-product .title, .ready .section--hero-gallery .title, .ready .section--hero-designer .title, .ready .section--hero-showroom .title, .ready .section--hero-project .title, .ready .section--hero-application .title, .ready .section--hero-technology .title,
   .ready .section--hero-generic .abstract,
   .ready .section--hero-home .abstract,
+  .ready .section--hero-home-v1 .abstract,
   .ready .section--hero-magazine-detail .abstract,
   .ready .section--hero-product .abstract,
   .ready .section--hero-gallery .abstract,
@@ -6196,6 +6267,7 @@ section {
   .ready .section--hero-technology .abstract,
   .ready .section--hero-generic .group--back,
   .ready .section--hero-home .group--back,
+  .ready .section--hero-home-v1 .group--back,
   .ready .section--hero-magazine-detail .group--back,
   .ready .section--hero-product .group--back,
   .ready .section--hero-gallery .group--back,
@@ -6206,6 +6278,7 @@ section {
   .ready .section--hero-technology .group--back,
   .ready .section--hero-generic .group--cta,
   .ready .section--hero-home .group--cta,
+  .ready .section--hero-home-v1 .group--cta,
   .ready .section--hero-magazine-detail .group--cta,
   .ready .section--hero-product .group--cta,
   .ready .section--hero-gallery .group--cta,
@@ -6216,6 +6289,7 @@ section {
   .ready .section--hero-technology .group--cta,
   .ready .section--hero-generic .picture:not(.picture--cover),
   .ready .section--hero-home .picture:not(.picture--cover),
+  .ready .section--hero-home-v1 .picture:not(.picture--cover),
   .ready .section--hero-magazine-detail .picture:not(.picture--cover),
   .ready .section--hero-product .picture:not(.picture--cover),
   .ready .section--hero-gallery .picture:not(.picture--cover),
@@ -6225,28 +6299,29 @@ section {
   .ready .section--hero-application .picture:not(.picture--cover),
   .ready .section--hero-technology .picture:not(.picture--cover) {
     opacity: 1; }
-  .section--hero-generic .container + .container, .section--hero-home .container + .container, .section--hero-magazine-detail .container + .container, .section--hero-product .container + .container, .section--hero-gallery .container + .container, .section--hero-designer .container + .container, .section--hero-showroom .container + .container, .section--hero-project .container + .container, .section--hero-application .container + .container, .section--hero-technology .container + .container {
+  .section--hero-generic .container + .container, .section--hero-home .container + .container, .section--hero-home-v1 .container + .container, .section--hero-magazine-detail .container + .container, .section--hero-product .container + .container, .section--hero-gallery .container + .container, .section--hero-designer .container + .container, .section--hero-showroom .container + .container, .section--hero-project .container + .container, .section--hero-application .container + .container, .section--hero-technology .container + .container {
     margin-top: 0;
     padding-top: 0; }
   @media (min-width: 860px) {
-    .section--hero-generic .background, .section--hero-home .background, .section--hero-magazine-detail .background, .section--hero-product .background, .section--hero-gallery .background, .section--hero-designer .background, .section--hero-showroom .background, .section--hero-project .background, .section--hero-application .background, .section--hero-technology .background {
+    .section--hero-generic .background, .section--hero-home .background, .section--hero-home-v1 .background, .section--hero-magazine-detail .background, .section--hero-product .background, .section--hero-gallery .background, .section--hero-designer .background, .section--hero-showroom .background, .section--hero-project .background, .section--hero-application .background, .section--hero-technology .background {
       height: 100%; }
-    .section--hero-generic .container:nth-child(2) .background, .section--hero-home .container:nth-child(2) .background, .section--hero-magazine-detail .container:nth-child(2) .background, .section--hero-product .container:nth-child(2) .background, .section--hero-gallery .container:nth-child(2) .background, .section--hero-designer .container:nth-child(2) .background, .section--hero-showroom .container:nth-child(2) .background, .section--hero-project .container:nth-child(2) .background, .section--hero-application .container:nth-child(2) .background, .section--hero-technology .container:nth-child(2) .background {
+    .section--hero-generic .container:nth-child(2) .background, .section--hero-home .container:nth-child(2) .background, .section--hero-home-v1 .container:nth-child(2) .background, .section--hero-magazine-detail .container:nth-child(2) .background, .section--hero-product .container:nth-child(2) .background, .section--hero-gallery .container:nth-child(2) .background, .section--hero-designer .container:nth-child(2) .background, .section--hero-showroom .container:nth-child(2) .background, .section--hero-project .container:nth-child(2) .background, .section--hero-application .container:nth-child(2) .background, .section--hero-technology .container:nth-child(2) .background {
       height: 50%; } }
   @media (max-width: 859.98px) {
-    .section--hero-generic .background, .section--hero-home .background, .section--hero-magazine-detail .background, .section--hero-product .background, .section--hero-gallery .background, .section--hero-designer .background, .section--hero-showroom .background, .section--hero-project .background, .section--hero-application .background, .section--hero-technology .background {
+    .section--hero-generic .background, .section--hero-home .background, .section--hero-home-v1 .background, .section--hero-magazine-detail .background, .section--hero-product .background, .section--hero-gallery .background, .section--hero-designer .background, .section--hero-showroom .background, .section--hero-project .background, .section--hero-application .background, .section--hero-technology .background {
       height: 100%; }
-    .section--hero-generic .container, .section--hero-home .container, .section--hero-magazine-detail .container, .section--hero-product .container, .section--hero-gallery .container, .section--hero-designer .container, .section--hero-showroom .container, .section--hero-project .container, .section--hero-application .container, .section--hero-technology .container {
+    .section--hero-generic .container, .section--hero-home .container, .section--hero-home-v1 .container, .section--hero-magazine-detail .container, .section--hero-product .container, .section--hero-gallery .container, .section--hero-designer .container, .section--hero-showroom .container, .section--hero-project .container, .section--hero-application .container, .section--hero-technology .container {
       padding-top: 140px;
       padding-bottom: 70px; }
-      .section--hero-generic .container:nth-child(2), .section--hero-home .container:nth-child(2), .section--hero-magazine-detail .container:nth-child(2), .section--hero-product .container:nth-child(2), .section--hero-gallery .container:nth-child(2), .section--hero-designer .container:nth-child(2), .section--hero-showroom .container:nth-child(2), .section--hero-project .container:nth-child(2), .section--hero-application .container:nth-child(2), .section--hero-technology .container:nth-child(2) {
+      .section--hero-generic .container:nth-child(2), .section--hero-home .container:nth-child(2), .section--hero-home-v1 .container:nth-child(2), .section--hero-magazine-detail .container:nth-child(2), .section--hero-product .container:nth-child(2), .section--hero-gallery .container:nth-child(2), .section--hero-designer .container:nth-child(2), .section--hero-showroom .container:nth-child(2), .section--hero-project .container:nth-child(2), .section--hero-application .container:nth-child(2), .section--hero-technology .container:nth-child(2) {
         margin-top: 0;
         padding-top: 0; }
-        .section--hero-generic .container:nth-child(2) .background, .section--hero-home .container:nth-child(2) .background, .section--hero-magazine-detail .container:nth-child(2) .background, .section--hero-product .container:nth-child(2) .background, .section--hero-gallery .container:nth-child(2) .background, .section--hero-designer .container:nth-child(2) .background, .section--hero-showroom .container:nth-child(2) .background, .section--hero-project .container:nth-child(2) .background, .section--hero-application .container:nth-child(2) .background, .section--hero-technology .container:nth-child(2) .background {
+        .section--hero-generic .container:nth-child(2) .background, .section--hero-home .container:nth-child(2) .background, .section--hero-home-v1 .container:nth-child(2) .background, .section--hero-magazine-detail .container:nth-child(2) .background, .section--hero-product .container:nth-child(2) .background, .section--hero-gallery .container:nth-child(2) .background, .section--hero-designer .container:nth-child(2) .background, .section--hero-showroom .container:nth-child(2) .background, .section--hero-project .container:nth-child(2) .background, .section--hero-application .container:nth-child(2) .background, .section--hero-technology .container:nth-child(2) .background {
           height: 50%; }
     
     .section--hero-generic .group--back,
     .section--hero-home .group--back,
+    .section--hero-home-v1 .group--back,
     .section--hero-magazine-detail .group--back,
     .section--hero-product .group--back,
     .section--hero-gallery .group--back,
@@ -6256,11 +6331,12 @@ section {
     .section--hero-application .group--back,
     .section--hero-technology .group--back {
       display: none; }
-    .section--hero-generic .title, .section--hero-home .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
+    .section--hero-generic .title, .section--hero-home .title, .section--hero-home-v1 .title, .section--hero-magazine-detail .title, .section--hero-product .title, .section--hero-gallery .title, .section--hero-designer .title, .section--hero-showroom .title, .section--hero-project .title, .section--hero-application .title, .section--hero-technology .title {
       font-size: 36px; }
     
     .section--hero-generic .group--cta,
     .section--hero-home .group--cta,
+    .section--hero-home-v1 .group--cta,
     .section--hero-magazine-detail .group--cta,
     .section--hero-product .group--cta,
     .section--hero-gallery .group--cta,
@@ -8999,126 +9075,108 @@ control-messages {
     .loader svg circle:last-child {
       stroke: #c9c1bf; }
 
-[media],
-[video] {
-  /*
-	.overlay {
-		display: block;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: rgba(0, 0, 0, 0.15);
-		opacity: 0;
-		transition: all 700ms 0ms cubic-bezier(0.320, 0.000, 0.290, 0.990) !important;
-	}
-	*/
-  /*
-	.btn--wishlist {
-		display: block;
-		position: absolute;
-		right: 20px;
-		bottom: 20px;
-		opacity: 0;
+[media] video,
+[video] video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: auto; }
 
-		.icon--wishlist {
-			width: 25px;
-			height: 20px;
-			fill: $foreground-negative;
-		}
+[media] .overlay,
+[video] .overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  -webkit-transition: all 700ms 0ms cubic-bezier(0.32, 0, 0.29, 0.99) !important;
+  transition: all 700ms 0ms cubic-bezier(0.32, 0, 0.29, 0.99) !important; }
 
-		&.active {
-			opacity: 1;
+[media] ng-transclude,
+[video] ng-transclude {
+  display: block;
+  position: relative;
+  -webkit-transition: all 700ms 0ms cubic-bezier(0.32, 0, 0.29, 0.99) !important;
+  transition: all 700ms 0ms cubic-bezier(0.32, 0, 0.29, 0.99) !important; }
 
-			.icon--wishlist {
-				fill: $primary;
-			}
-		}
+[media]:hover ng-transclude,
+[video]:hover ng-transclude {
+  -webkit-transform: scale(1.1, 1.1);
+          transform: scale(1.1, 1.1); }
 
-		&.activated {
-			animation: activated 350ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-		}
-
-		&.deactivated {
-			animation: deactivated 350ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-		}
-
-	}
-
-	@keyframes activated {
-		0% {
-			opacity: 0;
-			transform: scale(2.0);
-		}
-
-		100% {
-			opacity: 1;
-			transform: scale(1.0);
-		}
-	}
-
-	@keyframes deactivated {
-		0% {
-			opacity: 1;
-			transform: scale(1.0);
-		}
-
-		100% {
-			opacity: 0;
-			transform: scale(1.5);
-		}
-	}
-	*/ }
-  [media] ng-transclude,
-  [video] ng-transclude {
-    display: block;
-    position: relative;
-    -webkit-transition: all 700ms 0ms cubic-bezier(0.32, 0, 0.29, 0.99) !important;
-    transition: all 700ms 0ms cubic-bezier(0.32, 0, 0.29, 0.99) !important; }
-  [media]:hover,
-  [video]:hover {
-    /*
-		.overlay {
-			opacity: 1;
-		}
-		*/
-    /*
-		.btn--wishlist {
-			opacity: 1;
-		}
-		*/ }
-    [media]:hover ng-transclude,
-    [video]:hover ng-transclude {
-      -webkit-transform: scale(1.1, 1.1);
-              transform: scale(1.1, 1.1); }
-    [media]:hover .btn--pinterest,
-    [video]:hover .btn--pinterest {
-      opacity: 1; }
-  .section--negative [media], .section--negative
-  [video] {
-    /*
-		.btn--wishlist {
-			.icon--wishlist {
-				fill: $foreground-negative;
-			}
-		}
-		*/ }
-    .section--negative [media] .btn--pinterest .icon--pinterest, .section--negative
-    [video] .btn--pinterest .icon--pinterest {
-      fill: #ffffff; }
+[media]:hover .overlay,
+[video]:hover .overlay {
+  opacity: 1; }
 
 [video] {
   cursor: pointer; }
-
-@media (min-width: 860px) {
-  [video]:hover .btn--play.playing {
-    opacity: 1; } }
+  @media (min-width: 860px) {
+    [video]:hover .btn--play.playing {
+      opacity: 1; } }
 
 canvas {
   top: 0;
   cursor: pointer; }
 
+iframe {
+  max-width: 100%;
+  max-height: calc(9 / 16 * 100vw); }
+
+img {
+  max-width: 100%; }
+
+/*
+
+[media],
+[video] {
+
+	ng-transclude {
+		display: block;
+		position: relative;
+		transition: all 700ms 0ms cubic-bezier(0.320, 0.000, 0.290, 0.990) !important;
+	}
+
+	&:hover {
+		ng-transclude {
+			transform: scale(1.1, 1.1);
+		}
+
+		.btn--pinterest {
+			opacity: 1;
+		}
+	}
+
+	.section--negative & {
+		.btn--pinterest {
+			.icon--pinterest {
+				fill: $foreground-negative;
+			}
+		}
+	}
+
+}
+
+[video] {
+	cursor: pointer;
+}
+
+@include media-up(sm) {
+	[video]:hover {
+		.btn--play.playing {
+			opacity: 1;
+		}
+	}
+}
+
+canvas {
+	top: 0;
+	cursor: pointer;
+}
+
+*/
 .swiper-container {
   width: 100%;
   cursor: pointer; }
@@ -11514,19 +11572,57 @@ footer .inner {
       font-size: 42px;
       text-align: left; } }
 
+.section--hero-home .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end; }
+
 .section--hero-home .background:before {
   background: #878887; }
 
+.section--hero-home .title {
+  position: relative;
+  margin: 0; }
+
 .section--hero-home .group--cta {
+  margin: 30px 0 140px 0; }
+
+@media (min-width: 1024px) {
+  .section--hero-home {
+    margin-bottom: 280px; }
+    .section--hero-home .container {
+      padding-bottom: 0; }
+    .section--hero-home .picture {
+      margin-bottom: -140px; } }
+
+@media (max-width: 1023.98px) {
+  .section--hero-home {
+    margin-bottom: 140px; }
+    .section--hero-home .container {
+      padding-bottom: 0; }
+    .section--hero-home .picture {
+      margin-bottom: -70px; }
+    .section--hero-home .background {
+      height: 132vw; }
+    .section--hero-home .group--cta {
+      margin: 30px 0; } }
+
+.section--hero-home-v1 .background:before {
+  background: #878887; }
+
+.section--hero-home-v1 .group--cta {
   margin: 60px 0 140px 0; }
 
-.section--hero-home .title {
+.section--hero-home-v1 .title {
   position: relative; }
 
 @media (max-width: 1023.98px) {
-  .section--hero-home .background {
+  .section--hero-home-v1 .background {
     height: 132vw; }
-  .section--hero-home .group--cta {
+  .section--hero-home-v1 .group--cta {
     margin: 30px 0; } }
 
 .section:not(:first-child) {
@@ -11769,6 +11865,61 @@ footer .inner {
     font-weight: var(--font-light);
     margin-bottom: 35px; }
 
+.section--downloads {
+  background: #f3f3f3; }
+  .section--downloads .title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 35px;
+    line-height: 1.2;
+    color: #232120;
+    font-weight: 300; }
+  .section--downloads .col-sm-6 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+  .section--downloads .label {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 600; }
+  .section--downloads .group--inline {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    @media (min-width: 1024px) {
+      .section--downloads .group--inline {
+        margin: 20px 0 60px 0; } }
+    @media (max-width: 1023.98px) {
+      .section--downloads .group--inline {
+        margin: 10px 0 35px 0; } }
+  .section--downloads .btn--download {
+    margin-right: 15px; }
+    .section--downloads .btn--download:last-child {
+      margin: 0; }
+  @media (min-width: 860px) {
+    .section--downloads {
+      padding-top: 100px;
+      padding-bottom: 100px; }
+      .section--downloads .title {
+        font-size: 48px; } }
+  @media (max-width: 859.98px) {
+    .section--downloads {
+      padding-top: 70px;
+      padding-bottom: 70px; }
+      .section--downloads .title {
+        font-size: 42px;
+        text-align: left; } }
+
 .group--download {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11780,7 +11931,7 @@ footer .inner {
   .group--download .title {
     font-size: 32px;
     font-weight: var(--font-light);
-    margin-bottom: 35px; }
+    margin-bottom: 65px; }
   .group--download .group--download__label {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
@@ -11796,6 +11947,8 @@ footer .inner {
         -ms-flex-align: center;
             align-items: center; }
     .group--download .group--inline .btn--download {
+      background: white;
+      border-radius: 50%;
       margin-right: 15px; }
       .group--download .group--inline .btn--download:last-child {
         margin: 0; }
@@ -11805,6 +11958,11 @@ footer .inner {
     @media (max-width: 859.98px) {
       .group--download .group--inline {
         margin: 10px 0 30px 0; } }
+
+.group--download + .group--download {
+  margin-top: 10px;
+  padding-top: 60px;
+  border-top: 1px solid #666; }
 
 layout {
   position: absolute;
@@ -12074,65 +12232,6 @@ layout {
         -webkit-box-align: center;
             -ms-flex-align: center;
                 align-items: center; } }
-
-.section--downloads .title {
-  position: relative;
-  text-align: center;
-  margin-bottom: 35px;
-  line-height: 1.2;
-  color: #232120;
-  font-weight: 300; }
-
-.section--downloads .col-sm-6 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.section--downloads .label {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  font-size: 15px;
-  line-height: 1.2;
-  font-weight: 600; }
-
-.section--downloads .group--inline {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  @media (min-width: 1024px) {
-    .section--downloads .group--inline {
-      margin-top: 20px; } }
-  @media (max-width: 1023.98px) {
-    .section--downloads .group--inline {
-      margin: 10px 0 35px 0; } }
-
-.section--downloads .btn--download {
-  margin-right: 15px; }
-  .section--downloads .btn--download:last-child {
-    margin: 0; }
-
-@media (min-width: 860px) {
-  .section--downloads {
-    padding-top: 100px;
-    padding-bottom: 100px; }
-    .section--downloads .title {
-      font-size: 48px; } }
-
-@media (max-width: 859.98px) {
-  .section--downloads {
-    padding-top: 70px;
-    padding-bottom: 70px; }
-    .section--downloads .title {
-      font-size: 42px;
-      text-align: left; } }
 
 .section--hero-gallery .background {
   height: 100%; }
@@ -13825,6 +13924,10 @@ layout {
 .background--18,
 .background--18 .background:before {
   background: #C9C1BF; }
+
+.background--19,
+.background--19 .background:before {
+  background: #dedfde; }
 
 .debug {
   border: 100px solid red; }
