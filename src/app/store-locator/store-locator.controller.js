@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 
 const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
+const BASEPATH = (window.location.hostname === '0.0.0.0' ? './img/store-locator/' : '/Client/docs/img/store-locator/');
 
 const GTM_CAT = 'store-locator';
 const ZOOM_LEVEL = 13;
@@ -131,12 +132,12 @@ class StoreLocatorCtrl {
 				</div>
 			</div>`;
 
-			const icon = ['./img/store-locator/pin-showroom.png', './img/store-locator/pin-top-store.png', './img/store-locator/pin-reseller.png'][store.type - 1];
+			const icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 1];
 
 			const marker = new google.maps.Marker({
 				position: position,
 				// map: this.map,
-				icon: icon,
+				icon: `${BASEPATH}${icon}`,
 				title: store.title,
 				store: store,
 				content: content,
@@ -151,7 +152,7 @@ class StoreLocatorCtrl {
 		});
 
 		const markerCluster = new MarkerClusterer(this.map, markers, {
-			imagePath: '/img/store-locator/cluster-',
+			imagePath: `${BASEPATH}cluster-`,
 		});
 		const styles = markerCluster.getStyles();
 		styles.forEach(style => style.textColor = '#ffffff');

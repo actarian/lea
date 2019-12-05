@@ -29398,6 +29398,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var IS_DEV = window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0';
+var BASEPATH = window.location.hostname === '0.0.0.0' ? './img/store-locator/' : '/Client/docs/img/store-locator/';
 var GTM_CAT = 'store-locator';
 var ZOOM_LEVEL = 13;
 var SHOW_INFO_WINDOW = false;
@@ -29588,11 +29589,11 @@ function () {
       var markers = stores.map(function (store) {
         var position = new google.maps.LatLng(store.latitude, store.longitude);
         var content = "<div class=\"marker__content\">\n\t\t\t\t<div class=\"title\"><span>".concat(store.title, "</span></div>\n\t\t\t\t<div class=\"group group--info\">\n\t\t\t\t\t<div class=\"address\">\n\t\t\t\t\t\t").concat(store.address, "<br>\n\t\t\t\t\t\t").concat(store.zip, " ").concat(store.city, " ").concat(store.provinceCode, " ").concat(store.country, "<br>\n\t\t\t\t\t\t").concat(store.telephone ? "<span>".concat(store.telephone, "<br></span>") : '', "\n\t\t\t\t\t\t").concat(store.email ? "<span><a href=\"mailto:".concat(store.email, "\">").concat(store.email, "</a><br></span>") : '', "\n\t\t\t\t\t\t").concat(store.website ? "<span><a target=\"_blank\" href=\"".concat(store.website, "\">").concat(store.website, "</a></span>") : '', "\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"distance\">").concat(_this3.labels.approximately, " <b>").concat(Math.floor(store.distance), " km</b></div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"group group--cta\">\n\t\t\t\t\t<a id=\"locator-marker\" href=\"https://www.google.it/maps/dir/").concat(position.lat(), ",").concat(position.lng(), "/").concat(store.title, "/@").concat(store.latitude, ",").concat(store.longitude, "/\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.reachStore, "</span></a>\n\t\t\t\t</div>\n\t\t\t</div>");
-        var icon = ['./img/store-locator/pin-showroom.png', './img/store-locator/pin-top-store.png', './img/store-locator/pin-reseller.png'][store.type - 1];
+        var icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 1];
         var marker = new google.maps.Marker({
           position: position,
           // map: this.map,
-          icon: icon,
+          icon: "".concat(BASEPATH).concat(icon),
           title: store.title,
           store: store,
           content: content
@@ -29607,7 +29608,7 @@ function () {
         return marker;
       });
       var markerCluster = new MarkerClusterer(this.map, markers, {
-        imagePath: '/img/store-locator/cluster-'
+        imagePath: "".concat(BASEPATH, "cluster-")
       });
       var styles = markerCluster.getStyles();
       styles.forEach(function (style) {
