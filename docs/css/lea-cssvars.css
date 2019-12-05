@@ -8682,6 +8682,49 @@ section {
     left: 0;
     right: 0; }
 
+.img-pin {
+  position: absolute;
+  right: 100%;
+  top: 0;
+  font-size: 11px;
+  font-weight: var(--font-light); }
+  .img-pin span {
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -180px;
+    right: 65px;
+    width: auto;
+    text-align: right;
+    line-height: 1; }
+  .img-pin:before, .img-pin:after {
+    content: '';
+    display: block;
+    position: absolute; }
+  .img-pin:before {
+    width: 45px;
+    height: 2px;
+    background: #232120;
+    top: -1px;
+    left: -53px; }
+  .img-pin:after {
+    width: 17px;
+    height: 17px;
+    border: 2px solid #232120;
+    border-radius: 50%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    top: -8.5px;
+    left: -9px; }
+  .img-pin.PinBianco {
+    color: #fff; }
+    .img-pin.PinBianco:before {
+      background: #fff; }
+    .img-pin.PinBianco:after {
+      border-color: #fff; }
+  .fancybox > .img-pin {
+    display: none; }
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;

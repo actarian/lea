@@ -24,27 +24,24 @@ class ContactsCtrl {
 
 	setProvinces() {
 		this.$timeout(() => {
-			this.provinces = this.data.provinces.filter(x => x.countryId === this.model.country);
+			this.provinces = this.data.provinces.filter(x => x.countryId === this.model.Nazione);
 		});
 	}
 
 	onSubmit() {
 		console.log('ContactsCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
-			/*
-			this.$http.post('/WS/wsForms.asmx/SaveForm', this.model).then(
+			this.$http.post('/WS/wsUsers.asmx/Contact', {data: this.model}).then(
 				success => {
-
+					this.state.success();
 				},
 				error => {
 					this.error = error;
 				}
-			).finally(() => {
-				this.state.ready();
-			});
-			*/
+			);
+
 			this.$timeout(() => {
-				this.state.ready();
+				// this.state.ready();
 			}, 2000);
 		}
 	}

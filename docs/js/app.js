@@ -21741,7 +21741,7 @@ function () {
 
       this.$timeout(function () {
         _this.provinces = _this.data.provinces.filter(function (x) {
-          return x.countryId === _this.model.country;
+          return x.countryId === _this.model.Nazione;
         });
       });
     }
@@ -21753,19 +21753,14 @@ function () {
       console.log('ContactsCtrl.onSubmit', this.model);
 
       if (this.state.busy()) {
-        /*
-        this.$http.post('/WS/wsForms.asmx/SaveForm', this.model).then(
-        	success => {
-        			},
-        	error => {
-        		this.error = error;
-        	}
-        ).finally(() => {
-        	this.state.ready();
+        this.$http.post('/WS/wsUsers.asmx/Contact', {
+          data: this.model
+        }).then(function (success) {
+          _this2.state.success();
+        }, function (error) {
+          _this2.error = error;
         });
-        */
-        this.$timeout(function () {
-          _this2.state.ready();
+        this.$timeout(function () {// this.state.ready();
         }, 2000);
       }
     }
@@ -28871,6 +28866,7 @@ function () {
       this.isErroring = true;
       this.isSuccess = false;
       this.isSuccessing = false;
+      this.isSubmitted = true;
       this.errors.push(_error);
       $timeout(function () {
         _this.isErroring = false;
@@ -28936,10 +28932,11 @@ function () {
       this.isErroring = false;
       this.isSuccess = true;
       this.isSuccessing = true;
+      this.isSubmitted = true;
       this.errors = [];
       this.$timeout(function () {
         _this2.isSuccessing = false;
-      }, DELAY);
+      }, 200);
     }
   }]);
 
