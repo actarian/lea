@@ -1,0 +1,50 @@
+<div ng-controller="SearchCtrl as searchCtrl">
+
+	<ng-include src="'templates/shared/forms.html'"></ng-include>
+
+	<section class="section section--hero-search background--21" hero>
+		<div class="container">
+			<div class="background"></div>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="title" split>Cerca nel sito</div>
+					<form name="searchCtrl.form" role="form" novalidate autocomplete="off" ng-submit="searchCtrl.form.$valid && searchCtrl.onSubmit()" ng-keyup="$event.keyCode == 13 && searchCtrl.form.$valid && searchCtrl.onSubmit()">
+						<div class="control">
+							<div title="Cerca" placeholder="Cerca nel sito" form="searchCtrl.form" control="text" ng-model="searchCtrl.model.search"></div>
+							<button class="control__button" type="submit">Cerca</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--search">
+		<div class="container">
+			<div class="abstract" split ng-if="!searchCtrl.results">Effettua una ricerca nel sito Lea Ceramiche</div>
+			<div class="abstract" ng-if="searchCtrl.results">Trovati {{searchCtrl.results.length}} risultati per {{searchCtrl.model.search}}</div>
+			<div class="row">
+				<div class="col-md-10 offset-md-1">
+					<div class="row" ng-if="searchCtrl.results">
+						<div class="container--gutter">
+							<div class="row">
+								<div class="col-md-6 col-lg-4" ng-repeat="item in searchCtrl.results track by $index">
+									<div class="card card--result">
+										<div class="card__body">
+											<div class="title" split>{{item.title}}</div>
+											<div class="abstract">{{item.abstract}}</div>
+											<div class="group--cta">
+												<a [href]="{{item.url}}" class="btn--link"><span>Give me more</span> <svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>

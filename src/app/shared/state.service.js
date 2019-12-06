@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 
+const DELAY = 2000;
 
 export class State {
 

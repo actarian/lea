@@ -88,14 +88,29 @@
 				</div>
 				<div class="menu__secondary col-md-6 col-lg-7 hidden-sm-down">
 					<ul class="nav nav--secondary">
-						<li><a href="#">Punti vendita</a></li>
+						<li><a href="store-locator.html">Punti vendita</a></li>
 						<li><a href="#">Company</a></li>
-						<li><a href="#">Downloads</a></li>
+						<li><a href="downloads.html">Downloads</a></li>
 					</ul>
 				</div>
 				<div class="menu__tertiary col-sm-6 offset-sm-6 col-md-4 offset-md-8 col-lg-3 offset-lg-9 col-xl-2 offset-xl-10">
 					<ul class="nav nav--tertiary">
-						<li class="o-3"><a href="search.html"><svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> <span>Cerca</span></a></li>
+						<!-- <li class="o-3"><a href="search.html"><svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> <span>Cerca</span></a></li> -->
+						<li class="o-3" has-dropdown="span" dropped-in="root.onPrimaryDroppedIn" dropped-out="root.onPrimaryDroppedOut">
+							<span>
+								<svg class="icon icon--search"><use xlink:href="#icon--search"></use></svg> <span>Cerca</span>
+							</span>
+							<ul class="nav nav--submenu-tertiary nav--search" dropdown>
+								<li ng-controller="SearchCtrl as searchCtrl" ng-init="searchCtrl.searchHref = '/lea/search.html'">
+									<form name="searchCtrl.form" role="form" novalidate autocomplete="off" ng-submit="searchCtrl.form.$valid && searchCtrl.onSearch()" ng-keyup="$event.keyCode == 13 && searchCtrl.form.$valid && searchCtrl.onSearch()">
+										<div class="control">
+											<div title="Cerca" placeholder="Cerca nel sito" form="searchCtrl.form" control="text" ng-model="searchCtrl.model.search"></div>
+											<button class="control__button" type="submit">Cerca</button>
+										</div>
+									</form>
+								</li>
+							</ul>
+						</li>
 						<li class="o-2"><a href="wishlist.html"><svg class="icon icon--wishlist"><use xlink:href="#icon--wishlist"></use></svg> <span>Wishlist</span></a> <span class="wishlist--badge" ng-bind="root.wishlistCount" ng-if="root.wishlistCount"></span></li>
 						<li class="o-1" has-dropdown="span" dropped-in="root.onPrimaryDroppedIn" dropped-out="root.onPrimaryDroppedOut">
 							<span>

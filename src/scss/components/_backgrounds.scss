@@ -157,3 +157,11 @@
 		background: #d6d2ce;
 	}
 }
+
+.background--21 {
+
+	&,
+	& .background:before {
+		background: #f3f3f3;
+	}
+}

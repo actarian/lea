@@ -47,6 +47,7 @@ import MoodboardSearchDirective from './moodboard/moodboard-search.directive';
 import NewsletterCtrl from './newsletter/newsletter.controller';
 import ProjectsCtrl from './projects/projects.controller';
 import RootCtrl from './root.controller';
+import SearchCtrl from './search/search.controller';
 import ApiService from './services/api.service';
 import DomService from './services/dom.service';
 import WishlistService from './services/wishlist.service';
@@ -119,6 +120,7 @@ app.controller('RootCtrl', RootCtrl)
 	.controller('GalleryCtrl', GalleryCtrl)
 	.controller('NewsletterCtrl', NewsletterCtrl)
 	.controller('ProjectsCtrl', ProjectsCtrl)
+	.controller('SearchCtrl', SearchCtrl)
 	.controller('StoreLocatorCtrl', StoreLocatorCtrl);
 
 app.filter('imageWithFeatures', [ImageWithFeatures])
