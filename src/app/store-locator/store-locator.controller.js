@@ -49,7 +49,7 @@ class StoreLocatorCtrl {
 			};
 			const script = document.createElement('script');
 			script.setAttribute('type', 'text/javascript');
-			script.setAttribute('src', `https://maps.googleapis.com/maps/api/js?${this.apiKey ? `key=${this.apiKey}&` : ''}callback=onGoogleMapsLoaded`);
+			script.setAttribute('src', `https://maps.googleapis.com/maps/api/js?callback=onGoogleMapsLoaded${this.apiKey ? `&key=${this.apiKey}` : ''}`);
 			(document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script);
 		}
 		this.unsubscribe = new Subject();
@@ -66,16 +66,46 @@ class StoreLocatorCtrl {
 	}
 
 	initMap() {
-		var mapOptions = {
+		const mapOptions = {
 			zoom: 7,
 			center: new google.maps.LatLng(44.5416713, 10.8259022), // prima ricerca vicino a casa madre
-			styles: [{ "featureType": "administrative", "elementType": "geometry.fill", "stylers": [{ "visibility": "on" }] }, { "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": -100 }, { "lightness": 45 }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#ffffff" }, { "visibility": "on" }] }]
+			styles: [[{
+				"featureType": "administrative",
+				"elementType": "geometry.fill",
+				"stylers": [{ "visibility": "on" }]
+			}, {
+				"featureType": "administrative",
+				"elementType": "labels.text.fill",
+				"stylers": [{ "color": "#414141" }]
+			}, {
+				"featureType": "landscape",
+				"stylers": [{ "color": "#f2f2f2" }]
+			}, {
+				"featureType": "poi",
+				"stylers": [{ "visibility": "off" }]
+			}, {
+				"featureType": "road",
+				"stylers": [{ "saturation": -100 }, { "lightness": 45 }]
+			}, {
+				"featureType": "road.arterial",
+				"elementType": "labels.icon",
+				"stylers": [{ "visibility": "off" }]
+			}, {
+				"featureType": "road.highway",
+				"stylers": [{ "visibility": "simplified" }]
+			}, {
+				"featureType": "transit",
+				"stylers": [{ "visibility": "off" }]
+			}, {
+				"featureType": "water",
+				"stylers": [{ "color": "#d6d2ce" }, { "visibility": "on" }]
+			}]]
 		};
-		var mapElement = document.getElementById('map');
+		const mapElement = document.getElementById('map');
 		if (!mapElement) {
 			return;
 		}
-		var map = new google.maps.Map(mapElement, mapOptions);
+		const map = new google.maps.Map(mapElement, mapOptions);
 		map.addListener('dragend', () => {
 			const position = map.getCenter();
 			this.mapCenter$.next(position);
@@ -203,6 +233,7 @@ class StoreLocatorCtrl {
 		if (this.stores) {
 			return Promise.resolve(this.stores);
 		}
+		// this.loadFakeStores();
 		return this.apiService.storeLocator.all().then(success => {
 			const stores = success.data;
 			stores.forEach(store => store.distance = this.position ? this.calculateDistance(store.latitude, store.longitude, this.position.lat(), this.position.lng(), 'K') : '');
@@ -214,6 +245,44 @@ class StoreLocatorCtrl {
 				this.visibleItems = stores.slice(0, this.maxItems);
 			}, 50);
 			return stores;
+		});
+	}
+
+	loadFakeStores() {
+		return fetch(`https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Ceramiche&inputtype=textquery&fields=name,formatted_address,address_components,formatted_phone_number,geometry${this.apiKey ? `&key=${this.apiKey}` : ''}`, { mode: 'cors' }).then(response => {
+			return response.json();
+		}).then(json => {
+			console.log('json', json);
+			return json.candidates.map((x, i) => {
+				return {
+					id: i + 1,
+					latitude: x.geometry.location.lat,
+					longitude: x.geometry.location.lng,
+					title: x.name,
+					address: x.formatted_address,
+					type: 1 + Math.floor(Math.random() * 3)
+				}
+			});
+			/*
+			{
+				id: 2,
+				latitude: 44.5902807,
+				longitude: 10.721454,
+				title: 'Lea Ceramiche',
+				abstract: 'Negozio di piastrelle ceramiche',
+				address: 'Via Statale, 127',
+				zip: '42013',
+				city: 'Casalgrande',
+				province: 'Reggio Emilia',
+				provinceCode: 'RE',
+				country: 'Italia',
+				countryCode: 'IT',
+				telephone: '+39 0536 837811',
+				email: 'info@ceramichelea.it',
+				website: 'https://www.ceramichelea.it/',
+				image: './img/store-locator/02@2x.jpg',
+				type: 3
+			}*/
 		});
 	}
 

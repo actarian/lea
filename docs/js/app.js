@@ -29471,7 +29471,7 @@ function () {
         zoom: 7,
         center: new google.maps.LatLng(44.5416713, 10.8259022),
         // prima ricerca vicino a casa madre
-        styles: [{
+        styles: [[{
           "featureType": "administrative",
           "elementType": "geometry.fill",
           "stylers": [{
@@ -29481,33 +29481,24 @@ function () {
           "featureType": "administrative",
           "elementType": "labels.text.fill",
           "stylers": [{
-            "color": "#444444"
+            "color": "#414141"
           }]
         }, {
           "featureType": "landscape",
-          "elementType": "all",
           "stylers": [{
             "color": "#f2f2f2"
           }]
         }, {
           "featureType": "poi",
-          "elementType": "all",
           "stylers": [{
             "visibility": "off"
           }]
         }, {
           "featureType": "road",
-          "elementType": "all",
           "stylers": [{
             "saturation": -100
           }, {
             "lightness": 45
-          }]
-        }, {
-          "featureType": "road.highway",
-          "elementType": "all",
-          "stylers": [{
-            "visibility": "simplified"
           }]
         }, {
           "featureType": "road.arterial",
@@ -29516,20 +29507,23 @@ function () {
             "visibility": "off"
           }]
         }, {
+          "featureType": "road.highway",
+          "stylers": [{
+            "visibility": "simplified"
+          }]
+        }, {
           "featureType": "transit",
-          "elementType": "all",
           "stylers": [{
             "visibility": "off"
           }]
         }, {
           "featureType": "water",
-          "elementType": "all",
           "stylers": [{
-            "color": "#ffffff"
+            "color": "#d6d2ce"
           }, {
             "visibility": "on"
           }]
-        }]
+        }]]
       };
       var mapElement = document.getElementById('map');
 
@@ -29684,6 +29678,7 @@ function () {
         return Promise.resolve(this.stores);
       }
 
+      this.loadStores();
       return this.apiService.storeLocator.all().then(function (success) {
         var stores = success.data;
         stores.forEach(function (store) {
@@ -29701,6 +29696,19 @@ function () {
         }, 50);
 
         return stores;
+      });
+    }
+  }, {
+    key: "loadStores",
+    value: function loadStores() {
+      return fetch("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Ceramiche&inputtype=textquery&fields=name,formatted_address,geometry&key=".concat(this.apiKey), {
+        mode: 'cors'
+      }).then(function (response) {
+        console.log(response);
+        return response.json();
+      }).then(function (json) {
+        console.log('json', json);
+        return json;
       });
     }
   }, {
