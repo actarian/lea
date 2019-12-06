@@ -27524,8 +27524,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /* jshint esversion: 6 */
-var IS_DEV = window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0';
-
+// const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
 var SearchCtrl =
 /*#__PURE__*/
 function () {
@@ -27556,9 +27555,8 @@ function () {
       this.results = [];
 
       if (this.state.busy()) {
-        (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post('/WS/wsUsers.asmx/Search', {
-          data: this.model
-        })).then(function (success) {
+        // (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post('/WS/wsUsers.asmx/Search', { data: this.model })).then(
+        this.$http.get('./data/search-results.json').then(function (success) {
           var results = success.data;
           console.log(results);
           _this.results = results;

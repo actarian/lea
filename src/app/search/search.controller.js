@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 
-const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
+// const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
 
 class SearchCtrl {
 
@@ -29,7 +29,8 @@ class SearchCtrl {
 		console.log('SearchCtrl.onSubmit', this.model);
 		this.results = [];
 		if (this.state.busy()) {
-			(IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post('/WS/wsUsers.asmx/Search', { data: this.model })).then(
+			// (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post('/WS/wsUsers.asmx/Search', { data: this.model })).then(
+			this.$http.get('./data/search-results.json').then(
 				success => {
 					const results = success.data;
 					console.log(results);
