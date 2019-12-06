@@ -26890,30 +26890,19 @@ function () {
   }
 
   _createClass(NewsletterCtrl, [{
-    key: "setProvinces",
-    value: function setProvinces() {
-      var _this = this;
-
-      this.$timeout(function () {
-        _this.provinces = _this.data.provinces.filter(function (x) {
-          return x.countryId === _this.model.Nazione;
-        });
-      });
-    }
-  }, {
     key: "onSubmit",
     value: function onSubmit() {
-      var _this2 = this;
+      var _this = this;
 
       console.log('NewsletterCtrl.onSubmit', this.model);
 
       if (this.state.busy()) {
-        this.$http.post('/WS/wsUsers.asmx/Contact', {
+        this.$http.post('/WS/wsUsers.asmx/Newsletter', {
           data: this.model
         }).then(function (success) {
-          _this2.state.success();
+          _this.state.success();
         }, function (error) {
-          _this2.error = error;
+          _this.error = error;
         });
         this.$timeout(function () {// this.state.ready();
         }, 2000);

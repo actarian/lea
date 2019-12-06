@@ -22,16 +22,10 @@ class NewsletterCtrl {
 		this.state.ready();
 	}
 
-	setProvinces() {
-		this.$timeout(() => {
-			this.provinces = this.data.provinces.filter(x => x.countryId === this.model.Nazione);
-		});
-	}
-
 	onSubmit() {
 		console.log('NewsletterCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
-			this.$http.post('/WS/wsUsers.asmx/Contact', { data: this.model }).then(
+			this.$http.post('/WS/wsUsers.asmx/Newsletter', { data: this.model }).then(
 				success => {
 					this.state.success();
 				},
@@ -39,7 +33,6 @@ class NewsletterCtrl {
 					this.error = error;
 				}
 			);
-
 			this.$timeout(() => {
 				// this.state.ready();
 			}, 2000);
