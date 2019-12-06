@@ -1,4 +1,4 @@
-<section class="section section--newsletter">
+<section class="section section--newsletter" ng-controller="NewsletterCtrl as c" ng-init="c.newsletterHref = '/lea/newsletter.html'">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 offset-md-1 hidden-sm-down">
@@ -7,15 +7,17 @@
 			<div class="col-md-5 offset-md-1">
 				<div class="group">
 					<div class="title" split>Newsletter <br>Lea Ceramiche</div>
-					<form>
+					<form name="c.form" role="form" novalidate autocomplete="off" ng-submit="c.form.$valid && c.onNewsletter()" ng-keyup="$event.keyCode == 13 && c.form.$valid && c.onNewsletter()">
 						<div class="control">
-							<input class="control__input" type="text" placeholder="Insert your email">
+							<div title="Email" placeholder="Insert Your Email" form="c.form" control="email" ng-model="c.model.email" required="true"></div>
 							<button class="control__button" type="submit">Iscriviti alla newsletter</button>
 						</div>
+						<!--
 						<div class="control control--checkbox">
 							<input class="control__input control__checkbox" type="checkbox">
 							<label class="control__label"><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nisi est, maximus eget porttitor et, sodales a tellus.</span></label>
 						</div>
+						-->
 					</form>
 				</div>
 			</div>

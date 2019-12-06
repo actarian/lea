@@ -13094,6 +13094,17 @@ layout {
     font-weight: 300;
     line-height: 1.2;
     margin-bottom: 40px; }
+  .section--newsletter .control {
+    margin: 0;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch; }
+    .section--newsletter .control [control] {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto; }
+    .section--newsletter .control .group--text {
+      margin: 0; }
   @media (min-width: 860px) {
     .section--newsletter .title {
       font-size: 54px; } }

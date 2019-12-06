@@ -18,6 +18,19 @@
 		margin-bottom: 40px;
 	}
 
+	.control {
+		margin: 0;
+		align-items: stretch;
+
+		[control] {
+			flex: 1 1 auto;
+		}
+
+		.group--text {
+			margin: 0;
+		}
+	}
+
 	@include media-up(sm) {
 		.title {
 			font-size: 54px;

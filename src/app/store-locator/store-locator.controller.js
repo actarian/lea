@@ -282,7 +282,8 @@ class StoreLocatorCtrl {
 				website: 'https://www.ceramichelea.it/',
 				image: './img/store-locator/02@2x.jpg',
 				type: 3
-			}*/
+			}
+			*/
 		});
 	}
 

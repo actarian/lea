@@ -44,6 +44,7 @@ import GalleryCtrl from './gallery/gallery.controller';
 import HighwayDirective from './highway/highway.directive';
 import MoodboardDropdownDirective from './moodboard/moodboard-dropdown.directive';
 import MoodboardSearchDirective from './moodboard/moodboard-search.directive';
+import NewsletterCtrl from './newsletter/newsletter.controller';
 import ProjectsCtrl from './projects/projects.controller';
 import RootCtrl from './root.controller';
 import ApiService from './services/api.service';
@@ -116,6 +117,7 @@ app.controller('RootCtrl', RootCtrl)
 	.controller('CollectionsCtrl', CollectionsCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl)
+	.controller('NewsletterCtrl', NewsletterCtrl)
 	.controller('ProjectsCtrl', ProjectsCtrl)
 	.controller('StoreLocatorCtrl', StoreLocatorCtrl);
 
