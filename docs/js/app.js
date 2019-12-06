@@ -29447,7 +29447,7 @@ function () {
 
       var script = document.createElement('script');
       script.setAttribute('type', 'text/javascript');
-      script.setAttribute('src', "https://maps.googleapis.com/maps/api/js?".concat(this.apiKey ? "key=".concat(this.apiKey, "&") : '', "callback=onGoogleMapsLoaded"));
+      script.setAttribute('src', "https://maps.googleapis.com/maps/api/js?callback=onGoogleMapsLoaded".concat(this.apiKey ? "&key=".concat(this.apiKey) : ''));
       (document.getElementsByTagName('head')[0] || document.documentElement).appendChild(script);
     }
 
@@ -29676,9 +29676,9 @@ function () {
 
       if (this.stores) {
         return Promise.resolve(this.stores);
-      }
+      } // this.loadFakeStores();
 
-      this.loadStores();
+
       return this.apiService.storeLocator.all().then(function (success) {
         var stores = success.data;
         stores.forEach(function (store) {
@@ -29699,16 +29699,44 @@ function () {
       });
     }
   }, {
-    key: "loadStores",
-    value: function loadStores() {
-      return fetch("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Ceramiche&inputtype=textquery&fields=name,formatted_address,geometry&key=".concat(this.apiKey), {
+    key: "loadFakeStores",
+    value: function loadFakeStores() {
+      return fetch("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Ceramiche&inputtype=textquery&fields=name,formatted_address,address_components,formatted_phone_number,geometry".concat(this.apiKey ? "&key=".concat(this.apiKey) : ''), {
         mode: 'cors'
       }).then(function (response) {
-        console.log(response);
         return response.json();
       }).then(function (json) {
         console.log('json', json);
-        return json;
+        return json.candidates.map(function (x, i) {
+          return {
+            id: i + 1,
+            latitude: x.geometry.location.lat,
+            longitude: x.geometry.location.lng,
+            title: x.name,
+            address: x.formatted_address,
+            type: 1 + Math.floor(Math.random() * 3)
+          };
+        });
+        /*
+        {
+        	id: 2,
+        	latitude: 44.5902807,
+        	longitude: 10.721454,
+        	title: 'Lea Ceramiche',
+        	abstract: 'Negozio di piastrelle ceramiche',
+        	address: 'Via Statale, 127',
+        	zip: '42013',
+        	city: 'Casalgrande',
+        	province: 'Reggio Emilia',
+        	provinceCode: 'RE',
+        	country: 'Italia',
+        	countryCode: 'IT',
+        	telephone: '+39 0536 837811',
+        	email: 'info@ceramichelea.it',
+        	website: 'https://www.ceramichelea.it/',
+        	image: './img/store-locator/02@2x.jpg',
+        	type: 3
+        }*/
       });
     }
   }, {
