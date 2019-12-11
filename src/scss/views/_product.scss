@@ -296,7 +296,7 @@ layout {
 
 .group--certifications {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	flex-wrap: wrap;
 	width: 100%;
@@ -304,7 +304,7 @@ layout {
 	margin: 0 auto;
 
 	.item {
-		margin: 20px;
+		margin: 30px 50px;
 		min-width: 80px;
 
 		img {
@@ -320,6 +320,7 @@ layout {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			margin: 20px;
 		}
 	}
 

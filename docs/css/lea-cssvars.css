@@ -12440,9 +12440,9 @@ layout {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -12452,7 +12452,7 @@ layout {
   max-width: 1120px;
   margin: 0 auto; }
   .group--certifications .item {
-    margin: 20px;
+    margin: 30px 50px;
     min-width: 80px; }
     .group--certifications .item img {
       max-height: 90px;
@@ -12471,7 +12471,8 @@ layout {
                 justify-content: center;
         -webkit-box-align: center;
             -ms-flex-align: center;
-                align-items: center; } }
+                align-items: center;
+        margin: 20px; } }
 
 .section--hero-gallery .background {
   height: 100%; }
@@ -13560,6 +13561,166 @@ layout {
           -ms-flex: 1 1 30%;
               flex: 1 1 30%;
       max-width: 30%; } }
+
+.section--tech-specs {
+  padding-top: 0;
+  padding-bottom: 140px; }
+  .section--tech-specs .category {
+    font-size: 37px;
+    line-height: 1.2;
+    margin-bottom: 30px; }
+  .section--tech-specs .title {
+    font-size: 56px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 55px; }
+  .section--tech-specs .abstract {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 40px; }
+  .section--tech-specs .group--cta {
+    margin: 20px 0;
+    font-size: 10px; }
+  @media (max-width: 1023.98px) {
+    .section--tech-specs {
+      padding-top: 0;
+      padding-bottom: 70px; }
+      .section--tech-specs .category {
+        font-size: 24px;
+        margin-bottom: 15px; }
+      .section--tech-specs .title {
+        font-size: 36px;
+        margin-bottom: 15px; } }
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  overflow-scrolling: touch; }
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse; }
+  .table tr > td {
+    margin: 0;
+    padding: 15px;
+    min-width: 150px;
+    font-size: 13px;
+    text-align: center; }
+    .table tr > td p {
+      margin: 0; }
+  .table tr.headings > td {
+    font-weight: var(--font-semibold);
+    text-transform: uppercase; }
+  .table.table-striped tr:nth-child(even) > td {
+    background: rgba(0, 0, 0, 0.1); }
+
+.ico-spec {
+  width: 80px;
+  height: 80px;
+  background-image: url(https://www.panaria.us/img/scheda/specs.png);
+  background-size: cover;
+  margin: -15px auto;
+  display: inline-block; }
+
+.ico-spec-water {
+  background-position: 0 0; }
+
+.ico-spec-breaking {
+  background-position: 0 -80px; }
+
+.ico-spec-abrasion {
+  background-position: 0 -160px; }
+
+.ico-spec-expansion {
+  background-position: 0 -240px; }
+
+.ico-spec-stain {
+  background-position: 0 -320px; }
+
+.ico-spec-chemical {
+  background-position: 0 -400px; }
+
+.ico-spec-frost {
+  background-position: 0 -480px; }
+
+.ico-spec-slip {
+  background-position: 0 -560px; }
+
+.ico-spec-flame {
+  background-position: 0 -640px; }
+
+.ico-spec-robinson {
+  background-position: 0 -720px; }
+
+.ico-spec-conductivity {
+  background-position: 0 -800px; }
+
+.ico-spec-joint {
+  background-position: 0 -880px; }
+
+.ico-spec-shade {
+  background-position: 0 -960px; }
+
+.ico-spec-surface-abrasion {
+  background-position: 0 -1040px; }
+
+.ico-spec-bond {
+  background-position: 0 -1120px; }
+
+.ico-spec-crazing {
+  background-position: 0 -1200px; }
+
+.ico-spec-thermalshock {
+  background-position: 0 -1280px; }
+
+.scheda-specs h4 {
+  margin-top: 60px; }
+
+.scheda-specs .title,
+.scheda-specs .editorial-title,
+.scheda-specs blockquote,
+.scheda-specs .azienda-title {
+  width: 100%;
+  text-align: center; }
+
+.scheda-specs .table {
+  margin-bottom: 0; }
+
+.scheda-specs .table.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #ebe8e1; }
+
+.scheda-specs .table.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: transparent; }
+
+.scheda-specs .table tr.headings td {
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700; }
+
+@media only screen and (max-width: 991px) {
+  .scheda-specs .table tr.headings td:nth-child(6),
+  .scheda-specs .table tr.headings td:nth-child(7),
+  .scheda-specs .table tr.headings td:nth-child(8),
+  .scheda-specs .table tr.headings td:nth-child(9),
+  .scheda-specs .table tr.headings td:nth-child(10) {
+    display: none; } }
+
+.scheda-specs .table td {
+  height: 80px;
+  border-top: 0;
+  font-size: 12px;
+  vertical-align: middle; }
+
+.scheda-specs .table td:nth-child(5) {
+  border-right: 4px solid #fff; }
+
+@media only screen and (max-width: 991px) {
+  .scheda-specs .table td:nth-child(5) {
+    border-right: 4px solid #fff; } }
 
 .section--listing-magazine {
   padding: 70px 0 140px 0;

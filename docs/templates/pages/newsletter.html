@@ -11,7 +11,29 @@
 </section>
 
 <script type="text/javascript" lazy-script>
-	window.data = {};
+	window.data = {
+
+		countries: [
+			{ id: 1, name: "Italia" },
+			{ id: 2, name: "Spagna" },
+		],
+
+		provinces: [
+			{ id: 1, name: "Pesaro", countryId: 1 },
+			{ id: 2, name: "Milano", countryId: 1 },
+		],
+
+		jobs: [
+			{ id: 1, name: "Architetto/Designer/Progettista" },
+			{ id: 2, name: "Rivenditore" },
+			{ id: 3, name: "Contract" },
+			{ id: 4, name: "Impresa edile" },
+			{ id: 5, name: "Giornalista" },
+			{ id: 6, name: "Studente" },
+			{ id: 7, name: "Privato/Altro" },
+		],
+
+	};
 
 </script>
 
@@ -35,6 +57,12 @@
 							</div>
 							<div class="col-md-6">
 								<div title="Email" placeholder="Email" form="c.form" control="email" ng-model="c.model.email" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Paese" placeholder="Seleziona il tuo paese" form="c.form" control="select" source="c.data.countries" ng-model="c.model.country" number="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Professione" placeholder="Seleziona la tua professione" form="c.form" control="select" source="c.data.jobs" ng-model="c.model.job" number="true"></div>
 							</div>
 						</div>
 						<div class="row">

@@ -17,6 +17,8 @@ export default class GalleryItemDirective {
 	}
 
 	link(scope, element, attributes, controller) {
+		// Rivisto comportamento gallery: ora apre le immagini si aprono con Flexbox
+		return;
 		const node = element[0];
 		if (node.classList.contains('gallery__item--gallery')) {
 			return;
