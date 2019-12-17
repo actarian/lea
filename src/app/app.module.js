@@ -56,6 +56,7 @@ import PromiseService from './shared/promise.service';
 import StateService from './shared/state.service';
 import { CookieService, LocalStorageService, SessionStorageService } from './shared/storage.service';
 import StoreLocatorCtrl from './store-locator/store-locator.controller';
+import FancyboxGalleryDirective from "./directives/fancybox-gallery.directive";
 
 const MODULE_NAME = 'lea';
 
@@ -79,6 +80,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('appear', AppearDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
+	.directive('fancyboxGallery', FancyboxGalleryDirective.factory)
 	.directive('faq', FaqDirective.factory)
 	// .directive('galleryItem', GalleryItemDirective.factory)
 	.directive('hasDropdown', HasDropdownDirective.factory)

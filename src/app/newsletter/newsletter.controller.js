@@ -25,7 +25,7 @@ class NewsletterCtrl {
 	onSubmit() {
 		console.log('NewsletterCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
-			this.$http.post('/WS/wsUsers.asmx/Newsletter', { data: this.model }).then(
+			this.$http.post('/WS/wsUsers.asmx/NewsletterSubscribe', { data: this.model }).then(
 				success => {
 					this.state.success();
 				},
