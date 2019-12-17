@@ -115,6 +115,14 @@
 		</div>
 	</div>
 	<ng-include src="'templates/shared/gallery.html'"></ng-include>
+	<div class="preloader">
+		<svg width="70" height="70" viewBox="0 0 35 35">
+			<polyline class="line-cornered stroke-still" points="0,0 35,0 35,35" stroke-width="3" fill="none"></polyline>
+			<polyline class="line-cornered stroke-still" points="0,0 0,35 35,35" stroke-width="3" fill="none"></polyline>
+			<polyline class="line-cornered stroke-animation" points="0,0 35,0 35,35" stroke-width="3" fill="none"></polyline>
+			<polyline class="line-cornered stroke-animation" points="0,0 0,35 35,35" stroke-width="3" fill="none"></polyline>
+		</svg>
+	</div>
 	<!--[if IE ]>
 	<script src="js/polyfills.js"></script>
 	<![endif]-->

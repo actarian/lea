@@ -5,6 +5,11 @@ import CustomRenderer from './custom-renderer';
 
 export default class PageTransition extends Highway.Transition {
 	in ({ from, to, done }) {
+		const preloader = document.querySelector('.preloader');
+		TweenMax.to(preloader, 0.3, {
+			opacity: 0,
+			visibility: 'hidden'
+		});
 		// console.log('PageTransition.in');
 		TweenMax.set(to, { opacity: 0, minHeight: from.offsetHeight });
 		window.scrollTo(0, 0);
@@ -23,6 +28,11 @@ export default class PageTransition extends Highway.Transition {
 	}
 	out({ from, done }) {
 		// console.log('PageTransition.out');
+		const preloader = document.querySelector('.preloader');
+		TweenMax.to(preloader, 0.3, {
+			opacity: 1,
+			visibility: 'visible'
+		});
 		const headerMenu = document.querySelector('.header__menu');
 		if (headerMenu) {
 			headerMenu.classList.remove('opened');

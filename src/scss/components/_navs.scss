@@ -29,6 +29,7 @@
 			color: $nav-product;
 			transition: ease-in-out 350ms;
 			transition-property: background-color, color, border, opacity;
+			text-decoration: none;
 
 			&:hover,
 			&.active {

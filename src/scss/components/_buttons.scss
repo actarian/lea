@@ -31,6 +31,19 @@ button,
 	}
 }
 
+a:not([class]) {
+	font-weight: $font-semibold;
+	text-decoration: underline;
+
+	&,
+	&:active,
+	&:focus,
+	&:hover,
+	&:visited {
+		color: black;
+	}
+}
+
 .link {
 	text-decoration: underline;
 	margin: 0 5px;

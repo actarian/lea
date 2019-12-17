@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 const USE_HIGHWAY = true;
 
 export default class HrefDirective {
@@ -11,6 +10,9 @@ export default class HrefDirective {
 
 	link(scope, element, attributes, controller) {
 		const node = element[0];
+		if (attributes.target === '_blank' || attributes.download !== undefined) {
+			return;
+		}
 		const onClick = () => {
 			window.location.href = attributes.href;
 		};

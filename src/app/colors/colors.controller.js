@@ -7,15 +7,47 @@ class ColorsCtrl {
 
 	constructor(
 		$scope,
-		$timeout
+		$timeout,
+		$location
 	) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
+		this.$location = $location;
 		this.onWindowResize = this.onWindowResize.bind(this);
 		window.addEventListener('resize', this.onWindowResize);
 		$scope.$on('$destroy', () => {
 			window.removeEventListener('resize', this.onWindowResize);
 		});
+		const search = this.$location.search();
+		// console.log(search);
+		if (search.color) {
+			window.onload = () => {
+				setTimeout(() => {
+					const color = document.getElementById(`color-${search.color}`);
+					// console.log(color);
+					if (color) {
+						const colors = [...document.querySelectorAll('.card--color')];
+						const index = colors.indexOf(color);
+						if (index !== -1) {
+							this.active = index;
+							this.onOpen(color);
+						}
+						color.scrollIntoView();
+						this.scrollIntoView(color);
+					}
+				}, 100);
+			}
+		}
+	}
+
+	scrollIntoView(node) {
+		let curtop = 0;
+		if (node.offsetParent) {
+			do {
+				curtop += node.offsetTop;
+			} while (node = node.offsetParent);
+		}
+		window.scroll(0, curtop);
 	}
 
 	onWindowResize() {
@@ -48,11 +80,12 @@ class ColorsCtrl {
 			this.active = undefined;
 		} else {
 			this.active = active;
-			this.onOpen();
+			// console.log(event.target, event.currentTarget);
+			this.onOpen(event.currentTarget);
 		}
 	}
 
-	onOpen() {
+	onOpen(node) {
 		const colors = [...document.querySelectorAll('.group--colors > .card--color')];
 		colors.forEach((x, i) => {
 			if (i === this.active) {
@@ -82,6 +115,13 @@ class ColorsCtrl {
 					TweenMax.set(detail, { zIndex: 1 });
 				}
 			});
+		}
+		if (node.id) {
+			const search = {};
+			const splitted = node.id.split('-');
+			search[splitted[0]] = splitted.length > 1 ? splitted[1] : undefined;
+			this.$location.search(splitted[0], splitted[1]).replace();
+			// console.log(node.id, node);
 		}
 	}
 
@@ -119,6 +159,6 @@ class ColorsCtrl {
 
 }
 
-ColorsCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'];
+ColorsCtrl.$inject = ['$scope', '$timeout', '$location'];
 
 export default ColorsCtrl;

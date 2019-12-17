@@ -211,11 +211,11 @@
 								<div class="group--overlay">
 									<div class="group--info">
 										<div class="group--info__title">Location</div>
-										<div class="group--info__abstract">{{item.city}} - {{item.country}}</div>
+										<div class="group--info__abstract" ng-bind-html="item.city + ' - ' + item.country"></div>
 									</div>
 									<div class="group--info">
 										<div class="group--info__title">Design by</div>
-										<div class="group--info__abstract">{{item.designer}}</div>
+										<div class="group--info__abstract" ng-bind-html="item.designer"></div>
 									</div>
 								</div>
 							</div>

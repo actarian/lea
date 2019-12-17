@@ -44,16 +44,29 @@
 	}
 
 	.row {
-		align-items: center;
+		// align-items: center;
+		align-items: stretch;
 	}
 
 	.card--news {
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+		padding-top: 7px;
+
+		.card__body {
+			height: 100%;
+		}
+
+		.abstract {
+			flex: 1 1 auto;
+		}
 
 		@include media-up(sm) {
-			margin-bottom: 140px;
+			height: calc(100% - 70px);
+			margin-bottom: 70px;
 		}
 
 		@include media-down(xs) {
+			height: calc(100% - 70px);
 			margin-bottom: 70px;
 		}
 	}

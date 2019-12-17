@@ -21519,21 +21519,60 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var ColorsCtrl =
 /*#__PURE__*/
 function () {
-  function ColorsCtrl($scope, $timeout) {
+  function ColorsCtrl($scope, $timeout, $location) {
     var _this = this;
 
     _classCallCheck(this, ColorsCtrl);
 
     this.$scope = $scope;
     this.$timeout = $timeout;
+    this.$location = $location;
     this.onWindowResize = this.onWindowResize.bind(this);
     window.addEventListener('resize', this.onWindowResize);
     $scope.$on('$destroy', function () {
       window.removeEventListener('resize', _this.onWindowResize);
     });
+    var search = this.$location.search(); // console.log(search);
+
+    if (search.color) {
+      window.onload = function () {
+        setTimeout(function () {
+          var color = document.getElementById("color-".concat(search.color)); // console.log(color);
+
+          if (color) {
+            var colors = _toConsumableArray(document.querySelectorAll('.card--color'));
+
+            var index = colors.indexOf(color);
+
+            if (index !== -1) {
+              _this.active = index;
+
+              _this.onOpen(color);
+            }
+
+            color.scrollIntoView();
+
+            _this.scrollIntoView(color);
+          }
+        }, 100);
+      };
+    }
   }
 
   _createClass(ColorsCtrl, [{
+    key: "scrollIntoView",
+    value: function scrollIntoView(node) {
+      var curtop = 0;
+
+      if (node.offsetParent) {
+        do {
+          curtop += node.offsetTop;
+        } while (node = node.offsetParent);
+      }
+
+      window.scroll(0, curtop);
+    }
+  }, {
     key: "onWindowResize",
     value: function onWindowResize() {
       var colors = _toConsumableArray(document.querySelectorAll('.group--colors > .card--color'));
@@ -21578,13 +21617,14 @@ function () {
         this.onClose();
         this.active = undefined;
       } else {
-        this.active = active;
-        this.onOpen();
+        this.active = active; // console.log(event.target, event.currentTarget);
+
+        this.onOpen(event.currentTarget);
       }
     }
   }, {
     key: "onOpen",
-    value: function onOpen() {
+    value: function onOpen(node) {
       var _this2 = this;
 
       var colors = _toConsumableArray(document.querySelectorAll('.group--colors > .card--color'));
@@ -21638,6 +21678,13 @@ function () {
             });
           }
         });
+      }
+
+      if (node.id) {
+        var search = {};
+        var splitted = node.id.split('-');
+        search[splitted[0]] = splitted.length > 1 ? splitted[1] : undefined;
+        this.$location.search(splitted[0], splitted[1]).replace(); // console.log(node.id, node);
       }
     }
   }, {
@@ -21700,7 +21747,7 @@ function () {
   return ColorsCtrl;
 }();
 
-ColorsCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'];
+ColorsCtrl.$inject = ['$scope', '$timeout', '$location'];
 var _default = ColorsCtrl;
 exports.default = _default;
 
@@ -22834,6 +22881,10 @@ function () {
       var _this = this;
 
       var node = element[0];
+
+      if (attributes.target === '_blank' || attributes.download !== undefined) {
+        return;
+      }
 
       var onClick = function onClick() {
         window.location.href = attributes.href;
@@ -26577,7 +26628,12 @@ function (_Highway$Transition) {
       var from = _ref.from,
           to = _ref.to,
           done = _ref.done;
-      // console.log('PageTransition.in');
+      var preloader = document.querySelector('.preloader');
+      TweenMax.to(preloader, 0.3, {
+        opacity: 0,
+        visibility: 'hidden'
+      }); // console.log('PageTransition.in');
+
       TweenMax.set(to, {
         opacity: 0,
         minHeight: from.offsetHeight
@@ -26606,6 +26662,11 @@ function (_Highway$Transition) {
       var from = _ref2.from,
           done = _ref2.done;
       // console.log('PageTransition.out');
+      var preloader = document.querySelector('.preloader');
+      TweenMax.to(preloader, 0.3, {
+        opacity: 1,
+        visibility: 'visible'
+      });
       var headerMenu = document.querySelector('.header__menu');
 
       if (headerMenu) {

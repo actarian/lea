@@ -21,3 +21,105 @@
 	}
 
 }
+
+.preloader {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transform: translate(-50%, -50%) rotate(45deg) scale(1);
+
+	.stroke-still {
+		stroke: #232323;
+	}
+
+	.stroke-animation {
+		animation: stroke-spacing 1.2s ease-in, stroke-color 4.8s linear;
+		animation-iteration-count: infinite;
+		animation-delay: 0;
+		animation-direction: normal;
+		animation-fill-mode: forwards;
+		animation-play-state: running;
+		transform-origin: center center;
+	}
+
+}
+
+
+@-webkit-keyframes stroke-spacing {
+	0% {
+		stroke-dasharray: 0 70;
+	}
+
+	45% {
+		stroke-dashoffset: 0;
+		stroke-dasharray: 70 70;
+	}
+
+	90% {
+		stroke-dashoffset: -70;
+		stroke-dasharray: 70 70;
+	}
+
+	100% {
+		stroke-dashoffset: -70;
+		stroke-dasharray: 70 70;
+	}
+}
+
+@keyframes stroke-spacing {
+	0% {
+		stroke-dasharray: 0 70;
+	}
+
+	45% {
+		stroke-dashoffset: 0;
+		stroke-dasharray: 70 70;
+	}
+
+	90% {
+		stroke-dashoffset: -70;
+		stroke-dasharray: 70 70;
+	}
+
+	100% {
+		stroke-dashoffset: -70;
+		stroke-dasharray: 70 70;
+	}
+}
+
+@keyframes stroke-color {
+	0% {
+		stroke: #E9E7E3;
+	}
+
+	24% {
+		stroke: #908F8F;
+	}
+
+	25% {
+		stroke: #E2E3E2;
+	}
+
+	49% {
+		stroke: #A1AAA4;
+	}
+
+	50% {
+		stroke: #C9C1BF;
+	}
+
+	74% {
+		stroke: #dedfde;
+	}
+
+	75% {
+		stroke: #d6d2ce;
+	}
+
+	99% {
+		stroke: #D6D0C8;
+	}
+}
