@@ -32,6 +32,9 @@ class RootCtrl {
 		this.onPrimaryDroppedOut = this.onPrimaryDroppedOut.bind(this);
 		this.onSecondaryDroppedIn = this.onSecondaryDroppedIn.bind(this);
 		this.onScroll = this.onScroll.bind(this);
+		this.wishlistToggle = this.wishlistToggle.bind(this);
+		this.wishlistClearAll = this.wishlistClearAll.bind(this);
+		this.wishlistHas = this.wishlistHas.bind(this);
 		// $scope.$on('onDroppinIn', this.onDroppingIn.bind(this));
 		$scope.$on('destroy', () => {
 			// console.log('destroy');
@@ -183,6 +186,18 @@ class RootCtrl {
 			});
 			*/
 		}
+	}
+
+	wishlistToggle(item) {
+		return this.wishlistService.toggle(item);
+	}
+	
+	wishlistClearAll() {
+		return this.wishlistService.clearAll();
+	}
+
+	wishlistHas(item) {
+		return this.wishlistService.has(item);
 	}
 
 	setClasses() {

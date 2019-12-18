@@ -73,7 +73,7 @@ class ColorsCtrl {
 			const colors = [...document.querySelectorAll('.group--colors > .card--color')];
 			const color = colors[this.active];
 			const detail = color.querySelector('.card__detail');
-			if (DomService.isDescendantOf(event.target, detail)) {
+			if (event.target.classList.contains('btn') || (event.target.parentNode && event.target.parentNode.classList.contains('btn')) || DomService.isDescendantOf(event.target, detail)) {
 				return;
 			}
 			this.onClose();

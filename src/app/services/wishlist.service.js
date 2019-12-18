@@ -2,17 +2,19 @@
 
 import { BehaviorSubject, from } from "rxjs";
 
+const key = 'pwishList';
+
 export default class WishlistService {
 
 	constructor(
 		$http,
 		PromiseService,
-		StorageService,
+		//StorageService,
 		ApiService
 	) {
 		this.$http = $http;
 		this.promise = PromiseService;
-		this.storage = StorageService;
+		//this.storage = StorageService;
 		this.api = ApiService;
 		this.count$ = WishlistService.count$;
 		const count = this.wishlist.length;
@@ -21,8 +23,15 @@ export default class WishlistService {
 
 	get wishlist() {
 		if (!this.wishlist_) {
-			const wishlist = this.storage.get('wishlist');
-			this.wishlist_ = wishlist || [];
+			//const wishlist = this.storage.get('wishlist');
+			//this.wishlist_ = wishlist || [];
+			
+			this.wishlist_ = [];
+			var str = document.cookie.match(new RegExp("(^|; )" + key + "=([^;]+)"));
+			if (str) {
+				this.wishlist_ = str[2].match(/([0-9 ]+)/g);
+			}
+
 			WishlistService.count$.next(this.wishlist_.length);
 		}
 		return this.wishlist_;
@@ -30,14 +39,19 @@ export default class WishlistService {
 
 	set wishlist(wishlist) {
 		this.wishlist_ = wishlist || [];
-		this.storage.set('wishlist', this.wishlist_);
+		//this.storage.set('wishlist', this.wishlist_);
+
+		var dt = new Date();
+		dt.setDate(dt.getDate() + 30);
+		document.cookie = key + '=' + this.wishlist_.join(',') + '; path=/; expires=' + dt.toUTCString();
+
 		WishlistService.count$.next(this.wishlist_.length);
 	}
 
 	indexOf(item) {
 		const index = this.wishlist.reduce((p, c, i) => {
 			if (p === -1) {
-				return c.id === item.id && c.coId === item.coId ? i : p;
+				return c/*.id*/ === item/*.id && c.coId === item.coId*/ ? i : p;
 			} else {
 				return p;
 			}
@@ -52,9 +66,11 @@ export default class WishlistService {
 	add(item) {
 		return this.promise.make((promise) => {
 			const wishlist = this.wishlist;
-			wishlist.push({ id: item.id, coId: item.coId });
-			this.wishlist = wishlist;
-			promise.resolve(true);
+			if (!this.has(item)) {
+				wishlist.push(/*{ id: item.id, coId: item.coId }*/item);
+				this.wishlist = wishlist;
+				promise.resolve(true);
+			}
 		});
 	}
 
@@ -93,12 +109,12 @@ export default class WishlistService {
 		}));
 	}
 
-	static factory($http, PromiseService, StorageService, ApiService) {
-		return new WishlistService($http, PromiseService, StorageService, ApiService);
+	static factory($http, PromiseService, /*StorageService,*/ ApiService) {
+		return new WishlistService($http, PromiseService, /*StorageService,*/ ApiService);
 	}
 
 }
 
 WishlistService.count$ = new BehaviorSubject(0);
 
-WishlistService.factory.$inject = ['$http', 'PromiseService', 'LocalStorageService', 'ApiService'];
+WishlistService.factory.$inject = ['$http', 'PromiseService', /*'LocalStorageService',*/ 'ApiService'];

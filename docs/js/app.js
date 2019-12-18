@@ -21612,7 +21612,7 @@ function () {
         var color = colors[this.active];
         var detail = color.querySelector('.card__detail');
 
-        if (_dom.default.isDescendantOf(event.target, detail)) {
+        if (event.target.classList.contains('btn') || event.target.parentNode && event.target.parentNode.classList.contains('btn') || _dom.default.isDescendantOf(event.target, detail)) {
           return;
         }
 
@@ -27377,7 +27377,10 @@ function () {
     this.onPrimaryDroppedIn = this.onPrimaryDroppedIn.bind(this);
     this.onPrimaryDroppedOut = this.onPrimaryDroppedOut.bind(this);
     this.onSecondaryDroppedIn = this.onSecondaryDroppedIn.bind(this);
-    this.onScroll = this.onScroll.bind(this); // $scope.$on('onDroppinIn', this.onDroppingIn.bind(this));
+    this.onScroll = this.onScroll.bind(this);
+    this.wishlistToggle = this.wishlistToggle.bind(this);
+    this.wishlistClearAll = this.wishlistClearAll.bind(this);
+    this.wishlistHas = this.wishlistHas.bind(this); // $scope.$on('onDroppinIn', this.onDroppingIn.bind(this));
 
     $scope.$on('destroy', function () {
       // console.log('destroy');
@@ -27577,6 +27580,21 @@ function () {
         });
         */
       }
+    }
+  }, {
+    key: "wishlistToggle",
+    value: function wishlistToggle(item) {
+      return this.wishlistService.toggle(item);
+    }
+  }, {
+    key: "wishlistClearAll",
+    value: function wishlistClearAll() {
+      return this.wishlistService.clearAll();
+    }
+  }, {
+    key: "wishlistHas",
+    value: function wishlistHas(item) {
+      return this.wishlistService.has(item);
     }
   }, {
     key: "setClasses",
@@ -28430,15 +28448,18 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var key = 'pwishList';
+
 var WishlistService =
 /*#__PURE__*/
 function () {
-  function WishlistService($http, PromiseService, StorageService, ApiService) {
+  function WishlistService($http, PromiseService, //StorageService,
+  ApiService) {
     _classCallCheck(this, WishlistService);
 
     this.$http = $http;
-    this.promise = PromiseService;
-    this.storage = StorageService;
+    this.promise = PromiseService; //this.storage = StorageService;
+
     this.api = ApiService;
     this.count$ = WishlistService.count$;
     var count = this.wishlist.length; // console.log('WishlistService', this.storage);
@@ -28449,7 +28470,11 @@ function () {
     value: function indexOf(item) {
       var index = this.wishlist.reduce(function (p, c, i) {
         if (p === -1) {
-          return c.id === item.id && c.coId === item.coId ? i : p;
+          return c
+          /*.id*/
+          === item
+          /*.id && c.coId === item.coId*/
+          ? i : p;
         } else {
           return p;
         }
@@ -28468,12 +28493,14 @@ function () {
 
       return this.promise.make(function (promise) {
         var wishlist = _this.wishlist;
-        wishlist.push({
-          id: item.id,
-          coId: item.coId
-        });
-        _this.wishlist = wishlist;
-        promise.resolve(true);
+
+        if (!_this.has(item)) {
+          wishlist.push(
+          /*{ id: item.id, coId: item.coId }*/
+          item);
+          _this.wishlist = wishlist;
+          promise.resolve(true);
+        }
       });
     }
   }, {
@@ -28527,22 +28554,36 @@ function () {
     key: "wishlist",
     get: function get() {
       if (!this.wishlist_) {
-        var wishlist = this.storage.get('wishlist');
-        this.wishlist_ = wishlist || [];
+        //const wishlist = this.storage.get('wishlist');
+        //this.wishlist_ = wishlist || [];
+        this.wishlist_ = [];
+        var str = document.cookie.match(new RegExp("(^|; )" + key + "=([^;]+)"));
+
+        if (str) {
+          this.wishlist_ = str[2].match(/([0-9 ]+)/g);
+        }
+
         WishlistService.count$.next(this.wishlist_.length);
       }
 
       return this.wishlist_;
     },
     set: function set(wishlist) {
-      this.wishlist_ = wishlist || [];
-      this.storage.set('wishlist', this.wishlist_);
+      this.wishlist_ = wishlist || []; //this.storage.set('wishlist', this.wishlist_);
+
+      var dt = new Date();
+      dt.setDate(dt.getDate() + 30);
+      document.cookie = key + '=' + this.wishlist_.join(',') + '; path=/; expires=' + dt.toUTCString();
       WishlistService.count$.next(this.wishlist_.length);
     }
   }], [{
     key: "factory",
-    value: function factory($http, PromiseService, StorageService, ApiService) {
-      return new WishlistService($http, PromiseService, StorageService, ApiService);
+    value: function factory($http, PromiseService,
+    /*StorageService,*/
+    ApiService) {
+      return new WishlistService($http, PromiseService,
+      /*StorageService,*/
+      ApiService);
     }
   }]);
 
@@ -28551,7 +28592,9 @@ function () {
 
 exports.default = WishlistService;
 WishlistService.count$ = new _rxjs.BehaviorSubject(0);
-WishlistService.factory.$inject = ['$http', 'PromiseService', 'LocalStorageService', 'ApiService'];
+WishlistService.factory.$inject = ['$http', 'PromiseService',
+/*'LocalStorageService',*/
+'ApiService'];
 
 },{"rxjs":2}],256:[function(require,module,exports){
 "use strict";
