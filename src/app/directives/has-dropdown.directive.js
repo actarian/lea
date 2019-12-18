@@ -18,7 +18,7 @@ export default class HasDropdownDirective {
 		const onClick = (event) => {
 			if (opened_ === null) {
 				openDropdown();
-			} else if (trigger !== node) {
+			} else if (event.target !== trigger) {
 				closeDropdown(true);
 			}
 		};

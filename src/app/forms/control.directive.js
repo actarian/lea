@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 const formatLabel = function(string = '', prepend = '', expression = undefined) {
 	const splitted = string.split(',');
 	if (splitted.length > 1) {
@@ -47,6 +46,9 @@ export default class ControlDirective {
 					break;
 				case 'select':
 					template = 'templates/forms/select.html';
+					break;
+				case 'custom-select':
+					template = 'templates/forms/custom-select.html';
 					break;
 				case 'textarea':
 					template = 'templates/forms/textarea.html';
@@ -101,6 +103,20 @@ export default class ControlDirective {
 		scope.options = this.$parse(attributes.options)(scope) || {};
 		scope.focus = false;
 		scope.visible = false;
+		scope.updateView = (value) => {
+			controller.$viewValue = value;
+			controller.$render();
+		}
+		scope.updateModel = (value) => {
+			controller.$modelValue = value;
+			scope.ngModel = value; // overwrites ngModel value
+		}
+		scope.optionName = () => {
+			const option = scope.source.find(x => x.id === scope.ngModel);
+			if (option) {
+				return option.name;
+			}
+		}
 		scope.onChange = (model) => {
 			// console.log('ControlDirective.onChange');
 			this.$parse(attributes.onChange)(scope.$parent);

@@ -37,8 +37,6 @@
 
 </script>
 
-<ng-include src="'templates/shared/forms.html'"></ng-include>
-
 <section class="section section--form" ng-controller="NewsletterCtrl as c">
 	<div class="container">
 		<div class="row">
@@ -59,20 +57,20 @@
 								<div title="Email" placeholder="Email" form="c.form" control="email" ng-model="c.model.email" required="true"></div>
 							</div>
 							<div class="col-md-6">
-								<div title="Paese" placeholder="Seleziona il tuo paese" form="c.form" control="select" source="c.data.countries" ng-model="c.model.country" number="true"></div>
+								<div title="Paese" placeholder="Seleziona il tuo paese" form="c.form" control="custom-select" source="c.data.countries" ng-model="c.model.country" number="true"></div>
 							</div>
 							<div class="col-md-6">
-								<div title="Professione" placeholder="Seleziona la tua professione" form="c.form" control="select" source="c.data.jobs" ng-model="c.model.job" number="true"></div>
+								<div title="Professione" placeholder="Seleziona la tua professione" form="c.form" control="custom-select" source="c.data.jobs" ng-model="c.model.job" number="true"></div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<div title="Esprimo il consenso alla raccolta e il trattamento dei miei dati personali" form="c.form" control="checkbox" ng-model="c.model.agreed">
+								<div title="Esprimo il consenso alla raccolta e il trattamento dei miei dati personali" form="c.form" control="checkbox" ng-model="c.model.agreed" required="true">
 									<a href="#">Informativa</a>
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div title="Voglio iscrivermi alla Newsletter" form="c.form" control="checkbox" ng-model="c.model.newsletter"></div>
+								<div title="Voglio iscrivermi alla Newsletter" form="c.form" control="checkbox" ng-model="c.model.newsletter" required="true"></div>
 							</div>
 						</div>
 					</div>

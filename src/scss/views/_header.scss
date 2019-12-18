@@ -332,8 +332,8 @@
 .nav--primary {
 
 	&>li {
-		max-width: 33.33%;
-		flex: 0 1 33.33%;
+		// max-width: 33.33%;
+		// flex: 0 1 33.33%;
 
 		&>a,
 		&>span {
@@ -701,7 +701,7 @@
 		display: block;
 		overflow: hidden;
 		padding-bottom: 70px;
-
+        
 		&:not(.opened) {
 			&>.nav--submenu {
 				transition: none;
@@ -714,22 +714,35 @@
 
 		&>a,
 		&>span {
-			display: inline-block;
+            display: inline-flex;
+            align-items: center;
 			position: relative;
 			cursor: pointer;
 			font-size: 34px;
 			font-weight: 500;
 			line-height: 1;
 			text-decoration: none;
-			// transition: all ease-in-out 350ms;
+            // transition: all ease-in-out 350ms;
+            
+            svg {
+                width: 0.6em;
+                height: 0.6em;
+                margin: 0.1em 0 0 0.35em;
+            }
 		}
 
 		&>a {
-			color: $foreground;
+            color: $foreground;
+            svg {
+                fill: $foreground;
+            }
 		}
 
 		&>span {
 			color: #8E928D;
+            svg {
+                fill: #8E928D;
+            }
 		}
 
 		&:hover,

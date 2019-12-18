@@ -68,6 +68,39 @@
         <control-messages></control-messages>
     </div>
 </script>
+<!-- custom-select -->
+<script type="text/ng-template" id="templates/forms/custom-select.html">
+	<div class="group--select group--custom-select" ng-class="getClasses()" has-dropdown>
+        <label for="{{field}}" class="form__label">
+            <span ng-bind="title"></span><sup ng-if="required">&#x273D;</sup>
+		</label>
+		<div class="dropdown" dropdown>
+			<ul class="nav nav--select">
+				<li ng-repeat="item in source track by $index" ng-class="{ active: c.model.action == item.id, disabled: item.disabled }">
+					<span class="option" ng-click="updateModel(item.id)">
+						<span ng-bind="item.name"></span>
+					</span>
+				</li>
+			</ul>
+		</div>
+        <div class="group--input">
+			<div class="form__control form__control--select form__control--custom-select" ng-class="{ selected: c.model.action }">
+				<div class="input">
+					<svg class="icon icon--remove" ng-if="c.model.action" ng-click="updateModel(null)"><use xlink:href="#icon--remove"></use></svg>
+					<div class="value" ng-bind="optionName() || placeholder"></div>
+					<svg class="icon icon--caret-down"><use xlink:href="#icon--caret-down"></use></svg>
+				</div>
+			</div>
+			<!--
+            <select name="{{field}}" class="form__control form__control--select form__control--custom-select" ng-model="ngModel" ng-options="{{getOptions()}}" ng-required="required" ng-disabled="disabled" ng-readonly="readonly" ng-change="onChange()" ng-focus="onFocus()" ng-blur="onBlur()">
+                <option value="" disabled selected hidden>{{placeholder}}</option>
+            </select>
+			<svg><use xlink:href="#icon--caret-down"></use></svg>
+			-->
+        </div>
+        <control-messages></control-messages>
+    </div>
+</script>
 <!-- text -->
 <script type="text/ng-template" id="templates/forms/text.html">
 	<div class="group--text" ng-class="getClasses()">

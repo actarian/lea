@@ -22431,7 +22431,7 @@ function () {
       var onClick = function onClick(event) {
         if (opened_ === null) {
           openDropdown();
-        } else if (trigger !== node) {
+        } else if (event.target !== trigger) {
           closeDropdown(true);
         }
       };
@@ -25821,6 +25821,10 @@ function () {
           template = 'templates/forms/select.html';
           break;
 
+        case 'custom-select':
+          template = 'templates/forms/custom-select.html';
+          break;
+
         case 'textarea':
           template = 'templates/forms/textarea.html';
           break;
@@ -25880,6 +25884,26 @@ function () {
       scope.options = this.$parse(attributes.options)(scope) || {};
       scope.focus = false;
       scope.visible = false;
+
+      scope.updateView = function (value) {
+        controller.$viewValue = value;
+        controller.$render();
+      };
+
+      scope.updateModel = function (value) {
+        controller.$modelValue = value;
+        scope.ngModel = value; // overwrites ngModel value
+      };
+
+      scope.optionName = function () {
+        var option = scope.source.find(function (x) {
+          return x.id === scope.ngModel;
+        });
+
+        if (option) {
+          return option.name;
+        }
+      };
 
       scope.onChange = function (model) {
         // console.log('ControlDirective.onChange');

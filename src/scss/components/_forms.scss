@@ -238,6 +238,22 @@ $success: $blue;
 	}
 }
 
+.group--custom-select {
+	.dropdown {
+		top: 100%;
+		z-index: 100000;
+
+		.nav--select {
+			padding: 0;
+
+			.option {
+				padding: 7px 20px;
+				border-bottom: 1px solid #eee;
+			}
+		}
+	}
+}
+
 .group--textarea {
 	.form__control {
 		height: auto;
@@ -297,6 +313,10 @@ $success: $blue;
 			transform: translateX(-50%) translateY(-50%);
 			font-weight: 100;
 			line-height: 1;
+		}
+
+		&.ng-invalid:not(.ng-pristine) {
+			background: #b92441;
 		}
 	}
 
