@@ -466,21 +466,6 @@
 			font-weight: 100;
 			color: $foreground;
 			margin-left: 57px;
-
-			&>.wishlist--badge {
-				position: absolute;
-				top: 11px;
-				left: 10px;
-				transform: translateX(-50%) translateY(-50%);
-				width: 18px;
-				height: 18px;
-				border-radius: 50%;
-				font-size: 10px;
-				text-align: center;
-				line-height: 18px;
-				color: $foreground !important;
-			}
-
 		}
 
 		&:hover,
@@ -493,6 +478,19 @@
 			}
 		}
 
+		.wishlist--badge {
+			position: absolute;
+			top: 11px;
+			left: 10px;
+			transform: translateX(-50%) translateY(-50%);
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			font-size: 10px;
+			text-align: center;
+			line-height: 18px;
+			color: $foreground !important;
+		}
 	}
 
 	svg {
@@ -562,6 +560,7 @@
 			font-size: 12px;
 			font-weight: 100;
 			color: $foreground;
+
 		}
 
 		&>span {
@@ -579,18 +578,17 @@
 			}
 		}
 
-		&>.wishlist--badge {
+		.wishlist--badge {
 			position: absolute;
-			top: 50%;
-			right: -16px;
+			top: 11px;
+			left: 10px;
+			transform: translateX(-50%) translateY(-50%);
 			width: 18px;
 			height: 18px;
 			border-radius: 50%;
 			font-size: 10px;
 			text-align: center;
 			line-height: 18px;
-			margin-top: -13px;
-			background: $background;
 			color: $foreground !important;
 		}
 
