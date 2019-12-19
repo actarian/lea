@@ -1,5 +1,6 @@
 ﻿/* jshint esversion: 6 */
-
+import GtmService from '../gtm/gtm.service';
+const GTM_CAT = 'references';
 
 class ReferencesCtrl {
 
@@ -82,6 +83,7 @@ class ReferencesCtrl {
 			this.updateFilterStates(filteredReferences);
 			// delayer for image update
 		}, 50);
+		GtmService.pageViewFilters(GTM_CAT, this.filters);
 	}
 
 	updateFilterStates(references) {

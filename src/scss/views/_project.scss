@@ -35,6 +35,8 @@
 	}
 
 	@include media-up(sm) {
+        padding-bottom: 50px;
+
 		.row {
 			align-items: flex-end;
 		}

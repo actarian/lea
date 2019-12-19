@@ -1,5 +1,6 @@
 ﻿/* jshint esversion: 6 */
-
+import GtmService from '../gtm/gtm.service';
+const GTM_CAT = 'news';
 
 export const ITEMS_PER_PAGE = 9;
 
@@ -89,6 +90,7 @@ class NewsCtrl {
 			this.updateFilterStates(filteredItems);
 			// delayer for image update
 		}, 50);
+		GtmService.pageViewFilters(GTM_CAT, this.filters);
 	}
 
 	updateFilterStates(news) {

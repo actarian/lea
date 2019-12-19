@@ -480,16 +480,15 @@
 
 		&>.wishlist--badge {
 			position: absolute;
-			top: 50%;
-			right: -16px;
+			top: 11px;
+			left: 10px;
+			transform: translateX(-50%) translateY(-50%);
 			width: 18px;
 			height: 18px;
 			border-radius: 50%;
 			font-size: 10px;
 			text-align: center;
 			line-height: 18px;
-			margin-top: -13px;
-			background: $background;
 			color: $foreground !important;
 		}
 
@@ -701,7 +700,7 @@
 		display: block;
 		overflow: hidden;
 		padding-bottom: 70px;
-        
+
 		&:not(.opened) {
 			&>.nav--submenu {
 				transition: none;
@@ -714,35 +713,37 @@
 
 		&>a,
 		&>span {
-            display: inline-flex;
-            align-items: center;
+			display: inline-flex;
+			align-items: center;
 			position: relative;
 			cursor: pointer;
 			font-size: 34px;
 			font-weight: 500;
 			line-height: 1;
 			text-decoration: none;
-            // transition: all ease-in-out 350ms;
-            
-            svg {
-                width: 0.6em;
-                height: 0.6em;
-                margin: 0.1em 0 0 0.35em;
-            }
+			// transition: all ease-in-out 350ms;
+
+			svg {
+				width: 0.6em;
+				height: 0.6em;
+				margin: 0.1em 0 0 0.35em;
+			}
 		}
 
 		&>a {
-            color: $foreground;
-            svg {
-                fill: $foreground;
-            }
+			color: $foreground;
+
+			svg {
+				fill: $foreground;
+			}
 		}
 
 		&>span {
 			color: #8E928D;
-            svg {
-                fill: #8E928D;
-            }
+
+			svg {
+				fill: #8E928D;
+			}
 		}
 
 		&:hover,

@@ -6,8 +6,10 @@ import ContactsCtrl from './contacts/contacts.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
-import FaqDirective from './directives/faq.directive';
 // import GalleryItemDirective from './directives/gallery-item.directive';
+import CookiesDirective from './directives/cookies.directive';
+import FancyboxGalleryDirective from "./directives/fancybox-gallery.directive";
+import FaqDirective from './directives/faq.directive';
 import HasDropdownDirective from './directives/has-dropdown.directive';
 import HeaderDirective from './directives/header.directive';
 import HeroDirective from './directives/hero.directive';
@@ -56,7 +58,6 @@ import PromiseService from './shared/promise.service';
 import StateService from './shared/state.service';
 import { CookieService, LocalStorageService, SessionStorageService } from './shared/storage.service';
 import StoreLocatorCtrl from './store-locator/store-locator.controller';
-import FancyboxGalleryDirective from "./directives/fancybox-gallery.directive";
 
 const MODULE_NAME = 'lea';
 
@@ -80,6 +81,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('appear', AppearDirective.factory)
 	.directive('control', ControlDirective.factory)
 	.directive('controlMessages', ControlMessagesDirective.factory)
+	.directive('cookies', CookiesDirective.factory)
 	.directive('fancyboxGallery', FancyboxGalleryDirective.factory)
 	.directive('faq', FaqDirective.factory)
 	// .directive('galleryItem', GalleryItemDirective.factory)
