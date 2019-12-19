@@ -11259,24 +11259,25 @@ canvas {
     font-weight: 100;
     color: #232120;
     margin-left: 57px; }
+    .nav--secondary > li > a > .wishlist--badge,
+    .nav--secondary > li > span > .wishlist--badge {
+      position: absolute;
+      top: 11px;
+      left: 10px;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+              transform: translateX(-50%) translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 10px;
+      text-align: center;
+      line-height: 18px;
+      color: #232120 !important; }
   .nav--secondary > li:hover > a,
   .nav--secondary > li:hover > span, .nav--secondary > li:active > a,
   .nav--secondary > li:active > span, .nav--secondary > li.active > a,
   .nav--secondary > li.active > span {
     color: #232120; }
-  .nav--secondary > li > .wishlist--badge {
-    position: absolute;
-    top: 11px;
-    left: 10px;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    font-size: 10px;
-    text-align: center;
-    line-height: 18px;
-    color: #232120 !important; }
   .nav--secondary svg {
     fill: #232120; }
 

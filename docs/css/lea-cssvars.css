@@ -11303,24 +11303,25 @@ canvas {
     font-weight: 100;
     color: var(--foreground);
     margin-left: 57px; }
+    .nav--secondary > li > a > .wishlist--badge,
+    .nav--secondary > li > span > .wishlist--badge {
+      position: absolute;
+      top: 11px;
+      left: 10px;
+      -webkit-transform: translateX(-50%) translateY(-50%);
+              transform: translateX(-50%) translateY(-50%);
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      font-size: 10px;
+      text-align: center;
+      line-height: 18px;
+      color: var(--foreground) !important; }
   .nav--secondary > li:hover > a,
   .nav--secondary > li:hover > span, .nav--secondary > li:active > a,
   .nav--secondary > li:active > span, .nav--secondary > li.active > a,
   .nav--secondary > li.active > span {
     color: var(--foreground); }
-  .nav--secondary > li > .wishlist--badge {
-    position: absolute;
-    top: 11px;
-    left: 10px;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-            transform: translateX(-50%) translateY(-50%);
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    font-size: 10px;
-    text-align: center;
-    line-height: 18px;
-    color: var(--foreground) !important; }
   .nav--secondary svg {
     fill: var(--foreground); }
 
