@@ -79,18 +79,9 @@
 
 .section--search {
 
-	&>.container {
-
-		&>.row {
-			align-items: center;
-		}
-
-		&>.title {
-			font-size: 36px;
-			line-height: 1.2;
-			font-weight: 500;
-			margin-bottom: 70px;
-		}
+	.container {
+		padding-top: 70px;
+		padding-bottom: 70px;
 
 		&>.abstract {
 			text-align: center;
@@ -98,31 +89,44 @@
 		}
 	}
 
-	@include media-up(sm) {
+	.row {
+		// align-items: center;
+		align-items: stretch;
+	}
 
+	.card--result {
+		height: 100%;
+		margin-bottom: 35px;
+		padding-top: 15px;
+		padding-bottom: 20px;
+		border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+		.card__body {
+			height: 100%;
+		}
+
+		.abstract {
+			flex: 1 1 auto;
+		}
+	}
+
+	@include media-up(sm) {
 		&>.container {
 			padding-top: 70px;
 			padding-bottom: 140px;
 		}
-
-		.card--result {
-			margin-bottom: 140px;
-		}
 	}
 
 	@include media-down(xs) {
-
 		&>.container {
 			padding-top: 70px;
 			padding-bottom: 70px;
 		}
-
-		.card--result {
-			margin-bottom: 70px;
-		}
 	}
 
 }
+
+
 
 .nav--search {
 	display: flex;
