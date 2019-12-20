@@ -27824,7 +27824,9 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /* jshint esversion: 6 */
-// const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
+var IS_DEV = window.location.pathname.match(/\.html$/i);
+var QUERYSTRING_KEY = 'q';
+
 var SearchCtrl =
 /*#__PURE__*/
 function () {
@@ -27840,8 +27842,8 @@ function () {
     this.state = StateService.getState();
     this.state.ready();
 
-    if (this.$location.search() && this.$location.search().search) {
-      this.model.search = this.$location.search().search;
+    if (this.$location.search() && this.$location.search()[QUERYSTRING_KEY]) {
+      this.model.search = this.$location.search()[QUERYSTRING_KEY];
       this.onSubmit();
     }
   }
@@ -27855,15 +27857,14 @@ function () {
       this.results = [];
 
       if (this.state.busy()) {
-        // (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post('/WS/wsUsers.asmx/Search', { data: this.model })).then(
-        this.$http.get('./data/search-results.json').then(function (success) {
+        (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post("".concat(window.location.pathname, "?").concat(QUERYSTRING_KEY, "=").concat(encodeURIComponent(this.model.search)))).then(function (success) {
           var results = success.data;
           console.log(results);
           _this.results = results;
 
           _this.state.success();
 
-          _this.$location.search('search', _this.model.search);
+          _this.$location.search(QUERYSTRING_KEY, _this.model.search);
         }, function (error) {
           _this.error = error;
         });
@@ -27875,7 +27876,7 @@ function () {
     key: "onSearch",
     value: function onSearch() {
       console.log('SearchCtrl.onSearch', this.model);
-      window.location.href = "".concat(this.searchHref, "?search=").concat(this.model.search);
+      window.location.href = "".concat(this.searchHref, "?").concat(QUERYSTRING_KEY, "=").concat(this.model.search);
     }
   }, {
     key: "onInvalid",

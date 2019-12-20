@@ -1,6 +1,7 @@
 /* jshint esversion: 6 */
 
-// const IS_DEV = (window.location.hostname === 'localhost' || window.location.hostname === '0.0.0.0');
+const IS_DEV = window.location.pathname.match(/\.html$/i);
+const QUERYSTRING_KEY = 'q';
 
 class SearchCtrl {
 
@@ -19,8 +20,8 @@ class SearchCtrl {
 		this.model = {};
 		this.state = StateService.getState();
 		this.state.ready();
-		if (this.$location.search() && this.$location.search().search) {
-			this.model.search = this.$location.search().search;
+		if (this.$location.search() && this.$location.search()[QUERYSTRING_KEY]) {
+			this.model.search = this.$location.search()[QUERYSTRING_KEY];
 			this.onSubmit();
 		}
 	}
@@ -29,14 +30,13 @@ class SearchCtrl {
 		console.log('SearchCtrl.onSubmit', this.model);
 		this.results = [];
 		if (this.state.busy()) {
-			// (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post('/WS/wsUsers.asmx/Search', { data: this.model })).then(
-			this.$http.get('./data/search-results.json').then(
+			(IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post(`${window.location.pathname}?${QUERYSTRING_KEY}=${encodeURIComponent(this.model.search)}`)).then(
 				success => {
 					const results = success.data;
 					console.log(results);
 					this.results = results;
 					this.state.success();
-					this.$location.search('search', this.model.search)
+					this.$location.search(QUERYSTRING_KEY, this.model.search)
 				},
 				error => {
 					this.error = error;
@@ -50,7 +50,7 @@ class SearchCtrl {
 
 	onSearch() {
 		console.log('SearchCtrl.onSearch', this.model);
-		window.location.href = `${this.searchHref}?search=${this.model.search}`;
+		window.location.href = `${this.searchHref}?${QUERYSTRING_KEY}=${this.model.search}`;
 	}
 
 	onInvalid() {
