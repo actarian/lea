@@ -1004,3 +1004,23 @@
 		}
 	}
 }
+
+.section--header-print {
+
+	.brand {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		padding: 15px;
+	}
+
+	.icon--lea-ceramiche {
+		fill: black;
+		width: 100px;
+		height: 41px;
+		position: relative;
+		z-index: 10000;
+	}
+}

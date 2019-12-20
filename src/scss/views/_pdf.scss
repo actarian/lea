@@ -1,0 +1,71 @@
+.section--color-print {
+
+	.container {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		margin-bottom: 35px;
+	}
+
+	.color-tile {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.content {
+			width: 100%;
+			max-width: 512px;
+			margin: 20px;
+			position: relative;
+		}
+
+		.feats {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			white-space: nowrap;
+			display: flex;
+			justify-content: space-around;
+			text-align: center;
+		}
+	}
+
+	.group--description {
+		padding: 0;
+	}
+
+	& .group--description+.group--description {
+		padding-top: 35px;
+		border-top: 1px solid rgba(0, 0, 0, 0.2);
+	}
+
+	.group--feature {
+		page-break-inside: avoid;
+		margin-bottom: 15px;
+
+		.group--inline {
+			display: flex;
+			align-items: stretch;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			.item {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: flex-start;
+				height: 100%;
+				margin-right: 35px;
+				margin-bottom: 35px;
+
+				.thumb {
+					flex: 1 0 100px;
+					display: flex;
+					align-items: flex-end;
+				}
+			}
+		}
+	}
+
+}
