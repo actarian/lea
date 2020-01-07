@@ -12187,8 +12187,13 @@ footer .inner {
   z-index: 1; }
 
 .section--magazine {
-  padding: 0;
   background: #cbc4b9; }
+  @media (min-width: 1024px) {
+    .section--magazine {
+      padding-top: 70px; } }
+  @media (min-width: 1440px) {
+    .section--magazine {
+      padding-top: 140px; } }
   @media (max-width: 1023.98px) {
     .section--magazine {
       padding-top: 70px;
@@ -12198,10 +12203,8 @@ footer .inner {
   background: #cfcfcf; }
 
 .group--designer {
-  margin-top: 140px;
   margin-bottom: 140px; }
   .group--designer .title {
-    padding: 70px 0;
     text-align: center;
     font-family: Stanley, serif;
     line-height: 1.2;
@@ -12229,7 +12232,14 @@ footer .inner {
     margin: 20px 0 0 0; }
   @media (min-width: 860px) {
     .group--designer .title {
-      font-size: 36px; } }
+      font-size: 26px;
+      padding: 35px; } }
+  @media (min-width: 1440px) {
+    .group--designer {
+      margin-top: 140px; }
+      .group--designer .title {
+        font-size: 34px;
+        padding: 70px 35px; } }
   @media (max-width: 859.98px) {
     .group--designer {
       margin-top: 0;

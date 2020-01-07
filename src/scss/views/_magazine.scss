@@ -1,6 +1,13 @@
 .section--magazine {
-	padding: 0;
 	background: #cbc4b9;
+
+	@include media-up(md) {
+		padding-top: 70px;
+	}
+
+	@include media-up(lg) {
+		padding-top: 140px;
+	}
 
 	@include media-down(sm) {
 		padding-top: 70px;
@@ -13,11 +20,9 @@
 }
 
 .group--designer {
-	margin-top: 140px;
 	margin-bottom: 140px;
 
 	.title {
-		padding: 70px 0;
 		text-align: center;
 		font-family: Stanley, serif;
 		line-height: 1.2;
@@ -59,7 +64,17 @@
 
 	@include media-up(sm) {
 		.title {
-			font-size: 36px;
+			font-size: 26px;
+			padding: 35px;
+		}
+	}
+
+	@include media-up(lg) {
+		margin-top: 140px;
+
+		.title {
+			font-size: 34px;
+			padding: 70px 35px;
 		}
 	}
 
