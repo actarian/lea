@@ -114,10 +114,10 @@ footer {
 
 .section--footer {
 	background: #d6d6d6;
-	padding: 70px 0;
+	padding: 70px 0 0 0;
 
 	.row:first-child {
-		margin-bottom: 140px;
+		margin-bottom: 70px;
 	}
 
 	.brand {
@@ -183,16 +183,29 @@ footer {
 		margin-top: 30px;
 	}
 
+	.btn--panaria-group {
+		display: block;
+		width: 100%;
+		max-width: 180px;
+		opacity: 0.75;
+	}
+
 	.row--colophon {
-		font-size: 16px;
-		font-weight: 100;
+		padding-bottom: 20px;
 		line-height: 1;
+		font-size: 14px;
+		font-weight: 100;
 		color: #878887;
 
 		a {
 			display: inline-block;
 			margin-bottom: 15px;
 			text-decoration: none;
+			margin-right: 35px;
+
+			&:last-child {
+				margin-right: 0;
+			}
 		}
 
 		.icon--websolute {
@@ -241,6 +254,7 @@ footer {
 		}
 
 		.row--colophon {
+
 			& div+div {
 				margin-top: 20px;
 			}

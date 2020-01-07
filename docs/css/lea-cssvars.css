@@ -11829,9 +11829,9 @@ footer .inner {
 
 .section--footer {
   background: #d6d6d6;
-  padding: 70px 0; }
+  padding: 70px 0 0 0; }
   .section--footer .row:first-child {
-    margin-bottom: 140px; }
+    margin-bottom: 70px; }
   .section--footer .brand {
     display: block;
     position: relative;
@@ -11886,15 +11886,24 @@ footer .inner {
     line-height: 1.4; }
   .section--footer .btn--link {
     margin-top: 30px; }
+  .section--footer .btn--panaria-group {
+    display: block;
+    width: 100%;
+    max-width: 180px;
+    opacity: 0.75; }
   .section--footer .row--colophon {
-    font-size: 16px;
-    font-weight: 100;
+    padding-bottom: 20px;
     line-height: 1;
+    font-size: 14px;
+    font-weight: 100;
     color: #878887; }
     .section--footer .row--colophon a {
       display: inline-block;
       margin-bottom: 15px;
-      text-decoration: none; }
+      text-decoration: none;
+      margin-right: 35px; }
+      .section--footer .row--colophon a:last-child {
+        margin-right: 0; }
     .section--footer .row--colophon .icon--websolute {
       width: 82px;
       height: 16px; }
