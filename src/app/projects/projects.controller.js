@@ -37,7 +37,7 @@ class ProjectsCtrl {
 				label: this.filters[x].placeholder,
 				value: null,
 			});
-			const selectedOption = filter.options.find(o => Boolean(o.value === (locationFilters[x] || null)));
+			const selectedOption = filter.options.find(o => Boolean(o.value === (locationFilters[x] || this.filters[x].value || null)));
 			filter.value = selectedOption.value;
 			filter.placeholder = selectedOption.label;
 		});

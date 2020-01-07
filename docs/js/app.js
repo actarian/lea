@@ -27268,7 +27268,7 @@ function () {
           value: null
         });
         var selectedOption = filter.options.find(function (o) {
-          return Boolean(o.value === (locationFilters[x] || null));
+          return Boolean(o.value === (locationFilters[x] || _this.filters[x].value || null));
         });
         filter.value = selectedOption.value;
         filter.placeholder = selectedOption.label;
