@@ -1,5 +1,6 @@
 .swiper-container {
 	width: 100%;
+	overflow: visible;
 	cursor: pointer;
 	// visibility: hidden;
 
@@ -10,6 +11,11 @@
 
 .swiper-wrapper {
 	padding-bottom: 0;
+	align-items: flex-end;
+}
+
+.swiper-slide {
+	flex-grow: 1;
 }
 
 .swiper-container-horizontal {
@@ -80,14 +86,16 @@
 		display: block;
 		width: 8px;
 		height: 8px;
-		border-radius: 4px;
-		background: #d8d2cd;
+		border-radius: 8px;
+		border: 2px solid $foreground;
+		background: rgba(255, 255, 255, .5);
 		transition: all 300ms ease-in-out;
 	}
 
 	&:hover {
 		&:before {
-			background: $foreground-secondary;
+			border-color: $foreground;
+			background: $foreground;
 		}
 	}
 }
@@ -96,7 +104,8 @@
 	opacity: 1;
 
 	&:before {
-		background: $foreground-secondary;
+		border-color: $foreground;
+		background: $foreground;
 	}
 }
 
@@ -128,4 +137,31 @@
 	&.swiper-button-black {
 		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%234e5256'%2F%3E%3C%2Fsvg%3E");
 	}
+}
+
+.swiper-pagination {
+
+	@include media-up(md) {
+		max-width: 87.5%;
+		position: absolute;
+		align-items: center;
+		justify-content: flex-start;
+		width: 100%;
+		height: 140px;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	@include media-up(xl) {
+		max-width: 1680px;
+	}
+
+	@include media-down(sm) {
+		padding-bottom: 35px;
+	}
+}
+
+.swiper-pagination-bullets .swiper-pagination-bullet {
+	margin-right: 10px;
 }

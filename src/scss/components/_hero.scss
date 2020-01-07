@@ -95,6 +95,12 @@
 
 	}
 
+	@include media-down(sm) {
+		.title {
+			font-size: 46px;
+		}
+	}
+
 	@include media-down(xs) {
 
 		.background {

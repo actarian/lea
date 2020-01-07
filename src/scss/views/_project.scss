@@ -35,7 +35,7 @@
 	}
 
 	@include media-up(sm) {
-        padding-bottom: 50px;
+		padding-bottom: 50px;
 
 		.row {
 			align-items: flex-end;
@@ -152,6 +152,16 @@
 		font-size: 10px;
 	}
 
+	@include media-down(md) {
+		.category {
+			font-size: 28px;
+		}
+
+		.title {
+			font-size: 46px;
+		}
+	}
+
 	@include media-down(sm) {
 		padding-top: 0;
 		padding-bottom: 70px;
@@ -171,7 +181,7 @@
 }
 
 .col--full {
-	@include media-down(sm) {
+	@include media-down(xs) {
 		margin-left: -26px;
 		margin-right: -26px;
 		width: calc(100% + 52px);

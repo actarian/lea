@@ -17,6 +17,10 @@
 }
 
 .top-140 {
+	@include media-up(sm) {
+		margin-top: 70px;
+	}
+
 	@include media-up(md) {
 		margin-top: 140px;
 	}

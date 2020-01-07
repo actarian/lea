@@ -31,6 +31,7 @@ import SliderDirective from './directives/slider.directive';
 import SmoothScrollDirective from './directives/smooth-scroll.directive';
 import SplitDirective from './directives/split.directive';
 import StickyDirective from './directives/sticky.directive';
+import { SwiperDirective, SwiperHeroDirective } from './directives/swiper.directive';
 import VideoDirective from './directives/video.directive';
 import VirtualScrollDirective from './directives/virtual-scroll.directive';
 import VisibilityDirective from './directives/visibility.directive';
@@ -109,6 +110,8 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('slider', SliderDirective.factory)
 	.directive('sticky', StickyDirective.factory)
 	.directive('split', SplitDirective.factory)
+	.directive('swiper', SwiperDirective.factory)
+	.directive('swiperHero', SwiperHeroDirective.factory)
 	.directive('validate', ValidateDirective.factory)
 	.directive('video', VideoDirective.factory)
 	.directive('virtualScroll', VirtualScrollDirective.factory)
