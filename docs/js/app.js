@@ -26249,11 +26249,15 @@ function () {
             var node = current[0];
             return Math.min(previous, node.getBoundingClientRect().top);
           }, Number.POSITIVE_INFINITY);
+          window.scrollTo(0, (document.body.scrollTop || document.documentElement.scrollTop) + top - 10);
+          /*
           window.scroll({
-            top: (document.body.scrollTop || document.documentElement.scrollTop) + top - 10,
-            left: 0,
-            behavior: 'smooth'
+          	top: (document.body.scrollTop || document.documentElement.scrollTop) + top - 10,
+          	left: 0,
+          	behavior: 'smooth'
           });
+          */
+
           errorElements = [];
         }, 100);
       }
