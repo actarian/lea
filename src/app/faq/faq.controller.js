@@ -73,7 +73,7 @@ class FaqCtrl {
 
 	navTo(category, event) {
 		const node = document.querySelector(`#${category.slug}`);
-		const top = this.domService.scrollTop + node.getBoundingClientRect().top - 100;
+		const top = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top - 100;
 		this.domService.scroll({
 			top: top,
 			left: 0,

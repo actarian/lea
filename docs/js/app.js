@@ -21575,8 +21575,7 @@ function () {
   _createClass(ColorsCtrl, [{
     key: "scrollIntoView",
     value: function scrollIntoView(node) {
-      var curtop = this.domService.scrollTop + node.getBoundingClientRect().top;
-      console.log(curtop);
+      var curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
       /*
       if (node.offsetParent) {
       	do {
@@ -22674,7 +22673,7 @@ function () {
       var tertiary = _toConsumableArray(node.querySelectorAll('.nav--tertiary > li'));
 
       var menus = [primary, secondary, tertiary];
-      var scrollTop = this.domService.scrollTop;
+      var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
 
       if (scrollTop === 0) {
         TweenMax.set(brand, {
@@ -22822,7 +22821,7 @@ function () {
       var node = element[0];
       var cover = node.querySelector('.picture--cover');
 
-      if (cover != null && cover.length && first && this.domService.scrollTop === 0) {
+      if (cover != null && cover.length && first && (document.body.scrollTop || document.documentElement.scrollTop) === 0) {
         first = false;
         scope.$root.$broadcast('onCoverInit'); // const brand = document.querySelector('.section--header .brand');
 
@@ -26240,8 +26239,6 @@ function () {
   }, {
     key: "scrollToError",
     value: function scrollToError() {
-      var _this3 = this;
-
       if (errorElements.length) {
         if (to) {
           clearTimeout(to);
@@ -26253,7 +26250,7 @@ function () {
             return Math.min(previous, node.getBoundingClientRect().top);
           }, Number.POSITIVE_INFINITY);
           window.scroll({
-            top: _this3.domService.scrollTop + top - 100,
+            top: (document.body.scrollTop || document.documentElement.scrollTop) + top - 10,
             left: 0,
             behavior: 'smooth'
           });
@@ -28588,10 +28585,10 @@ function () {
       }
 
       if (node === document || node === window) {
-        return this.getScrollTop(document.body || document.documentElement || document.scrollingElement);
+        return this.getScrollTop(document.scrollingElement || document.documentElement || document.body);
       }
 
-      return node.scrollTop || node.scrollY || node.pageYOffset || 0;
+      return node.pageYOffset || node.scrollY || node.scrollTop || 0;
     }
   }, {
     key: "getScrollLeft",
@@ -28601,10 +28598,10 @@ function () {
       }
 
       if (node === document || node === window) {
-        return this.getScrollLeft(document.body || document.documentElement || document.scrollingElement);
+        return this.getScrollLeft(document.scrollingElement || document.documentElement || document.body);
       }
 
-      return node.scrollLeft || node.scrollX || node.pageXOffset || 0;
+      return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
     }
   }, {
     key: "detect",

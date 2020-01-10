@@ -194,7 +194,7 @@ export default class ControlDirective {
 					return Math.min(previous, node.getBoundingClientRect().top);
 				}, Number.POSITIVE_INFINITY);
 				window.scroll({
-					top: this.domService.scrollTop + top - 100,
+					top: (document.body.scrollTop || document.documentElement.scrollTop) + top - 10,
 					left: 0,
 					behavior: 'smooth'
 				});

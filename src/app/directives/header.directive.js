@@ -29,7 +29,7 @@ export default class HeaderDirective {
 		const secondary = [...node.querySelectorAll('.nav--secondary > li')];
 		const tertiary = [...node.querySelectorAll('.nav--tertiary > li')];
 		const menus = [primary, secondary, tertiary];
-		const scrollTop = this.domService.scrollTop;
+		const scrollTop = (document.body.scrollTop || document.documentElement.scrollTop);
 		if (scrollTop === 0) {
 			TweenMax.set(brand, { opacity: 0 });
 			scope.$on('onCoverStart', ($scope) => {
