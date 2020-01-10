@@ -10563,7 +10563,7 @@ canvas {
       .section--filters .form--filters > .form__group,
       .section--filters .form--filters > .btn--filter,
       .section--filters .form--filters > .btn--toggle {
-        max-width: 100%;
+        min-width: 100%;
         width: 100%;
         -webkit-box-flex: 1;
             -ms-flex: 1 1 100%;
@@ -10634,7 +10634,7 @@ canvas {
   .form--filters > .btn--filter,
   .form--filters > .btn--toggle {
     position: relative;
-    max-width: calc(25% - 35px);
+    min-width: calc(25% - 35px);
     -webkit-box-flex: 1;
         -ms-flex: 1 1 calc(25% - 35px);
             flex: 1 1 calc(25% - 35px);
@@ -10711,7 +10711,7 @@ canvas {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      max-width: calc(100% - 35px);
+      min-width: calc(100% - 35px);
       -webkit-appearance: none;
          -moz-appearance: none;
               appearance: none;

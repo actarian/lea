@@ -65,7 +65,7 @@
 			&>.form__group,
 			&>.btn--filter,
 			&>.btn--toggle {
-				max-width: 100%;
+				min-width: 100%;
 				width: 100%;
 				flex: 1 1 100%;
 				border-bottom: 1px solid #ccc;
@@ -157,7 +157,7 @@
 	&>.btn--filter,
 	&>.btn--toggle {
 		position: relative;
-		max-width: calc(25% - 35px);
+		min-width: calc(25% - 35px);
 		flex: 1 1 calc(25% - 35px);
 		margin: 0 35px 25px 0;
 		background: #E7E7E7;
@@ -238,7 +238,7 @@
 			white-space: nowrap;
 			text-overflow: ellipsis;
 			overflow: hidden;
-			max-width: calc(100% - 35px);
+			min-width: calc(100% - 35px);
 			appearance: none;
 			background: transparent;
 			font-size: inherit;
