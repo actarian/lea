@@ -1,10 +1,6 @@
 /* jshint esversion: 6 */
 
-// Import Polyfills
-// See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
-// import 'intersection-observer';
-
-// import Splitting from "splitting";
+import { first } from 'rxjs/operators';
 
 export default class SplitDirective {
 
@@ -20,7 +16,9 @@ export default class SplitDirective {
 		node.setAttribute('data-title', node.innerHTML);
 		const section = this.getSection(node);
 		const index = [].slice.call(section.querySelectorAll('[title]')).indexOf(node);
-		const subscription = this.domService.appearOnLoad$(node, -0.5).subscribe(event => {
+		const subscription = this.domService.appearOnLoad$(node, -0.5).pipe(
+			first(),
+		).subscribe(event => {
 			const timeout = index * 100;
 			setTimeout(() => {
 				// node.classList.add('titled');

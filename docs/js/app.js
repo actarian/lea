@@ -21897,16 +21897,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _operators = require("rxjs/operators");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/* jshint esversion: 6 */
-// Import Polyfills
-// See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
-// import 'intersection-observer';
 var AppearDirective =
 /*#__PURE__*/
 function () {
@@ -21923,7 +21921,7 @@ function () {
       var node = element[0];
       var section = this.getSection(node);
       var index = [].slice.call(section.querySelectorAll('[appear]')).indexOf(node);
-      var subscription = this.domService.appearOnLoad$(node, -0.5).subscribe(function (event) {
+      var subscription = this.domService.appearOnLoad$(node, -0.5).pipe((0, _operators.first)()).subscribe(function (event) {
         // -0.05
         // console.log(event.rect.top);
 
@@ -21988,7 +21986,7 @@ function () {
 exports.default = AppearDirective;
 AppearDirective.factory.$inject = ['DomService'];
 
-},{}],206:[function(require,module,exports){
+},{"rxjs/operators":198}],206:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23315,13 +23313,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _operators = require("rxjs/operators");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/* jshint esversion: 6 */
 var LazyDirective =
 /*#__PURE__*/
 function () {
@@ -23345,7 +23344,7 @@ function () {
 
       var image = element[0];
       image.classList.remove('lazying', 'lazyed');
-      var subscription = this.domService.appear$(image).subscribe(function (event) {
+      var subscription = this.domService.appear$(image).pipe((0, _operators.first)()).subscribe(function (event) {
         if (!image.classList.contains('lazying')) {
           image.classList.add('lazying');
 
@@ -23434,7 +23433,7 @@ function () {
 exports.default = LazyDirective;
 LazyDirective.factory.$inject = ['DomService'];
 
-},{}],220:[function(require,module,exports){
+},{"rxjs/operators":198}],220:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24895,17 +24894,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _operators = require("rxjs/operators");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-/* jshint esversion: 6 */
-// Import Polyfills
-// See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
-// import 'intersection-observer';
-// import Splitting from "splitting";
 var SplitDirective =
 /*#__PURE__*/
 function () {
@@ -24925,7 +24921,7 @@ function () {
       node.setAttribute('data-title', node.innerHTML);
       var section = this.getSection(node);
       var index = [].slice.call(section.querySelectorAll('[title]')).indexOf(node);
-      var subscription = this.domService.appearOnLoad$(node, -0.5).subscribe(function (event) {
+      var subscription = this.domService.appearOnLoad$(node, -0.5).pipe((0, _operators.first)()).subscribe(function (event) {
         var timeout = index * 100;
         setTimeout(function () {
           // node.classList.add('titled');
@@ -24987,7 +24983,7 @@ function () {
 exports.default = SplitDirective;
 SplitDirective.factory.$inject = ['DomService'];
 
-},{}],231:[function(require,module,exports){
+},{"rxjs/operators":198}],231:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

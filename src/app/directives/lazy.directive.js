@@ -1,5 +1,7 @@
 /* jshint esversion: 6 */
 
+import { first } from 'rxjs/operators';
+
 export default class LazyDirective {
 
 	// src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" lazy lazy-src="
@@ -19,7 +21,9 @@ export default class LazyDirective {
 	link(scope, element, attributes, controller) {
 		const image = element[0];
 		image.classList.remove('lazying', 'lazyed');
-		const subscription = this.domService.appear$(image).subscribe(event => {
+		const subscription = this.domService.appear$(image).pipe(
+			first(),
+		).subscribe(event => {
 			if (!image.classList.contains('lazying')) {
 				image.classList.add('lazying');
 				this.onAppearsInViewport(image, scope, attributes);

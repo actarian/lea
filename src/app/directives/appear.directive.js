@@ -1,9 +1,6 @@
 /* jshint esversion: 6 */
 
-
-// Import Polyfills
-// See: https://github.com/w3c/IntersectionObserver/tree/master/polyfill
-// import 'intersection-observer';
+import { first } from 'rxjs/operators';
 
 export default class AppearDirective {
 
@@ -18,7 +15,9 @@ export default class AppearDirective {
 		const node = element[0];
 		const section = this.getSection(node);
 		const index = [].slice.call(section.querySelectorAll('[appear]')).indexOf(node);
-		const subscription = this.domService.appearOnLoad$(node, -0.5).subscribe(event => { // -0.05
+		const subscription = this.domService.appearOnLoad$(node, -0.5).pipe(
+			first(),
+		).subscribe(event => { // -0.05
 			// console.log(event.rect.top);
 			/*
 			const rect = event.rect;
