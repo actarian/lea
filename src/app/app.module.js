@@ -27,6 +27,7 @@ import ParallaxOuterDirective from './directives/parallax-outer.directive';
 import ParallaxDirective from './directives/parallax.directive';
 import ScrollDirective from './directives/scroll.directive';
 import ScrollableDirective from './directives/scrollable.directive';
+import ShareDirective from './directives/share.directive';
 import SliderDirective from './directives/slider.directive';
 import SmoothScrollDirective from './directives/smooth-scroll.directive';
 import SplitDirective from './directives/split.directive';
@@ -107,6 +108,7 @@ app.directive('abstract', AbstractDirective.factory)
 	.directive('scroll', ScrollDirective.factory)
 	.directive('scrollable', ScrollableDirective.factory)
 	.directive('selectWithAutocomplete', AutocompleteDirective.factory)
+	.directive('share', ShareDirective.factory)
 	.directive('slider', SliderDirective.factory)
 	.directive('sticky', StickyDirective.factory)
 	.directive('split', SplitDirective.factory)

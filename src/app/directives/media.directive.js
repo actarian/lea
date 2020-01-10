@@ -41,24 +41,24 @@ export default class MediaDirective {
 			const pageTitle = document.title;
 			const pageUrl = `${window.location.href}?imageId=${scope.item.id}`;
 			scope.onFacebook = (event) => {
-				console.log('onFacebook');
+				console.log('ShareDirective.onFacebook', event);
 				const url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
 				window.open(url, 'facebookShareWindow', `height=450, width=550, top=${window.innerHeight / 2 - 275}, left=${window.innerWidth / 2 - 225}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0`);
 				// event.preventDefault();
 			};
 			scope.onTwitter = (event) => {
-				console.log('onTwitter');
-				const url = `https://twitter.com/home?status=${pageUrl} ${pageTitle}`;
+				console.log('ShareDirective.onTwitter', event);
+				const url = `https://twitter.com/intent/tweet?url=${pageUrl}&via=LeaCeramiche&text=${pageTitle}`;
 				window.open(url, 'twitterShareWindow', `height=450, width=550, top=${window.innerHeight / 2 - 275}, left=${window.innerWidth / 2 - 225}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0`);
 				// event.preventDefault();
 			};
 			scope.onPinterest = () => {
 				const pin = {
 					url: pageUrl,
-					media: img.src,
+					media: img.src || pageSrc,
 					description: img.title || pageTitle,
 				};
-				// console.log('MediaDirective.onPin', pin);
+				console.log('ShareDirective.onPin', pin);
 				PinUtils.pinOne(pin);
 			};
 		}
