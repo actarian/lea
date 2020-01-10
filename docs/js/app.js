@@ -21561,9 +21561,8 @@ function () {
               _this.active = index;
 
               _this.onOpen(color);
-            }
+            } // color.scrollIntoView();
 
-            color.scrollIntoView();
 
             _this.scrollIntoView(color);
           }
@@ -21575,13 +21574,15 @@ function () {
   _createClass(ColorsCtrl, [{
     key: "scrollIntoView",
     value: function scrollIntoView(node) {
-      var curtop = 0;
-
+      var curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
+      console.log(curtop);
+      /*
       if (node.offsetParent) {
-        do {
-          curtop += node.offsetTop;
-        } while (node = node.offsetParent);
+      	do {
+      		curtop += node.offsetTop;
+      	} while (node = node.offsetParent);
       }
+      */
 
       window.scroll(0, curtop);
     }
@@ -21668,8 +21669,9 @@ function () {
           height: 0,
           overflow: 'hidden',
           zIndex: -1
-        });
-        color.scrollIntoView();
+        }); // color.scrollIntoView();
+
+        this.scrollIntoView(color);
         var from = {
           value: 0
         };

@@ -32,7 +32,7 @@ class ColorsCtrl {
 							this.active = index;
 							this.onOpen(color);
 						}
-						color.scrollIntoView();
+						// color.scrollIntoView();
 						this.scrollIntoView(color);
 					}
 				}, 100);
@@ -41,12 +41,15 @@ class ColorsCtrl {
 	}
 
 	scrollIntoView(node) {
-		let curtop = 0;
+		let curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
+		console.log(curtop);
+		/*
 		if (node.offsetParent) {
 			do {
 				curtop += node.offsetTop;
 			} while (node = node.offsetParent);
 		}
+		*/
 		window.scroll(0, curtop);
 	}
 
@@ -101,7 +104,8 @@ class ColorsCtrl {
 			TweenMax.set(detail, { height: 'auto' });
 			const rect = Rect.fromNode(detail);
 			TweenMax.set(detail, { left: -color.offsetLeft, height: 0, overflow: 'hidden', zIndex: -1 });
-			color.scrollIntoView();
+			// color.scrollIntoView();
+			this.scrollIntoView(color);
 			const from = { value: 0 };
 			TweenMax.to(from, 0.6, {
 				value: 1,
