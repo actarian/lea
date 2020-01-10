@@ -8,11 +8,13 @@ class ColorsCtrl {
 	constructor(
 		$scope,
 		$timeout,
-		$location
+		$location,
+		DomService
 	) {
 		this.$scope = $scope;
 		this.$timeout = $timeout;
 		this.$location = $location;
+		this.domService = DomService;
 		this.onWindowResize = this.onWindowResize.bind(this);
 		window.addEventListener('resize', this.onWindowResize);
 		$scope.$on('$destroy', () => {
@@ -163,6 +165,6 @@ class ColorsCtrl {
 
 }
 
-ColorsCtrl.$inject = ['$scope', '$timeout', '$location'];
+ColorsCtrl.$inject = ['$scope', '$timeout', '$location', 'DomService'];
 
 export default ColorsCtrl;

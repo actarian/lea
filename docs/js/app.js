@@ -21532,7 +21532,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var ColorsCtrl =
 /*#__PURE__*/
 function () {
-  function ColorsCtrl($scope, $timeout, $location) {
+  function ColorsCtrl($scope, $timeout, $location, DomService) {
     var _this = this;
 
     _classCallCheck(this, ColorsCtrl);
@@ -21540,6 +21540,7 @@ function () {
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$location = $location;
+    this.domService = DomService;
     this.onWindowResize = this.onWindowResize.bind(this);
     window.addEventListener('resize', this.onWindowResize);
     $scope.$on('$destroy', function () {
@@ -21762,7 +21763,7 @@ function () {
   return ColorsCtrl;
 }();
 
-ColorsCtrl.$inject = ['$scope', '$timeout', '$location'];
+ColorsCtrl.$inject = ['$scope', '$timeout', '$location', 'DomService'];
 var _default = ColorsCtrl;
 exports.default = _default;
 
