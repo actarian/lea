@@ -22,6 +22,7 @@
 	},
 	"dependencies": {
 		"@dogstudio/highway": "~2.1.2",
+		"@fancyapps/fancybox": "~3.5.7",
 		"angular": "~1.7.5",
 		"angular-i18n": "~1.7.5",
 		"angular-messages": "~1.7.5",
@@ -30,6 +31,7 @@
 		"gmaps-marker-clusterer": "~1.2.2",
 		"gsap": "^2.1.2",
 		"jsonformatter": "~0.7.0",
+		"jquery": "~3.4.1",
 		"muuri": "^0.7.1",
 		"promise-polyfill": "^8.1.0",
 		"rxjs": "~6.4.0",
