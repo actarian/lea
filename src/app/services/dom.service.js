@@ -167,7 +167,7 @@ export default class DomService {
 				// const outerHeight = this.getOuterHeight(node);
 				const innerHeight = node.lastElementChild.offsetTop + node.lastElementChild.offsetHeight;
 				if (parseInt(target.style.height) !== innerHeight) {
-					target.style = `height: ${innerHeight}px`;
+					target.style.height = `${innerHeight}px`;
 				}
 				const nodeTop = node.top || 0;
 				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));

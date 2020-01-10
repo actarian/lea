@@ -28336,7 +28336,7 @@ function () {
         var innerHeight = node.lastElementChild.offsetTop + node.lastElementChild.offsetHeight;
 
         if (parseInt(target.style.height) !== innerHeight) {
-          target.style = "height: ".concat(innerHeight, "px");
+          target.style.height = "".concat(innerHeight, "px");
         }
 
         var nodeTop = node.top || 0;
