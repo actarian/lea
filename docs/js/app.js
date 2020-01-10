@@ -28607,7 +28607,9 @@ function () {
     key: "detect",
     value: function detect() {
       var userAgent = navigator.userAgent.toLowerCase();
-      var explorer = userAgent.indexOf('msie') > -1;
+      var msie = userAgent.indexOf('msie') > -1;
+      var trident = userAgent.indexOf('trident') > -1;
+      var explorer = msie || trident;
       var firefox = userAgent.indexOf('firefox') > -1;
       var opera = userAgent.toLowerCase().indexOf('op') > -1;
       var chrome = userAgent.indexOf('chrome') > -1;
@@ -28630,6 +28632,8 @@ function () {
       var overscroll = navigator.platform === 'MacIntel' && typeof navigator.getBattery === 'function';
       var agent = this.agent = {
         chrome: chrome,
+        msie: msie,
+        trident: trident,
         explorer: explorer,
         firefox: firefox,
         safari: safari,
