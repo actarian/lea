@@ -7,7 +7,6 @@ export default class ShareDirective {
 	) {
 		this.$timeout = $timeout;
 		this.restrict = 'A';
-		this.transclude = true;
 		this.template = `
 		<div class="btn btn--facebook" ng-click="onFacebook()">
 			<svg class="icon icon--facebook"><use xlink:href="#icon--facebook"></use></svg>
@@ -33,16 +32,15 @@ export default class ShareDirective {
 			pageSrc = img.src;
 			pageTitle = img.title || pageTitle;
 		}
-		console.log('share', scope.item);
-		const pageUrl = `${window.location.href}?imageId=${scope.item.id}`;
+		const pageUrl = scope.item.url || `${window.location.href}?imageId=${scope.item.id}`;
 		scope.onFacebook = (event) => {
-			console.log('ShareDirective.onFacebook', event);
+			// console.log('ShareDirective.onFacebook', event);
 			const url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
 			window.open(url, 'facebookShareWindow', `height=450, width=550, top=${window.innerHeight / 2 - 275}, left=${window.innerWidth / 2 - 225}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0`);
 			// event.preventDefault();
 		};
 		scope.onTwitter = (event) => {
-			console.log('ShareDirective.onTwitter', event);
+			// console.log('ShareDirective.onTwitter', event);
 			const url = `https://twitter.com/intent/tweet?url=${pageUrl}&via=LeaCeramiche&text=${pageTitle}`;
 			window.open(url, 'twitterShareWindow', `height=450, width=550, top=${window.innerHeight / 2 - 275}, left=${window.innerWidth / 2 - 225}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0`);
 			// event.preventDefault();
@@ -53,7 +51,7 @@ export default class ShareDirective {
 				media: pageSrc,
 				description: pageTitle,
 			};
-			console.log('ShareDirective.onPin', pin);
+			// console.log('ShareDirective.onPin', pin);
 			PinUtils.pinOne(pin);
 		};
 		element.on('$destroy', () => {});
