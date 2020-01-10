@@ -21574,7 +21574,7 @@ function () {
   _createClass(ColorsCtrl, [{
     key: "scrollIntoView",
     value: function scrollIntoView(node) {
-      var curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
+      var curtop = this.domService.scrollTop + node.getBoundingClientRect().top;
       console.log(curtop);
       /*
       if (node.offsetParent) {
@@ -28587,10 +28587,10 @@ function () {
       }
 
       if (node === document || node === window) {
-        return this.getScrollTop(document.scrollingElement || document.documentElement || document.body);
+        return this.getScrollTop(document.body || document.documentElement || document.scrollingElement);
       }
 
-      return node.pageYOffset || node.scrollY || node.scrollTop || 0;
+      return node.scrollTop || node.scrollY || node.pageYOffset || 0;
     }
   }, {
     key: "getScrollLeft",
@@ -28600,10 +28600,10 @@ function () {
       }
 
       if (node === document || node === window) {
-        return this.getScrollLeft(document.scrollingElement || document.documentElement || document.body);
+        return this.getScrollLeft(document.body || document.documentElement || document.scrollingElement);
       }
 
-      return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
+      return node.scrollLeft || node.scrollX || node.pageXOffset || 0;
     }
   }, {
     key: "detect",

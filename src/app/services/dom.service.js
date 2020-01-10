@@ -365,9 +365,9 @@ export default class DomService {
 			return 0;
 		}
 		if (node === document || node === window) {
-			return this.getScrollTop(document.scrollingElement || document.documentElement || document.body);
+			return this.getScrollTop(document.body || document.documentElement || document.scrollingElement);
 		}
-		return node.pageYOffset || node.scrollY || node.scrollTop || 0;
+		return node.scrollTop || node.scrollY || node.pageYOffset || 0;
 	}
 
 	static getScrollLeft(node) {
@@ -375,9 +375,9 @@ export default class DomService {
 			return 0;
 		}
 		if (node === document || node === window) {
-			return this.getScrollLeft(document.scrollingElement || document.documentElement || document.body);
+			return this.getScrollLeft(document.body || document.documentElement || document.scrollingElement);
 		}
-		return node.pageXOffset || node.scrollX || node.scrollLeft || 0;
+		return node.scrollLeft || node.scrollX || node.pageXOffset || 0;
 	}
 
 	static detect() {

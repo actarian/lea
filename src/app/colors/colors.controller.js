@@ -41,7 +41,7 @@ class ColorsCtrl {
 	}
 
 	scrollIntoView(node) {
-		let curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
+		let curtop = this.domService.scrollTop + node.getBoundingClientRect().top;
 		console.log(curtop);
 		/*
 		if (node.offsetParent) {
