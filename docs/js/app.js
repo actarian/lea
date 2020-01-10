@@ -24563,7 +24563,7 @@ function () {
       var node = element[0];
       var img = node.querySelector('img');
       var pageSrc = scope.item.src;
-      var pageTitle = document.title;
+      var pageTitle = scope.item.title || document.title;
 
       if (img) {
         pageSrc = img.src;

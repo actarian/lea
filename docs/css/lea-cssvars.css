@@ -9890,6 +9890,14 @@ canvas {
       display: none;
       margin: 0;
       line-height: 1.4; }
+    .card--color .card__body .group--share {
+      position: relative; }
+      .card--color .card__body .group--share .btn {
+        margin: 0 15px 0 0; }
+      .card--color .card__body .group--share svg {
+        width: 15px;
+        height: 15px;
+        fill: var(--foreground); }
     .card--color .card__body .btn--share {
       font-family: var(--font-secondary);
       opacity: 0.5;

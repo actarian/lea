@@ -27,7 +27,7 @@ export default class ShareDirective {
 		const node = element[0];
 		const img = node.querySelector('img');
 		let pageSrc = scope.item.src;
-		let pageTitle = document.title;
+		let pageTitle = scope.item.title || document.title;
 		if (img) {
 			pageSrc = img.src;
 			pageTitle = img.title || pageTitle;
