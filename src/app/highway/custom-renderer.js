@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import Highway from '@dogstudio/highway';
 import GtmService from '../gtm/gtm.service';
 
@@ -78,15 +77,17 @@ export default class CustomRenderer extends Highway.Renderer {
 				CustomRenderer.scope.$root.first = null;
 			});
 		} else {
-			if (this.content) {
-				this.content.remove();
+			if (this.content && this.content.parentNode) {
+				this.content.parentNode.removeChild(this.content);
 				this.content = null;
 			}
 			if (this.$newScope) {
 				this.$newScope.$destroy();
 				this.$newScope = null;
 			}
-			from.remove();
+			if (from.parentNode) {
+				from.parentNode.removeChild(from);
+			}
 		}
 	}
 
