@@ -382,7 +382,9 @@ export default class DomService {
 
 	static detect() {
 		const userAgent = navigator.userAgent.toLowerCase();
-		const explorer = userAgent.indexOf('msie') > -1;
+		const msie = userAgent.indexOf('msie') > -1;
+		const trident = userAgent.indexOf('trident') > -1;
+		const explorer = msie || trident;
 		const firefox = userAgent.indexOf('firefox') > -1;
 		const opera = userAgent.toLowerCase().indexOf('op') > -1;
 		let chrome = userAgent.indexOf('chrome') > -1;
@@ -402,6 +404,8 @@ export default class DomService {
 		const overscroll = navigator.platform === 'MacIntel' && typeof navigator.getBattery === 'function';
 		const agent = this.agent = {
 			chrome,
+			msie,
+			trident,
 			explorer,
 			firefox,
 			safari,
