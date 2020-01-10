@@ -12,7 +12,7 @@ export default class SmoothScrollDirective {
 	}
 
 	link(scope, element, attributes, controller) {
-		if (!this.domService.agent.mobile && SMOOTH_SCROLL_ENABLED) {
+		if (!this.domService.agent.mobile && !this.domService.agent.explorer && SMOOTH_SCROLL_ENABLED) {
 			const node = element[0];
 			node.classList.add('smooth-scroll');
 			const target = node.querySelector(attributes.smoothScroll);

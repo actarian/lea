@@ -24856,7 +24856,7 @@ function () {
   _createClass(SmoothScrollDirective, [{
     key: "link",
     value: function link(scope, element, attributes, controller) {
-      if (!this.domService.agent.mobile && SMOOTH_SCROLL_ENABLED) {
+      if (!this.domService.agent.mobile && !this.domService.agent.explorer && SMOOTH_SCROLL_ENABLED) {
         var node = element[0];
         node.classList.add('smooth-scroll');
         var target = node.querySelector(attributes.smoothScroll);
