@@ -22819,7 +22819,7 @@ function () {
       var node = element[0];
       var cover = node.querySelector('.picture--cover');
 
-      if (cover && first && this.domService.scrollTop === 0) {
+      if (cover != null && cover.length && first && this.domService.scrollTop === 0) {
         first = false;
         scope.$root.$broadcast('onCoverInit'); // const brand = document.querySelector('.section--header .brand');
 
