@@ -9091,8 +9091,6 @@ button {
       line-height: 1; }
     .group--checkbox .form__checkbox.ng-invalid:not(.ng-pristine) {
       background: #b92441; }
-  .group--checkbox sup {
-    display: none; }
   .group--checkbox.error sup {
     color: #b92442; }
 
