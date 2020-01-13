@@ -348,12 +348,18 @@
 				height: 15px;
 				fill: $foreground;
 			}
+
+			.icon--remove {
+				opacity: 0.5;
+			}
 		}
 
 		.btn--share {
 			font-family: $font-secondary;
 			opacity: 0.5;
-			margin-right: 15px;
+			margin-right: 10px;
+			margin-bottom: 0;
+			font-size: 14px;
 		}
 	}
 
@@ -409,7 +415,7 @@
 
 	@include media-up(sm) {
 		.card__body {
-			padding: 50px 35px 35px 35px;
+			padding: 50px 30px 15px 30px;
 		}
 
 		.card__detail {
@@ -425,7 +431,7 @@
 		}
 
 		.card__body {
-			padding: 35px 20px 20px 20px;
+			padding: 35px 20px 15px 20px;
 		}
 
 		.card__detail {

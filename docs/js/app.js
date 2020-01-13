@@ -21511,8 +21511,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _dom = _interopRequireDefault(require("../services/dom.service"));
-
 var _rect = _interopRequireDefault(require("../shared/rect"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -21563,7 +21561,7 @@ function () {
             if (index !== -1) {
               _this.active = index;
 
-              _this.onOpen(color);
+              _this.onOpen(color, true);
             } // color.scrollIntoView();
 
 
@@ -21621,17 +21619,17 @@ function () {
     key: "onToggle",
     value: function onToggle(active, event) {
       if (this.active === active) {
-        var colors = _toConsumableArray(document.querySelectorAll('.group--colors > .card--color'));
-
-        var color = colors[this.active];
-        var detail = color.querySelector('.card__detail');
-
-        if (event.target.classList.contains('btn') || event.target.parentNode && event.target.parentNode.classList.contains('btn') || _dom.default.isDescendantOf(event.target, detail)) {
-          return;
+        return;
+        /*
+        const colors = [...document.querySelectorAll('.group--colors > .card--color')];
+        const color = colors[this.active];
+        const detail = color.querySelector('.card__detail');
+        if (event.target.classList.contains('btn') || (event.target.parentNode && event.target.parentNode.classList.contains('btn')) || DomService.isDescendantOf(event.target, detail)) {
+        	return;
         }
-
         this.onClose();
         this.active = undefined;
+        */
       } else {
         this.active = active; // console.log(event.target, event.currentTarget);
 
@@ -21640,7 +21638,7 @@ function () {
     }
   }, {
     key: "onOpen",
-    value: function onOpen(node) {
+    value: function onOpen(node, immediate) {
       var _this2 = this;
 
       var colors = _toConsumableArray(document.querySelectorAll('.group--colors > .card--color'));
@@ -21674,27 +21672,38 @@ function () {
         }); // color.scrollIntoView();
 
         this.scrollIntoView(color);
-        var from = {
-          value: 0
-        };
-        TweenMax.to(from, 0.6, {
-          value: 1,
-          overwrite: 'all',
-          ease: Power2.easeInOut,
-          onUpdate: function onUpdate() {
-            TweenMax.set(color, {
-              marginBottom: rect.height * from.value
-            });
-            TweenMax.set(detail, {
-              height: rect.height * from.value
-            });
-          },
-          onComplete: function onComplete() {
-            TweenMax.set(detail, {
-              zIndex: 1
-            });
-          }
-        });
+
+        if (immediate) {
+          TweenMax.set(color, {
+            marginBottom: rect.height
+          });
+          TweenMax.set(detail, {
+            height: rect.height,
+            zIndex: 1
+          });
+        } else {
+          var from = {
+            value: 0
+          };
+          TweenMax.to(from, 0.6, {
+            value: 1,
+            overwrite: 'all',
+            ease: Power2.easeInOut,
+            onUpdate: function onUpdate() {
+              TweenMax.set(color, {
+                marginBottom: rect.height * from.value
+              });
+              TweenMax.set(detail, {
+                height: rect.height * from.value
+              });
+            },
+            onComplete: function onComplete() {
+              TweenMax.set(detail, {
+                zIndex: 1
+              });
+            }
+          });
+        }
       }
 
       if (node.id) {
@@ -21706,7 +21715,7 @@ function () {
     }
   }, {
     key: "onClose",
-    value: function onClose() {
+    value: function onClose(immediate) {
       var _this3 = this;
 
       var colors = _toConsumableArray(document.querySelectorAll('.group--colors > .card--color'));
@@ -21738,25 +21747,36 @@ function () {
           overflow: 'hidden',
           zIndex: -1
         });
-        var from = {
-          value: 1
-        };
-        TweenMax.to(from, 0.6, {
-          value: 0,
-          overwrite: 'all',
-          ease: Power2.easeInOut,
-          onUpdate: function onUpdate() {
-            TweenMax.set(color, {
-              marginBottom: rect.height * from.value
-            });
-            TweenMax.set(detail, {
-              height: rect.height * from.value
-            });
-          },
-          onComplete: function onComplete() {
-            color.classList.remove('active');
-          }
-        });
+
+        if (immediate) {
+          TweenMax.set(color, {
+            marginBottom: 0
+          });
+          TweenMax.set(detail, {
+            height: 0
+          });
+          color.classList.remove('active');
+        } else {
+          var from = {
+            value: 1
+          };
+          TweenMax.to(from, 0.6, {
+            value: 0,
+            overwrite: 'all',
+            ease: Power2.easeInOut,
+            onUpdate: function onUpdate() {
+              TweenMax.set(color, {
+                marginBottom: rect.height * from.value
+              });
+              TweenMax.set(detail, {
+                height: rect.height * from.value
+              });
+            },
+            onComplete: function onComplete() {
+              color.classList.remove('active');
+            }
+          });
+        }
       }
     }
   }]);
@@ -21768,7 +21788,7 @@ ColorsCtrl.$inject = ['$scope', '$timeout', '$location', 'DomService'];
 var _default = ColorsCtrl;
 exports.default = _default;
 
-},{"../services/dom.service":257,"../shared/rect":262}],203:[function(require,module,exports){
+},{"../shared/rect":262}],203:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24550,7 +24570,7 @@ function () {
 
     this.$timeout = $timeout;
     this.restrict = 'A';
-    this.template = "\n\t\t<div class=\"btn btn--facebook\" ng-click=\"onFacebook()\">\n\t\t\t<svg class=\"icon icon--facebook\"><use xlink:href=\"#icon--facebook\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--twitter\" ng-click=\"onTwitter()\">\n\t\t\t<svg class=\"icon icon--twitter\"><use xlink:href=\"#icon--twitter\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--pinterest\" ng-click=\"onPinterest()\">\n\t\t\t<svg class=\"icon icon--pinterest\"><use xlink:href=\"#icon--pinterest\"></use></svg>\n\t\t</div>";
+    this.template = "\n\t\t<div class=\"btn btn--facebook\" ng-click=\"onFacebook()\">\n\t\t\t<svg class=\"icon icon--facebook\"><use xlink:href=\"#icon--facebook\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--twitter\" ng-click=\"onTwitter()\">\n\t\t\t<svg class=\"icon icon--twitter\"><use xlink:href=\"#icon--twitter\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--pinterest\" ng-click=\"onPinterest()\">\n\t\t\t<svg class=\"icon icon--pinterest\"><use xlink:href=\"#icon--pinterest\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--remove\">\n\t\t\t<svg class=\"icon icon--remove\"><use xlink:href=\"#icon--remove\"></use></svg>\n\t\t</div>";
     this.scope = {
       item: '=?share'
     };

@@ -9898,10 +9898,14 @@ canvas {
         width: 15px;
         height: 15px;
         fill: var(--foreground); }
+      .card--color .card__body .group--share .icon--remove {
+        opacity: 0.5; }
     .card--color .card__body .btn--share {
       font-family: var(--font-secondary);
       opacity: 0.5;
-      margin-right: 15px; }
+      margin-right: 10px;
+      margin-bottom: 0;
+      font-size: 14px; }
   .card--color .card__detail {
     display: none;
     position: absolute;
@@ -9927,7 +9931,7 @@ canvas {
     display: block; }
   @media (min-width: 860px) {
     .card--color .card__body {
-      padding: 50px 35px 35px 35px; }
+      padding: 50px 30px 15px 30px; }
     .card--color .card__detail {
       padding: 35px; } }
   @media (max-width: 859.98px) {
@@ -9935,7 +9939,7 @@ canvas {
       padding-right: 0;
       padding-left: 0; }
     .card--color .card__body {
-      padding: 35px 20px 20px 20px; }
+      padding: 35px 20px 15px 20px; }
     .card--color .card__detail {
       padding: 20px; } }
 

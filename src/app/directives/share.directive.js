@@ -16,6 +16,9 @@ export default class ShareDirective {
 		</div>
 		<div class="btn btn--pinterest" ng-click="onPinterest()">
 			<svg class="icon icon--pinterest"><use xlink:href="#icon--pinterest"></use></svg>
+		</div>
+		<div class="btn btn--remove">
+			<svg class="icon icon--remove"><use xlink:href="#icon--remove"></use></svg>
 		</div>`;
 		this.scope = {
 			item: '=?share',

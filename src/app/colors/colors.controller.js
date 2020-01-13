@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-import DomService from '../services/dom.service';
 import Rect from '../shared/rect';
 
 class ColorsCtrl {
@@ -32,7 +31,7 @@ class ColorsCtrl {
 						const index = colors.indexOf(color);
 						if (index !== -1) {
 							this.active = index;
-							this.onOpen(color);
+							this.onOpen(color, true);
 						}
 						// color.scrollIntoView();
 						this.scrollIntoView(color);
@@ -74,6 +73,8 @@ class ColorsCtrl {
 
 	onToggle(active, event) {
 		if (this.active === active) {
+			return;
+			/*
 			const colors = [...document.querySelectorAll('.group--colors > .card--color')];
 			const color = colors[this.active];
 			const detail = color.querySelector('.card__detail');
@@ -82,6 +83,7 @@ class ColorsCtrl {
 			}
 			this.onClose();
 			this.active = undefined;
+			*/
 		} else {
 			this.active = active;
 			// console.log(event.target, event.currentTarget);
@@ -89,7 +91,7 @@ class ColorsCtrl {
 		}
 	}
 
-	onOpen(node) {
+	onOpen(node, immediate) {
 		const colors = [...document.querySelectorAll('.group--colors > .card--color')];
 		colors.forEach((x, i) => {
 			if (i === this.active) {
@@ -107,19 +109,24 @@ class ColorsCtrl {
 			TweenMax.set(detail, { left: -color.offsetLeft, height: 0, overflow: 'hidden', zIndex: -1 });
 			// color.scrollIntoView();
 			this.scrollIntoView(color);
-			const from = { value: 0 };
-			TweenMax.to(from, 0.6, {
-				value: 1,
-				overwrite: 'all',
-				ease: Power2.easeInOut,
-				onUpdate: () => {
-					TweenMax.set(color, { marginBottom: rect.height * from.value });
-					TweenMax.set(detail, { height: rect.height * from.value });
-				},
-				onComplete: () => {
-					TweenMax.set(detail, { zIndex: 1 });
-				}
-			});
+			if (immediate) {
+				TweenMax.set(color, { marginBottom: rect.height });
+				TweenMax.set(detail, { height: rect.height, zIndex: 1 });
+			} else {
+				const from = { value: 0 };
+				TweenMax.to(from, 0.6, {
+					value: 1,
+					overwrite: 'all',
+					ease: Power2.easeInOut,
+					onUpdate: () => {
+						TweenMax.set(color, { marginBottom: rect.height * from.value });
+						TweenMax.set(detail, { height: rect.height * from.value });
+					},
+					onComplete: () => {
+						TweenMax.set(detail, { zIndex: 1 });
+					}
+				});
+			}
 		}
 		if (node.id) {
 			const search = {};
@@ -130,7 +137,7 @@ class ColorsCtrl {
 		}
 	}
 
-	onClose() {
+	onClose(immediate) {
 		const colors = [...document.querySelectorAll('.group--colors > .card--color')];
 		colors.forEach((x, i) => {
 			if (i === this.active) {
@@ -146,19 +153,25 @@ class ColorsCtrl {
 			TweenMax.set(detail, { height: 'auto' });
 			const rect = Rect.fromNode(detail);
 			TweenMax.set(detail, { left: -color.offsetLeft, height: rect.height, overflow: 'hidden', zIndex: -1 });
-			const from = { value: 1 };
-			TweenMax.to(from, 0.6, {
-				value: 0,
-				overwrite: 'all',
-				ease: Power2.easeInOut,
-				onUpdate: () => {
-					TweenMax.set(color, { marginBottom: rect.height * from.value });
-					TweenMax.set(detail, { height: rect.height * from.value });
-				},
-				onComplete: () => {
-					color.classList.remove('active');
-				}
-			});
+			if (immediate) {
+				TweenMax.set(color, { marginBottom: 0 });
+				TweenMax.set(detail, { height: 0 });
+				color.classList.remove('active');
+			} else {
+				const from = { value: 1 };
+				TweenMax.to(from, 0.6, {
+					value: 0,
+					overwrite: 'all',
+					ease: Power2.easeInOut,
+					onUpdate: () => {
+						TweenMax.set(color, { marginBottom: rect.height * from.value });
+						TweenMax.set(detail, { height: rect.height * from.value });
+					},
+					onComplete: () => {
+						color.classList.remove('active');
+					}
+				});
+			}
 		}
 	}
 

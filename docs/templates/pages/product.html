@@ -154,7 +154,7 @@
 									<div class="btn btn--share"><span>Add to wishlist</span></div>
 									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
 								</div>
-								<div class="group--cta" ng-if="root.share">
+								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">
 									<div class="group--share" share="{ title: 'Color Title', src:'https://actarian.github.io/lea/img/product/color-01.jpg', url: 'https://actarian.github.io/lea/product.html?color=1' }"></div>
 								</div>
 							</div>
