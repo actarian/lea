@@ -1,11 +1,6 @@
 .section--hero-generic {
 	@extend %section--hero;
 
-	.container {
-		padding-top: 220px;
-		padding-bottom: 35px;
-	}
-
 	.background {
 		&:before {
 			background: #ACBBC2;
@@ -18,6 +13,10 @@
 	}
 
 	@include media-up(sm) {
+		.container {
+			padding: 220px 0 35px 0;
+		}
+
 		.background {
 			padding-top: 0;
 			height: 100%;
@@ -32,6 +31,10 @@
 	}
 
 	@include media-down(xs) {
+		.container {
+			padding: 220px 0 0 0;
+		}
+
 		.background {
 			height: 100%;
 		}

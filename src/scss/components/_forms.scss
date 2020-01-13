@@ -78,6 +78,14 @@ button {
 			}
 		}
 	}
+
+	@include media-down(md) {
+		.input {
+			.icon--caret-down {
+				width: 15px;
+			}
+		}
+	}
 }
 
 /////////////////////////////////////////

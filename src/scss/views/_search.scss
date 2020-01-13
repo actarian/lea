@@ -90,23 +90,28 @@
 	}
 
 	.row {
-		// align-items: center;
-		align-items: stretch;
+		// align-items: stretch;
+		align-items: flex-start;
 	}
 
 	.card--result {
 		height: 100%;
-		margin-bottom: 35px;
+		margin-bottom: 70px;
 		padding-top: 15px;
 		padding-bottom: 20px;
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
 
 		.card__body {
 			height: 100%;
-		}
 
-		.abstract {
-			flex: 1 1 auto;
+			&>.abstract {
+				flex: 1 1 auto;
+				margin-bottom: 35px;
+			}
+
+			&>.group--cta {
+				margin: 0;
+			}
 		}
 	}
 
