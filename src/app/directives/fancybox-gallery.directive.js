@@ -9,8 +9,9 @@ export default class FancyboxGalleryDirective {
 	link(scope, element, attributes, controller) {
 		$('.fancybox', element).fancybox({
 			closeBtn: false,
+			hash: false,
 			afterLoad: function () {
-				var $pin = $('.label', this.element);
+				var $pin = this.$thumb.siblings('.label');
 
 				if (!$pin.length) {
 					return;
@@ -18,7 +19,7 @@ export default class FancyboxGalleryDirective {
 
 				var _this = this;
 				$pin.each(function (i, el) {
-					$($(el).clone()[0]).appendTo(_this.inner);
+					_this.$content.append($(el).clone()[0]);
 				});
 			}
 		}).addClass('fancyboxed');

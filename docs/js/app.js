@@ -22265,8 +22265,9 @@ function () {
     value: function link(scope, element, attributes, controller) {
       $('.fancybox', element).fancybox({
         closeBtn: false,
+        hash: false,
         afterLoad: function afterLoad() {
-          var $pin = $('.label', this.element);
+          var $pin = this.$thumb.siblings('.label');
 
           if (!$pin.length) {
             return;
@@ -22275,7 +22276,7 @@ function () {
           var _this = this;
 
           $pin.each(function (i, el) {
-            $($(el).clone()[0]).appendTo(_this.inner);
+            _this.$content.append($(el).clone()[0]);
           });
         }
       }).addClass('fancyboxed');
@@ -27433,9 +27434,20 @@ function () {
   }
 
   _createClass(NewsletterCtrl, [{
+    key: "setProvinces",
+    value: function setProvinces() {
+      var _this = this;
+
+      this.$timeout(function () {
+        _this.provinces = _this.data.provinces.filter(function (x) {
+          return x.countryId === _this.model.Nazione;
+        });
+      });
+    }
+  }, {
     key: "onSubmit",
     value: function onSubmit() {
-      var _this = this;
+      var _this2 = this;
 
       console.log('NewsletterCtrl.onSubmit', this.model);
 
@@ -27443,9 +27455,9 @@ function () {
         this.$http.post('/WS/wsUsers.asmx/NewsletterSubscribe', {
           data: this.model
         }).then(function (success) {
-          _this.state.success();
+          _this2.state.success();
         }, function (error) {
-          _this.error = error;
+          _this2.error = error;
         });
         this.$timeout(function () {// this.state.ready();
         }, 2000);

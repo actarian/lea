@@ -22,6 +22,12 @@ class NewsletterCtrl {
 		this.state.ready();
 	}
 
+	setProvinces() {
+		this.$timeout(() => {
+			this.provinces = this.data.provinces.filter(x => x.countryId === this.model.Nazione);
+		});
+	}
+
 	onSubmit() {
 		console.log('NewsletterCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
