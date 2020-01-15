@@ -74,7 +74,13 @@ class RootCtrl {
 	}
 
 	onMenuToggle() {
-		this.menuOpened = !this.menuOpened;
+		if (this.menuOpened || this.primary) {
+			this.menuOpened = false;
+			this.primary = false;
+			document.querySelector('.section--header').classList.remove('dropped');
+		} else {
+			this.menuOpened = true;
+		}
 		if (this.menuOpened) {
 			const primary = document.querySelector('.nav--primary');
 			const items = [...primary.querySelectorAll('li')].filter(x => x.parentNode === primary);
@@ -101,7 +107,7 @@ class RootCtrl {
 		// console.log('RootCtrl.onPrimaryDroppedIn', node, dropdown);
 		this.primary = dropdown;
 		document.querySelector('body').classList.add('droppin-in');
-		document.querySelector('.section--header').classList.add('opened');
+		document.querySelector('.section--header').classList.add('dropped');
 		/*
 		TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
 		TweenMax.to(dropdown, 0.8, {
@@ -138,7 +144,7 @@ class RootCtrl {
 		// console.log('RootCtrl.onPrimaryDroppedOut', node, dropdown);
 		if (dropdown === this.primary) {
 			document.querySelector('body').classList.remove('droppin-in');
-			document.querySelector('.section--header').classList.remove('opened');
+			document.querySelector('.section--header').classList.remove('dropped');
 		}
 	}
 

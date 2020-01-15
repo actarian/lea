@@ -990,6 +990,7 @@
 		transition: all ease-out 350ms;
 	}
 
+	.dropped &,
 	&.active {
 		path {
 			opacity: 0;

@@ -131,13 +131,21 @@
 
 }
 
-
-
 .nav--search {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+
+	li,
+	form {
+		width: 100%;
+	}
+
+	form {
+		display: flex;
+		justify-content: center;
+	}
 
 	.control {
 		margin: 0;
@@ -153,4 +161,5 @@
 			margin: 0;
 		}
 	}
+
 }
