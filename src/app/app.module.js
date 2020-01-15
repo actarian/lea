@@ -54,6 +54,7 @@ import RootCtrl from './root.controller';
 import SearchCtrl from './search/search.controller';
 import ApiService from './services/api.service';
 import DomService from './services/dom.service';
+import IntersectionService from './services/intersection.service';
 import WishlistService from './services/wishlist.service';
 import LocationService from './shared/location.service';
 import PromiseService from './shared/promise.service';
@@ -71,6 +72,7 @@ app.config(['$locationProvider', function($locationProvider) {
 
 app.factory('ApiService', ApiService.factory)
 	.factory('DomService', DomService.factory)
+	.factory('IntersectionService', IntersectionService.factory)
 	.factory('LocationService', LocationService.factory)
 	.factory('PromiseService', PromiseService.factory)
 	.factory('StateService', StateService.factory)

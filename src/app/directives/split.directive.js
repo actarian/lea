@@ -5,9 +5,9 @@ import { first } from 'rxjs/operators';
 export default class SplitDirective {
 
 	constructor(
-		DomService
+		IntersectionService
 	) {
-		this.domService = DomService;
+		this.intersectionService = IntersectionService;
 		this.restrict = 'A';
 	}
 
@@ -16,7 +16,7 @@ export default class SplitDirective {
 		node.setAttribute('data-title', node.innerHTML);
 		const section = this.getSection(node);
 		const index = [].slice.call(section.querySelectorAll('[title]')).indexOf(node);
-		const subscription = this.domService.appearOnLoad$(node, -0.5).pipe(
+		const subscription = this.intersectionService.intersection$(node).pipe(
 			first(),
 		).subscribe(event => {
 			const timeout = index * 100;
@@ -63,10 +63,10 @@ export default class SplitDirective {
 		return section;
 	}
 
-	static factory(DomService) {
-		return new SplitDirective(DomService);
+	static factory(IntersectionService) {
+		return new SplitDirective(IntersectionService);
 	}
 
 }
 
-SplitDirective.factory.$inject = ['DomService'];
+SplitDirective.factory.$inject = ['IntersectionService'];

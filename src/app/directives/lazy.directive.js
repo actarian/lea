@@ -7,9 +7,9 @@ export default class LazyDirective {
 	// src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" lazy lazy-src="
 
 	constructor(
-		DomService
+		IntersectionService
 	) {
-		this.domService = DomService;
+		this.intersectionService = IntersectionService;
 		this.restrict = 'A';
 		this.scope = {
 			src: "@?",
@@ -21,7 +21,7 @@ export default class LazyDirective {
 	link(scope, element, attributes, controller) {
 		const image = element[0];
 		image.classList.remove('lazying', 'lazyed');
-		const subscription = this.domService.appear$(image).pipe(
+		const subscription = this.intersectionService.intersection$(image).pipe(
 			first(),
 		).subscribe(event => {
 			if (!image.classList.contains('lazying')) {
@@ -63,7 +63,7 @@ export default class LazyDirective {
 
 	/*
 	lazy$(node) {
-		return this.domService.rafAndRect$().pipe(
+		return this.intersectionService.rafAndRect$().pipe(
 			map(datas => {
 				const windowRect = datas[1];
 				const rect = Rect.fromNode(node);
@@ -94,10 +94,10 @@ export default class LazyDirective {
 		image.src = src;
 	}
 
-	static factory(DomService) {
-		return new LazyDirective(DomService);
+	static factory(IntersectionService) {
+		return new LazyDirective(IntersectionService);
 	}
 
 }
 
-LazyDirective.factory.$inject = ['DomService'];
+LazyDirective.factory.$inject = ['IntersectionService'];

@@ -115,8 +115,12 @@ class CollectionsCtrl {
 	}
 
 	removeAll() {
+		const removing = {}
 		Object.keys(this.filters).forEach(key => {
-			const filter = this.filters[key];
+			removing[key] = this.filters[key];
+		});
+		Object.keys(removing).forEach(key => {
+			const filter = removing[key];
 			this.removeFilter(filter);
 		});
 		this.applyFilters();

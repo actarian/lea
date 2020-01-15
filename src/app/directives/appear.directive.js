@@ -5,9 +5,9 @@ import { first } from 'rxjs/operators';
 export default class AppearDirective {
 
 	constructor(
-		DomService
+		IntersectionService
 	) {
-		this.domService = DomService;
+		this.intersectionService = IntersectionService;
 		this.restrict = 'A';
 	}
 
@@ -15,7 +15,7 @@ export default class AppearDirective {
 		const node = element[0];
 		const section = this.getSection(node);
 		const index = [].slice.call(section.querySelectorAll('[appear]')).indexOf(node);
-		const subscription = this.domService.appearOnLoad$(node, -0.5).pipe(
+		const subscription = this.intersectionService.intersection$(node).pipe(
 			first(),
 		).subscribe(event => { // -0.05
 			// console.log(event.rect.top);
@@ -61,10 +61,10 @@ export default class AppearDirective {
 		return section;
 	}
 
-	static factory(DomService) {
-		return new AppearDirective(DomService);
+	static factory(IntersectionService) {
+		return new AppearDirective(IntersectionService);
 	}
 
 }
 
-AppearDirective.factory.$inject = ['DomService'];
+AppearDirective.factory.$inject = ['IntersectionService'];
