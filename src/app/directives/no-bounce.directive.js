@@ -106,7 +106,7 @@ export default class NoBounceDirective {
 			// enable();
 		}
 
-		console.log('supportsPassiveOption', supportsPassiveOption, 'supportSmoothScroll', supportSmoothScroll);
+		// console.log('supportsPassiveOption', supportsPassiveOption, 'supportSmoothScroll', supportSmoothScroll);
 
 	}
 

@@ -9,6 +9,7 @@ class RootCtrl {
 		$scope,
 		$element,
 		$timeout,
+		IntersectionService,
 		DomService,
 		ApiService,
 		WishlistService
@@ -16,6 +17,7 @@ class RootCtrl {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$timeout = $timeout;
+		this.intersectionService = IntersectionService;
 		this.domService = DomService;
 		this.apiService = ApiService;
 		this.wishlistService = WishlistService;
@@ -58,6 +60,7 @@ class RootCtrl {
 		this.$scope.$on('onCoverEnd', (scope) => {
 			setTimeout(() => {
 				this.ready = true;
+				this.intersectionService.readySubject_.next(true);
 				this.domService.ready = true;
 				this.setClasses();
 			}, 100);
@@ -191,7 +194,7 @@ class RootCtrl {
 	wishlistToggle(item) {
 		return this.wishlistService.toggle(item);
 	}
-	
+
 	wishlistClearAll() {
 		return this.wishlistService.clearAll();
 	}
@@ -256,6 +259,6 @@ class RootCtrl {
 
 }
 
-RootCtrl.$inject = ['$scope', '$element', '$timeout', 'DomService', 'ApiService', 'WishlistService'];
+RootCtrl.$inject = ['$scope', '$element', '$timeout', 'IntersectionService', 'DomService', 'ApiService', 'WishlistService'];
 
 export default RootCtrl;

@@ -27,13 +27,13 @@ class SearchCtrl {
 	}
 
 	onSubmit() {
-		console.log('SearchCtrl.onSubmit', this.model);
+		// console.log('SearchCtrl.onSubmit', this.model);
 		this.results = [];
 		if (this.state.busy()) {
 			(IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post(`${window.location.pathname}?${QUERYSTRING_KEY}=${encodeURIComponent(this.model.search)}`)).then(
 				success => {
 					const results = success.data;
-					console.log(results);
+					// console.log(results);
 					this.results = results;
 					this.state.success();
 					this.$location.search(QUERYSTRING_KEY, this.model.search)
@@ -49,7 +49,7 @@ class SearchCtrl {
 	}
 
 	onSearch() {
-		console.log('SearchCtrl.onSearch', this.model);
+		// console.log('SearchCtrl.onSearch', this.model);
 		window.location.href = `${this.searchHref}?${QUERYSTRING_KEY}=${this.model.search}`;
 	}
 

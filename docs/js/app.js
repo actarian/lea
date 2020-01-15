@@ -23899,10 +23899,9 @@ function () {
 
       var supportSmoothScroll = this.supportSmoothScroll();
 
-      if (supportSmoothScroll) {// enable();
-      }
+      if (supportSmoothScroll) {} // enable();
+      // console.log('supportsPassiveOption', supportsPassiveOption, 'supportSmoothScroll', supportSmoothScroll);
 
-      console.log('supportsPassiveOption', supportsPassiveOption, 'supportSmoothScroll', supportSmoothScroll);
     }
   }, {
     key: "supportPassiveOption",
@@ -27789,7 +27788,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var RootCtrl =
 /*#__PURE__*/
 function () {
-  function RootCtrl($scope, $element, $timeout, DomService, ApiService, WishlistService) {
+  function RootCtrl($scope, $element, $timeout, IntersectionService, DomService, ApiService, WishlistService) {
     var _this = this;
 
     _classCallCheck(this, RootCtrl);
@@ -27797,6 +27796,7 @@ function () {
     this.$scope = $scope;
     this.$element = $element;
     this.$timeout = $timeout;
+    this.intersectionService = IntersectionService;
     this.domService = DomService;
     this.apiService = ApiService;
     this.wishlistService = WishlistService;
@@ -27845,6 +27845,9 @@ function () {
       this.$scope.$on('onCoverEnd', function (scope) {
         setTimeout(function () {
           _this2.ready = true;
+
+          _this2.intersectionService.readySubject_.next(true);
+
           _this2.domService.ready = true;
 
           _this2.setClasses();
@@ -28102,7 +28105,7 @@ function () {
   return RootCtrl;
 }();
 
-RootCtrl.$inject = ['$scope', '$element', '$timeout', 'DomService', 'ApiService', 'WishlistService'];
+RootCtrl.$inject = ['$scope', '$element', '$timeout', 'IntersectionService', 'DomService', 'ApiService', 'WishlistService'];
 var _default = RootCtrl;
 exports.default = _default;
 
@@ -28150,13 +28153,13 @@ function () {
     value: function onSubmit() {
       var _this = this;
 
-      console.log('SearchCtrl.onSubmit', this.model);
+      // console.log('SearchCtrl.onSubmit', this.model);
       this.results = [];
 
       if (this.state.busy()) {
         (IS_DEV ? this.$http.get('./data/search-results.json') : this.$http.post("".concat(window.location.pathname, "?").concat(QUERYSTRING_KEY, "=").concat(encodeURIComponent(this.model.search)))).then(function (success) {
-          var results = success.data;
-          console.log(results);
+          var results = success.data; // console.log(results);
+
           _this.results = results;
 
           _this.state.success();
@@ -28172,7 +28175,7 @@ function () {
   }, {
     key: "onSearch",
     value: function onSearch() {
-      console.log('SearchCtrl.onSearch', this.model);
+      // console.log('SearchCtrl.onSearch', this.model);
       window.location.href = "".concat(this.searchHref, "?").concat(QUERYSTRING_KEY, "=").concat(this.model.search);
     }
   }, {
@@ -28894,6 +28897,7 @@ function () {
   function IntersectionService() {
     _classCallCheck(this, IntersectionService);
 
+    this.readySubject_ = new _rxjs.Subject();
     this.observerSubject_ = new _rxjs.Subject();
   }
 
@@ -28903,8 +28907,11 @@ function () {
       var _this = this;
 
       if ('IntersectionObserver' in window) {
-        this.observer.observe(node);
-        return this.observerSubject_.pipe((0, _operators.map)(function (entries) {
+        return this.readySubject_.pipe((0, _operators.tap)(function (value) {
+          return _this.observer.observe(node);
+        }), (0, _operators.switchMap)(function () {
+          return _this.observerSubject_;
+        }), (0, _operators.map)(function (entries) {
           return entries.find(function (entry) {
             return entry.target === node;
           });
