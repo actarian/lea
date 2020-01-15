@@ -145,8 +145,14 @@ $success: $blue;
 	}
 
 	sup {
-		font-size: 0.7em;
-		margin-left: 4px;
+		display: inline-block;
+		width: 7px;
+		height: 7px;
+		border: 1px solid black;
+		transform: translateY(-2px) rotateZ(45deg);
+		margin-left: 5px;
+		font-size: 0;
+		line-height: 0;
 	}
 
 	/*

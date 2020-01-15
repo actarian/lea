@@ -8976,8 +8976,15 @@ button {
   .form__label span {
     display: inline-block; }
   .form__label sup {
-    font-size: 0.7em;
-    margin-left: 4px; }
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border: 1px solid black;
+    -webkit-transform: translateY(-2px) rotateZ(45deg);
+            transform: translateY(-2px) rotateZ(45deg);
+    margin-left: 5px;
+    font-size: 0;
+    line-height: 0; }
 
 .form__control {
   display: block;
@@ -13610,7 +13617,8 @@ layout {
     .section--contacts .group--contact .title {
       font-weight: 600; }
     .section--contacts .group--contact a {
-      color: black; }
+      color: black;
+      word-break: break-all; }
 
 .section--stores {
   padding: 70px 0 140px 0; }
