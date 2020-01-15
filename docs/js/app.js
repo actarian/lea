@@ -23500,13 +23500,13 @@ function () {
 
         scope.onFacebook = function (event) {
           console.log('ShareDirective.onFacebook', event);
-			var url = "https://www.facebook.com/sharer/sharer.php?u=".concat(encodeURIComponent(pageUrl));
+          var url = "https://www.facebook.com/sharer/sharer.php?u=".concat(encodeURIComponent(pageUrl));
           window.open(url, 'facebookShareWindow', "height=450, width=550, top=".concat(window.innerHeight / 2 - 275, ", left=").concat(window.innerWidth / 2 - 225, ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0")); // event.preventDefault();
         };
 
         scope.onTwitter = function (event) {
           console.log('ShareDirective.onTwitter', event);
-			var url = "https://twitter.com/intent/tweet?url=".concat(encodeURIComponent(pageUrl), "&via=LeaCeramiche&text=").concat(encodeURIComponent(pageTitle));
+          var url = "https://twitter.com/intent/tweet?url=".concat(encodeURIComponent(pageUrl), "&via=LeaCeramiche&text=").concat(encodeURIComponent(pageTitle));
           window.open(url, 'twitterShareWindow', "height=450, width=550, top=".concat(window.innerHeight / 2 - 275, ", left=").concat(window.innerWidth / 2 - 225, ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0")); // event.preventDefault();
         };
 
@@ -24605,13 +24605,13 @@ function () {
 
       scope.onFacebook = function (event) {
         // console.log('ShareDirective.onFacebook', event);
-		  var url = "https://www.facebook.com/sharer/sharer.php?u=".concat(encodeURIComponent(pageUrl));
+        var url = "https://www.facebook.com/sharer/sharer.php?u=".concat(encodeURIComponent(pageUrl));
         window.open(url, 'facebookShareWindow', "height=450, width=550, top=".concat(window.innerHeight / 2 - 275, ", left=").concat(window.innerWidth / 2 - 225, ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0")); // event.preventDefault();
       };
 
       scope.onTwitter = function (event) {
         // console.log('ShareDirective.onTwitter', event);
-		  var url = "https://twitter.com/intent/tweet?url=".concat(encodeURIComponent(pageUrl), "&via=LeaCeramiche&text=").concat(encodeURIComponent(pageTitle));
+        var url = "https://twitter.com/intent/tweet?url=".concat(encodeURIComponent(pageUrl), "&via=LeaCeramiche&text=").concat(encodeURIComponent(pageTitle));
         window.open(url, 'twitterShareWindow', "height=450, width=550, top=".concat(window.innerHeight / 2 - 275, ", left=").concat(window.innerWidth / 2 - 225, ", toolbar=0, location=0, menubar=0, directories=0, scrollbars=0")); // event.preventDefault();
       };
 
