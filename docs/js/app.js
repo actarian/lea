@@ -24571,7 +24571,17 @@ function () {
 
     this.$timeout = $timeout;
     this.restrict = 'A';
-    this.template = "\n\t\t<div class=\"btn btn--facebook\" ng-click=\"onFacebook()\">\n\t\t\t<svg class=\"icon icon--facebook\"><use xlink:href=\"#icon--facebook\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--twitter\" ng-click=\"onTwitter()\">\n\t\t\t<svg class=\"icon icon--twitter\"><use xlink:href=\"#icon--twitter\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--pinterest\" ng-click=\"onPinterest()\">\n\t\t\t<svg class=\"icon icon--pinterest\"><use xlink:href=\"#icon--pinterest\"></use></svg>\n\t\t</div>\n\t\t<div class=\"btn btn--remove\">\n\t\t\t<svg class=\"icon icon--remove\"><use xlink:href=\"#icon--remove\"></use></svg>\n\t\t</div>";
+
+    this.template = function (element, attributes) {
+      var template = "\n\t\t\t<div class=\"btn btn--facebook\" ng-click=\"onFacebook()\">\n\t\t\t\t<svg class=\"icon icon--facebook\"><use xlink:href=\"#icon--facebook\"></use></svg>\n\t\t\t</div>\n\t\t\t<div class=\"btn btn--twitter\" ng-click=\"onTwitter()\">\n\t\t\t\t<svg class=\"icon icon--twitter\"><use xlink:href=\"#icon--twitter\"></use></svg>\n\t\t\t</div>\n\t\t\t<div class=\"btn btn--pinterest\" ng-click=\"onPinterest()\">\n\t\t\t\t<svg class=\"icon icon--pinterest\"><use xlink:href=\"#icon--pinterest\"></use></svg>\n\t\t\t</div>";
+
+      if (attributes.shareToggle !== undefined) {
+        template += "\n\t\t\t\t<div class=\"btn btn--remove\">\n\t\t\t\t\t<svg class=\"icon icon--remove\"><use xlink:href=\"#icon--remove\"></use></svg>\n\t\t\t\t</div>";
+      }
+
+      return template;
+    };
+
     this.scope = {
       item: '=?share'
     };

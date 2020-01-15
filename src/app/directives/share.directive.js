@@ -7,19 +7,25 @@ export default class ShareDirective {
 	) {
 		this.$timeout = $timeout;
 		this.restrict = 'A';
-		this.template = `
-		<div class="btn btn--facebook" ng-click="onFacebook()">
-			<svg class="icon icon--facebook"><use xlink:href="#icon--facebook"></use></svg>
-		</div>
-		<div class="btn btn--twitter" ng-click="onTwitter()">
-			<svg class="icon icon--twitter"><use xlink:href="#icon--twitter"></use></svg>
-		</div>
-		<div class="btn btn--pinterest" ng-click="onPinterest()">
-			<svg class="icon icon--pinterest"><use xlink:href="#icon--pinterest"></use></svg>
-		</div>
-		<div class="btn btn--remove">
-			<svg class="icon icon--remove"><use xlink:href="#icon--remove"></use></svg>
-		</div>`;
+		this.template = (element, attributes) => {
+			let template = `
+			<div class="btn btn--facebook" ng-click="onFacebook()">
+				<svg class="icon icon--facebook"><use xlink:href="#icon--facebook"></use></svg>
+			</div>
+			<div class="btn btn--twitter" ng-click="onTwitter()">
+				<svg class="icon icon--twitter"><use xlink:href="#icon--twitter"></use></svg>
+			</div>
+			<div class="btn btn--pinterest" ng-click="onPinterest()">
+				<svg class="icon icon--pinterest"><use xlink:href="#icon--pinterest"></use></svg>
+			</div>`;
+			if (attributes.shareToggle !== undefined) {
+				template += `
+				<div class="btn btn--remove">
+					<svg class="icon icon--remove"><use xlink:href="#icon--remove"></use></svg>
+				</div>`
+			}
+			return template;
+		};
 		this.scope = {
 			item: '=?share',
 		};
