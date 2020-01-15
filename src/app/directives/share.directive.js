@@ -44,13 +44,13 @@ export default class ShareDirective {
 		const pageUrl = scope.item.url || `${window.location.href}?imageId=${scope.item.id}`;
 		scope.onFacebook = (event) => {
 			// console.log('ShareDirective.onFacebook', event);
-			const url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+			const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
 			window.open(url, 'facebookShareWindow', `height=450, width=550, top=${window.innerHeight / 2 - 275}, left=${window.innerWidth / 2 - 225}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0`);
 			// event.preventDefault();
 		};
 		scope.onTwitter = (event) => {
 			// console.log('ShareDirective.onTwitter', event);
-			const url = `https://twitter.com/intent/tweet?url=${pageUrl}&via=LeaCeramiche&text=${pageTitle}`;
+			const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(pageUrl)}&via=LeaCeramiche&text=${encodeURIComponent(pageTitle)}`;
 			window.open(url, 'twitterShareWindow', `height=450, width=550, top=${window.innerHeight / 2 - 275}, left=${window.innerWidth / 2 - 225}, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0`);
 			// event.preventDefault();
 		};
