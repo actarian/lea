@@ -133,7 +133,7 @@
 	<section class="section section--filters" ng-class="{ opened: root.menuProductOpened }">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 offset-md-1">
+				<div class="col-lg-10 offset-lg-1">
 					<form class="form form--filters">
 						<div class="form__group" ng-repeat="(key, filter) in projectsCtrl.filters track by $index">
 							<div select-with-autocomplete="filter" handler="projectsCtrl" ng-if="key == 'colors'"></div>
@@ -178,7 +178,7 @@
 	<section class="section section--projects">
 		<div class="container" scroll="projectsCtrl.onScroll($event)">
 			<div class="row">
-				<div class="col-md-10 offset-md-1">
+				<div class="col-lg-10 offset-lg-1">
 					<div class="projects" ng-if="!projectsCtrl.visibleItems">
 						<!-- VERSIONE SEO -->
 						<a class="card card--projects" href="project.html">

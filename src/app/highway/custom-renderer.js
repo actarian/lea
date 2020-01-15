@@ -44,7 +44,6 @@ export default class CustomRenderer extends Highway.Renderer {
 				const content = $compile(element)($newScope);
 				CustomRenderer.$newScope = $newScope;
 				CustomRenderer.content = content;
-				console.log('compile');
 				$newScope.$on('$destroy', (event) => {
 					console.log('.view -> $destroy', event);
 				});

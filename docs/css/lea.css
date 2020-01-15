@@ -13450,7 +13450,7 @@ layout {
     -webkit-box-align: stretch;
         -ms-flex-align: stretch;
             align-items: stretch; }
-  .section--newsletter .col-md-5 {
+  .section--newsletter .col-right {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;

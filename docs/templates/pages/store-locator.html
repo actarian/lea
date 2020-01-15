@@ -20,7 +20,7 @@
 	<section class="section section--filters" ng-class="{ opened: root.menuProductOpened }">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 offset-md-1">
+				<div class="col-lg-10 offset-lg-1">
 					<form class="form form--filters" name="storeLocator.form" role="form" novalidate="" autocomplete="off" ng-submit="storeLocator.form.$valid && storeLocator.onSubmit()" ng-keyup="$event.keyCode == 13 && storeLocator.form.$valid && storeLocator.onSubmit()">
 						<div class="form__group form__group--control" title="Dove ti trovi adesso?" placeholder="Cerca un indirizzo" form="storeLocator.form" control="text" ng-model="storeLocator.model.address" required="true"></div>
 						<div class="form__group form__group--cta">
@@ -47,7 +47,7 @@
 	<div class="section section--map">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 offset-md-1">
+				<div class="col-lg-10 offset-lg-1">
 					<div class="map" id="map"></div>
 					<div class="group group--error" ng-if="locator.error">
 						<span>{{locator.error.message}}</span>
@@ -60,7 +60,7 @@
 	<section class="section section--stores">
 		<div class="container" scroll="storeLocator.onScroll($event)">
 			<div class="row">
-				<div class="col-md-10 offset-md-1">
+				<div class="col-lg-10 offset-lg-1">
 					<div class="stores" ng-if="storeLocator.visibleItems">
 						<div class="card card--store" ng-class="{ 'card--store-image': item.image }" id="store-{{item.id}}" ng-click="storeLocator.panTo(item)" ng-repeat="item in storeLocator.visibleItems track by $index">
 							<div class="picture" ng-if="item.image" appear>

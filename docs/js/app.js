@@ -26881,7 +26881,6 @@ function (_Highway$Renderer) {
           var content = $compile(element)($newScope);
           CustomRenderer.$newScope = $newScope;
           CustomRenderer.content = content;
-          console.log('compile');
           $newScope.$on('$destroy', function (event) {
             console.log('.view -> $destroy', event);
           });
