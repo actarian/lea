@@ -23,7 +23,7 @@ export default class SmoothScrollDirective {
 			const subscription = this.domService.smoothScroll$(attributes.smoothScroll).subscribe(top => {
 
 			});
-			element.on('$destroy', () => {
+			scope.$on('$destroy', () => {
 				subscription.unsubscribe();
 			});
 		}

@@ -122,7 +122,7 @@ export default class AutocompleteDirective {
 			// element.off('click', onClick);
 		};
 		addListeners();
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			removeListeners();
 		});
 	}

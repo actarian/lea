@@ -35,9 +35,10 @@ export class SwiperDirective {
 		scope.$on('lastItem', (slide) => {
 			this.onSwiper(element);
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			if (element.swiper) {
 				element.swiper.destroy();
+				// console.log('swiper.destroy');
 			}
 		});
 		scope.$watch('$viewContentLoaded', () => {

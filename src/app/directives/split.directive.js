@@ -25,7 +25,7 @@ export default class SplitDirective {
 				this.animate(node);
 			}, timeout);
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			subscription.unsubscribe();
 		});
 	}

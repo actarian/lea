@@ -66,7 +66,7 @@ export default class HighwayDirective {
 		H.on('NAVIGATE_IN', ({ to, trigger, location }) => {
 			H.detach(H.links);
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			subscription.unsubscribe();
 		});
 		GtmService.pageView();

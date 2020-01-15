@@ -32,7 +32,7 @@ export default class MoodboardSearchDirective {
 		scope.animateOff = () => {
 			this.animateOff(node);
 		};
-		element.on('$destroy', () => {});
+		scope.$on('$destroy', () => {});
 	}
 
 	animateUnderlines(node) {

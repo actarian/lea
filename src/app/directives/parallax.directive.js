@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import Rect from '../shared/rect';
 
@@ -27,7 +26,7 @@ export default class ParallaxDirective {
 					childNode.setAttribute('style', `transform: translateX(0) translateY(${parallax.p+50}%) scale(${parallax.s}, ${parallax.s});`);
 				}
 			});
-			element.on('$destroy', () => {
+			scope.$on('$destroy', () => {
 				subscription.unsubscribe();
 			});
 		}

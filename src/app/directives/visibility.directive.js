@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import GtmService from '../gtm/gtm.service';
 
 export default class VisibilityDirective {
@@ -24,7 +23,7 @@ export default class VisibilityDirective {
 			// console.log(gtmEvent);
 			GtmService.push(gtmEvent);
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			subscription.unsubscribe();
 		});
 	}

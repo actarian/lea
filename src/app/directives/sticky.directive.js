@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import { tap } from 'rxjs/operators';
 import Rect from '../shared/rect';
 
@@ -18,7 +17,7 @@ export default class StickyDirective {
 	link(scope, element, attributes, controller) {
 		this.$timeout(() => {
 			const subscription = this.scroll$(element, attributes).subscribe();
-			element.on('$destroy', () => {
+			scope.$on('$destroy', () => {
 				subscription.unsubscribe();
 			});
 		});

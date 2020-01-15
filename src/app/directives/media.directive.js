@@ -95,7 +95,7 @@ export default class MediaDirective {
 			event.stopPropagation();
 		};
 		*/
-		element.on('$destroy', () => {});
+		scope.$on('$destroy', () => {});
 	}
 
 	static factory($timeout, WishlistService) {

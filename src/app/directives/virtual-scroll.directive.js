@@ -26,7 +26,7 @@ export default class VirtualScrollDirective {
 			const subscription = this.domService.virtualScroll$(attributes.virtualScroll).subscribe(top => {
 
 			});
-			element.on('$destroy', () => {
+			scope.$on('$destroy', () => {
 				subscription.unsubscribe();
 			});
 		}

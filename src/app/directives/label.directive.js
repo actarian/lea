@@ -13,7 +13,7 @@ export default class LabelDirective {
 		scope.item = scope.item || { top: 0.5, left: 0.5 };
 		const node = element[0];
 		node.setAttribute('style', `left: ${scope.item.left * 100}%; top: ${scope.item.top * 100}%;`);
-		element.on('$destroy', () => {});
+		scope.$on('$destroy', () => {});
 	}
 
 	static factory() {

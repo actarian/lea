@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 export default class ScrollDirective {
 
 	// @Output() public scroll = new EventEmitter();
@@ -19,7 +18,7 @@ export default class ScrollDirective {
 			const subscription = this.domService.scrollIntersection$(node).subscribe(event => {
 				scope.$eval(attributes.scroll, { $event: event });
 			});
-			element.on('$destroy', () => {
+			scope.$on('$destroy', () => {
 				subscription.unsubscribe();
 			});
 		}
@@ -27,7 +26,7 @@ export default class ScrollDirective {
 		const callback = scope.$eval(attributes.scroll);
 		if (typeof callback === 'function') {
 			const subscription = this.domService.scroll$().subscribe(event => callback(event));
-			element.on('$destroy', () => {
+			scope.$on('$destroy', () => {
 				subscription.unsubscribe();
 			});
 		}

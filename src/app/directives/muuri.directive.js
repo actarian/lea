@@ -20,7 +20,7 @@ export class MuuriDirective {
 		todo
 		onResize as subscription debounced
 		*/
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			if (element.muuri) {
 				element.muuri.destroy();
 			}

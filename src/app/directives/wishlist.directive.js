@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 export default class WishlistDirective {
 
 	constructor(
@@ -25,7 +24,7 @@ export default class WishlistDirective {
 				Object.assign(scope.item, item);
 			}, (error) => console.log(error));
 		};
-		element.on('$destroy', () => {});
+		scope.$on('$destroy', () => {});
 	}
 
 	static factory(WishlistService) {

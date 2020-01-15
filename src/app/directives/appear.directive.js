@@ -43,7 +43,7 @@ export default class AppearDirective {
 		if (img) {
 			img.setAttribute('ondragstart', 'return false;');
 		}
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			subscription.unsubscribe();
 		});
 	}

@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 import Rect from '../shared/rect';
 
 // let INDEX = 0;
@@ -83,7 +82,7 @@ export default class ZoomableDirective {
 			addListeners();
 		});
 		addListeners();
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			triggers.forEach(x => x.removeEventListener('click', onClick));
 		});
 		scope.onZoom = (item) => {

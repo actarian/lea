@@ -29,7 +29,7 @@ export default class LazyDirective {
 				this.onAppearsInViewport(image, scope, attributes);
 			}
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			subscription.unsubscribe();
 		});
 	}

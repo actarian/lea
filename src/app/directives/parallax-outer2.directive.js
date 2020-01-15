@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 export default class ParallaxOuter2Directive {
 
 	constructor(
@@ -18,7 +17,7 @@ export default class ParallaxOuter2Directive {
 			// console.log('ParallaxOuter2Directive', node, index);
 			this.animate(node, index);
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			this.clear(node, index);
 		});
 	}

@@ -12,7 +12,7 @@ export default class VideoDirective {
 		this.wishlistService = WishlistService;
 		this.restrict = 'A';
 		this.transclude = true;
-		this.template = /* html */`
+		this.template = /* html */ `
 			<div class="media">
 				<ng-transclude></ng-transclude>
 			</div>
@@ -202,7 +202,7 @@ export default class VideoDirective {
 			video.addEventListener('ended', onEnded);
 			video.addEventListener('timeupdate', onTimeUpdate);
 		}
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			if (video) {
 				// console.log('VideoDirective.$destroy');
 				video.removeEventListener('play', onPlay);

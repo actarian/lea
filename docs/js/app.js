@@ -21980,7 +21980,7 @@ function () {
         img.setAttribute('ondragstart', 'return false;');
       }
 
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         subscription.unsubscribe();
       });
     }
@@ -22154,7 +22154,7 @@ function () {
       };
 
       addListeners();
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         removeListeners();
       });
     }
@@ -22618,7 +22618,7 @@ function () {
       };
 
       addListeners();
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         removeListeners();
         removeDocumentListeners();
       });
@@ -23133,12 +23133,12 @@ function () {
         });
         */
 
-        element.on('$destroy', function () {
+        scope.$on('$destroy', function () {
           node.removeEventListener('click', _onClick);
         });
       }
 
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         node.removeEventListener('click', onClick);
       });
       return;
@@ -23206,7 +23206,7 @@ function () {
       };
       var node = element[0];
       node.setAttribute('style', "left: ".concat(scope.item.left * 100, "%; top: ").concat(scope.item.top * 100, "%;"));
-      element.on('$destroy', function () {});
+      scope.$on('$destroy', function () {});
     }
   }], [{
     key: "factory",
@@ -23318,7 +23318,7 @@ function () {
           console.log('LazyScriptDirective.error', error);
         }
       } // }
-      // element.on('$destroy', () => {});
+      // scope.$on('$destroy', () => {});
 
     }
   }], [{
@@ -23380,7 +23380,7 @@ function () {
           _this.onAppearsInViewport(image, scope, attributes);
         }
       });
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         subscription.unsubscribe();
       });
     }
@@ -23561,7 +23561,7 @@ function () {
       */
 
 
-      element.on('$destroy', function () {});
+      scope.$on('$destroy', function () {});
     }
   }], [{
     key: "factory",
@@ -23627,7 +23627,7 @@ function () {
       onResize as subscription debounced
       */
 
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         if (element.muuri) {
           element.muuri.destroy();
         }
@@ -24081,7 +24081,7 @@ function () {
         */
         _this2.parallaxAndSkew(node, node.rect, top);
       });
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         subscription.unsubscribe();
       }); // }
 
@@ -24227,7 +24227,7 @@ function () {
             childNode.setAttribute('style', "transform: translateX(0) translateY(".concat(parallax.p + 50, "%) scale(").concat(parallax.s, ", ").concat(parallax.s, ");"));
           }
         });
-        element.on('$destroy', function () {
+        scope.$on('$destroy', function () {
           subscription.unsubscribe();
         });
       }
@@ -24323,7 +24323,7 @@ function () {
             $event: event
           });
         });
-        element.on('$destroy', function () {
+        scope.$on('$destroy', function () {
           subscription.unsubscribe();
         });
       }
@@ -24331,7 +24331,7 @@ function () {
       const callback = scope.$eval(attributes.scroll);
       if (typeof callback === 'function') {
       	const subscription = this.domService.scroll$().subscribe(event => callback(event));
-      	element.on('$destroy', () => {
+      	scope.$on('$destroy', () => {
       		subscription.unsubscribe();
       	});
       }
@@ -24630,7 +24630,7 @@ function () {
         PinUtils.pinOne(pin);
       };
 
-      element.on('$destroy', function () {});
+      scope.$on('$destroy', function () {});
     }
   }], [{
     key: "factory",
@@ -24988,7 +24988,7 @@ function () {
         }
 
         var subscription = this.domService.smoothScroll$(attributes.smoothScroll).subscribe(function (top) {});
-        element.on('$destroy', function () {
+        scope.$on('$destroy', function () {
           subscription.unsubscribe();
         });
       }
@@ -25048,7 +25048,7 @@ function () {
           _this.animate(node);
         }, timeout);
       });
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         subscription.unsubscribe();
       });
     }
@@ -25142,7 +25142,7 @@ function () {
       this.$timeout(function () {
         var subscription = _this.scroll$(element, attributes).subscribe();
 
-        element.on('$destroy', function () {
+        scope.$on('$destroy', function () {
           subscription.unsubscribe();
         });
       });
@@ -25281,9 +25281,9 @@ function () {
       scope.$on('lastItem', function (slide) {
         _this.onSwiper(element);
       });
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         if (element.swiper) {
-          element.swiper.destroy();
+          element.swiper.destroy(); // console.log('swiper.destroy');
         }
       });
       scope.$watch('$viewContentLoaded', function () {
@@ -25597,7 +25597,7 @@ function () {
         video.addEventListener('timeupdate', onTimeUpdate);
       }
 
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         if (video) {
           // console.log('VideoDirective.$destroy');
           video.removeEventListener('play', onPlay);
@@ -25666,7 +25666,7 @@ function () {
         }
 
         var subscription = this.domService.virtualScroll$(attributes.virtualScroll).subscribe(function (top) {});
-        element.on('$destroy', function () {
+        scope.$on('$destroy', function () {
           subscription.unsubscribe();
         });
       }
@@ -25726,7 +25726,7 @@ function () {
 
         _gtm.default.push(gtmEvent);
       });
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         subscription.unsubscribe();
       });
     }
@@ -25788,7 +25788,7 @@ function () {
         });
       };
 
-      element.on('$destroy', function () {});
+      scope.$on('$destroy', function () {});
     }
   }], [{
     key: "factory",
@@ -25933,7 +25933,7 @@ function () {
         addListeners();
       });
       addListeners();
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         triggers.forEach(function (x) {
           return x.removeEventListener('click', onClick);
         });
@@ -26823,7 +26823,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var first = true,
-    destroyFirst = true;
+    destroyFirst = true,
+    $newScope;
 
 var CustomRenderer =
 /*#__PURE__*/
@@ -26871,11 +26872,17 @@ function (_Highway$Renderer) {
           var $scope = element.scope();
           $scope.root.menuOpened = false;
           $scope.root.menuProductOpened = false;
-          var $newScope = $scope.$new();
+
+          if ($newScope) {
+            $newScope.$destroy();
+          }
+
+          $newScope = $scope.$new(true);
           var content = $compile(element)($newScope);
           CustomRenderer.$newScope = $newScope;
           CustomRenderer.content = content;
-          element.on('$destroy', function (event) {
+          console.log('compile');
+          $newScope.$on('$destroy', function (event) {
             console.log('.view -> $destroy', event);
           });
         });
@@ -27054,7 +27061,7 @@ function () {
             location = _ref2.location;
         H.detach(H.links);
       });
-      element.on('$destroy', function () {
+      scope.$on('$destroy', function () {
         subscription.unsubscribe();
       });
 
@@ -27243,7 +27250,7 @@ function () {
         _this.setFilter(null, filter);
       };
 
-      element.on('$destroy', function () {});
+      scope.$on('$destroy', function () {});
     }
   }], [{
     key: "factory",
@@ -27325,7 +27332,7 @@ function () {
         _this.animateOff(node);
       };
 
-      element.on('$destroy', function () {});
+      scope.$on('$destroy', function () {});
     }
   }, {
     key: "animateUnderlines",

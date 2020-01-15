@@ -1,6 +1,5 @@
 /* jshint esversion: 6 */
 
-
 export default class LazyScriptDirective {
 
 	constructor() {
@@ -30,7 +29,7 @@ export default class LazyScriptDirective {
 			}
 		}
 		// }
-		// element.on('$destroy', () => {});
+		// scope.$on('$destroy', () => {});
 	}
 
 	static factory() {

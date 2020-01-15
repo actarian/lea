@@ -4,7 +4,8 @@ import Highway from '@dogstudio/highway';
 import GtmService from '../gtm/gtm.service';
 
 let first = true,
-	destroyFirst = true;
+	destroyFirst = true,
+	$newScope;
 
 export default class CustomRenderer extends Highway.Renderer {
 
@@ -36,11 +37,15 @@ export default class CustomRenderer extends Highway.Renderer {
 				const $scope = element.scope();
 				$scope.root.menuOpened = false;
 				$scope.root.menuProductOpened = false;
-				const $newScope = $scope.$new();
+				if ($newScope) {
+					$newScope.$destroy();
+				}
+				$newScope = $scope.$new(true);
 				const content = $compile(element)($newScope);
 				CustomRenderer.$newScope = $newScope;
 				CustomRenderer.content = content;
-				element.on('$destroy', (event) => {
+				console.log('compile');
+				$newScope.$on('$destroy', (event) => {
 					console.log('.view -> $destroy', event);
 				});
 			});

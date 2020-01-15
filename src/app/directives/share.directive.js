@@ -63,7 +63,7 @@ export default class ShareDirective {
 			// console.log('ShareDirective.onPin', pin);
 			PinUtils.pinOne(pin);
 		};
-		element.on('$destroy', () => {});
+		scope.$on('$destroy', () => {});
 	}
 
 	static factory($timeout) {

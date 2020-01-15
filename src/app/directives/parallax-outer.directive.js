@@ -55,7 +55,7 @@ export default class ParallaxOuterDirective {
 			*/
 			this.parallaxAndSkew(node, node.rect, top);
 		});
-		element.on('$destroy', () => {
+		scope.$on('$destroy', () => {
 			subscription.unsubscribe();
 		});
 		// }
