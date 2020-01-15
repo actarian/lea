@@ -28897,7 +28897,7 @@ function () {
   function IntersectionService() {
     _classCallCheck(this, IntersectionService);
 
-    this.readySubject_ = new _rxjs.Subject();
+    this.readySubject_ = new _rxjs.BehaviorSubject(false);
     this.observerSubject_ = new _rxjs.Subject();
   }
 
@@ -28906,12 +28906,21 @@ function () {
     value: function intersection$(node) {
       var _this = this;
 
+      var init = false;
+
       if ('IntersectionObserver' in window) {
-        return this.readySubject_.pipe((0, _operators.tap)(function (value) {
-          return _this.observer.observe(node);
+        return this.readySubject_.pipe((0, _operators.filter)(function (value) {
+          if (value && !init) {
+            _this.observer.observe(node);
+
+            init = true;
+          }
+
+          return value;
         }), (0, _operators.switchMap)(function () {
           return _this.observerSubject_;
-        }), (0, _operators.map)(function (entries) {
+        }), // tap(entries => console.log(entries.length)),
+        (0, _operators.map)(function (entries) {
           return entries.find(function (entry) {
             return entry.target === node;
           });

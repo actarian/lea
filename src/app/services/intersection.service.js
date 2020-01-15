@@ -1,12 +1,12 @@
 /* jshint esversion: 6 */
 
-import { of , Subject } from 'rxjs';
-import { filter, finalize, first, map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, of , Subject } from 'rxjs';
+import { filter, finalize, first, map, switchMap } from 'rxjs/operators';
 
 export default class IntersectionService {
 
 	constructor() {
-		this.readySubject_ = new Subject();
+		this.readySubject_ = new BehaviorSubject(false);
 		this.observerSubject_ = new Subject();
 	}
 
@@ -20,10 +20,18 @@ export default class IntersectionService {
 	}
 
 	intersection$(node) {
+		let init = false;
 		if ('IntersectionObserver' in window) {
 			return this.readySubject_.pipe(
-				tap(value => this.observer.observe(node)),
+				filter(value => {
+					if (value && !init) {
+						this.observer.observe(node);
+						init = true;
+					}
+					return value;
+				}),
 				switchMap(() => this.observerSubject_),
+				// tap(entries => console.log(entries.length)),
 				map(entries => entries.find(entry => entry.target === node)),
 				filter(entry => entry !== undefined && entry.intersectionRatio > 0),
 				first(),
