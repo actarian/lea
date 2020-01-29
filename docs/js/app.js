@@ -29146,8 +29146,8 @@ function () {
     this.promise = PromiseService; //this.storage = StorageService;
 
     this.api = ApiService;
-    this.count$ = WishlistService.count$; // const count = this.wishlist.length;
-    // console.log('WishlistService', this.storage);
+    this.count$ = WishlistService.count$;
+    this.count$.next(this.wishlist.length); // console.log('WishlistService', this.storage);
   }
 
   _createClass(WishlistService, [{

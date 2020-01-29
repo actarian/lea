@@ -17,7 +17,7 @@ export default class WishlistService {
 		//this.storage = StorageService;
 		this.api = ApiService;
 		this.count$ = WishlistService.count$;
-		// const count = this.wishlist.length;
+		this.count$.next(this.wishlist.length);
 		// console.log('WishlistService', this.storage);
 	}
 
@@ -25,13 +25,11 @@ export default class WishlistService {
 		if (!this.wishlist_) {
 			//const wishlist = this.storage.get('wishlist');
 			//this.wishlist_ = wishlist || [];
-
 			this.wishlist_ = [];
 			var str = document.cookie.match(new RegExp("(^|; )" + key + "=([^;]+)"));
 			if (str) {
 				this.wishlist_ = str[2].match(/([0-9 ]+)/g);
 			}
-
 			WishlistService.count$.next(this.wishlist_.length);
 		}
 		return this.wishlist_;
@@ -40,11 +38,9 @@ export default class WishlistService {
 	set wishlist(wishlist) {
 		this.wishlist_ = wishlist || [];
 		//this.storage.set('wishlist', this.wishlist_);
-
 		var dt = new Date();
 		dt.setDate(dt.getDate() + 30);
 		document.cookie = key + '=' + this.wishlist_.join(',') + '; path=/; expires=' + dt.toUTCString();
-
 		WishlistService.count$.next(this.wishlist_.length);
 	}
 
