@@ -1,7 +1,7 @@
 /* jshint esversion: 6 */
 
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { first, takeUntil } from 'rxjs/operators';
 
 class RootCtrl {
 
@@ -215,11 +215,26 @@ class RootCtrl {
 	}
 
 	wishlistToggle(item) {
-		return this.wishlistService.toggle(item);
+		console.log('RootController.wishlistToggle');
+		return this.wishlistService.toggle(item).pipe(
+			first()
+		).subscribe(value => {
+			this.$timeout(() => {
+				console.log('RootController.wishlistToggle', value);
+			});
+		});
 	}
 
 	wishlistClearAll() {
-		return this.wishlistService.clearAll();
+		console.log('RootController.wishlistClearAll');
+		return this.wishlistService.clearAll().pipe(
+			first()
+		).subscribe(success => {
+			this.$timeout(() => {
+				this.wishlistCount = 0;
+				console.log('RootController.wishlistClearAll', this.wishlistCount);
+			});
+		});
 	}
 
 	wishlistHas(item) {

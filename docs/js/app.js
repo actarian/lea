@@ -28177,12 +28177,27 @@ function () {
   }, {
     key: "wishlistToggle",
     value: function wishlistToggle(item) {
-      return this.wishlistService.toggle(item);
+      var _this3 = this;
+
+      console.log('RootController.wishlistToggle');
+      return this.wishlistService.toggle(item).pipe((0, _operators.first)()).subscribe(function (value) {
+        _this3.$timeout(function () {
+          console.log('RootController.wishlistToggle', value);
+        });
+      });
     }
   }, {
     key: "wishlistClearAll",
     value: function wishlistClearAll() {
-      return this.wishlistService.clearAll();
+      var _this4 = this;
+
+      console.log('RootController.wishlistClearAll');
+      return this.wishlistService.clearAll().pipe((0, _operators.first)()).subscribe(function (success) {
+        _this4.$timeout(function () {
+          _this4.wishlistCount = 0;
+          console.log('RootController.wishlistClearAll', _this4.wishlistCount);
+        });
+      });
     }
   }, {
     key: "wishlistHas",
@@ -29173,7 +29188,7 @@ function () {
     value: function add(item) {
       var _this = this;
 
-      return this.promise.make(function (promise) {
+      return (0, _rxjs.from)(this.promise.make(function (promise) {
         if (!_this.has(item)) {
           var wishlist = _this.wishlist;
           wishlist.push(
@@ -29182,14 +29197,14 @@ function () {
           _this.wishlist = wishlist;
           promise.resolve(true);
         }
-      });
+      }));
     }
   }, {
     key: "remove",
     value: function remove(item) {
       var _this2 = this;
 
-      return this.promise.make(function (promise) {
+      return (0, _rxjs.from)(this.promise.make(function (promise) {
         var index = _this2.wishlist.indexOf(item);
 
         if (index !== -1) {
@@ -29199,7 +29214,7 @@ function () {
         }
 
         promise.resolve(false);
-      });
+      }));
     }
   }, {
     key: "toggle",

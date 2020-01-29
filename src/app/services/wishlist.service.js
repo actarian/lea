@@ -62,18 +62,18 @@ export default class WishlistService {
 	}
 
 	add(item) {
-		return this.promise.make((promise) => {
+		return from(this.promise.make((promise) => {
 			if (!this.has(item)) {
 				const wishlist = this.wishlist;
 				wishlist.push( /*{ id: item.id, coId: item.coId }*/ item);
 				this.wishlist = wishlist;
 				promise.resolve(true);
 			}
-		});
+		}));
 	}
 
 	remove(item) {
-		return this.promise.make((promise) => {
+		return from(this.promise.make((promise) => {
 			const index = this.wishlist.indexOf(item);
 			if (index !== -1) {
 				const wishlist = this.wishlist;
@@ -81,7 +81,7 @@ export default class WishlistService {
 				this.wishlist = wishlist;
 			}
 			promise.resolve(false);
-		});
+		}));
 	}
 
 	toggle(item) {

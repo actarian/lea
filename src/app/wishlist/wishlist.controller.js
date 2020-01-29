@@ -1,7 +1,7 @@
 ﻿/* jshint esversion: 6 */
 
 import { Subject } from "rxjs";
-import { takeUntil } from "rxjs/operators";
+import { first, takeUntil } from "rxjs/operators";
 
 export const MOOD_TYPES = Object.freeze({
 	Tile: 1,
@@ -67,7 +67,7 @@ class WishlistCtrl {
 
 	clearAll() {
 		this.wishlistService.clearAll().pipe(
-			takeUntil(this.unsubscribe)
+			first()
 		).subscribe(
 			success => {
 				this.items = [];
