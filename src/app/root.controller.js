@@ -215,24 +215,24 @@ class RootCtrl {
 	}
 
 	wishlistToggle(item) {
-		console.log('RootController.wishlistToggle');
+		// console.log('RootController.wishlistToggle');
 		return this.wishlistService.toggle(item).pipe(
 			first()
 		).subscribe(value => {
 			this.$timeout(() => {
-				console.log('RootController.wishlistToggle', value);
+				// console.log('RootController.wishlistToggle', value);
 			});
 		});
 	}
 
 	wishlistClearAll() {
-		console.log('RootController.wishlistClearAll');
+		// console.log('RootController.wishlistClearAll');
 		return this.wishlistService.clearAll().pipe(
 			first()
 		).subscribe(success => {
 			this.$timeout(() => {
 				this.wishlistCount = 0;
-				console.log('RootController.wishlistClearAll', this.wishlistCount);
+				// console.log('RootController.wishlistClearAll', this.wishlistCount);
 			});
 		});
 	}

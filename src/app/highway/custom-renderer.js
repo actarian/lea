@@ -34,13 +34,12 @@ export default class CustomRenderer extends Highway.Renderer {
 				const $compile = CustomRenderer.$compile;
 				const view = [...document.querySelectorAll('.view')].pop();
 				const element = angular.element(view.childNodes);
-				const $scope = element.scope();
-				$scope.root.menuOpened = false;
-				$scope.root.menuProductOpened = false;
+				CustomRenderer.scope.root.menuOpened = false;
+				CustomRenderer.scope.root.menuProductOpened = false;
 				if ($newScope) {
 					$newScope.$destroy();
 				}
-				$newScope = $scope.$new(true);
+				$newScope = CustomRenderer.scope.$new();
 				const content = $compile(element)($newScope);
 				CustomRenderer.$newScope = $newScope;
 				CustomRenderer.content = content;

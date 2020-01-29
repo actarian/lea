@@ -26977,15 +26977,14 @@ function (_Highway$Renderer) {
           var view = _toConsumableArray(document.querySelectorAll('.view')).pop();
 
           var element = angular.element(view.childNodes);
-          var $scope = element.scope();
-          $scope.root.menuOpened = false;
-          $scope.root.menuProductOpened = false;
+          CustomRenderer.scope.root.menuOpened = false;
+          CustomRenderer.scope.root.menuProductOpened = false;
 
           if ($newScope) {
             $newScope.$destroy();
           }
 
-          $newScope = $scope.$new(true);
+          $newScope = CustomRenderer.scope.$new();
           var content = $compile(element)($newScope);
           CustomRenderer.$newScope = $newScope;
           CustomRenderer.content = content;
@@ -28179,10 +28178,9 @@ function () {
     value: function wishlistToggle(item) {
       var _this3 = this;
 
-      console.log('RootController.wishlistToggle');
+      // console.log('RootController.wishlistToggle');
       return this.wishlistService.toggle(item).pipe((0, _operators.first)()).subscribe(function (value) {
-        _this3.$timeout(function () {
-          console.log('RootController.wishlistToggle', value);
+        _this3.$timeout(function () {// console.log('RootController.wishlistToggle', value);
         });
       });
     }
@@ -28191,11 +28189,10 @@ function () {
     value: function wishlistClearAll() {
       var _this4 = this;
 
-      console.log('RootController.wishlistClearAll');
+      // console.log('RootController.wishlistClearAll');
       return this.wishlistService.clearAll().pipe((0, _operators.first)()).subscribe(function (success) {
         _this4.$timeout(function () {
-          _this4.wishlistCount = 0;
-          console.log('RootController.wishlistClearAll', _this4.wishlistCount);
+          _this4.wishlistCount = 0; // console.log('RootController.wishlistClearAll', this.wishlistCount);
         });
       });
     }
