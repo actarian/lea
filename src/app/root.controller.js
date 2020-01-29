@@ -26,7 +26,9 @@ class RootCtrl {
 		this.wishlistService.count$.pipe(
 			takeUntil(this.unsubscribe)
 		).subscribe(count => {
-			this.wishlistCount = count;
+			$timeout(() => {
+				this.wishlistCount = count;
+			});
 		});
 		this.loadingAnimation();
 		this.onMenuToggle = this.onMenuToggle.bind(this);
@@ -34,9 +36,6 @@ class RootCtrl {
 		this.onPrimaryDroppedOut = this.onPrimaryDroppedOut.bind(this);
 		this.onSecondaryDroppedIn = this.onSecondaryDroppedIn.bind(this);
 		this.onScroll = this.onScroll.bind(this);
-		this.wishlistToggle = this.wishlistToggle.bind(this);
-		this.wishlistClearAll = this.wishlistClearAll.bind(this);
-		this.wishlistHas = this.wishlistHas.bind(this);
 		// $scope.$on('onDroppinIn', this.onDroppingIn.bind(this));
 		$scope.$on('destroy', () => {
 			// console.log('destroy');
@@ -168,7 +167,7 @@ class RootCtrl {
 
 	onSecondaryDroppedIn(node, dropdown) {
 		// console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
-		
+
 		TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
 		TweenMax.to(dropdown, 0.8, {
 			width: '100%',
@@ -179,7 +178,7 @@ class RootCtrl {
 				TweenMax.set(node, { width: '100%' });
 			}
 		});
-		
+
 		const items = [...dropdown.querySelectorAll('li')].filter(x => x.parentNode === dropdown);
 		TweenMax.set(items, { opacity: 0 });
 		items.forEach((x, i) => {

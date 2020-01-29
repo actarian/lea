@@ -92,7 +92,8 @@
 								</div>
 								<div class="group--cta">
 									<a class="btn btn--share" href="http://leaceramiche.wslabs.it/collezioni/wood-stock?c=4162&amp;print=true" target="frmPrint"><span>Print</span></a>
-									<div class="btn btn--share"><span>Add to wishlist</span></div>
+									<div class="btn btn--share" ng-if="!root.wishlistHas('36 4052')" ng-click="root.wishlistToggle('36 4052')"><span>Add to wishlist</span></div>
+									<div class="btn btn--share" ng-if="root.wishlistHas('36 4052')" ng-click="root.wishlistToggle('36 4052')"><span>Remove from wishlist</span></div>
 									<div class="btn btn--share"><span>Share</span></div>
 								</div>
 							</div>

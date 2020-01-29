@@ -151,7 +151,8 @@
 								<div class="abstract"><span>2 varianti</span> <span>2 formati</span> <span>2 spessori</span></div>
 								<div class="group--cta" ng-if="!root.share">
 									<div class="btn btn--share"><span>Print</span></div>
-									<div class="btn btn--share"><span>Add to wishlist</span></div>
+									<div class="btn btn--share" ng-if="!root.wishlistHas('36 4052')" ng-click="root.wishlistToggle('36 4052')"><span>Add to wishlist</span></div>
+									<div class="btn btn--share" ng-if="root.wishlistHas('36 4052')" ng-click="root.wishlistToggle('36 4052')"><span>Remove from wishlist</span></div>
 									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
 								</div>
 								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">

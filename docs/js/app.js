@@ -27924,17 +27924,16 @@ function () {
     DomService.addCustomRules();
     this.unsubscribe = new _rxjs.Subject();
     this.wishlistService.count$.pipe((0, _operators.takeUntil)(this.unsubscribe)).subscribe(function (count) {
-      _this.wishlistCount = count;
+      $timeout(function () {
+        _this.wishlistCount = count;
+      });
     });
     this.loadingAnimation();
     this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onPrimaryDroppedIn = this.onPrimaryDroppedIn.bind(this);
     this.onPrimaryDroppedOut = this.onPrimaryDroppedOut.bind(this);
     this.onSecondaryDroppedIn = this.onSecondaryDroppedIn.bind(this);
-    this.onScroll = this.onScroll.bind(this);
-    this.wishlistToggle = this.wishlistToggle.bind(this);
-    this.wishlistClearAll = this.wishlistClearAll.bind(this);
-    this.wishlistHas = this.wishlistHas.bind(this); // $scope.$on('onDroppinIn', this.onDroppingIn.bind(this));
+    this.onScroll = this.onScroll.bind(this); // $scope.$on('onDroppinIn', this.onDroppingIn.bind(this));
 
     $scope.$on('destroy', function () {
       // console.log('destroy');
@@ -29147,30 +29146,27 @@ function () {
     this.promise = PromiseService; //this.storage = StorageService;
 
     this.api = ApiService;
-    this.count$ = WishlistService.count$;
-    var count = this.wishlist.length; // console.log('WishlistService', this.storage);
+    this.count$ = WishlistService.count$; // const count = this.wishlist.length;
+    // console.log('WishlistService', this.storage);
   }
 
   _createClass(WishlistService, [{
-    key: "indexOf",
-    value: function indexOf(item) {
-      var index = this.wishlist.reduce(function (p, c, i) {
-        if (p === -1) {
-          return c
-          /*.id*/
-          === item
-          /*.id && c.coId === item.coId*/
-          ? i : p;
-        } else {
-          return p;
-        }
-      }, -1);
-      return index;
-    }
-  }, {
     key: "has",
+
+    /*
+    indexOf(item) {
+    	const index = this.wishlist.reduce((p, c, i) => {
+    		if (p === -1) {
+    			return c.id* === item.id && c.coId === item.coId ? i : p;
+    		} else {
+    			return p;
+    		}
+    	}, -1);
+    	return index;
+    }
+    */
     value: function has(item) {
-      return this.indexOf(item) !== -1;
+      return this.wishlist.indexOf(item) !== -1;
     }
   }, {
     key: "add",
@@ -29178,9 +29174,8 @@ function () {
       var _this = this;
 
       return this.promise.make(function (promise) {
-        var wishlist = _this.wishlist;
-
         if (!_this.has(item)) {
+          var wishlist = _this.wishlist;
           wishlist.push(
           /*{ id: item.id, coId: item.coId }*/
           item);
@@ -29195,11 +29190,14 @@ function () {
       var _this2 = this;
 
       return this.promise.make(function (promise) {
-        var index = _this2.indexOf(item);
+        var index = _this2.wishlist.indexOf(item);
 
-        var wishlist = _this2.wishlist;
-        wishlist.splice(index, 1);
-        _this2.wishlist = wishlist;
+        if (index !== -1) {
+          var wishlist = _this2.wishlist;
+          wishlist.splice(index, 1);
+          _this2.wishlist = wishlist;
+        }
+
         promise.resolve(false);
       });
     }

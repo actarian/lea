@@ -17,7 +17,7 @@ export default class WishlistService {
 		//this.storage = StorageService;
 		this.api = ApiService;
 		this.count$ = WishlistService.count$;
-		const count = this.wishlist.length;
+		// const count = this.wishlist.length;
 		// console.log('WishlistService', this.storage);
 	}
 
@@ -25,7 +25,7 @@ export default class WishlistService {
 		if (!this.wishlist_) {
 			//const wishlist = this.storage.get('wishlist');
 			//this.wishlist_ = wishlist || [];
-			
+
 			this.wishlist_ = [];
 			var str = document.cookie.match(new RegExp("(^|; )" + key + "=([^;]+)"));
 			if (str) {
@@ -48,26 +48,28 @@ export default class WishlistService {
 		WishlistService.count$.next(this.wishlist_.length);
 	}
 
+	/*
 	indexOf(item) {
 		const index = this.wishlist.reduce((p, c, i) => {
 			if (p === -1) {
-				return c/*.id*/ === item/*.id && c.coId === item.coId*/ ? i : p;
+				return c.id* === item.id && c.coId === item.coId ? i : p;
 			} else {
 				return p;
 			}
 		}, -1);
 		return index;
 	}
+	*/
 
 	has(item) {
-		return this.indexOf(item) !== -1;
+		return this.wishlist.indexOf(item) !== -1;
 	}
 
 	add(item) {
 		return this.promise.make((promise) => {
-			const wishlist = this.wishlist;
 			if (!this.has(item)) {
-				wishlist.push(/*{ id: item.id, coId: item.coId }*/item);
+				const wishlist = this.wishlist;
+				wishlist.push( /*{ id: item.id, coId: item.coId }*/ item);
 				this.wishlist = wishlist;
 				promise.resolve(true);
 			}
@@ -76,10 +78,12 @@ export default class WishlistService {
 
 	remove(item) {
 		return this.promise.make((promise) => {
-			const index = this.indexOf(item);
-			const wishlist = this.wishlist;
-			wishlist.splice(index, 1);
-			this.wishlist = wishlist;
+			const index = this.wishlist.indexOf(item);
+			if (index !== -1) {
+				const wishlist = this.wishlist;
+				wishlist.splice(index, 1);
+				this.wishlist = wishlist;
+			}
 			promise.resolve(false);
 		});
 	}
