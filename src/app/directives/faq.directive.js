@@ -18,7 +18,7 @@ export default class FaqDirective {
 		const onAbstractClicked = () => {
 			if (node.classList.contains('active')) {
 				node.classList.remove('active');
-				more.classList.remove('active');
+				if (more) more.classList.remove('active');
 				TweenMax.to(content, 0.7, {
 					height: 0,
 					ease: Power2.easeInOut,

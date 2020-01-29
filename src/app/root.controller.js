@@ -1,4 +1,4 @@
-﻿/* jshint esversion: 6 */
+/* jshint esversion: 6 */
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -83,9 +83,27 @@ class RootCtrl {
 		}
 		if (this.menuOpened) {
 			const primary = document.querySelector('.nav--primary');
+			const secondary = document.querySelector('.nav--secondary');
 			const items = [...primary.querySelectorAll('li')].filter(x => x.parentNode === primary);
+			const items_sec = [...secondary.querySelectorAll('li')].filter(x => x.parentNode === secondary);
 			TweenMax.set(items, { opacity: 0 });
+			TweenMax.set(items_sec, { opacity: 0 });
 			items.forEach((x, i) => {
+				const s = x.querySelector('a, span');
+				TweenMax.set(s, { x: '-100%', transition: 'none' });
+				TweenMax.to(x, 0.8, {
+					opacity: 1,
+					delay: 0.1 + 0.08 * i,
+					ease: Power2.easeInOut,
+					onUpdate: () => {
+						TweenMax.set(s, { x: `${(1 - x.style.opacity) * -100}%` });
+					},
+					onComplete: () => {
+						s.removeAttribute('style');
+					}
+				});
+			});
+			items_sec.forEach((x, i) => {
 				const s = x.querySelector('a, span');
 				TweenMax.set(s, { x: '-100%', transition: 'none' });
 				TweenMax.to(x, 0.8, {
@@ -150,7 +168,7 @@ class RootCtrl {
 
 	onSecondaryDroppedIn(node, dropdown) {
 		// console.log('RootCtrl.onSecondaryDroppedIn', node, dropdown);
-		/*
+		
 		TweenMax.set(dropdown, { width: 0, overflow: 'hidden' });
 		TweenMax.to(dropdown, 0.8, {
 			width: '100%',
@@ -161,7 +179,7 @@ class RootCtrl {
 				TweenMax.set(node, { width: '100%' });
 			}
 		});
-		*/
+		
 		const items = [...dropdown.querySelectorAll('li')].filter(x => x.parentNode === dropdown);
 		TweenMax.set(items, { opacity: 0 });
 		items.forEach((x, i) => {

@@ -490,3 +490,18 @@
 		height: 16px;
 	}
 }
+
+#toggle-filter {
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+
+	p {
+		cursor: pointer;
+		display: block;
+		text-align: center;
+		width: 20%;
+		margin: 20px auto;
+	}
+}

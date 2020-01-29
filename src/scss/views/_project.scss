@@ -111,6 +111,10 @@
 			display: block;
 			margin-bottom: 25px;
 
+			a {
+				text-decoration: none;
+			}
+
 			&:last-child {
 				margin-bottom: 5px;
 			}

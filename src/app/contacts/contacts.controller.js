@@ -1,5 +1,7 @@
 /* jshint esversion: 6 */
 
+import GtmService from '../gtm/gtm.service';
+
 class ContactsCtrl {
 
 	constructor(
@@ -34,6 +36,8 @@ class ContactsCtrl {
 			this.$http.post('/WS/wsUsers.asmx/Contact', {data: this.model}).then(
 				success => {
 					this.state.success();
+
+					GtmService.push({"event": "Action Complete"});
 				},
 				error => {
 					this.error = error;

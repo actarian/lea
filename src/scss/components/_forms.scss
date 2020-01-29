@@ -145,14 +145,18 @@ $success: $blue;
 	}
 
 	sup {
-		display: inline-block;
+		/*display: inline-block;
 		width: 7px;
 		height: 7px;
 		border: 1px solid black;
 		transform: translateY(-2px) rotateZ(45deg);
 		margin-left: 5px;
 		font-size: 0;
-		line-height: 0;
+		line-height: 0;*/
+		font-size: 10px;
+		line-height: 10px;
+		position: absolute;
+		top: 0;
 	}
 
 	/*
@@ -300,6 +304,7 @@ $success: $blue;
 	}
 
 	.group--input {
+		display: inline-block;
 		align-items: flex-start;
 		flex-wrap: wrap;
 		line-height: 20px;
@@ -338,6 +343,10 @@ $success: $blue;
 		sup {
 			color: $primary;
 		}
+
+		.form__checkbox {
+			background: #b92441;
+		}
 	}
 }
 
@@ -358,7 +367,15 @@ control-messages {
 	color: $primary;
 
 	.error>& {
-		display: block;
+		display: inline;
+	}
+
+	.group--checkbox & {
+		position: static;
+
+		@include media-up(sm) {
+			padding: 0 10px;
+		}
 	}
 
 	&>span {}

@@ -1,8 +1,9 @@
-﻿/* jshint esversion: 6 */
+/* jshint esversion: 6 */
 
 import CollectionsCtrl from './collections/collections.controller';
 import ColorsCtrl from './colors/colors.controller';
 import ContactsCtrl from './contacts/contacts.controller';
+import LoginCtrl from './contacts/login.controller';
 import AbstractDirective from './directives/abstract.directive';
 import AppearDirective from './directives/appear.directive';
 import AutocompleteDirective from './directives/autocomplete.directive';
@@ -126,6 +127,7 @@ app.directive('abstract', AbstractDirective.factory)
 
 app.controller('RootCtrl', RootCtrl)
 	.controller('ContactsCtrl', ContactsCtrl)
+	.controller('LoginCtrl', LoginCtrl)
 	.controller('CollectionsCtrl', CollectionsCtrl)
 	.controller('ColorsCtrl', ColorsCtrl)
 	.controller('GalleryCtrl', GalleryCtrl)

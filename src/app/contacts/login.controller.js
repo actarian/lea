@@ -1,16 +1,16 @@
 /* jshint esversion: 6 */
 
-import GtmService from '../gtm/gtm.service';
-
-class NewsletterCtrl {
+class LoginCtrl {
 
 	constructor(
+		$window,
 		$scope,
 		$location,
 		$timeout,
 		$http,
 		StateService
 	) {
+		this.$window = $window;
 		this.$scope = $scope;
 		this.$location = $location;
 		this.$timeout = $timeout;
@@ -31,27 +31,36 @@ class NewsletterCtrl {
 	}
 
 	onSubmit() {
-		console.log('NewsletterCtrl.onSubmit', this.model);
+		console.log('LoginCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
-			this.$http.post('/WS/wsUsers.asmx/NewsletterSubscribe', { data: this.model }).then(
+			this.$http.post('/ws/wsUsers.asmx/Login', this.model).then(
 				success => {
-					this.state.success();
-
-					GtmService.push({"event": "Action Complete"});
+					//console.log(success.data.d.Status);
+					//console.log(success.data.d.HTML);
+					if (success.data.d.Status) {
+						this.state.success();
+					}
+					else {
+						this.state.error(success.data.d.HTML);
+					}
 				},
 				error => {
 					this.error = error;
 				}
 			);
+
 			this.$timeout(() => {
 				// this.state.ready();
 			}, 2000);
 		}
-	}
-
-	onNewsletter() {
-		console.log('NewsletterCtrl.onNewsletter', this.model);
-		window.location.href = `${this.newsletterHref}?email=${this.model.email}`;
+		//console.log(this.state);
+		
+		this.$timeout(() => {
+			// this.state.ready();
+			if (this.state.isReady && this.state.isSuccess) {
+				this.$window.location.href = '/download';
+			}
+		}, 2000);
 	}
 
 	onInvalid() {
@@ -60,6 +69,6 @@ class NewsletterCtrl {
 
 }
 
-NewsletterCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'];
+LoginCtrl.$inject = ['$window', '$scope', '$location', '$timeout', '$http', 'StateService'];
 
-export default NewsletterCtrl;
+export default LoginCtrl;

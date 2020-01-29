@@ -7,7 +7,7 @@ button,
 	outline: none;
 	cursor: pointer;
 	transition: ease-in-out 350ms;
-	transition-property: background-color, color, border, opacity;
+	transition-property: background-color, color, border, opacity, visibility;
 
 	&,
 	&:active,
@@ -170,6 +170,7 @@ a:not([class]) {
 	font-size: 16px;
 	font-weight: $font-bold;
 	background: #232120;
+	opacity: 1;
 
 	span {
 		display: inline-block;
@@ -202,6 +203,11 @@ a:not([class]) {
 		span {
 			transform: translateY(5px);
 		}
+	}
+
+	&.success {
+		opacity: 0;
+		visibility: hidden;
 	}
 }
 

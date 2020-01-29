@@ -18,6 +18,7 @@ class CollectionsCtrl {
 		// this.initData__();
 		this.deserializeFilters();
 		this.applyFilters();
+		this.$scope.toggle = true;
 	}
 
 	deserializeFilters() {
@@ -163,6 +164,10 @@ class CollectionsCtrl {
 		});
 		console.log(JSON.stringify(this.filters));
 		console.log(JSON.stringify(this.collections));
+	}
+
+	toggleFilter() {
+		this.$scope.toggle = this.$scope.toggle === false ? true : false;
 	}
 
 }
