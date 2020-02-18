@@ -21135,6 +21135,8 @@ var _colors = _interopRequireDefault(require("./colors/colors.controller"));
 
 var _contacts = _interopRequireDefault(require("./contacts/contacts.controller"));
 
+var _contactStore = _interopRequireDefault(require("./contactStore/contactStore.controller"));
+
 var _login = _interopRequireDefault(require("./contacts/login.controller"));
 
 var _abstract = _interopRequireDefault(require("./directives/abstract.directive"));
@@ -21263,7 +21265,7 @@ app.config(['$locationProvider', function ($locationProvider) {
 app.factory('ApiService', _api.default.factory).factory('DomService', _dom.default.factory).factory('IntersectionService', _intersection.default.factory).factory('LocationService', _location.default.factory).factory('PromiseService', _promise.default.factory).factory('StateService', _state.default.factory).factory('CookieService', _storage.CookieService.factory).factory('LocalStorageService', _storage.LocalStorageService.factory).factory('SessionStorageService', _storage.SessionStorageService.factory).factory('WishlistService', _wishlist2.default.factory);
 app.directive('abstract', _abstract.default.factory).directive('appear', _appear.default.factory).directive('control', _control.default.factory).directive('controlMessages', _controlMessages.default.factory).directive('cookies', _cookies.default.factory).directive('fancyboxGallery', _fancyboxGallery.default.factory).directive('faq', _faq.default.factory) // .directive('galleryItem', GalleryItemDirective.factory)
 .directive('hasDropdown', _hasDropdown.default.factory).directive('header', _header.default.factory).directive('hero', _hero.default.factory).directive('noHero', _noHero.default.factory).directive('highway', _highway.default.factory).directive('hilight', _hilight.default.factory).directive('href', _href.default.factory).directive('label', _label.default.factory).directive('lastItem', _lastItem.LastItemDirective.factory).directive('lazy', _lazy.default.factory).directive('lazyScript', _lazyScript.default.factory).directive('media', _media.default.factory).directive('moodboardDropdown', _moodboardDropdown.default.factory).directive('moodboardSearch', _moodboardSearch.default.factory).directive('muuri', _muuri.MuuriDirective.factory).directive('noBounce', _noBounce.default.factory).directive('parallax', _parallax.default.factory).directive('parallaxOuter', _parallaxOuter.default.factory).directive('scroll', _scroll.default.factory).directive('scrollable', _scrollable.default.factory).directive('selectWithAutocomplete', _autocomplete.default.factory).directive('share', _share.default.factory).directive('slider', _slider.default.factory).directive('sticky', _sticky.default.factory).directive('split', _split.default.factory).directive('swiper', _swiper.SwiperDirective.factory).directive('swiperHero', _swiper.SwiperHeroDirective.factory).directive('validate', _validate.default.factory).directive('video', _video.default.factory).directive('virtualScroll', _virtualScroll.default.factory).directive('smoothScroll', _smoothScroll.default.factory).directive('visibility', _visibility.default.factory).directive('wishlist', _wishlist.default.factory).directive('zoomable', _zoomable.default.factory);
-app.controller('RootCtrl', _root.default).controller('ContactsCtrl', _contacts.default).controller('LoginCtrl', _login.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default).controller('NewsletterCtrl', _newsletter.default).controller('ProjectsCtrl', _projects.default).controller('SearchCtrl', _search.default).controller('StoreLocatorCtrl', _storeLocator.default);
+app.controller('RootCtrl', _root.default).controller('ContactsCtrl', _contacts.default).controller('ContactStoreCtrl', _contactStore.default).controller('LoginCtrl', _login.default).controller('CollectionsCtrl', _collections.default).controller('ColorsCtrl', _colors.default).controller('GalleryCtrl', _gallery.default).controller('NewsletterCtrl', _newsletter.default).controller('ProjectsCtrl', _projects.default).controller('SearchCtrl', _search.default).controller('StoreLocatorCtrl', _storeLocator.default);
 app.filter('imageWithFeatures', [_imageWithFeatures.ImageWithFeatures]).filter('notIn', ['$filter', _notIn.NotInFilter]).filter('trusted', ['$sce', _trusted.TrustedFilter]); // app.run(['$compile', '$timeout', '$rootScope', function($compile, $timeout, $rootScope) {}]);
 
 app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $rootScope) {
@@ -21275,7 +21277,7 @@ app.run(['$compile', '$timeout', '$rootScope', function ($compile, $timeout, $ro
 var _default = MODULE_NAME;
 exports.default = _default;
 
-},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./contacts/contacts.controller":203,"./contacts/login.controller":204,"./directives/abstract.directive":205,"./directives/appear.directive":206,"./directives/autocomplete.directive":207,"./directives/cookies.directive":208,"./directives/fancybox-gallery.directive":209,"./directives/faq.directive":210,"./directives/has-dropdown.directive":212,"./directives/header.directive":213,"./directives/hero.directive":214,"./directives/hilight.directive":215,"./directives/href.directive":216,"./directives/label.directive":217,"./directives/last-item.directive":218,"./directives/lazy-script.directive":219,"./directives/lazy.directive":220,"./directives/media.directive":221,"./directives/muuri.directive":222,"./directives/no-bounce.directive":223,"./directives/no-hero.directive":224,"./directives/parallax-outer.directive":225,"./directives/parallax.directive":226,"./directives/scroll.directive":227,"./directives/scrollable.directive":228,"./directives/share.directive":229,"./directives/slider.directive":230,"./directives/smooth-scroll.directive":231,"./directives/split.directive":232,"./directives/sticky.directive":233,"./directives/swiper.directive":234,"./directives/video.directive":235,"./directives/virtual-scroll.directive":236,"./directives/visibility.directive":237,"./directives/wishlist.directive":238,"./directives/zoomable.directive":239,"./filters/image-with-features.filter":240,"./filters/notIn.filter":241,"./filters/trusted.filter":242,"./forms/control-messages.directive":243,"./forms/control.directive":244,"./forms/validate.directive":245,"./gallery/gallery.controller":246,"./highway/highway.directive":249,"./moodboard/moodboard-dropdown.directive":251,"./moodboard/moodboard-search.directive":252,"./newsletter/newsletter.controller":253,"./projects/projects.controller":254,"./root.controller":255,"./search/search.controller":256,"./services/api.service":257,"./services/dom.service":258,"./services/intersection.service":259,"./services/wishlist.service":260,"./shared/location.service":262,"./shared/promise.service":263,"./shared/state.service":265,"./shared/storage.service":266,"./store-locator/store-locator.controller":267}],201:[function(require,module,exports){
+},{"./collections/collections.controller":201,"./colors/colors.controller":202,"./contactStore/contactStore.controller":203,"./contacts/contacts.controller":204,"./contacts/login.controller":205,"./directives/abstract.directive":206,"./directives/appear.directive":207,"./directives/autocomplete.directive":208,"./directives/cookies.directive":209,"./directives/fancybox-gallery.directive":210,"./directives/faq.directive":211,"./directives/has-dropdown.directive":213,"./directives/header.directive":214,"./directives/hero.directive":215,"./directives/hilight.directive":216,"./directives/href.directive":217,"./directives/label.directive":218,"./directives/last-item.directive":219,"./directives/lazy-script.directive":220,"./directives/lazy.directive":221,"./directives/media.directive":222,"./directives/muuri.directive":223,"./directives/no-bounce.directive":224,"./directives/no-hero.directive":225,"./directives/parallax-outer.directive":226,"./directives/parallax.directive":227,"./directives/scroll.directive":228,"./directives/scrollable.directive":229,"./directives/share.directive":230,"./directives/slider.directive":231,"./directives/smooth-scroll.directive":232,"./directives/split.directive":233,"./directives/sticky.directive":234,"./directives/swiper.directive":235,"./directives/video.directive":236,"./directives/virtual-scroll.directive":237,"./directives/visibility.directive":238,"./directives/wishlist.directive":239,"./directives/zoomable.directive":240,"./filters/image-with-features.filter":241,"./filters/notIn.filter":242,"./filters/trusted.filter":243,"./forms/control-messages.directive":244,"./forms/control.directive":245,"./forms/validate.directive":246,"./gallery/gallery.controller":247,"./highway/highway.directive":250,"./moodboard/moodboard-dropdown.directive":252,"./moodboard/moodboard-search.directive":253,"./newsletter/newsletter.controller":254,"./projects/projects.controller":255,"./root.controller":256,"./search/search.controller":257,"./services/api.service":258,"./services/dom.service":259,"./services/intersection.service":260,"./services/wishlist.service":261,"./shared/location.service":263,"./shared/promise.service":264,"./shared/state.service":266,"./shared/storage.service":267,"./store-locator/store-locator.controller":268}],201:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21517,7 +21519,7 @@ CollectionsCtrl.$inject = ['$scope', '$timeout', 'LocationService'];
 var _default = CollectionsCtrl;
 exports.default = _default;
 
-},{"../gtm/gtm.service":247}],202:[function(require,module,exports){
+},{"../gtm/gtm.service":248}],202:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21802,7 +21804,83 @@ ColorsCtrl.$inject = ['$scope', '$timeout', '$location', 'DomService'];
 var _default = ColorsCtrl;
 exports.default = _default;
 
-},{"../shared/rect":264}],203:[function(require,module,exports){
+},{"../shared/rect":265}],203:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _gtm = _interopRequireDefault(require("../gtm/gtm.service"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ContactStoreCtrl =
+/*#__PURE__*/
+function () {
+  function ContactStoreCtrl($scope, $location, $timeout, $http, StateService) {
+    _classCallCheck(this, ContactStoreCtrl);
+
+    this.$scope = $scope;
+    this.$location = $location;
+    this.$timeout = $timeout;
+    this.$http = $http;
+    this.data = window.data || {};
+    this.model = {};
+
+    if (this.$location.search() && this.$location.search().email) {
+      this.model.email = this.$location.search().email;
+    }
+
+    this.state = StateService.getState();
+    this.state.ready();
+  }
+
+  _createClass(ContactStoreCtrl, [{
+    key: "onSubmit",
+    value: function onSubmit() {
+      var _this = this;
+
+      console.log('ContactStoreCtrl.onSubmit', this.model);
+
+      if (this.state.busy()) {
+        this.$http.post('/WS/wsUsers.asmx/ContactStore', {
+          data: this.model
+        }).then(function (success) {
+          _this.state.success();
+
+          _gtm.default.push({
+            "event": "Action Complete"
+          });
+        }, function (error) {
+          _this.error = error;
+        });
+        this.$timeout(function () {// this.state.ready();
+        }, 2000);
+      }
+    }
+  }, {
+    key: "onInvalid",
+    value: function onInvalid() {
+      this.$scope.$broadcast('onInvalid');
+    }
+  }]);
+
+  return ContactStoreCtrl;
+}();
+
+ContactStoreCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'];
+var _default = ContactStoreCtrl;
+exports.default = _default;
+
+},{"../gtm/gtm.service":248}],204:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21889,7 +21967,7 @@ ContactsCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateServic
 var _default = ContactsCtrl;
 exports.default = _default;
 
-},{"../gtm/gtm.service":247}],204:[function(require,module,exports){
+},{"../gtm/gtm.service":248}],205:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21982,7 +22060,7 @@ LoginCtrl.$inject = ['$window', '$scope', '$location', '$timeout', '$http', 'Sta
 var _default = LoginCtrl;
 exports.default = _default;
 
-},{}],205:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22025,7 +22103,7 @@ function () {
 exports.default = AbstractDirective;
 AbstractDirective.factory.$inject = [];
 
-},{}],206:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22122,7 +22200,7 @@ function () {
 exports.default = AppearDirective;
 AppearDirective.factory.$inject = ['IntersectionService'];
 
-},{"rxjs/operators":198}],207:[function(require,module,exports){
+},{"rxjs/operators":198}],208:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22279,7 +22357,7 @@ function () {
 exports.default = AutocompleteDirective;
 AutocompleteDirective.factory.$inject = ['$timeout'];
 
-},{"./has-dropdown.directive":212}],208:[function(require,module,exports){
+},{"./has-dropdown.directive":213}],209:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22319,12 +22397,12 @@ function () {
       var node = element[0];
       var cookiesAccepted = this.storage.get('cookiesAccepted');
 
-      if (cookiesAccepted) {
-        node.classList.add('cookies-accepted');
+      if (!cookiesAccepted) {
+        node.classList.add('show-banner');
       }
 
       scope.onAcceptCookies = function (event) {
-        _this.storage.set('cookiesAccepted', true); // accept();
+        _this.storage.set('cookiesAccepted', true, 365); // accept();
 
 
         TweenMax.to(node, 0.5, {
@@ -22332,7 +22410,7 @@ function () {
           ease: Power2.easeInOut,
           delay: 0.15,
           onComplete: function onComplete() {
-            node.classList.add('cookies-accepted');
+            node.classList.remove('show-banner');
           }
         });
       };
@@ -22350,7 +22428,7 @@ function () {
 exports.default = CookiesDirective;
 CookiesDirective.factory.$inject = ['$timeout', 'CookieService'];
 
-},{}],209:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22408,7 +22486,7 @@ function () {
 exports.default = FancyboxGalleryDirective;
 FancyboxGalleryDirective.factory.$inject = [];
 
-},{}],210:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22507,7 +22585,7 @@ function () {
 exports.default = FaqDirective;
 FaqDirective.factory.$inject = ['DomService'];
 
-},{}],211:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22613,7 +22691,7 @@ function () {
 exports.default = GalleryItemDirective;
 GalleryItemDirective.factory.$inject = ['$timeout', 'DomService'];
 
-},{}],212:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22745,7 +22823,7 @@ exports.default = HasDropdownDirective;
 HasDropdownDirective.dropDownUid = 0;
 HasDropdownDirective.factory.$inject = ['$timeout'];
 
-},{}],213:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22908,7 +22986,7 @@ function () {
 exports.default = HeaderDirective;
 HeaderDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":264}],214:[function(require,module,exports){
+},{"../shared/rect":265}],215:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23055,7 +23133,7 @@ function () {
 exports.default = HeroDirective;
 HeroDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":264}],215:[function(require,module,exports){
+},{"../shared/rect":265}],216:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23127,7 +23205,7 @@ function () {
 exports.default = HilightDirective;
 HilightDirective.factory.$inject = [];
 
-},{}],216:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23278,7 +23356,7 @@ function () {
 exports.default = HrefDirective;
 HrefDirective.factory.$inject = [];
 
-},{}],217:[function(require,module,exports){
+},{}],218:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23329,7 +23407,7 @@ function () {
 exports.default = LabelDirective;
 LabelDirective.factory.$inject = [];
 
-},{}],218:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23376,7 +23454,7 @@ function () {
 exports.LastItemDirective = LastItemDirective;
 LastItemDirective.factory.$inject = ['$timeout'];
 
-},{}],219:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23442,7 +23520,7 @@ function () {
 exports.default = LazyScriptDirective;
 LazyScriptDirective.factory.$inject = [];
 
-},{}],220:[function(require,module,exports){
+},{}],221:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23570,7 +23648,7 @@ function () {
 exports.default = LazyDirective;
 LazyDirective.factory.$inject = ['IntersectionService'];
 
-},{"rxjs/operators":198}],221:[function(require,module,exports){
+},{"rxjs/operators":198}],222:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23684,7 +23762,7 @@ function () {
 exports.default = MediaDirective;
 MediaDirective.factory.$inject = ['$timeout', 'WishlistService'];
 
-},{}],222:[function(require,module,exports){
+},{}],223:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23888,7 +23966,7 @@ function () {
 exports.MuuriDirective = MuuriDirective;
 MuuriDirective.factory.$inject = [];
 
-},{}],223:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24053,7 +24131,7 @@ function () {
 exports.default = NoBounceDirective;
 NoBounceDirective.factory.$inject = ['DomService'];
 
-},{}],224:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24106,7 +24184,7 @@ function () {
 exports.default = NoHeroDirective;
 NoHeroDirective.factory.$inject = ['DomService'];
 
-},{}],225:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24288,7 +24366,7 @@ function () {
 exports.default = ParallaxOuterDirective;
 ParallaxOuterDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":264,"rxjs/operators":198}],226:[function(require,module,exports){
+},{"../shared/rect":265,"rxjs/operators":198}],227:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24394,7 +24472,7 @@ function () {
 exports.default = ParallaxDirective;
 ParallaxDirective.factory.$inject = ['DomService'];
 
-},{"../shared/rect":264,"rxjs/operators":198}],227:[function(require,module,exports){
+},{"../shared/rect":265,"rxjs/operators":198}],228:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24459,7 +24537,7 @@ function () {
 exports.default = ScrollDirective;
 ScrollDirective.factory.$inject = ['DomService'];
 
-},{}],228:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24661,7 +24739,7 @@ function () {
 exports.default = ScrollableDirective;
 ScrollableDirective.factory.$inject = ['DomService'];
 
-},{"../shared/drag.listener":261,"rxjs/operators":198}],229:[function(require,module,exports){
+},{"../shared/drag.listener":262,"rxjs/operators":198}],230:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24753,7 +24831,7 @@ function () {
 exports.default = ShareDirective;
 ShareDirective.factory.$inject = ['$timeout'];
 
-},{}],230:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25055,7 +25133,7 @@ function () {
 exports.default = SliderDirective;
 SliderDirective.factory.$inject = ['DomService'];
 
-},{"../shared/drag.listener":261,"rxjs/operators":198}],231:[function(require,module,exports){
+},{"../shared/drag.listener":262,"rxjs/operators":198}],232:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25114,7 +25192,7 @@ function () {
 exports.default = SmoothScrollDirective;
 SmoothScrollDirective.factory.$inject = ['DomService'];
 
-},{}],232:[function(require,module,exports){
+},{}],233:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25211,7 +25289,7 @@ function () {
 exports.default = SplitDirective;
 SplitDirective.factory.$inject = ['IntersectionService'];
 
-},{"rxjs/operators":198}],233:[function(require,module,exports){
+},{"rxjs/operators":198}],234:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25320,7 +25398,7 @@ function () {
 exports.default = StickyDirective;
 StickyDirective.factory.$inject = ['$timeout', 'DomService'];
 
-},{"../shared/rect":264,"rxjs/operators":198}],234:[function(require,module,exports){
+},{"../shared/rect":265,"rxjs/operators":198}],235:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25477,7 +25555,7 @@ function (_SwiperDirective) {
 exports.SwiperHeroDirective = SwiperHeroDirective;
 SwiperHeroDirective.factory.$inject = [];
 
-},{}],235:[function(require,module,exports){
+},{}],236:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25729,7 +25807,7 @@ function () {
 exports.default = VideoDirective;
 VideoDirective.factory.$inject = ['$timeout', 'WishlistService'];
 
-},{"../gtm/gtm.service":247}],236:[function(require,module,exports){
+},{"../gtm/gtm.service":248}],237:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25792,7 +25870,7 @@ function () {
 exports.default = VirtualScrollDirective;
 VirtualScrollDirective.factory.$inject = ['DomService'];
 
-},{"../services/dom.service":258}],237:[function(require,module,exports){
+},{"../services/dom.service":259}],238:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25851,7 +25929,7 @@ function () {
 exports.default = VisibilityDirective;
 VisibilityDirective.factory.$inject = ['DomService'];
 
-},{"../gtm/gtm.service":247}],238:[function(require,module,exports){
+},{"../gtm/gtm.service":248}],239:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25911,7 +25989,7 @@ function () {
 exports.default = WishlistDirective;
 WishlistDirective.factory.$inject = ['WishlistService'];
 
-},{}],239:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26092,7 +26170,7 @@ function () {
 exports.default = ZoomableDirective;
 ZoomableDirective.factory.$inject = ['$timeout', 'DomService'];
 
-},{"../shared/rect":264}],240:[function(require,module,exports){
+},{"../shared/rect":265}],241:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26131,7 +26209,7 @@ function ImageWithFeatures() {
   };
 }
 
-},{}],241:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26154,7 +26232,7 @@ function NotInFilter($filter) {
   };
 }
 
-},{}],242:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26169,7 +26247,7 @@ function TrustedFilter($sce) {
   };
 }
 
-},{}],243:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26213,7 +26291,7 @@ function () {
 exports.default = ControlMessagesDirective;
 ControlMessagesDirective.factory.$inject = [];
 
-},{}],244:[function(require,module,exports){
+},{}],245:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26502,7 +26580,7 @@ function () {
 exports.default = ControlDirective;
 ControlDirective.factory.$inject = ['$parse', 'DomService'];
 
-},{}],245:[function(require,module,exports){
+},{}],246:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26701,7 +26779,7 @@ function () {
 exports.default = ValidateDirective;
 ValidateDirective.factory.$inject = ['$filter'];
 
-},{}],246:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26789,7 +26867,7 @@ GalleryCtrl.$inject = ['$scope', '$timeout', '$element'];
 var _default = GalleryCtrl;
 exports.default = _default;
 
-},{"../directives/gallery-item.directive":211}],247:[function(require,module,exports){
+},{"../directives/gallery-item.directive":212}],248:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26890,7 +26968,7 @@ function () {
 
 exports.default = GtmService;
 
-},{}],248:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27068,7 +27146,7 @@ function (_Highway$Renderer) {
 
 exports.default = CustomRenderer;
 
-},{"../gtm/gtm.service":247,"@dogstudio/highway":1}],249:[function(require,module,exports){
+},{"../gtm/gtm.service":248,"@dogstudio/highway":1}],250:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27186,7 +27264,7 @@ function () {
 exports.default = HighwayDirective;
 HighwayDirective.factory.$inject = ['$compile', '$timeout'];
 
-},{"../gtm/gtm.service":247,"./custom-renderer":248,"./page-transition":250,"@dogstudio/highway":1,"rxjs":2,"rxjs/operators":198}],250:[function(require,module,exports){
+},{"../gtm/gtm.service":248,"./custom-renderer":249,"./page-transition":251,"@dogstudio/highway":1,"rxjs":2,"rxjs/operators":198}],251:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27296,7 +27374,7 @@ function (_Highway$Transition) {
 
 exports.default = PageTransition;
 
-},{"./custom-renderer":248,"@dogstudio/highway":1}],251:[function(require,module,exports){
+},{"./custom-renderer":249,"@dogstudio/highway":1}],252:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27371,7 +27449,7 @@ function () {
 exports.default = MoodboardDropdownDirective;
 MoodboardDropdownDirective.factory.$inject = ['$compile'];
 
-},{}],252:[function(require,module,exports){
+},{}],253:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27525,7 +27603,7 @@ function () {
 exports.default = MoodboardSearchDirective;
 MoodboardSearchDirective.factory.$inject = ['$compile'];
 
-},{}],253:[function(require,module,exports){
+},{}],254:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27618,7 +27696,7 @@ NewsletterCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateServ
 var _default = NewsletterCtrl;
 exports.default = _default;
 
-},{"../gtm/gtm.service":247}],254:[function(require,module,exports){
+},{"../gtm/gtm.service":248}],255:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27879,7 +27957,7 @@ ProjectsCtrl.$inject = ['$scope', '$timeout', 'LocationService'];
 var _default = ProjectsCtrl;
 exports.default = _default;
 
-},{"../gtm/gtm.service":247}],255:[function(require,module,exports){
+},{"../gtm/gtm.service":248}],256:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28278,7 +28356,7 @@ RootCtrl.$inject = ['$scope', '$element', '$timeout', 'IntersectionService', 'Do
 var _default = RootCtrl;
 exports.default = _default;
 
-},{"rxjs":2,"rxjs/operators":198}],256:[function(require,module,exports){
+},{"rxjs":2,"rxjs/operators":198}],257:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28361,7 +28439,7 @@ SearchCtrl.$inject = ['$scope', '$location', '$timeout', '$http', 'StateService'
 var _default = SearchCtrl;
 exports.default = _default;
 
-},{}],257:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28412,8 +28490,7 @@ function () {
       },
       storeLocator: {
         all: function all() {
-          // return $http.get(API_HREF + '/api/store/json');
-          return $http.get('data/store-locator.json');
+          return $http.post('/ws/wsUsers.asmx/StoreList', {}); //return $http.get('data/store-locator.json');
         }
       }
     };
@@ -28433,7 +28510,7 @@ function () {
 exports.default = ApiService;
 ApiService.factory.$inject = ['$http'];
 
-},{"rxjs":2}],258:[function(require,module,exports){
+},{"rxjs":2}],259:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29042,7 +29119,7 @@ DomService.scroll$ = function () {
 
 DomService.scrollAndRect$ = (0, _rxjs.combineLatest)(DomService.scroll$, DomService.windowRect$).pipe((0, _operators.shareReplay)());
 
-},{"../shared/rect":264,"rxjs":2,"rxjs/internal/scheduler/animationFrame":161,"rxjs/operators":198}],259:[function(require,module,exports){
+},{"../shared/rect":265,"rxjs":2,"rxjs/internal/scheduler/animationFrame":161,"rxjs/operators":198}],260:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29129,7 +29206,7 @@ function () {
 
 exports.default = IntersectionService;
 
-},{"rxjs":2,"rxjs/operators":198}],260:[function(require,module,exports){
+},{"rxjs":2,"rxjs/operators":198}],261:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29292,7 +29369,7 @@ WishlistService.factory.$inject = ['$http', 'PromiseService',
 /*'LocalStorageService',*/
 'ApiService'];
 
-},{"rxjs":2}],261:[function(require,module,exports){
+},{"rxjs":2}],262:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29551,7 +29628,7 @@ function () {
 
 exports.default = DragListener;
 
-},{}],262:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29652,7 +29729,7 @@ function () {
 exports.default = LocationService;
 LocationService.factory.$inject = ['$location'];
 
-},{}],263:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29705,7 +29782,7 @@ function () {
 exports.default = PromiseService;
 PromiseService.factory.$inject = ['$q'];
 
-},{}],264:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29824,7 +29901,7 @@ function () {
 
 exports.default = Rect;
 
-},{}],265:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30019,7 +30096,7 @@ function () {
 exports.default = StateService;
 StateService.factory.$inject = ['$timeout', '$rootScope'];
 
-},{}],266:[function(require,module,exports){
+},{}],267:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30427,7 +30504,7 @@ function () {
 exports.SessionStorageService = SessionStorageService;
 SessionStorageService.factory.$inject = ['PromiseService'];
 
-},{}],267:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30468,20 +30545,22 @@ function () {
     this.domService = DomService;
     this.apiService = ApiService;
 
-    if (!window.apiKey && !IS_DEV) {
+    if (!window.storeLocatorSettings.apiKey && !IS_DEV) {
       throw "Missing Google Map Api Key";
     }
 
-    this.apiKey = window.apiKey;
+    this.apiKey = window.storeLocatorSettings.apiKey;
     this.model = {};
     this.busyFind = false;
     this.busyLocation = false;
+    this.searchCountry = "";
     this.visibleStores = [];
     this.mapCenter$ = new _rxjs.Subject();
     this.labels = window.labels || {
-      approximately: "Approximately",
+      approximately: window.storeLocatorSettings.localizedStrings.LBL_DISTANZA_STORE,
       moreInfo: "More Info",
-      reachStore: "Reach Store"
+      reachStore: window.storeLocatorSettings.localizedStrings.LBL_RAGGIUNGERE_STORE,
+      contactStore: window.storeLocatorSettings.localizedStrings.LBL_CONTATTA_STORE
     };
 
     if (GOOGLE_MAPS !== null) {
@@ -30501,7 +30580,9 @@ function () {
 
     this.unsubscribe = new _rxjs.Subject();
     this.mapCenter$.pipe((0, _operators.debounceTime)(1000), (0, _operators.takeUntil)(this.unsubscribe)).subscribe(function (position) {
-      _this.findNearStores(_this.stores, position);
+      _this.$timeout(function () {
+        _this.visibleStores = _this.getStoresByViewport();
+      }, 1);
     });
     $scope.$on('destroy', function () {
       _this.unsubscribe.next();
@@ -30516,62 +30597,125 @@ function () {
       var _this2 = this;
 
       var mapOptions = {
-        zoom: 7,
+        zoom: 17,
         center: new google.maps.LatLng(44.5416713, 10.8259022),
         // prima ricerca vicino a casa madre
-        styles: [[{
-          "featureType": "administrative",
-          "elementType": "geometry.fill",
+        styles: [{
+          "featureType": "water",
+          "elementType": "geometry",
           "stylers": [{
-            "visibility": "on"
-          }]
-        }, {
-          "featureType": "administrative",
-          "elementType": "labels.text.fill",
-          "stylers": [{
-            "color": "#414141"
+            "color": "#e9e9e9"
+          }, {
+            "lightness": 17
           }]
         }, {
           "featureType": "landscape",
+          "elementType": "geometry",
           "stylers": [{
-            "color": "#f2f2f2"
-          }]
-        }, {
-          "featureType": "poi",
-          "stylers": [{
-            "visibility": "off"
-          }]
-        }, {
-          "featureType": "road",
-          "stylers": [{
-            "saturation": -100
+            "color": "#f5f5f5"
           }, {
-            "lightness": 45
+            "lightness": 20
+          }]
+        }, {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [{
+            "color": "#ffffff"
+          }, {
+            "lightness": 17
+          }]
+        }, {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [{
+            "color": "#ffffff"
+          }, {
+            "lightness": 29
+          }, {
+            "weight": 0.2
           }]
         }, {
           "featureType": "road.arterial",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#ffffff"
+          }, {
+            "lightness": 18
+          }]
+        }, {
+          "featureType": "road.local",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#ffffff"
+          }, {
+            "lightness": 16
+          }]
+        }, {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#f5f5f5"
+          }, {
+            "lightness": 21
+          }]
+        }, {
+          "featureType": "poi.park",
+          "elementType": "geometry",
+          "stylers": [{
+            "color": "#dedede"
+          }, {
+            "lightness": 21
+          }]
+        }, {
+          "elementType": "labels.text.stroke",
+          "stylers": [{
+            "visibility": "on"
+          }, {
+            "color": "#ffffff"
+          }, {
+            "lightness": 16
+          }]
+        }, {
+          "elementType": "labels.text.fill",
+          "stylers": [{
+            "saturation": 36
+          }, {
+            "color": "#333333"
+          }, {
+            "lightness": 40
+          }]
+        }, {
           "elementType": "labels.icon",
           "stylers": [{
             "visibility": "off"
           }]
         }, {
-          "featureType": "road.highway",
-          "stylers": [{
-            "visibility": "simplified"
-          }]
-        }, {
           "featureType": "transit",
+          "elementType": "geometry",
           "stylers": [{
-            "visibility": "off"
+            "color": "#f2f2f2"
+          }, {
+            "lightness": 19
           }]
         }, {
-          "featureType": "water",
+          "featureType": "administrative",
+          "elementType": "geometry.fill",
           "stylers": [{
-            "color": "#d6d2ce"
+            "color": "#fefefe"
           }, {
-            "visibility": "on"
+            "lightness": 20
           }]
-        }]]
+        }, {
+          "featureType": "administrative",
+          "elementType": "geometry.stroke",
+          "stylers": [{
+            "color": "#fefefe"
+          }, {
+            "lightness": 17
+          }, {
+            "weight": 1.2
+          }]
+        }]
       };
       var mapElement = document.getElementById('map');
 
@@ -30580,17 +30724,28 @@ function () {
       }
 
       var map = new google.maps.Map(mapElement, mapOptions);
-      map.addListener('dragend', function () {
+      var startingMapBounds;
+
+      if (window.storeLocatorSettings.currMkt === 2) {
+        startingMapBounds = this.getItalyBounds();
+      } else {
+        startingMapBounds = this.getWorldBounds();
+      }
+
+      map.fitBounds(startingMapBounds);
+      map.addListener('bounds_changed', function () {
         var position = map.getCenter();
 
         _this2.mapCenter$.next(position);
+
+        _this2.visibleItems = _this2.getStoresByViewport();
       });
       this.position = mapOptions.center;
       this.$timeout(function () {
         _this2.map = map;
-
-        _this2.searchPosition(mapOptions.center);
+        window.gmap = map;
       });
+      this.loadAllStores();
     }
   }, {
     key: "calculateDistance",
@@ -30624,14 +30779,28 @@ function () {
       }
     }
   }, {
+    key: "clearMarkers",
+    value: function clearMarkers() {
+      if (this.markerCluster) {
+        this.markerCluster.clearMarkers();
+      }
+
+      for (var i = 0; i < this.stores.length; i++) {
+        if (this.stores[i].marker) {
+          this.stores[i].marker.setMap(null);
+          this.stores[i].marker = null;
+        }
+      }
+    }
+  }, {
     key: "addMarkers",
     value: function addMarkers(stores) {
       var _this3 = this;
 
       var markers = stores.map(function (store) {
         var position = new google.maps.LatLng(store.latitude, store.longitude);
-        var content = "<div class=\"marker__content\">\n\t\t\t\t<div class=\"title\"><span>".concat(store.title, "</span></div>\n\t\t\t\t<div class=\"group group--info\">\n\t\t\t\t\t<div class=\"address\">\n\t\t\t\t\t\t").concat(store.address, "<br>\n\t\t\t\t\t\t").concat(store.zip, " ").concat(store.city, " ").concat(store.provinceCode, " ").concat(store.country, "<br>\n\t\t\t\t\t\t").concat(store.telephone ? "<span>".concat(store.telephone, "<br></span>") : '', "\n\t\t\t\t\t\t").concat(store.email ? "<span><a href=\"mailto:".concat(store.email, "\">").concat(store.email, "</a><br></span>") : '', "\n\t\t\t\t\t\t").concat(store.website ? "<span><a target=\"_blank\" href=\"".concat(store.website, "\">").concat(store.website, "</a></span>") : '', "\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"distance\">").concat(_this3.labels.approximately, " <b>").concat(Math.floor(store.distance), " km</b></div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"group group--cta\">\n\t\t\t\t\t<a id=\"locator-marker\" href=\"https://www.google.it/maps/dir/").concat(position.lat(), ",").concat(position.lng(), "/").concat(store.title, "/@").concat(store.latitude, ",").concat(store.longitude, "/\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.reachStore, "</span></a>\n\t\t\t\t</div>\n\t\t\t</div>");
-        var icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 1];
+        var content = "<div class=\"marker__content\">\n\t\t\t\t<div class=\"title\"><span>".concat(store.title, "</span></div>\n\t\t\t\t<div class=\"group group--info\">\n\t\t\t\t\t<div class=\"address\">\n\t\t\t\t\t\t").concat(store.address, "<br>\n\t\t\t\t\t\t").concat(store.zip, " ").concat(store.city, " ").concat(store.provinceCode, " ").concat(store.country, "<br>\n\t\t\t\t\t\t").concat(store.telephone ? "<span>".concat(store.telephone, "<br></span>") : '', "\n\t\t\t\t\t\t").concat(store.website ? "<span><a target=\"_blank\" href=\"".concat(store.website, "\">").concat(store.website, "</a></span>") : '', "\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"distance\">").concat(_this3.labels.approximately, " <b>").concat(Math.floor(store.distance), " km</b></div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"group group--cta\">\n\t\t\t\t\t<a id=\"locator-marker\" href=\"https://www.google.it/maps/dir/").concat(position.lat(), ",").concat(position.lng(), "/").concat(store.title, "/@").concat(store.latitude, ",").concat(store.longitude, "/\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.reachStore, "</span></a>\n\t\t\t\t\t").concat(store.type === 9 ? "<a id=\"contact-store\" href=\"/contatta-store?store=".concat(store.id, "\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.contactStore, "</span></a>") : '', "\n\t\t\t\t</div>\n\t\t\t</div>");
+        var icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 8];
         var marker = new google.maps.Marker({
           position: position,
           // map: this.map,
@@ -30699,28 +30868,9 @@ function () {
       }
     }
   }, {
-    key: "loadStoresByPosition",
-    value: function loadStoresByPosition(position) {
-      var _this5 = this;
-
-      return this.apiService.storeLocator.position(position).then(function (success) {
-        var stores = success.data;
-        _this5.visibleItems = [];
-        _this5.maxItems = ITEMS_PER_PAGE;
-
-        _this5.$timeout(function () {
-          _this5.stores = stores;
-          _this5.visibleItems = stores.slice(0, _this5.maxItems);
-        }, 50); // console.log('StoreLocatorCtrl.loadStoresByPosition', position, stores);
-
-
-        _this5.addMarkers(stores);
-      });
-    }
-  }, {
     key: "loadAllStores",
     value: function loadAllStores() {
-      var _this6 = this;
+      var _this5 = this;
 
       if (this.stores) {
         return Promise.resolve(this.stores);
@@ -30728,21 +30878,15 @@ function () {
 
 
       return this.apiService.storeLocator.all().then(function (success) {
-        var stores = success.data;
+        var stores = success.data.d.storeList; //success.data; // success.data.d.storeList;
+
         stores.forEach(function (store) {
-          return store.distance = _this6.position ? _this6.calculateDistance(store.latitude, store.longitude, _this6.position.lat(), _this6.position.lng(), 'K') : '';
+          return store.distance = _this5.position ? _this5.calculateDistance(store.latitude, store.longitude, _this5.position.lat(), _this5.position.lng(), 'K') : '';
         });
-
-        _this6.addMarkers(stores);
-
-        _this6.visibleItems = [];
-        _this6.maxItems = ITEMS_PER_PAGE;
-
-        _this6.$timeout(function () {
-          _this6.stores = stores;
-          _this6.visibleItems = stores.slice(0, _this6.maxItems);
-        }, 50);
-
+        _this5.visibleItems = [];
+        _this5.maxItems = ITEMS_PER_PAGE;
+        _this5.stores = stores;
+        _this5.visibleItems = _this5.getStoresByViewport();
         return stores;
       });
     }
@@ -30803,20 +30947,20 @@ function () {
   }, {
     key: "findNearStores",
     value: function findNearStores(stores, position) {
-      var _this7 = this;
+      var _this6 = this;
 
       if (stores) {
         stores.forEach(function (store) {
-          store.distance = _this7.calculateDistance(store.latitude, store.longitude, position.lat(), position.lng(), 'K');
+          store.distance = _this6.calculateDistance(store.latitude, store.longitude, position.lat(), position.lng(), 'K');
           store.visible = (store.cod_stato == window.userCountry || !window.userCountry) && store.distance <= MAX_DISTANCE
           /* Km */
           ;
 
           if (store.visible) {
-            if (store.removed) _this7.markerCluster.addMarker(store.marker);
+            if (store.removed) _this6.markerCluster.addMarker(store.marker);
             delete store.removed;
           } else {
-            _this7.markerCluster.removeMarker(store.marker);
+            _this6.markerCluster.removeMarker(store.marker);
 
             store.removed = true;
           }
@@ -30829,7 +30973,7 @@ function () {
           return store.visible;
         }).slice(0, 50);
         this.$timeout(function () {
-          _this7.visibleStores = visibleStores;
+          _this6.visibleStores = visibleStores;
         }, 1); // console.log('findNearStores', visibleStores);
 
         return visibleStores;
@@ -30838,14 +30982,55 @@ function () {
   }, {
     key: "searchPosition",
     value: function searchPosition(position) {
-      var _this8 = this;
+      var _this7 = this;
 
       this.position = position;
       this.map.setCenter(position);
       this.map.setZoom(ZOOM_LEVEL);
       this.setInfoWindow(position, 1);
-      return this.loadAllStores().then(function (stores) {
-        var visibleStores = _this8.findNearStores(stores, position);
+      return this.loadAllStores().then(function (success) {
+        _this7.clearMarkers();
+
+        _this7.closeMarkerWindow();
+
+        _this7.stores.forEach(function (store) {
+          return store.distance = _this7.position ? _this7.calculateDistance(store.latitude, store.longitude, _this7.position.lat(), _this7.position.lng(), 'K') : '';
+        });
+
+        if (_this7.countryContainsStores(_this7.searchCountry)) {
+          // Vengono aggiunti solo i marker del paese ricercato.
+          _this7.addMarkers(_this7.getStoresByCountry(_this7.searchCountry)); // 2a. Cerco i pin in un raggio di 150Km, eventualmente lo estendo se non c'è nulla.
+
+
+          for (var searchRadius = 150000; searchRadius <= 600000; searchRadius += 150000) {
+            var searchBounds = new google.maps.Circle({
+              center: position,
+              radius: searchRadius
+            }).getBounds();
+
+            if (_this7.boundsContainsStores(searchBounds)) {
+              break;
+            }
+          }
+
+          if (searchBounds) {
+            _this7.map.fitBounds(searchBounds, 0);
+
+            _this7.map.panToBounds(searchBounds);
+          }
+        } else {
+          // Se non ci sono store nel paese ricercato allora mostro il mondo intero e il PIN Showroom Italia.
+          var italyMainStore = _this7.stores[0];
+
+          _this7.addMarkers([italyMainStore]);
+
+          _this7.map.fitBounds(_this7.getWorldBounds());
+
+          _this7.map.panTo(new google.maps.LatLng(italyMainStore.latitude, italyMainStore.longitude));
+
+          _this7.setMarkerWindow(italyMainStore.marker.position, italyMainStore.marker.content);
+        } // const visibleStores = this.findNearStores(stores, position);
+
         /*
         if (visibleStores) {
         	this.fitBounds(visibleStores);
@@ -30868,7 +31053,7 @@ function () {
   }, {
     key: "onSubmit",
     value: function onSubmit() {
-      var _this9 = this;
+      var _this8 = this;
 
       this.error = null;
       this.busyFind = true;
@@ -30892,23 +31077,30 @@ function () {
       geocoder.geocode({
         address: this.model.address
       }, function (results, status) {
-        _this9.model = {};
+        _this8.model = {};
 
         if (status == 'OK') {
-          var position = results[0].geometry.location; // console.log('location', location);
+          var position = results[0].geometry.location;
+
+          for (var i = 0; i < results[0].address_components.length; i++) {
+            if (results[0].address_components[i].types[0] == "country" || results[0].address_components[i].types[0] == "political") {
+              _this8.searchCountry = results[0].address_components[i].short_name;
+            }
+          } // console.log('location', location);
           // const position = new google.maps.LatLng(location);
 
-          _this9.searchPosition(position).finally(function () {
-            return _this9.busyFind = false;
+
+          _this8.searchPosition(position).finally(function () {
+            return _this8.busyFind = false;
           });
         } else {
-          _this9.$timeout(function () {
+          _this8.$timeout(function () {
             var message = 'Geocode was not successful for the following reason: ' + status; // console.log('StoreLocatorCtrl.onSubmit.error', message);
 
-            _this9.error = {
+            _this8.error = {
               message: message
             };
-            _this9.busyFind = false;
+            _this8.busyFind = false;
           });
         }
       });
@@ -30949,10 +31141,25 @@ function () {
         markerWindow.setContent(content);
         markerWindow.open(this.map);
       } else {
-        if (this.markerWindow) {
-          this.markerWindow.close();
-        }
+        this.closeMarkerWindow();
       }
+    }
+  }, {
+    key: "closeMarkerWindow",
+    value: function closeMarkerWindow() {
+      if (this.markerWindow) {
+        this.markerWindow.close();
+      }
+    }
+  }, {
+    key: "getWorldBounds",
+    value: function getWorldBounds() {
+      return new google.maps.LatLngBounds(new google.maps.LatLng(61, 60), new google.maps.LatLng(-37, -92));
+    }
+  }, {
+    key: "getItalyBounds",
+    value: function getItalyBounds() {
+      return new google.maps.LatLngBounds(new google.maps.LatLng(46.4657567, 5.233972), new google.maps.LatLng(36.8257773, 18.963541));
     }
   }, {
     key: "scrollToStore",
@@ -30965,21 +31172,84 @@ function () {
   }, {
     key: "onScroll",
     value: function onScroll(event) {
-      var _this10 = this;
+      var _this9 = this;
 
       if (event.rect.top + event.rect.height < event.windowRect.bottom) {
         if (!this.busy && this.maxItems < this.stores.length) {
           this.$timeout(function () {
-            _this10.busy = true;
+            _this9.busy = true;
 
-            _this10.$timeout(function () {
-              _this10.maxItems += ITEMS_PER_PAGE;
-              _this10.visibleItems = _this10.stores.slice(0, _this10.maxItems);
-              _this10.busy = false; // console.log(this.visibleItems.length);
+            _this9.$timeout(function () {
+              _this9.maxItems += ITEMS_PER_PAGE;
+              _this9.visibleItems = _this9.getStoresByViewport();
+              _this9.busy = false; // console.log(this.visibleItems.length);
             }, 1000);
           }, 0);
         }
       }
+    }
+  }, {
+    key: "getStoresByCountry",
+    value: function getStoresByCountry(countryCode) {
+      var stores = [];
+
+      if (this.stores) {
+        for (var i = 0; i < this.stores.length; i++) {
+          if (this.stores[i].countryCode === countryCode) {
+            stores.push(this.stores[i]);
+          }
+        }
+      }
+
+      return stores;
+    }
+  }, {
+    key: "countryContainsStores",
+    value: function countryContainsStores(countryCode) {
+      if (this.stores) {
+        for (var i = 0; i < this.stores.length; i++) {
+          if (this.stores[i].countryCode === countryCode) {
+            return true;
+          }
+        }
+      }
+
+      return false;
+    }
+  }, {
+    key: "boundsContainsStores",
+    value: function boundsContainsStores(bounds) {
+      if (this.stores) {
+        for (var i = 0; i < this.stores.length; i++) {
+          if (this.stores[i].marker && bounds.contains(this.stores[i].marker.getPosition())) {
+            return true;
+          }
+        }
+      }
+
+      return false;
+    }
+  }, {
+    key: "getStoresByViewport",
+    value: function getStoresByViewport() {
+      var visibleItems = [];
+
+      if (this.stores) {
+        for (var i = 0; i < this.stores.length; i++) {
+          if (this.stores[i].marker && this.map.getBounds().contains(this.stores[i].marker.getPosition())) {
+            visibleItems.push(this.stores[i]);
+          }
+        }
+      }
+
+      visibleItems = visibleItems.sort(function (a, b) {
+        if (a.type === b.type) {
+          return a.distance - b.distance;
+        } else {
+          return a.type - b.type;
+        }
+      });
+      return visibleItems;
     }
   }]);
 

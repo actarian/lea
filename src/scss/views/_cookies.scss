@@ -12,9 +12,10 @@
 	padding: 15px;
 	font-size: 14px;
 	color: white;
+	display: none;
 
-	&.cookies-accepted {
-		display: none;
+	&.show-banner {
+		display: block;
 	}
 
 	.btn--cookies-info {

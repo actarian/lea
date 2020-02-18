@@ -10638,10 +10638,10 @@ canvas {
   .form--filters > .btn--filter,
   .form--filters > .btn--toggle {
     position: relative;
-    min-width: calc(25% - 35px);
+    min-width: calc(20% - 35px);
     -webkit-box-flex: 1;
-        -ms-flex: 1 1 calc(25% - 35px);
-            flex: 1 1 calc(25% - 35px);
+        -ms-flex: 1 1 calc(20% - 35px);
+            flex: 1 1 calc(20% - 35px);
     margin: 0 35px 25px 0;
     background: #E7E7E7;
     padding: 8px; }
@@ -10905,15 +10905,20 @@ canvas {
 
 #toggle-filter {
   width: 100%;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px; }
-  #toggle-filter p {
+  text-align: right;
+  font-size: 18px;
+  margin-top: -10px; }
+  #toggle-filter span {
     cursor: pointer;
-    display: block;
-    text-align: center;
-    width: 20%;
-    margin: 20px auto; }
+    display: inline-block;
+    text-align: right;
+    text-decoration: underline; }
+    #toggle-filter span:after {
+      display: inline-block;
+      content: "-";
+      margin: 0 5px; }
+  #toggle-filter.toggle span:after {
+    content: "+"; }
 
 .wrapper--header {
   display: block;
@@ -12122,10 +12127,11 @@ footer .inner {
   border-radius: 3px;
   padding: 15px;
   font-size: 14px;
-  color: white; }
-  .section--cookies.cookies-accepted,
-  #acceptcookie.cookies-accepted {
-    display: none; }
+  color: white;
+  display: none; }
+  .section--cookies.show-banner,
+  #acceptcookie.show-banner {
+    display: block; }
   .section--cookies .btn--cookies-info,
   #acceptcookie .btn--cookies-info {
     font-size: 16px;
@@ -13689,6 +13695,14 @@ layout {
   background: #F3F3F3; }
   .section--form .group--cta {
     margin: 60px 0 0 0; }
+  .section--form .store-info {
+    background: #fff;
+    padding: 50px;
+    margin-bottom: 70px; }
+    .section--form .store-info .address {
+      text-align: center; }
+      .section--form .store-info .address .address--title {
+        margin-top: 0; }
 
 .section--contacts {
   padding-top: 70px;
@@ -14125,63 +14139,45 @@ layout {
     background: rgba(0, 0, 0, 0.1); }
 
 .ico-spec {
-  width: 80px;
-  height: 80px;
-  background-image: url(https://www.panaria.us/img/scheda/specs.png);
-  background-size: cover;
+  width: 75px;
+  height: 73px;
+  background-image: url(/img/tech_specs_icons.png);
   margin: -15px auto;
-  display: inline-block; }
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75); }
 
 .ico-spec-water {
-  background-position: 0 0; }
+  background-position: 0 -1px; }
 
 .ico-spec-breaking {
-  background-position: 0 -80px; }
-
-.ico-spec-abrasion {
-  background-position: 0 -160px; }
-
-.ico-spec-expansion {
-  background-position: 0 -240px; }
-
-.ico-spec-stain {
-  background-position: 0 -320px; }
-
-.ico-spec-chemical {
-  background-position: 0 -400px; }
-
-.ico-spec-frost {
-  background-position: 0 -480px; }
+  background-position: 0 -121px; }
 
 .ico-spec-slip {
-  background-position: 0 -560px; }
+  background-position: 0 -242px; }
 
-.ico-spec-flame {
-  background-position: 0 -640px; }
+.ico-spec-abrasion {
+  background-position: 0 -482px; }
 
-.ico-spec-robinson {
+.ico-spec-expansion {
+  background-position: 0 -604px; }
+
+.ico-spec-stain {
   background-position: 0 -720px; }
 
-.ico-spec-conductivity {
-  background-position: 0 -800px; }
+.ico-spec-chemical {
+  background-position: 0 -842px; }
 
-.ico-spec-joint {
-  background-position: 0 -880px; }
-
-.ico-spec-shade {
+.ico-spec-frost {
   background-position: 0 -960px; }
 
-.ico-spec-surface-abrasion {
-  background-position: 0 -1040px; }
+.ico-spec-flame {
+  background-position: 0 -1082px; }
 
-.ico-spec-bond {
-  background-position: 0 -1120px; }
-
-.ico-spec-crazing {
-  background-position: 0 -1200px; }
-
-.ico-spec-thermalshock {
-  background-position: 0 -1280px; }
+.ico-spec-shade {
+  background-position: 0 -1442px; }
 
 .scheda-specs h4 {
   margin-top: 60px; }
@@ -14443,6 +14439,14 @@ layout {
   @media (max-width: 1023.98px) {
     .section--listing-news {
       padding: 30px 0; } }
+  .section--listing-news > .container > .title {
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 500;
+    text-align: center; }
+    @media (min-width: 1024px) {
+      .section--listing-news > .container > .title {
+        margin-bottom: 70px; } }
 
 .listing--news {
   background: white; }

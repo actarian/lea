@@ -7,6 +7,20 @@
 	.group--cta {
 		margin: 60px 0 0 0;
 	}
+
+	.store-info {
+		background: #fff;
+		padding: 50px;
+		margin-bottom: 70px;
+
+		.address {
+			text-align: center;
+
+			.address--title {
+				margin-top: 0;
+			}
+		}
+	}
 }
 
 .section--contacts {

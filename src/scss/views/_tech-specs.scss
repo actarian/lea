@@ -90,80 +90,54 @@
 }
 
 .ico-spec {
-	width: 80px;
-	height: 80px;
-	background-image: url(https://www.panaria.us/img/scheda/specs.png);
-	background-size: cover;
+	width: 75px;
+	height: 73px;
+	background-image: url(/img/tech_specs_icons.png);
 	margin: -15px auto;
-	display: inline-block
+	display: inline-block;
+	position: relative;
+	top: 3px;
+	transform: scale(.75);
 }
 
 .ico-spec-water {
-	background-position: 0 0
+	background-position: 0 -1px;
 }
 
 .ico-spec-breaking {
-	background-position: 0 -80px
-}
-
-.ico-spec-abrasion {
-	background-position: 0 -160px
-}
-
-.ico-spec-expansion {
-	background-position: 0 -240px
-}
-
-.ico-spec-stain {
-	background-position: 0 -320px
-}
-
-.ico-spec-chemical {
-	background-position: 0 -400px
-}
-
-.ico-spec-frost {
-	background-position: 0 -480px
+	background-position: 0 -121px;
 }
 
 .ico-spec-slip {
-	background-position: 0 -560px
+	background-position: 0 -242px;
+}
+
+.ico-spec-abrasion {
+	background-position: 0 -482px;
+}
+
+.ico-spec-expansion {
+	background-position: 0 -604px;
+}
+
+.ico-spec-stain {
+	background-position: 0 -720px;
+}
+
+.ico-spec-chemical {
+	background-position: 0 -842px;
+}
+
+.ico-spec-frost {
+	background-position: 0 -960px;
 }
 
 .ico-spec-flame {
-	background-position: 0 -640px
-}
-
-.ico-spec-robinson {
-	background-position: 0 -720px
-}
-
-.ico-spec-conductivity {
-	background-position: 0 -800px
-}
-
-.ico-spec-joint {
-	background-position: 0 -880px
+	background-position: 0 -1082px;
 }
 
 .ico-spec-shade {
-	background-position: 0 -960px
-}
-
-.ico-spec-surface-abrasion {
-	background-position: 0 -1040px
-}
-
-.ico-spec-bond {
-	background-position: 0 -1120px
-}
-
-.ico-spec-crazing {
-	background-position: 0 -1200px
-}
-
-.ico-spec-thermalshock {
-	background-position: 0 -1280px
+	background-position: 0 -1442px;
 }
 
 .scheda-specs h4 {

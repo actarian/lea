@@ -19,18 +19,18 @@ export default class CookiesDirective {
 		};
 		const node = element[0];
 		const cookiesAccepted = this.storage.get('cookiesAccepted');
-		if (cookiesAccepted) {
-			node.classList.add('cookies-accepted');
+		if (!cookiesAccepted) {
+			node.classList.add('show-banner');
 		}
 		scope.onAcceptCookies = (event) => {
-			this.storage.set('cookiesAccepted', true);
+			this.storage.set('cookiesAccepted', true, 365);
 			// accept();
 			TweenMax.to(node, 0.5, {
 				bottom: '-100%',
 				ease: Power2.easeInOut,
 				delay: 0.15,
 				onComplete: () => {
-					node.classList.add('cookies-accepted');
+					node.classList.remove('show-banner');
 				}
 			});
 		};

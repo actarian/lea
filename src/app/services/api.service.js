@@ -35,8 +35,8 @@ export default class ApiService {
 			},
 			storeLocator: {
 				all: () => {
-					// return $http.get(API_HREF + '/api/store/json');
-					return $http.get('data/store-locator.json');
+					return $http.post('/ws/wsUsers.asmx/StoreList', {});
+					//return $http.get('data/store-locator.json');
 				},
 			},
 		};

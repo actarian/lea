@@ -26,19 +26,21 @@ class StoreLocatorCtrl {
 		this.$timeout = $timeout;
 		this.domService = DomService;
 		this.apiService = ApiService;
-		if (!window.apiKey && !IS_DEV) {
+		if (!window.storeLocatorSettings.apiKey && !IS_DEV) {
 			throw (`Missing Google Map Api Key`);
 		}
-		this.apiKey = window.apiKey;
+		this.apiKey = window.storeLocatorSettings.apiKey;
 		this.model = {};
 		this.busyFind = false;
 		this.busyLocation = false;
+		this.searchCountry = "";
 		this.visibleStores = [];
 		this.mapCenter$ = new Subject();
 		this.labels = window.labels || {
-			approximately: `Approximately`,
+			approximately: window.storeLocatorSettings.localizedStrings.LBL_DISTANZA_STORE,
 			moreInfo: `More Info`,
-			reachStore: `Reach Store`,
+			reachStore: window.storeLocatorSettings.localizedStrings.LBL_RAGGIUNGERE_STORE,
+			contactStore: window.storeLocatorSettings.localizedStrings.LBL_CONTATTA_STORE
 		};
 		if (GOOGLE_MAPS !== null) {
 			this.initMap();
@@ -57,7 +59,9 @@ class StoreLocatorCtrl {
 			debounceTime(1000),
 			takeUntil(this.unsubscribe)
 		).subscribe(position => {
-			this.findNearStores(this.stores, position);
+			this.$timeout(() => {
+				this.visibleStores = this.getStoresByViewport();
+			}, 1);
 		});
 		$scope.$on('destroy', () => {
 			this.unsubscribe.next();
@@ -67,54 +71,215 @@ class StoreLocatorCtrl {
 
 	initMap() {
 		const mapOptions = {
-			zoom: 7,
+			zoom: 17,
 			center: new google.maps.LatLng(44.5416713, 10.8259022), // prima ricerca vicino a casa madre
-			styles: [[{
-				"featureType": "administrative",
-				"elementType": "geometry.fill",
-				"stylers": [{ "visibility": "on" }]
-			}, {
-				"featureType": "administrative",
-				"elementType": "labels.text.fill",
-				"stylers": [{ "color": "#414141" }]
-			}, {
-				"featureType": "landscape",
-				"stylers": [{ "color": "#f2f2f2" }]
-			}, {
-				"featureType": "poi",
-				"stylers": [{ "visibility": "off" }]
-			}, {
-				"featureType": "road",
-				"stylers": [{ "saturation": -100 }, { "lightness": 45 }]
-			}, {
-				"featureType": "road.arterial",
-				"elementType": "labels.icon",
-				"stylers": [{ "visibility": "off" }]
-			}, {
-				"featureType": "road.highway",
-				"stylers": [{ "visibility": "simplified" }]
-			}, {
-				"featureType": "transit",
-				"stylers": [{ "visibility": "off" }]
-			}, {
-				"featureType": "water",
-				"stylers": [{ "color": "#d6d2ce" }, { "visibility": "on" }]
-			}]]
+			styles: [
+				{
+					"featureType": "water",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#e9e9e9"
+						},
+						{
+							"lightness": 17
+						}
+					]
+				},
+				{
+					"featureType": "landscape",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#f5f5f5"
+						},
+						{
+							"lightness": 20
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "geometry.fill",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 17
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "geometry.stroke",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 29
+						},
+						{
+							"weight": 0.2
+						}
+					]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 18
+						}
+					]
+				},
+				{
+					"featureType": "road.local",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 16
+						}
+					]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#f5f5f5"
+						},
+						{
+							"lightness": 21
+						}
+					]
+				},
+				{
+					"featureType": "poi.park",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#dedede"
+						},
+						{
+							"lightness": 21
+						}
+					]
+				},
+				{
+					"elementType": "labels.text.stroke",
+					"stylers": [
+						{
+							"visibility": "on"
+						},
+						{
+							"color": "#ffffff"
+						},
+						{
+							"lightness": 16
+						}
+					]
+				},
+				{
+					"elementType": "labels.text.fill",
+					"stylers": [
+						{
+							"saturation": 36
+						},
+						{
+							"color": "#333333"
+						},
+						{
+							"lightness": 40
+						}
+					]
+				},
+				{
+					"elementType": "labels.icon",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "transit",
+					"elementType": "geometry",
+					"stylers": [
+						{
+							"color": "#f2f2f2"
+						},
+						{
+							"lightness": 19
+						}
+					]
+				},
+				{
+					"featureType": "administrative",
+					"elementType": "geometry.fill",
+					"stylers": [
+						{
+							"color": "#fefefe"
+						},
+						{
+							"lightness": 20
+						}
+					]
+				},
+				{
+					"featureType": "administrative",
+					"elementType": "geometry.stroke",
+					"stylers": [
+						{
+							"color": "#fefefe"
+						},
+						{
+							"lightness": 17
+						},
+						{
+							"weight": 1.2
+						}
+					]
+				}
+			]
 		};
 		const mapElement = document.getElementById('map');
 		if (!mapElement) {
 			return;
 		}
 		const map = new google.maps.Map(mapElement, mapOptions);
-		map.addListener('dragend', () => {
+
+		var startingMapBounds;
+
+		if (window.storeLocatorSettings.currMkt === 2) {
+			startingMapBounds = this.getItalyBounds();
+		}
+		else {
+			startingMapBounds = this.getWorldBounds();
+		}
+
+		map.fitBounds(startingMapBounds);
+
+		map.addListener('bounds_changed', () => {
 			const position = map.getCenter();
 			this.mapCenter$.next(position);
+			this.visibleItems = this.getStoresByViewport();
 		});
+
 		this.position = mapOptions.center;
 		this.$timeout(() => {
 			this.map = map;
-			this.searchPosition(mapOptions.center);
+			window.gmap = map;
 		});
+
+		this.loadAllStores();
 	}
 
 	calculateDistance(lat1, lon1, lat2, lon2, unit) {
@@ -142,6 +307,19 @@ class StoreLocatorCtrl {
 		}
 	}
 
+	clearMarkers() {
+		if (this.markerCluster) {
+			this.markerCluster.clearMarkers();
+		}
+
+		for (let i = 0; i < this.stores.length; i++) {
+			if (this.stores[i].marker) {
+				this.stores[i].marker.setMap(null);
+				this.stores[i].marker = null;
+			}
+		}
+	}
+
 	addMarkers(stores) {
 		const markers = stores.map((store) => {
 			const position = new google.maps.LatLng(store.latitude, store.longitude);
@@ -152,19 +330,19 @@ class StoreLocatorCtrl {
 						${store.address}<br>
 						${store.zip} ${store.city} ${store.provinceCode} ${store.country}<br>
 						${store.telephone ? `<span>${store.telephone}<br></span>` : ''}
-						${store.email ? `<span><a href="mailto:${store.email}">${store.email}</a><br></span>` : ''}
 						${store.website ? `<span><a target="_blank" href="${store.website}">${store.website}</a></span>` : ''}
 					</div>
 					<div class="distance">${this.labels.approximately} <b>${Math.floor(store.distance)} km</b></div>
 				</div>
 				<div class="group group--cta">
 					<a id="locator-marker" href="https://www.google.it/maps/dir/${position.lat()},${position.lng()}/${store.title}/@${store.latitude},${store.longitude}/" target="_blank" class="btn btn--link"><span>${this.labels.reachStore}</span></a>
+					${store.type === 9 ? `<a id="contact-store" href="/contatta-store?store=${store.id}" target="_blank" class="btn btn--link"><span>${this.labels.contactStore}</span></a>` : ''}
 				</div>
 			</div>`;
 
-			const icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 1];
+			const icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 8];
 
-			const marker = new google.maps.Marker({
+			let marker = new google.maps.Marker({
 				position: position,
 				// map: this.map,
 				icon: `${BASEPATH}${icon}`,
@@ -215,35 +393,20 @@ class StoreLocatorCtrl {
 		}
 	}
 
-	loadStoresByPosition(position) {
-		return this.apiService.storeLocator.position(position).then(success => {
-			const stores = success.data;
-			this.visibleItems = [];
-			this.maxItems = ITEMS_PER_PAGE;
-			this.$timeout(() => {
-				this.stores = stores;
-				this.visibleItems = stores.slice(0, this.maxItems);
-			}, 50);
-			// console.log('StoreLocatorCtrl.loadStoresByPosition', position, stores);
-			this.addMarkers(stores);
-		});
-	}
-
 	loadAllStores() {
 		if (this.stores) {
 			return Promise.resolve(this.stores);
 		}
 		// this.loadFakeStores();
 		return this.apiService.storeLocator.all().then(success => {
-			const stores = success.data;
+			const stores = success.data.d.storeList; //success.data; // success.data.d.storeList;
 			stores.forEach(store => store.distance = this.position ? this.calculateDistance(store.latitude, store.longitude, this.position.lat(), this.position.lng(), 'K') : '');
-			this.addMarkers(stores);
+
 			this.visibleItems = [];
 			this.maxItems = ITEMS_PER_PAGE;
-			this.$timeout(() => {
-				this.stores = stores;
-				this.visibleItems = stores.slice(0, this.maxItems);
-			}, 50);
+			this.stores = stores;
+			this.visibleItems = this.getStoresByViewport();
+
 			return stores;
 		});
 	}
@@ -330,8 +493,42 @@ class StoreLocatorCtrl {
 		this.map.setCenter(position);
 		this.map.setZoom(ZOOM_LEVEL);
 		this.setInfoWindow(position, 1);
-		return this.loadAllStores().then(stores => {
-			const visibleStores = this.findNearStores(stores, position);
+
+		return this.loadAllStores().then(success => {
+			this.clearMarkers();
+			this.closeMarkerWindow();
+
+			this.stores.forEach(store => store.distance = this.position ? this.calculateDistance(store.latitude, store.longitude, this.position.lat(), this.position.lng(), 'K') : '');
+
+			if (this.countryContainsStores(this.searchCountry)) {
+				// Vengono aggiunti solo i marker del paese ricercato.
+				this.addMarkers(this.getStoresByCountry(this.searchCountry));
+
+				// 2a. Cerco i pin in un raggio di 150Km, eventualmente lo estendo se non c'è nulla.
+				for (let searchRadius = 150000; searchRadius <= 600000; searchRadius += 150000) {
+					var searchBounds = new google.maps.Circle({center: position, radius: searchRadius}).getBounds();
+
+					if (this.boundsContainsStores(searchBounds)) {
+						break;
+					}
+				}
+
+				if (searchBounds) {
+					this.map.fitBounds(searchBounds, 0);
+					this.map.panToBounds(searchBounds);
+				}
+			}
+			else {
+				// Se non ci sono store nel paese ricercato allora mostro il mondo intero e il PIN Showroom Italia.
+				let italyMainStore = this.stores[0];
+				this.addMarkers([italyMainStore]);
+
+				this.map.fitBounds(this.getWorldBounds());
+				this.map.panTo(new google.maps.LatLng(italyMainStore.latitude, italyMainStore.longitude));
+				this.setMarkerWindow(italyMainStore.marker.position, italyMainStore.marker.content);
+			}
+
+			// const visibleStores = this.findNearStores(stores, position);
 			/*
 			if (visibleStores) {
 				this.fitBounds(visibleStores);
@@ -371,6 +568,13 @@ class StoreLocatorCtrl {
 			this.model = {};
 			if (status == 'OK') {
 				const position = results[0].geometry.location;
+
+				for (let i = 0; i < results[0].address_components.length; i++) {
+					if (results[0].address_components[i].types[0] == "country" || results[0].address_components[i].types[0] == "political") {
+						this.searchCountry = results[0].address_components[i].short_name;
+					}
+				}
+
 				// console.log('location', location);
 				// const position = new google.maps.LatLng(location);
 				this.searchPosition(position).finally(() => this.busyFind = false);
@@ -414,10 +618,28 @@ class StoreLocatorCtrl {
 			markerWindow.setContent(content);
 			markerWindow.open(this.map);
 		} else {
-			if (this.markerWindow) {
-				this.markerWindow.close();
-			}
+			this.closeMarkerWindow();
 		}
+	}
+
+	closeMarkerWindow() {
+		if (this.markerWindow) {
+			this.markerWindow.close();
+		}
+	}
+
+	getWorldBounds() {
+		return new google.maps.LatLngBounds(
+			new google.maps.LatLng(61, 60),
+			new google.maps.LatLng(-37, -92)
+		);
+	}
+
+	getItalyBounds() {
+		return new google.maps.LatLngBounds(
+			new google.maps.LatLng(46.4657567, 5.233972),
+			new google.maps.LatLng(36.8257773, 18.963541)
+		);
 	}
 
 	scrollToStore(store) {
@@ -434,13 +656,74 @@ class StoreLocatorCtrl {
 					this.busy = true;
 					this.$timeout(() => {
 						this.maxItems += ITEMS_PER_PAGE;
-						this.visibleItems = this.stores.slice(0, this.maxItems);
+						this.visibleItems = this.getStoresByViewport();
 						this.busy = false;
 						// console.log(this.visibleItems.length);
 					}, 1000);
 				}, 0);
 			}
 		}
+	}
+
+	getStoresByCountry(countryCode) {
+		let stores = [];
+
+		if (this.stores) {
+			for (let i = 0; i < this.stores.length; i++) {
+				if (this.stores[i].countryCode === countryCode) {
+					stores.push(this.stores[i]);
+				}
+			}
+		}
+
+		return stores;
+	}
+
+	countryContainsStores(countryCode) {
+		if (this.stores) {
+			for (let i = 0; i < this.stores.length; i++) {
+				if (this.stores[i].countryCode === countryCode) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	boundsContainsStores(bounds) {
+		if (this.stores) {
+			for (let i = 0; i < this.stores.length; i++) {
+				if (this.stores[i].marker && bounds.contains(this.stores[i].marker.getPosition())) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	getStoresByViewport() {
+		let visibleItems = [];
+
+		if (this.stores) {
+			for (let i = 0; i < this.stores.length; i++) {
+				if (this.stores[i].marker && this.map.getBounds().contains(this.stores[i].marker.getPosition())) {
+					visibleItems.push(this.stores[i]);
+				}
+			}
+		}
+
+		visibleItems = visibleItems.sort((a, b) => {
+			if (a.type === b.type) {
+				return a.distance - b.distance;
+			}
+			else {
+				return a.type - b.type;
+			}
+		});
+
+		return visibleItems;
 	}
 
 }
