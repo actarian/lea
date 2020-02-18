@@ -27149,8 +27149,7 @@ function (_Highway$Renderer) {
           var target = document.querySelector("[hreflang-target=\"".concat(node.getAttribute('hreflang'), "\"]"));
 
           if (target) {
-            target.href = node.href;
-            console.log(target, node.href);
+            target.href = node.href; // console.log(target, node.href);
           }
         }
       });
