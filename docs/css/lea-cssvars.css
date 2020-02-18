@@ -12613,6 +12613,8 @@ footer .inner {
     font-size: 32px;
     font-weight: var(--font-light);
     margin-bottom: 65px; }
+  .group--download .abstract {
+    margin-bottom: 30px; }
   .group--download .group--download__label {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;
