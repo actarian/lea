@@ -26500,8 +26500,8 @@ function () {
 
         if (index === -1) {
           items.push(value);
-          controller.$setViewValue(items);
-          console.log(controller);
+          controller.$setViewValue(items); // console.log(controller);
+
           scope.ngModel = items; // overwrites ngModel value
         }
 
@@ -26523,8 +26523,7 @@ function () {
 
       scope.searchQuery = function () {
         return function (item) {
-          console.log(item, scope.query);
-
+          // console.log(item, scope.query);
           if (scope.query) {
             return item.name.toLowerCase().indexOf(scope.query.toLowerCase()) !== -1;
           } else {
@@ -26534,8 +26533,8 @@ function () {
       };
 
       scope.modelValue = function () {
-        var value = controller.$viewValue || [];
-        console.log(value);
+        var value = controller.$viewValue || []; // console.log(value);
+
         return value;
       };
 

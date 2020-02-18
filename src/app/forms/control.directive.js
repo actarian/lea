@@ -137,7 +137,7 @@ export default class ControlDirective {
 			if (index === -1) {
 				items.push(value);
 				controller.$setViewValue(items);
-				console.log(controller);
+				// console.log(controller);
 				scope.ngModel = items; // overwrites ngModel value
 			}
 			scope.query = null;
@@ -154,7 +154,7 @@ export default class ControlDirective {
 		};
 		scope.searchQuery = () => {
 			return function(item) {
-				console.log(item, scope.query);
+				// console.log(item, scope.query);
 				if (scope.query) {
 					return item.name.toLowerCase().indexOf(scope.query.toLowerCase()) !== -1;
 				} else {
@@ -164,7 +164,7 @@ export default class ControlDirective {
 		};
 		scope.modelValue = () => {
 			const value = controller.$viewValue || [];
-			console.log(value);
+			// console.log(value);
 			return value;
 		};
 		scope.onChange = (model) => {
