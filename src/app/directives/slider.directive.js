@@ -173,6 +173,7 @@ export default class SliderDirective {
 			target,
 			offset = parseInt(sliderRight.offsetLeft);
 		const onMove = ($move) => {
+			console.log('onMove', $move);
 			const width = sliderLeft.offsetWidth - offset * 2;
 			move = Math.max(0, Math.min(width, $move));
 			TweenMax.set(sliderRight, { x: move });
@@ -191,6 +192,9 @@ export default class SliderDirective {
 			if (target !== sliderRight) {
 				const width = sliderLeft.offsetWidth - offset * 2;
 				distance = -distance / slider.offsetWidth * width;
+				if (window.innerWidth < 1024) {
+					distance /= sliderInner.children.length;
+				}
 			}
 			onMove(down + distance);
 		}, (e) => {

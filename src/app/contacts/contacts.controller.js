@@ -33,11 +33,11 @@ class ContactsCtrl {
 	onSubmit() {
 		console.log('ContactsCtrl.onSubmit', this.model);
 		if (this.state.busy()) {
-			this.$http.post('/WS/wsUsers.asmx/Contact', {data: this.model}).then(
+			this.$http.post('/WS/wsUsers.asmx/Contact', { data: this.model }).then(
 				success => {
 					this.state.success();
 
-					GtmService.push({"event": "Action Complete"});
+					GtmService.push({ "event": "Action Complete" });
 				},
 				error => {
 					this.error = error;

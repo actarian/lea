@@ -1,0 +1,1007 @@
+<section class="section section--hero-generic background--16" hero>
+	<div class="container">
+		<div class="background"></div>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<h1 class="title" split>Contatta Store</h1>
+				<div class="abstract" split></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script lazy-script>
+	window.data = {
+		actions: [],
+		countries: [],
+		jobs: [],
+		knowledges: [],
+		collections: [],
+	};
+	window.data.countries = [{
+		id: 1,
+		name: "Afganistan"
+	}, {
+		id: 240,
+		name: "Aland Islands"
+	}, {
+		id: 2,
+		name: "Albania"
+	}, {
+		id: 3,
+		name: "Algeria"
+	}, {
+		id: 237,
+		name: "Andorra"
+	}, {
+		id: 4,
+		name: "Angola"
+	}, {
+		id: 5,
+		name: "Anguilla"
+	}, {
+		id: 251,
+		name: "Antartica"
+	}, {
+		id: 6,
+		name: "Antigua e Barbuda"
+	}, {
+		id: 7,
+		name: "Antille Olandesi"
+	}, {
+		id: 8,
+		name: "Arabia Saudita"
+	}, {
+		id: 9,
+		name: "Argentina"
+	}, {
+		id: 10,
+		name: "Armenia"
+	}, {
+		id: 11,
+		name: "Aruba"
+	}, {
+		id: 12,
+		name: "Australia"
+	}, {
+		id: 13,
+		name: "Austria"
+	}, {
+		id: 14,
+		name: "Azerbaigian"
+	}, {
+		id: 15,
+		name: "Bahamas"
+	}, {
+		id: 16,
+		name: "Bahrain"
+	}, {
+		id: 17,
+		name: "Bangladesh"
+	}, {
+		id: 18,
+		name: "Barbados"
+	}, {
+		id: 19,
+		name: "Belgio"
+	}, {
+		id: 20,
+		name: "Belize"
+	}, {
+		id: 21,
+		name: "Benin"
+	}, {
+		id: 22,
+		name: "Bermuda"
+	}, {
+		id: 23,
+		name: "Bhutan"
+	}, {
+		id: 24,
+		name: "Bielorussia"
+	}, {
+		id: 25,
+		name: "Birmania/Myanmar"
+	}, {
+		id: 26,
+		name: "Bolivia"
+	}, {
+		id: 27,
+		name: "Bosnia-Herzeg."
+	}, {
+		id: 28,
+		name: "Botswana"
+	}, {
+		id: 29,
+		name: "Bouvet"
+	}, {
+		id: 30,
+		name: "Brasile"
+	}, {
+		id: 31,
+		name: "Brunei"
+	}, {
+		id: 32,
+		name: "Bulgaria"
+	}, {
+		id: 33,
+		name: "Burkina Faso"
+	}, {
+		id: 34,
+		name: "Burundi"
+	}, {
+		id: 35,
+		name: "Cambogia"
+	}, {
+		id: 36,
+		name: "Camerun"
+	}, {
+		id: 37,
+		name: "Canada"
+	}, {
+		id: 38,
+		name: "Capo Verde"
+	}, {
+		id: 39,
+		name: "Chad"
+	}, {
+		id: 40,
+		name: "Cile"
+	}, {
+		id: 41,
+		name: "Cina"
+	}, {
+		id: 42,
+		name: "Cipro"
+	}, {
+		id: 43,
+		name: "Città del Vaticano"
+	}, {
+		id: 44,
+		name: "Cocos"
+	}, {
+		id: 45,
+		name: "Colombia"
+	}, {
+		id: 46,
+		name: "Comoros"
+	}, {
+		id: 47,
+		name: "Congo"
+	}, {
+		id: 241,
+		name: "Congo, Rep. Dem."
+	}, {
+		id: 49,
+		name: "Corea del Nord"
+	}, {
+		id: 50,
+		name: "Corea del Sud"
+	}, {
+		id: 51,
+		name: "Costa d'Avorio"
+	}, {
+		id: 52,
+		name: "Costa Rica"
+	}, {
+		id: 53,
+		name: "Croazia"
+	}, {
+		id: 54,
+		name: "Cuba"
+	}, {
+		id: 55,
+		name: "Danimarca"
+	}, {
+		id: 56,
+		name: "Djibouti"
+	}, {
+		id: 57,
+		name: "Dominica"
+	}, {
+		id: 58,
+		name: "Egitto"
+	}, {
+		id: 59,
+		name: "El Salvador"
+	}, {
+		id: 60,
+		name: "Emir. Arabi Uniti"
+	}, {
+		id: 61,
+		name: "Equador"
+	}, {
+		id: 62,
+		name: "Eritrea"
+	}, {
+		id: 63,
+		name: "Estonia"
+	}, {
+		id: 64,
+		name: "Etiopia"
+	}, {
+		id: 65,
+		name: "Filippine"
+	}, {
+		id: 66,
+		name: "Finlandia"
+	}, {
+		id: 67,
+		name: "Francia"
+	}, {
+		id: 68,
+		name: "Gabon"
+	}, {
+		id: 69,
+		name: "Gambia"
+	}, {
+		id: 70,
+		name: "Georgia"
+	}, {
+		id: 71,
+		name: "Georgia Sud e Is. Sandwich"
+	}, {
+		id: 72,
+		name: "Germania"
+	}, {
+		id: 73,
+		name: "Ghana"
+	}, {
+		id: 74,
+		name: "Giamaica"
+	}, {
+		id: 75,
+		name: "Giappone"
+	}, {
+		id: 76,
+		name: "Gibilterra"
+	}, {
+		id: 77,
+		name: "Giordania"
+	}, {
+		id: 78,
+		name: "Granada"
+	}, {
+		id: 79,
+		name: "Grecia"
+	}, {
+		id: 80,
+		name: "Groenlandia"
+	}, {
+		id: 81,
+		name: "Guadalupe"
+	}, {
+		id: 82,
+		name: "Guaiana Francese"
+	}, {
+		id: 83,
+		name: "Guam"
+	}, {
+		id: 84,
+		name: "Guatemala"
+	}, {
+		id: 243,
+		name: "Guernsey"
+	}, {
+		id: 85,
+		name: "Guinea"
+	}, {
+		id: 87,
+		name: "Guinea Equatoriale"
+	}, {
+		id: 86,
+		name: "Guinea-Bissau "
+	}, {
+		id: 88,
+		name: "Guyana"
+	}, {
+		id: 89,
+		name: "Haiti"
+	}, {
+		id: 90,
+		name: "Honduras"
+	}, {
+		id: 91,
+		name: "Hong Kong"
+	}, {
+		id: 93,
+		name: "India"
+	}, {
+		id: 94,
+		name: "Indonesia"
+	}, {
+		id: 96,
+		name: "Irak"
+	}, {
+		id: 97,
+		name: "Iran"
+	}, {
+		id: 98,
+		name: "Irlanda"
+	}, {
+		id: 99,
+		name: "Islanda"
+	}, {
+		id: 100,
+		name: "Isola Christmas"
+	}, {
+		id: 244,
+		name: "Isola di Man"
+	}, {
+		id: 101,
+		name: "Isola Norfolk"
+	}, {
+		id: 102,
+		name: "Isole Americane del Pacifico"
+	}, {
+		id: 103,
+		name: "Isole Caimane"
+	}, {
+		id: 104,
+		name: "Isole Cook"
+	}, {
+		id: 105,
+		name: "Isole Faroe"
+	}, {
+		id: 106,
+		name: "Isole Figi"
+	}, {
+		id: 107,
+		name: "Isole Heard e McDonald"
+	}, {
+		id: 108,
+		name: "Isole Marshall"
+	}, {
+		id: 109,
+		name: "Isole Salomone"
+	}, {
+		id: 110,
+		name: "Isole Svalbard e Jan Mayen"
+	}, {
+		id: 111,
+		name: "Isole Vergini Americane"
+	}, {
+		id: 112,
+		name: "Isole Vergini Britanniche"
+	}, {
+		id: 113,
+		name: "Israele"
+	}, {
+		id: 114,
+		name: "Italia"
+	}, {
+		id: 245,
+		name: "Jersey"
+	}, {
+		id: 115,
+		name: "Kazajstan"
+	}, {
+		id: 116,
+		name: "Kenia"
+	}, {
+		id: 117,
+		name: "Kirguizistan"
+	}, {
+		id: 118,
+		name: "Kiribati"
+	}, {
+		id: 119,
+		name: "Kosovo"
+	}, {
+		id: 120,
+		name: "Kuwait"
+	}, {
+		id: 121,
+		name: "Laos"
+	}, {
+		id: 122,
+		name: "Lesotho"
+	}, {
+		id: 123,
+		name: "Lettonia"
+	}, {
+		id: 124,
+		name: "Libano"
+	}, {
+		id: 125,
+		name: "Liberia"
+	}, {
+		id: 126,
+		name: "Libia"
+	}, {
+		id: 127,
+		name: "Liechtenstein"
+	}, {
+		id: 128,
+		name: "Lituania"
+	}, {
+		id: 129,
+		name: "Lussemburgo"
+	}, {
+		id: 130,
+		name: "Macao"
+	}, {
+		id: 131,
+		name: "Macedonia"
+	}, {
+		id: 132,
+		name: "Madagascar"
+	}, {
+		id: 133,
+		name: "Malawi"
+	}, {
+		id: 134,
+		name: "Malaysia"
+	}, {
+		id: 135,
+		name: "Maldive"
+	}, {
+		id: 136,
+		name: "Malí"
+	}, {
+		id: 137,
+		name: "Malta"
+	}, {
+		id: 138,
+		name: "Malvine (Falkland)"
+	}, {
+		id: 139,
+		name: "Marianne Settentrion"
+	}, {
+		id: 140,
+		name: "Marocco"
+	}, {
+		id: 141,
+		name: "Martinica"
+	}, {
+		id: 142,
+		name: "Mauricio"
+	}, {
+		id: 143,
+		name: "Mauritania"
+	}, {
+		id: 144,
+		name: "Mayotte"
+	}, {
+		id: 145,
+		name: "Messico"
+	}, {
+		id: 146,
+		name: "Micronesia"
+	}, {
+		id: 147,
+		name: "Moldavia"
+	}, {
+		id: 148,
+		name: "Monaco"
+	}, {
+		id: 149,
+		name: "Mongolia"
+	}, {
+		id: 246,
+		name: "Montenegro"
+	}, {
+		id: 150,
+		name: "Montserrat"
+	}, {
+		id: 151,
+		name: "Mozambico"
+	}, {
+		id: 152,
+		name: "Namibia"
+	}, {
+		id: 153,
+		name: "Nauru"
+	}, {
+		id: 154,
+		name: "Nepal"
+	}, {
+		id: 155,
+		name: "Nicaragua"
+	}, {
+		id: 156,
+		name: "Níger"
+	}, {
+		id: 157,
+		name: "Nigeria"
+	}, {
+		id: 158,
+		name: "Niue"
+	}, {
+		id: 159,
+		name: "Norvegia"
+	}, {
+		id: 160,
+		name: "Nuova Caledonia"
+	}, {
+		id: 161,
+		name: "Nuova Zelanda"
+	}, {
+		id: 162,
+		name: "Oman"
+	}, {
+		id: 163,
+		name: "Paesi Bassi"
+	}, {
+		id: 164,
+		name: "Pakistan"
+	}, {
+		id: 165,
+		name: "Palau"
+	}, {
+		id: 166,
+		name: "Panama"
+	}, {
+		id: 167,
+		name: "Papua-Nuova Guinea "
+	}, {
+		id: 168,
+		name: "Paraguay"
+	}, {
+		id: 169,
+		name: "Peru"
+	}, {
+		id: 170,
+		name: "Pitcairn"
+	}, {
+		id: 171,
+		name: "Polinesia Francese"
+	}, {
+		id: 172,
+		name: "Polonia"
+	}, {
+		id: 173,
+		name: "Portogallo"
+	}, {
+		id: 174,
+		name: "Puerto Rico"
+	}, {
+		id: 175,
+		name: "Qatar"
+	}, {
+		id: 95,
+		name: "Regno Unito"
+	}, {
+		id: 176,
+		name: "Repubblica Ceca"
+	}, {
+		id: 177,
+		name: "Repubblica Centroafricana"
+	}, {
+		id: 178,
+		name: "Repubblica di San Marino"
+	}, {
+		id: 179,
+		name: "Repubblica Dominicana"
+	}, {
+		id: 180,
+		name: "Riunione"
+	}, {
+		id: 181,
+		name: "Romania"
+	}, {
+		id: 182,
+		name: "Russia"
+	}, {
+		id: 183,
+		name: "Rwanda"
+	}, {
+		id: 184,
+		name: "Sahara Occidentale"
+	}, {
+		id: 185,
+		name: "Saint Kitts e Nevis"
+	}, {
+		id: 186,
+		name: "Saint Lucia"
+	}, {
+		id: 187,
+		name: "Saint Pierre e Miquelon"
+	}, {
+		id: 188,
+		name: "Saint Vincent e Grenadine"
+	}, {
+		id: 189,
+		name: "Samoa"
+	}, {
+		id: 190,
+		name: "Samoa Americane"
+	}, {
+		id: 191,
+		name: "Sant' Elena"
+	}, {
+		id: 192,
+		name: "Santo Tomé e Principe"
+	}, {
+		id: 193,
+		name: "Senegal"
+	}, {
+		id: 248,
+		name: "Serbia"
+	}, {
+		id: 195,
+		name: "Seychelles"
+	}, {
+		id: 196,
+		name: "Sierra Leone"
+	}, {
+		id: 197,
+		name: "Singapore"
+	}, {
+		id: 198,
+		name: "Siria"
+	}, {
+		id: 199,
+		name: "Slovacchia"
+	}, {
+		id: 200,
+		name: "Slovenia"
+	}, {
+		id: 201,
+		name: "Somalia"
+	}, {
+		id: 202,
+		name: "Spagna"
+	}, {
+		id: 203,
+		name: "Sri Lanka (Ceylon)"
+	}, {
+		id: 204,
+		name: "Stati Uniti d'America"
+	}, {
+		id: 205,
+		name: "Sudafrica"
+	}, {
+		id: 206,
+		name: "Sudan"
+	}, {
+		id: 207,
+		name: "Surinam"
+	}, {
+		id: 208,
+		name: "Svezia"
+	}, {
+		id: 209,
+		name: "Svizzera"
+	}, {
+		id: 210,
+		name: "Swazilandia"
+	}, {
+		id: 211,
+		name: "Tailandia"
+	}, {
+		id: 212,
+		name: "Taiwan"
+	}, {
+		id: 213,
+		name: "Tanzania"
+	}, {
+		id: 214,
+		name: "Tayikistan"
+	}, {
+		id: 249,
+		name: "Territ. Francesi Sud"
+	}, {
+		id: 247,
+		name: "Territori Palestinesi"
+	}, {
+		id: 215,
+		name: "Territorio Britannico dell'Oceano Indiano"
+	}, {
+		id: 216,
+		name: "Timor Est"
+	}, {
+		id: 250,
+		name: "Timor-Leste"
+	}, {
+		id: 217,
+		name: "Togo"
+	}, {
+		id: 218,
+		name: "Tokelau"
+	}, {
+		id: 219,
+		name: "Tonga"
+	}, {
+		id: 220,
+		name: "Trinidad e Tobago"
+	}, {
+		id: 221,
+		name: "Tunisia"
+	}, {
+		id: 222,
+		name: "Turchia"
+	}, {
+		id: 223,
+		name: "Turkmenistan"
+	}, {
+		id: 224,
+		name: "Turks e Caicos"
+	}, {
+		id: 225,
+		name: "Tuvalu"
+	}, {
+		id: 226,
+		name: "Ucraina"
+	}, {
+		id: 227,
+		name: "Uganda"
+	}, {
+		id: 92,
+		name: "Ungheria"
+	}, {
+		id: 228,
+		name: "Uruguay"
+	}, {
+		id: 229,
+		name: "Uzbekistan"
+	}, {
+		id: 230,
+		name: "Vanuatu"
+	}, {
+		id: 231,
+		name: "Venezuela"
+	}, {
+		id: 232,
+		name: "Vietnam"
+	}, {
+		id: 233,
+		name: "Wallis e Futuna"
+	}, {
+		id: 234,
+		name: "Yemen"
+	}, {
+		id: 235,
+		name: "Zambia"
+	}, {
+		id: 236,
+		name: "Zimbabwe"
+	}];
+	window.data.jobs = [{
+		id: 210,
+		name: "Architetto / Designer"
+	}, {
+		id: 211,
+		name: "Rivenditore"
+	}, {
+		id: 212,
+		name: "Contract"
+	}, {
+		id: 213,
+		name: "Impresa di costruzioni"
+	}, {
+		id: 214,
+		name: "Ingegnere"
+	}, {
+		id: 216,
+		name: "Geometra"
+	}, {
+		id: 245,
+		name: "Posatore"
+	}, {
+		id: 247,
+		name: "Giornalista"
+	}, {
+		id: 248,
+		name: "Privato / Altro"
+	}];
+	window.data.knowledges = [{
+		id: 217,
+		name: "Fiere"
+	}, {
+		id: 220,
+		name: "Passaparola"
+	}, {
+		id: 221,
+		name: "Presso rivenditore"
+	}, {
+		id: 249,
+		name: "Pubblicità su rivista"
+	}, {
+		id: 250,
+		name: "Social media"
+	}, {
+		id: 251,
+		name: "Altri siti internet"
+	}];
+	window.data.collections = [{
+		id: 10924,
+		name: "Concreto"
+	}, {
+		id: 10925,
+		name: "Slimtech Delight",
+	}, {
+		id: 10946,
+		name: "Bio Select",
+	}, {
+		id: 10297,
+		name: "Slimtech Concreto",
+	}, {
+		id: 9122,
+		name: "Slimtech Take Care",
+	}, {
+		id: 9177,
+		name: "Nextone",
+	}, {
+		id: 7943,
+		name: "Trame",
+	}, {
+		id: 8733,
+		name: "Slimtech Waterfall",
+	}, {
+		id: 7587,
+		name: "Waterfall",
+	}, {
+		id: 7478,
+		name: "Slimtech Naive",
+	}, {
+		id: 6901,
+		name: "Cliffstone",
+	}, {
+		id: 1604,
+		name: "Bio Recover",
+	}, {
+		id: 176,
+		name: "Slimtech Nest",
+	}, {
+		id: 181,
+		name: "Slimtech Timeless Marble",
+	}, {
+		id: 171,
+		name: "Slimtech Absolute",
+	}, {
+		id: 87,
+		name: "Bio Lumber",
+	}, {
+		id: 151,
+		name: "District",
+	}, {
+		id: 152,
+		name: "Dreaming",
+	}, {
+		id: 185,
+		name: "System L2",
+	}, {
+		id: 162,
+		name: "Metropolis",
+	}, {
+		id: 182,
+		name: "Slimtech Type 32",
+	}, {
+		id: 183,
+		name: "Slimtech Wood-Stock",
+	}, {
+		id: 174,
+		name: "Slimtech Lines and Waves",
+	}, {
+		id: 147,
+		name: "Basaltina Stone Project",
+	}, {
+		id: 179,
+		name: "Slimtech RE-evolution",
+	}, {
+		id: 173,
+		name: "Slimtech Gouache.10",
+	}, {
+		id: 172,
+		name: "Slimtech Basaltina Stone Project",
+	}, {
+		id: 175,
+		name: "Slimtech Mauk",
+	}, {
+		id: 154,
+		name: "Goccia",
+	}, {
+		id: 150,
+		name: "City",
+	}, {
+		id: 188,
+		name: "Stoneclay",
+	}];
+
+</script>
+
+<section class="section section--form" ng-controller="ContactStoreCtrl as c">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 offset-sm-3">
+				<div class="store-info">
+					<div class="address" style="text-align:center">
+						<h3 class="address--title">AEFFE CERAMICHE SRL</h3>
+						<div> <span>VIA CATULLO, 68<br> 76123 ANDRIA (BT) IT<br></span> <span></span> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<form name="c.form" role="form" novalidate autocomplete="off" ng-submit="c.form.$valid ? c.onSubmit() : c.onInvalid()" ng-keyup="$event.keyCode == 13 && c.form.$valid && c.onSubmit()"> <input type="hidden" name="CheckRequest" ng-init="c.model.CheckRequest='9dd103a4-75fd-4203-87d3-a2635e4c88a9';" /> <input type="text" name="CheckField" ng-init="c.model.CheckField=''" style="display: none !important;" /> <input type="hidden" name="storeID" ng-init="c.model.storeID='70'" />
+					<div class="group group--form" ng-if="c.state.isReady">
+						<div class="row">
+							<div class="col-md-6">
+								<div title="Nome" placeholder="Nome" form="c.form" control="text" ng-model="c.model.Nome" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Cognome" placeholder="Cognome" form="c.form" control="text" ng-model="c.model.Cognome" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Email" placeholder="Email" form="c.form" control="email" ng-model="c.model.Email" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Telefono" placeholder="Telefono" form="c.form" control="text" ng-model="c.model.Telefono"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Paese" placeholder="Seleziona il tuo paese" form="c.form" control="custom-select" source="c.data.countries" ng-model="c.model.Nazione" number="true" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Città" placeholder="Citt&#224;" form="c.form" control="text" ng-model="c.model.Citta" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Professione" placeholder="Seleziona la tua professione" form="c.form" control="custom-select" source="c.data.jobs" ng-model="c.model.Job" number="true" required="true"></div>
+							</div>
+							<div class="col-md-6">
+								<div title="Come ci hai conosciuto?" placeholder="Seleziona" form="c.form" control="custom-select" source="c.data.knowledges" ng-model="c.model.Knowledge" number="true" required="true"></div>
+							</div>
+						</div>
+						<div title="Scegli le collezioni" placeholder="Collezione" form="c.form" control="autocomplete" source="c.data.collections" ng-model="model.Collections" ng-model="c.model.Collections" number="true" required="true"></div>
+						<div title="Messaggio" placeholder="Messaggio" form="c.form" control="textarea" ng-model="c.model.Messaggio" required="true"></div>
+						<div class="row">
+							<div class="col-md-12">
+								<div title="Esprimo il consenso alla raccolta e il trattamento dei miei dati personali (vd &lt;a href=&quot;/privacy&quot; target=&quot;_blank&quot;>informativa&lt;/a> - punto 1)" form="c.form" control="checkbox" ng-model="c.model.Privacy" required="true"></div>
+							</div>
+							<div class="col-md-12">
+								<div title="Desidero iscrivermi alla Newsletter (consenso per il marketing diretto, vd &lt;a href=&quot;/privacy&quot; target=&quot;_blank&quot;>informativa&lt;/a> - punto 2)" form="c.form" control="checkbox" ng-model="c.model.Newsletter"></div>
+							</div>
+						</div>
+					</div>
+					<div class="group group--cta">
+						<div ng-if="c.state.isError">## FRM_CONTACT_KO ##</div>
+						<div ng-if="c.state.isSuccess">La tua richiesta &#232; stata inviata con successo. Grazie per averci contattato!</div> <button ng-if="c.state.isReady && !c.state.isSubmitted" type="submit" class="btn btn--submit animated infinite" ng-class="c.state.classes({ busy: 'btn--busy', error: 'shake', success: 'pulse' })"><span>Invia la tua richiesta</span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section section--contacts">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div class="row">
+					<div class="col-sm-6 col-md-3">
+						<div class="group--contact">
+							<div class="title">Lea Ceramiche</div>
+							<p> Via Cameazzo, 21<br> 41042 Fiorano modenese (Mo), Italia </p>
+							<p> Tel: +39 0536.837811<br> Fax: +39 0536.830326 – 0536.832827 </p>
+							<p> e-mail: <a href="mailto:info@leaceramiche.it">info@leaceramiche.it</a> </p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<div class="group--contact">
+							<div class="title">Milano Showroom</div>
+							<p> Via Durini, 3<br> 20122 Milano </p>
+							<p> Tel: +39 02.76011406 </p>
+							<p> e-mail: <a href="mailto:showroom_milano@leaceramiche.it">showroom_milano@leaceramiche.it</a> </p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<div class="group--contact">
+							<div class="title">Unita’ Locale di Casalgrande</div>
+							<p> s.s 467 n°121<br> 42013 Sant’Antonino di Casalgrande<br> (RE), Italia </p>
+							<p> Tel: +39 0522.773511<br> Fax: +39 0522.849026 </p>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-3">
+						<div class="group--contact">
+							<div class="title">Lea North America</div>
+							<p> 800 Clanton Road, Suite N 28217 Charlotte, North Carolina, USA </p>
+							<p> Tel: +1 704.522.6300<br> Fax: +1 704.522.6080 </p>
+							<p> e-mail: <a href="mailto:info@leausa.us">info@leausa.us</a> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

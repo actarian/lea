@@ -2,7 +2,8 @@
 
 import { from } from 'rxjs';
 
-const API_HREF = window.location.port === '6001' ? 'https://leaconcorde.wslabs.it' : '';
+const STATIC = window.location.port === '9966' || window.location.href.indexOf('actarian.github.io/lea/') !== -1;
+const API_HREF = STATIC ? 'https://leaconcorde.wslabs.it' : '';
 
 export default class ApiService {
 
@@ -35,8 +36,11 @@ export default class ApiService {
 			},
 			storeLocator: {
 				all: () => {
-					return $http.post('/ws/wsUsers.asmx/StoreList', {});
-					//return $http.get('data/store-locator.json');
+					if (STATIC) {
+						return $http.get('data/store-locator.json');
+					} else {
+						return $http.post('/ws/wsUsers.asmx/StoreList', {});
+					}
 				},
 			},
 		};

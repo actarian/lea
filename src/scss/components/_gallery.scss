@@ -186,12 +186,13 @@
 		&:before {
 			background: #fff;
 		}
+
 		&:after {
 			border-color: #fff;
 		}
 	}
 
-	.fancybox > & {
+	.fancybox>& {
 		// Non deve essere mostrato nelle thumb.
 		display: none;
 	}

@@ -21833,7 +21833,9 @@ function () {
     this.$timeout = $timeout;
     this.$http = $http;
     this.data = window.data || {};
-    this.model = {};
+    this.model = {
+      Collections: []
+    };
 
     if (this.$location.search() && this.$location.search().email) {
       this.model.email = this.$location.search().email;
@@ -24616,7 +24618,7 @@ function () {
         pow = move / width; // pow$.next(pow);
       };
 
-      var onSnap = function onSnap() {
+      var onSnap = function onSnap(swipe) {
         /*
         const firstChild = scrollableInner.firstElementChild;
         const itemOuterWidth = this.domService.getOuterWidth(firstChild);
@@ -24654,6 +24656,8 @@ function () {
             pow: ePow,
             onUpdate: function onUpdate() {
               pow = item.pow;
+              var width = scrollableTrack.offsetWidth - offset * 2;
+              move = pow * width;
               TweenMax.set(scrollableThumb, {
                 x: width * pow
               });
@@ -24680,9 +24684,15 @@ function () {
         if (target !== scrollableThumb) {
           var width = scrollableTrack.offsetWidth - offset * 2;
           distance = -distance / scrollable.offsetWidth * width;
-        }
 
-        onMove(down + distance);
+          if (window.innerWidth < 1024) {
+            distance /= scrollableInner.children.length;
+          }
+
+          onMove(down + distance);
+        } else {
+          onMove(down + distance);
+        }
       }, function (e) {
         // console.log('up', e.originalEvent);
         setTimeout(onSnap, 300);
@@ -25064,6 +25074,7 @@ function () {
           offset = parseInt(sliderRight.offsetLeft);
 
       var onMove = function onMove($move) {
+        console.log('onMove', $move);
         var width = sliderLeft.offsetWidth - offset * 2;
         move = Math.max(0, Math.min(width, $move));
         TweenMax.set(sliderRight, {
@@ -25083,6 +25094,10 @@ function () {
         if (target !== sliderRight) {
           var width = sliderLeft.offsetWidth - offset * 2;
           distance = -distance / slider.offsetWidth * width;
+
+          if (window.innerWidth < 1024) {
+            distance /= sliderInner.children.length;
+          }
         }
 
         onMove(down + distance);
@@ -26217,13 +26232,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.NotInFilter = NotInFilter;
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /* jshint esversion: 6 */
 function NotInFilter($filter) {
   return function (array, filters, element) {
     if (filters) {
       return $filter('filter')(array, function (item) {
         for (var i = 0; i < filters.length; i++) {
-          if (filters[i][element] === item[element]) return false;
+          var filter = filters[i];
+
+          if (_typeof(filter) === 'object') {
+            if (filter[element] === item[element]) return false;
+          } else {
+            if (filter === item[element]) return false;
+          }
         }
 
         return true;
@@ -26368,6 +26391,10 @@ function () {
           template = 'templates/forms/custom-select.html';
           break;
 
+        case 'autocomplete':
+          template = 'templates/forms/autocomplete.html';
+          break;
+
         case 'textarea':
           template = 'templates/forms/textarea.html';
           break;
@@ -26434,18 +26461,82 @@ function () {
       };
 
       scope.updateModel = function (value) {
-        controller.$modelValue = value;
+        controller.$setViewValue(value); // controller.$modelValue = value;
+
         scope.ngModel = value; // overwrites ngModel value
       };
 
-      scope.optionName = function () {
-        var option = scope.source.find(function (x) {
-          return x.id === scope.ngModel;
-        });
+      scope.optionName = function (id) {
+        if (id) {
+          var option = scope.source.find(function (x) {
+            return x.id === id;
+          });
 
-        if (option) {
-          return option.name;
+          if (option) {
+            return option.name;
+          }
         }
+
+        if (Array.isArray(scope.ngModel)) {
+          return scope.ngModel.map(function (x) {
+            return scope.source.find(function (s) {
+              return s.id === x;
+            }).name;
+          }).join(', ');
+        } else {
+          var _option = scope.source.find(function (x) {
+            return x.id === scope.ngModel;
+          });
+
+          if (_option) {
+            return _option.name;
+          }
+        }
+      };
+
+      scope.onModelAdd = function (value) {
+        var items = controller.$viewValue || [];
+        var index = items.indexOf(value);
+
+        if (index === -1) {
+          items.push(value);
+          controller.$setViewValue(items);
+          console.log(controller);
+          scope.ngModel = items; // overwrites ngModel value
+        }
+
+        scope.query = null;
+      };
+
+      scope.onModelRemove = function (value) {
+        var items = controller.$viewValue || [];
+        var index = items.indexOf(value);
+
+        if (index !== -1) {
+          items.splice(index, 1);
+          controller.$setViewValue(items);
+          scope.ngModel = items; // overwrites ngModel value
+        }
+
+        scope.query = null;
+      };
+
+      scope.searchQuery = function () {
+        return function (item) {
+          console.log(item, scope.query);
+
+          if (scope.query) {
+            return item.name.toLowerCase().indexOf(scope.query.toLowerCase()) !== -1;
+          } else {
+            return true;
+          }
+        };
+      };
+
+      scope.modelValue = function () {
+        var value = controller.$viewValue || [];
+        console.log(value);
+        return value;
       };
 
       scope.onChange = function (model) {
@@ -26483,7 +26574,7 @@ function () {
       };
 
       scope.getClasses = function () {
-        var field = _this2.$parse(scope.form + '.' + scope.field)(scope.$parent);
+        var field = controller; // this.$parse(scope.form + '.' + scope.field)(scope.$parent);
 
         if (field) {
           var focus = scope.focus;
@@ -27031,6 +27122,8 @@ function (_Highway$Renderer) {
       _gtm.default.pageView();
 
       var page = this.properties.page;
+      this.updateCanonical(page); // console.log(head, pageHead);
+
       /*
       const body = page.querySelector('body');
       let brand = /(["'])(\\?.)*?\1/.exec(body.getAttribute('ng-init') || '');
@@ -27041,6 +27134,27 @@ function (_Highway$Renderer) {
       	scope.root.brand = brand;
       });
       */
+    }
+  }, {
+    key: "updateCanonical",
+    value: function updateCanonical(page) {
+      var head = document.querySelector('head');
+      Array.from(head.querySelectorAll('[rel="canonical"], [rel="alternate"]')).forEach(function (node) {
+        return node.parentNode.removeChild(node);
+      });
+      var pageHead = page.querySelector('head');
+      Array.from(pageHead.querySelectorAll('[rel="canonical"], [rel="alternate"]')).forEach(function (node) {
+        head.appendChild(node);
+
+        if (node.hasAttribute('hreflang')) {
+          var target = document.querySelector("[hreflang-target=\"".concat(node.getAttribute('hreflang'), "\"]"));
+
+          if (target) {
+            target.href = node.href;
+            console.log(target, node.href);
+          }
+        }
+      });
     } // This method in the renderer is run when the data-router-view is added to the DOM Tree.
 
   }, {
@@ -28455,7 +28569,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var API_HREF = window.location.port === '6001' ? 'https://leaconcorde.wslabs.it' : '';
+var STATIC = window.location.port === '9966' || window.location.href.indexOf('actarian.github.io/lea/') !== -1;
+var API_HREF = STATIC ? 'https://leaconcorde.wslabs.it' : '';
 
 var ApiService =
 /*#__PURE__*/
@@ -28490,7 +28605,11 @@ function () {
       },
       storeLocator: {
         all: function all() {
-          return $http.post('/ws/wsUsers.asmx/StoreList', {}); //return $http.get('data/store-locator.json');
+          if (STATIC) {
+            return $http.get('data/store-locator.json');
+          } else {
+            return $http.post('/ws/wsUsers.asmx/StoreList', {});
+          }
         }
       }
     };

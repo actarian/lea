@@ -244,19 +244,39 @@ $success: $blue;
 }
 
 .group--select {
-	svg {
-		position: absolute;
-		right: 0;
-		top: 50%;
-		margin-top: -5px;
-		width: 10px;
-		height: 10px;
-		pointer-events: none;
-		fill: $foreground;
+
+	&>.group--input,
+	.input {
+		&>svg {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			margin-top: -5px;
+			width: 10px;
+			height: 10px;
+			pointer-events: none;
+			fill: $foreground;
+		}
 	}
 }
 
 .group--custom-select {
+	.dropdown {
+		top: 100%;
+		z-index: 100000;
+
+		.nav--select {
+			padding: 0;
+
+			.option {
+				padding: 7px 20px;
+				border-bottom: 1px solid #eee;
+			}
+		}
+	}
+}
+
+.group--autocomplete {
 	.dropdown {
 		top: 100%;
 		z-index: 100000;

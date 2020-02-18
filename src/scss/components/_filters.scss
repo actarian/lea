@@ -279,6 +279,7 @@
 	list-style: none;
 
 	.nav__item {
+		position: relative;
 		font-size: 14px;
 		font-weight: $font-light;
 		border: 2px solid #232120;
@@ -292,6 +293,18 @@
 		.icon--remove {
 			width: 8px;
 			height: 8px;
+		}
+	}
+}
+
+.group--autocomplete {
+	.nav--selected-filters {
+		margin: 0;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+
+		.nav__item {
+			margin-bottom: 7px;
 		}
 	}
 }

@@ -50,6 +50,9 @@ export default class ControlDirective {
 				case 'custom-select':
 					template = 'templates/forms/custom-select.html';
 					break;
+				case 'autocomplete':
+					template = 'templates/forms/autocomplete.html';
+					break;
 				case 'textarea':
 					template = 'templates/forms/textarea.html';
 					break;
@@ -108,15 +111,62 @@ export default class ControlDirective {
 			controller.$render();
 		}
 		scope.updateModel = (value) => {
-			controller.$modelValue = value;
+			controller.$setViewValue(value);
+			// controller.$modelValue = value;
 			scope.ngModel = value; // overwrites ngModel value
 		}
-		scope.optionName = () => {
-			const option = scope.source.find(x => x.id === scope.ngModel);
-			if (option) {
-				return option.name;
+		scope.optionName = (id) => {
+			if (id) {
+				const option = scope.source.find(x => x.id === id);
+				if (option) {
+					return option.name;
+				}
+			}
+			if (Array.isArray(scope.ngModel)) {
+				return scope.ngModel.map(x => scope.source.find(s => s.id === x).name).join(', ');
+			} else {
+				const option = scope.source.find(x => x.id === scope.ngModel);
+				if (option) {
+					return option.name;
+				}
 			}
 		}
+		scope.onModelAdd = (value) => {
+			const items = controller.$viewValue || [];
+			const index = items.indexOf(value);
+			if (index === -1) {
+				items.push(value);
+				controller.$setViewValue(items);
+				console.log(controller);
+				scope.ngModel = items; // overwrites ngModel value
+			}
+			scope.query = null;
+		};
+		scope.onModelRemove = (value) => {
+			const items = controller.$viewValue || [];
+			const index = items.indexOf(value);
+			if (index !== -1) {
+				items.splice(index, 1);
+				controller.$setViewValue(items);
+				scope.ngModel = items; // overwrites ngModel value
+			}
+			scope.query = null;
+		};
+		scope.searchQuery = () => {
+			return function(item) {
+				console.log(item, scope.query);
+				if (scope.query) {
+					return item.name.toLowerCase().indexOf(scope.query.toLowerCase()) !== -1;
+				} else {
+					return true;
+				}
+			};
+		};
+		scope.modelValue = () => {
+			const value = controller.$viewValue || [];
+			console.log(value);
+			return value;
+		};
 		scope.onChange = (model) => {
 			// console.log('ControlDirective.onChange');
 			this.$parse(attributes.onChange)(scope.$parent);
@@ -145,7 +195,7 @@ export default class ControlDirective {
 			this.scrollToError();
 		};
 		scope.getClasses = () => {
-			const field = this.$parse(scope.form + '.' + scope.field)(scope.$parent);
+			const field = controller; // this.$parse(scope.form + '.' + scope.field)(scope.$parent);
 			if (field) {
 				const focus = scope.focus;
 				const success = field.$valid;

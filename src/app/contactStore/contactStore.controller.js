@@ -16,7 +16,9 @@ class ContactStoreCtrl {
 		this.$timeout = $timeout;
 		this.$http = $http;
 		this.data = window.data || {};
-		this.model = {};
+		this.model = {
+            Collections: []
+        };
 		if (this.$location.search() && this.$location.search().email) {
 			this.model.email = this.$location.search().email;
 		}

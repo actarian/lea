@@ -5998,6 +5998,9 @@ Keyframe
     /* Internet Explorer/Edge */
     user-select: none;
     /* Non-prefixed version, currently supported by Chrome and Opera */ }
+  @media (max-width: 859.98px) {
+    .picture {
+      margin-bottom: 20px; } }
 
 @media (min-width: 1024px) {
   .top-70 {
@@ -9074,7 +9077,8 @@ button {
     color: inherit;
     background: inherit; } }
 
-.group--select svg {
+.group--select > .group--input > svg,
+.group--select .input > svg {
   position: absolute;
   right: 0;
   top: 50%;
@@ -9090,6 +9094,15 @@ button {
   .group--custom-select .dropdown .nav--select {
     padding: 0; }
     .group--custom-select .dropdown .nav--select .option {
+      padding: 7px 20px;
+      border-bottom: 1px solid #eee; }
+
+.group--autocomplete .dropdown {
+  top: 100%;
+  z-index: 100000; }
+  .group--autocomplete .dropdown .nav--select {
+    padding: 0; }
+    .group--autocomplete .dropdown .nav--select .option {
       padding: 7px 20px;
       border-bottom: 1px solid #eee; }
 
@@ -10503,7 +10516,7 @@ canvas {
   .slider__left.disabled,
   .slider__right.disabled {
     pointer-events: none;
-    opacity: 0.5; }
+    opacity: 0; }
   @media (max-width: 1023.98px) {
     .slider__left,
     .slider__right {
@@ -10794,6 +10807,7 @@ canvas {
   padding: 0;
   list-style: none; }
   .nav--selected-filters .nav__item {
+    position: relative;
     font-size: 14px;
     font-weight: var(--font-light);
     border: 2px solid #232120;
@@ -10804,6 +10818,16 @@ canvas {
     .nav--selected-filters .nav__item .icon--remove {
       width: 8px;
       height: 8px; }
+
+.group--autocomplete .nav--selected-filters {
+  margin: 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
+  .group--autocomplete .nav--selected-filters .nav__item {
+    margin-bottom: 7px; }
 
 .nav--select {
   -webkit-box-orient: vertical;
@@ -11081,7 +11105,7 @@ canvas {
 				height: auto;
 			}
 			*/ } }
-  @media (max-width: 859.98px) {
+  @media (max-width: 1023.98px) {
     .section--header .btn--menu {
       z-index: 100; } }
 
@@ -11304,10 +11328,19 @@ canvas {
     outline: none;
     text-decoration: none; }
 
-@media (min-width: 860px) {
-  .mobile .nav--primary.has-dropdown--opened li {
-    width: 25%; } }
-
+/*
+.mobile {
+	.nav--primary {
+		&.has-dropdown--opened {
+			@include media-up(md) {
+				li {
+					width: 25%;
+				}
+			}
+		}
+	}
+}
+*/
 .nav--secondary,
 .nav--tertiary {
   -webkit-transition: opacity ease-in-out 600ms;
@@ -11572,11 +11605,24 @@ canvas {
 		justify-content: flex-start;
 		*/
       min-height: 0;
-      padding: 20px 0; }
-      .nav--tertiary > li > a span {
+      padding: 20px 0;
+      z-index: 100;
+      -webkit-transform: translateZ(10px);
+              transform: translateZ(10px); }
+      .nav--tertiary > li > a span:not(.wishlist--badge) {
         display: none; }
       .nav--tertiary > li > span {
         font-size: 16px; }
+      .nav--tertiary > li .wishlist--badge {
+        top: 12px;
+        left: 12px; }
+      .nav--tertiary .nav--wishlist {
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
       .nav--tertiary .icon--search {
         width: 21.6px;
         height: 24px; }
@@ -11625,7 +11671,7 @@ canvas {
   .nav--submenu > li {
     display: block;
     overflow: hidden;
-    padding-bottom: 70px; }
+    padding-bottom: 3vw; }
     .nav--submenu > li:not(.opened) > .nav--submenu {
       -webkit-transition: none;
       transition: none; }
@@ -11642,15 +11688,15 @@ canvas {
               align-items: center;
       position: relative;
       cursor: pointer;
-      font-size: 34px;
+      font-size: 1.5vw;
       font-weight: 500;
       line-height: 1;
       text-decoration: none; }
       .nav--submenu > li > a svg,
       .nav--submenu > li > span svg {
-        width: 0.6em;
-        height: 0.6em;
-        margin: 0.1em 0 0 0.35em; }
+        width: 0.5em;
+        height: 0.5em;
+        margin: 0 0 0 0.35em; }
     .nav--submenu > li > a {
       color: var(--foreground); }
       .nav--submenu > li > a svg {
@@ -11688,10 +11734,10 @@ canvas {
     .nav--submenu .nav--submenu:before {
       background: #C9C0B6; }
     .nav--submenu .nav--submenu > li {
-      max-width: 50%;
+      max-width: calc(50% - 70px);
       -webkit-box-flex: 1;
-          -ms-flex: 1 1 50%;
-              flex: 1 1 50%; }
+          -ms-flex: 1 1 calc(50% - 70px);
+              flex: 1 1 calc(50% - 70px); }
       .nav--submenu .nav--submenu > li:last-child {
         margin-bottom: 100%; }
   @media (max-height: 1024px) {
@@ -11728,10 +11774,16 @@ canvas {
               -ms-flex: 1 1 100%;
                   flex: 1 1 100%; }
       .nav--submenu > li {
-        padding-bottom: 35px; }
+        padding-bottom: 3.5vw; }
         .nav--submenu > li > a,
         .nav--submenu > li > span {
-          font-size: 27px; } }
+          font-size: 3.5vw; } }
+  @media (max-width: 859.98px) {
+    .nav--submenu > li {
+      padding-bottom: 5.5vw; }
+      .nav--submenu > li > a,
+      .nav--submenu > li > span {
+        font-size: 5.5vw; } }
 
 .nav--submenu-tertiary {
   position: absolute;
@@ -14549,6 +14601,29 @@ layout {
       width: 100%; }
       .listing--news .inner .card {
         margin-right: 33.33333%; } }
+  .listing--news-picture .inner {
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */ }
+    .listing--news-picture .inner .card {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
 
 .listing--scrollbar {
   position: relative;

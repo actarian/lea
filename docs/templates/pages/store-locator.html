@@ -3,44 +3,61 @@
 		<div class="background"></div>
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
-				<h1 class="title" split>Store locator</h1>
-				<div class="abstract" split>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu mattis ipsum. Sed vel euismod nibh. Sed eget dignissim sapien, a suscipit mauris. Morbi metus lorem, viverra vitae est et, cursus vehicula tortor. Nunc sed ligula ultricies, maximus mauris vitae, ultrices dolor. Aenean turpis mauris, congue eget auctor quis.</div>
+				<h1 class="title" split>Store Locator</h1>
+				<div class="abstract" split>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Curabitur aliquet quam id dui posuere blandit. Curabitur aliquet quam id dui posuere blandit.</div>
 			</div>
 		</div>
 	</div>
 </section>
 
 <script type="text/javascript" lazy-script>
-	// window.apiKey = 'AIzaSyDDxQY9Kjes0lYk_5qHwt4xVg3aNhRxPyk'; // *.wslabs.it // 'insert your google api key here';
+	window.storeLocatorSettings = {
+		apiKey: "",
+		currMkt: 2,
+		localizedStrings: {
+			LBL_DISTANZA_STORE: "Distanza",
+			LBL_RAGGIUNGERE_STORE: "Come raggiungere lo store",
+			LBL_CONTATTA_STORE: "Contatta store"
+		}
+	}
 
 </script>
 
 <div ng-controller="StoreLocatorCtrl as storeLocator">
-
 	<section class="section section--filters" ng-class="{ opened: root.menuProductOpened }">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<form class="form form--filters" name="storeLocator.form" role="form" novalidate="" autocomplete="off" ng-submit="storeLocator.form.$valid && storeLocator.onSubmit()" ng-keyup="$event.keyCode == 13 && storeLocator.form.$valid && storeLocator.onSubmit()">
 						<div class="form__group form__group--control" title="Dove ti trovi adesso?" placeholder="Cerca un indirizzo" form="storeLocator.form" control="text" ng-model="storeLocator.model.address" required="true"></div>
-						<div class="form__group form__group--cta">
-							<button type="submit" class="btn btn--discover" ng-class="{ 'btn--busy': storeLocator.busyFind }" ng-disabled="!storeLocator.map || !storeLocator.form.$valid"><span>Cerca</span></button>
-						</div>
-						<div class="form__group form__group--cta">
-							<button type="button" class="btn btn--discover" ng-class="{ 'btn--busy': storeLocator.busyLocation }" ng-click="storeLocator.getGeolocation()" ng-disabled="!storeLocator.map"><span>Trova la mia positione</span></button>
-						</div>
+						<div class="form__group form__group--cta"> <button type="submit" class="btn btn--discover" ng-class="{ 'btn--busy': storeLocator.busyFind }" ng-disabled="!storeLocator.map || !storeLocator.form.$valid"><span>Cerca</span></button> </div>
+						<div class="form__group form__group--cta"> <button type="button" class="btn btn--discover" ng-class="{ 'btn--busy': storeLocator.busyLocation }" ng-click="storeLocator.getGeolocation()" ng-disabled="!storeLocator.map"><span>Trova la mia posizione</span></button> </div>
 						<div class="form__group form__group--legends">
-							<div class="legend"><svg class="icon icon--pin-showroom"><use xlink:href="#icon--pin-showroom"></use></svg> <span>Showroom</span></div>
-							<div class="legend"><svg class="icon icon--pin-top-store"><use xlink:href="#icon--pin-top-store"></use></svg> <span>TOP Store</span></div>
-							<div class="legend"><svg class="icon icon--pin-reseller"><use xlink:href="#icon--pin-reseller"></use></svg> <span>Reseller</span></div>
+							<div class="legend">
+								<svg class="icon icon--pin-showroom">
+                                    <use xlink:href="#icon--pin-showroom"></use>
+								</svg> <span>Showroom</span>
+							</div>
+							<div class="legend">
+								<svg class="icon icon--pin-top-store">
+                                    <use xlink:href="#icon--pin-top-store"></use>
+								</svg> <span>TOP Store</span>
+							</div>
+							<div class="legend">
+								<svg class="icon icon--pin-reseller">
+                                    <use xlink:href="#icon--pin-reseller"></use>
+								</svg> <span>Reseller</span>
+							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 		<button type="button" class="btn btn--filters hidden-sm-up" ng-click="root.menuProductOpened = !root.menuProductOpened">
-			<span ng-if="!root.menuProductOpened">Filters</span>
-			<svg class="icon icon--remove" ng-if="root.menuProductOpened"><use xlink:href="#icon--remove"></use></svg>
+			<span ng-if="!root.menuProductOpened">Filtri</span>
+			<svg class="icon icon--remove" ng-if="root.menuProductOpened">
+                <use xlink:href="#icon--remove"></use>
+			</svg>
 		</button>
 	</section>
 
@@ -49,9 +66,7 @@
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="map" id="map"></div>
-					<div class="group group--error" ng-if="locator.error">
-						<span>{{locator.error.message}}</span>
-					</div>
+					<div class="group group--error" ng-if="locator.error"> <span>{{locator.error.message}}</span> </div>
 				</div>
 			</div>
 		</div>
@@ -63,8 +78,7 @@
 				<div class="col-lg-10 offset-lg-1">
 					<div class="stores" ng-if="storeLocator.visibleItems">
 						<div class="card card--store" ng-class="{ 'card--store-image': item.image }" id="store-{{item.id}}" ng-click="storeLocator.panTo(item)" ng-repeat="item in storeLocator.visibleItems track by $index">
-							<div class="picture" ng-if="item.image" appear>
-								<img lazy data-src="{{item.image}}" alt="{{item.title}}" />
+							<div class="picture" ng-if="item.image" appear> <img lazy data-src="{{item.image}}" alt="{{item.title}}" />
 								<div class="group--overlay">
 									<div class="group--info">
 										<div class="group--info__title">{{item.title}}</div>
@@ -77,31 +91,32 @@
 								<div class="abstract" ng-if="item.abstract" ng-bind-html="item.abstract"></div>
 								<div class="group group--info">
 									<div class="address">
-										<svg class="icon icon--pin-showroom" ng-if="item.type == 1"><use xlink:href="#icon--pin-showroom"></use></svg>
-										<svg class="icon icon--pin-top-store" ng-if="item.type == 2"><use xlink:href="#icon--pin-top-store"></use></svg>
-										<svg class="icon icon--pin-reseller" ng-if="item.type == 3"><use xlink:href="#icon--pin-reseller"></use></svg>
-										<div>
-											<span>{{item.address}}<br> {{item.zip}} {{item.city}} {{item.provinceCode}} {{item.country}}<br></span>
-											<span ng-if="item.telephone">{{item.telephone}}</span><br>
-											<a ng-href="mailto:{{item.email}}" ng-if="item.email">{{item.email}}</a><br>
-											<a ng-href="{{item.website}}" ng-if="item.website">{{item.website}}</a><br>
-											<span>At approx. <b>{{item.distance | number : 0}} km</b></span>
+										<svg class="icon icon--pin-showroom" ng-if="item.type == 8"><use xlink:href="#icon--pin-showroom"></use></svg>
+										<svg class="icon icon--pin-top-store" ng-if="item.type == 9"><use xlink:href="#icon--pin-top-store"></use></svg>
+										<svg class="icon icon--pin-reseller" ng-if="item.type == 10"><use xlink:href="#icon--pin-reseller"></use></svg>
+										<div> <span>{{item.address}}<br> {{item.zip}} {{item.city}} {{item.provinceCode}} {{item.country}}<br></span> <span ng-if="item.telephone">{{item.telephone}}</span><br> <a ng-href="{{item.website}}" ng-if="item.website">{{item.website}}</a><br>
+											<div>Distanza <b>{{item.distance | number : 0}} km</b></div>
 										</div>
 									</div>
 								</div>
 								<div class="group group--cta">
-									<a class="btn--link" ng-href="https://www.google.it/maps/dir/{{storeLocator.position.lat()}},{{storeLocator.position.lng()}}/{{item.title}}/@{{item.latitude}},{{item.longitude}}/" target="_blank"><span>How to reach the store</span> <svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg></a>
+									<a class="btn--link" ng-if="item.type == 9" href="/contatta-store?store={{item.id}}">Contatta store
+										<svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg><br />
+									</a>
+									<a class="btn--link" ng-href="https://www.google.it/maps/dir/{{storeLocator.position.lat()}},{{storeLocator.position.lng()}}/{{item.title}}/@{{item.latitude}},{{item.longitude}}/" target="_blank"><span>Come raggiungere lo store</span>
+										<svg class="icon icon--arrow-right"><use xlink:href="#icon--arrow-right"></use></svg>
+									</a>
 								</div>
 							</div>
 						</div>
 						<div class="loader" ng-if="storeLocator.busy">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ring">
-								<circle cx="50" cy="50" fill="none" r="15" stroke-width="2"></circle>
-								<circle cx="50" cy="50" fill="none" r="15" stroke-width="2" stroke-linecap="square" transform="rotate(502.497 50 50)">
-									<animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;180 50 50;720 50 50" keyTimes="0;0.5;1" dur="2s" begin="0s" repeatCount="indefinite"></animateTransform>
-									<animate attributeName="stroke-dasharray" calcMode="linear" values="9.42477796076938 84.82300164692441;47.1238898038469 47.123889803846886;9.42477796076938 84.82300164692441" keyTimes="0;0.5;1" dur="2" begin="0s" repeatCount="indefinite"></animate>
-								</circle>
-							</svg>
+                                <circle cx="50" cy="50" fill="none" r="15" stroke-width="2"></circle>
+                                <circle cx="50" cy="50" fill="none" r="15" stroke-width="2" stroke-linecap="square" transform="rotate(502.497 50 50)">
+                                    <animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;180 50 50;720 50 50" keyTimes="0;0.5;1" dur="2s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                    <animate attributeName="stroke-dasharray" calcMode="linear" values="9.42477796076938 84.82300164692441;47.1238898038469 47.123889803846886;9.42477796076938 84.82300164692441" keyTimes="0;0.5;1" dur="2" begin="0s" repeatCount="indefinite"></animate>
+                                </circle>
+                            </svg>
 							<div>load more</div>
 						</div>
 					</div>
@@ -109,5 +124,4 @@
 			</div>
 		</div>
 	</section>
-
 </div>

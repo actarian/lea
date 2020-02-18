@@ -59,7 +59,7 @@
 					<div class="group group--form" ng-if="c.state.isReady">
 						<div class="row">
 							<div class="col-md-12">
-								<div title="Motivo della richiesta" placeholder="Seleziona il motivo della richiesta" form="c.form" control="custom-select" source="c.data.actions" ng-model="c.model.action" number="true"></div>
+								<div title="Motivo della richiesta" placeholder="Seleziona il motivo della richiesta" form="c.form" control="custom-select" source="c.data.actions" ng-model="c.model.action" number="true" required="true"></div>
 							</div>
 							<div class="col-md-6">
 								<div title="Nome" placeholder="Nome" form="c.form" control="text" ng-model="c.model.name" required="true"></div>
@@ -74,22 +74,22 @@
 								<div title="Telefono" placeholder="Telefono" form="c.form" control="text" ng-model="c.model.phone"></div>
 							</div>
 							<div ng-class="{ 'col-md-6': c.provinces.length, 'col-md-12': !c.provinces.length }">
-								<div title="Paese" placeholder="Seleziona il tuo paese" form="c.form" control="custom-select" source="c.data.countries" ng-model="c.model.country" on-change="c.setProvinces()" number="true"></div>
+								<div title="Paese" placeholder="Seleziona il tuo paese" form="c.form" control="custom-select" source="c.data.countries" ng-model="c.model.country" on-change="c.setProvinces()" number="true" required="true"></div>
 							</div>
 							<div class="col-md-6" ng-if="c.provinces.length">
-								<div title="Provincia" placeholder="Seleziona la tua provincia" form="c.form" control="custom-select" source="c.provinces" ng-model="c.model.province" number="true"></div>
+								<div title="Provincia" placeholder="Seleziona la tua provincia" form="c.form" control="custom-select" source="c.provinces" ng-model="c.model.province" number="true" required="true"></div>
 							</div>
 							<div class="col-md-6">
-								<div title="Professione" placeholder="Seleziona la tua professione" form="c.form" control="custom-select" source="c.data.jobs" ng-model="c.model.job" number="true"></div>
+								<div title="Professione" placeholder="Seleziona la tua professione" form="c.form" control="custom-select" source="c.data.jobs" ng-model="c.model.job" number="true" required="true"></div>
 							</div>
 							<div class="col-md-6">
-								<div title="Come ci hai conosciuto?" placeholder="Seleziona una risposta" form="c.form" control="custom-select" source="c.data.knowledges" ng-model="c.model.knowledge" number="true"></div>
+								<div title="Come ci hai conosciuto?" placeholder="Seleziona una risposta" form="c.form" control="custom-select" source="c.data.knowledges" ng-model="c.model.knowledge" number="true" required="true"></div>
 							</div>
 						</div>
-						<div title="Messaggio" placeholder="Messaggio" form="c.form" control="textarea" ng-model="c.model.message"></div>
+						<div title="Messaggio" placeholder="Messaggio" form="c.form" control="textarea" ng-model="c.model.message" required="true"></div>
 						<div class="row">
 							<div class="col-md-6">
-								<div title="Esprimo il consenso alla raccolta e il trattamento dei miei dati personali" form="c.form" control="checkbox" ng-model="c.model.agreed" number="true">
+								<div title="Esprimo il consenso alla raccolta e il trattamento dei miei dati personali" form="c.form" control="checkbox" ng-model="c.model.agreed" number="true" required="true">
 									<a href="#">Informativa</a>
 								</div>
 							</div>

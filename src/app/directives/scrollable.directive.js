@@ -44,7 +44,7 @@ export default class ScrollableDirective {
 			pow = move / width;
 			// pow$.next(pow);
 		};
-		const onSnap = () => {
+		const onSnap = (swipe) => {
 			/*
 			const firstChild = scrollableInner.firstElementChild;
 			const itemOuterWidth = this.domService.getOuterWidth(firstChild);
@@ -75,6 +75,8 @@ export default class ScrollableDirective {
 					pow: ePow,
 					onUpdate: () => {
 						pow = item.pow;
+						const width = scrollableTrack.offsetWidth - offset * 2;
+						move = pow * width;
 						TweenMax.set(scrollableThumb, { x: width * pow });
 					},
 					ease: Power2.easeInOut,
@@ -99,8 +101,14 @@ export default class ScrollableDirective {
 			if (target !== scrollableThumb) {
 				const width = scrollableTrack.offsetWidth - offset * 2;
 				distance = -distance / scrollable.offsetWidth * width;
+				if (window.innerWidth < 1024) {
+					distance /= scrollableInner.children.length;
+				}
+				onMove(down + distance);
+			} else {
+				onMove(down + distance);
 			}
-			onMove(down + distance);
+
 		}, (e) => {
 			// console.log('up', e.originalEvent);
 			setTimeout(onSnap, 300);

@@ -12,7 +12,9 @@ export default class CustomRenderer extends Highway.Renderer {
 	update() {
 		document.title = this.properties.page.title;
 		GtmService.pageView();
-		const page = this.properties.page;
+        const page = this.properties.page;
+        this.updateCanonical(page);
+        // console.log(head, pageHead);
 		/*
 		const body = page.querySelector('body');
 		let brand = /(["'])(\\?.)*?\1/.exec(body.getAttribute('ng-init') || '');
@@ -23,7 +25,23 @@ export default class CustomRenderer extends Highway.Renderer {
 			scope.root.brand = brand;
 		});
 		*/
-	}
+    }
+    
+    updateCanonical(page) {
+        const head = document.querySelector('head');     
+        Array.from(head.querySelectorAll('[rel="canonical"], [rel="alternate"]')).forEach(node => node.parentNode.removeChild(node));
+        const pageHead = page.querySelector('head');   
+        Array.from(pageHead.querySelectorAll('[rel="canonical"], [rel="alternate"]')).forEach(node => {
+            head.appendChild(node);
+            if (node.hasAttribute('hreflang')) {
+                const target = document.querySelector(`[hreflang-target="${node.getAttribute('hreflang')}"]`);
+                if (target) {
+                    target.href = node.href;
+                    console.log(target, node.href);
+                }
+            }
+        });
+    }
 
 	// This method in the renderer is run when the data-router-view is added to the DOM Tree.
 	onEnter() {

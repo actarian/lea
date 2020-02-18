@@ -13,7 +13,6 @@
 			<div class="col-md-6 offset-md-3">
 				<h1 class="title" split>Concreto.</h1>
 				<div class="abstract" abstract>Concreto, l’organicità del cemento incontra la tecnologia del gres porcellanato laminato, dando vita a superfici inedite, sorprendenti, emozionanti. Una collezione innovativa e ricercata, in gradodi adattarsi ad ogni contesto architettonico e stilistico, per spazi originali e dal forte valore narrativo.</div>
-				root {{root.wishlistCount}}
 				<ul class="nav nav--features">
 					<li appear>
 						<img class="icon" lazy data-src="img/svg/feature-01.svg" />
@@ -152,9 +151,10 @@
 								<div class="abstract"><span>2 varianti</span> <span>2 formati</span> <span>2 spessori</span></div>
 								<div class="group--cta" ng-if="!root.share">
 									<div class="btn btn--share"><span>Print</span></div>
+									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
 									<div class="btn btn--share" ng-if="!root.wishlistHas('36 4052')" ng-click="root.wishlistToggle('36 4052')"><span>Add to wishlist</span></div>
 									<div class="btn btn--share" ng-if="root.wishlistHas('36 4052')" ng-click="root.wishlistToggle('36 4052')"><span>Remove from wishlist</span></div>
-									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
+									<a href="/download" class="btn btn--share" ng-if="root.wishlistHas('36 4052')"><span>View wishlist</span></a>
 								</div>
 								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">
 									<div class="group--share" share="{ title: 'Color Title', src:'https://actarian.github.io/lea/img/product/color-01.jpg', url: 'https://actarian.github.io/lea/product.html?color=1' }" share-toggle></div>
@@ -171,8 +171,8 @@
 								<div class="abstract"><span>2 varianti</span> <span>2 formati</span> <span>2 spessori</span></div>
 								<div class="group--cta" ng-if="!root.share">
 									<div class="btn btn--share"><span>Print</span></div>
-									<div class="btn btn--share"><span>Add to wishlist</span></div>
 									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
+									<div class="btn btn--share"><span>Add to wishlist</span></div>
 								</div>
 								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">
 									<div class="group--share" share="{ title: 'Color Title', src:'https://actarian.github.io/lea/img/product/color-01.jpg', url: 'https://actarian.github.io/lea/product.html?color=1' }" share-toggle></div>
@@ -189,8 +189,8 @@
 								<div class="abstract"><span>2 varianti</span> <span>2 formati</span> <span>2 spessori</span></div>
 								<div class="group--cta" ng-if="!root.share">
 									<div class="btn btn--share"><span>Print</span></div>
-									<div class="btn btn--share"><span>Add to wishlist</span></div>
 									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
+									<div class="btn btn--share"><span>Add to wishlist</span></div>
 								</div>
 								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">
 									<div class="group--share" share="{ title: 'Color Title', src:'https://actarian.github.io/lea/img/product/color-01.jpg', url: 'https://actarian.github.io/lea/product.html?color=1' }" share-toggle></div>
@@ -207,8 +207,8 @@
 								<div class="abstract"><span>2 varianti</span> <span>2 formati</span> <span>2 spessori</span></div>
 								<div class="group--cta" ng-if="!root.share">
 									<div class="btn btn--share"><span>Print</span></div>
-									<div class="btn btn--share"><span>Add to wishlist</span></div>
 									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
+									<div class="btn btn--share"><span>Add to wishlist</span></div>
 								</div>
 								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">
 									<div class="group--share" share="{ title: 'Color Title', src:'https://actarian.github.io/lea/img/product/color-01.jpg', url: 'https://actarian.github.io/lea/product.html?color=1' }" share-toggle></div>
@@ -225,8 +225,8 @@
 								<div class="abstract"><span>2 varianti</span> <span>2 formati</span> <span>2 spessori</span></div>
 								<div class="group--cta" ng-if="!root.share">
 									<div class="btn btn--share"><span>Print</span></div>
-									<div class="btn btn--share"><span>Add to wishlist</span></div>
 									<div class="btn btn--share" ng-click="root.share = true"><span>Share</span></div>
+									<div class="btn btn--share"><span>Add to wishlist</span></div>
 								</div>
 								<div class="group--cta" ng-if="root.share" ng-click="root.share = false">
 									<div class="group--share" share="{ title: 'Color Title', src:'https://actarian.github.io/lea/img/product/color-01.jpg', url: 'https://actarian.github.io/lea/product.html?color=1' }" share-toggle></div>

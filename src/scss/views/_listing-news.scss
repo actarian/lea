@@ -6,7 +6,7 @@
 		padding: 30px 0;
 	}
 
-	> .container > .title {
+	>.container>.title {
 		font-size: 36px;
 		line-height: 1.2;
 		font-weight: 500;
@@ -89,6 +89,22 @@
 
 		}
 
+	}
+
+	&-picture {
+
+		.inner {
+
+			align-items: stretch;
+
+			.card {
+				display: flex;
+				flex-direction: column;
+			}
+
+			@include _selectNone();
+
+		}
 	}
 
 }

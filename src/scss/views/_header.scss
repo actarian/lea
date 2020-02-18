@@ -128,7 +128,7 @@
 		}
 	}
 
-	@include media-down(xs) {
+	@include media-down(sm) {
 		// transition: background ease-in-out 350ms;
 
 		.btn--menu {
@@ -368,10 +368,11 @@
 	}
 }
 
+/*
 .mobile {
 	.nav--primary {
 		&.has-dropdown--opened {
-			@include media-up(sm) {
+			@include media-up(md) {
 				li {
 					width: 25%;
 				}
@@ -379,6 +380,7 @@
 		}
 	}
 }
+*/
 
 .nav--secondary,
 .nav--tertiary {
@@ -516,10 +518,10 @@
 		justify-content: flex-start;
 	}
 
-	& > li {
+	&>li {
 
-		& > a,
-		& > span {
+		&>a,
+		&>span {
 			display: inline-block;
 			position: relative;
 			cursor: pointer;
@@ -540,8 +542,8 @@
 		&:active,
 		&.active {
 
-			& > a,
-			& > span {
+			&>a,
+			&>span {
 				color: $foreground;
 			}
 		}
@@ -564,6 +566,7 @@
 	svg {
 		fill: $foreground;
 	}
+
 	/*
 	@include media-up(sm) {
 		&>li+li {
@@ -705,17 +708,32 @@
 
 		min-height: 0;
 		padding: 20px 0;
+		z-index: 100;
+		transform: translateZ(10px);
 
 		&>li {
 			&>a {
 				span {
-					display: none;
+					&:not(.wishlist--badge) {
+						display: none;
+					}
 				}
 			}
 
 			&>span {
 				font-size: 16px;
 			}
+
+			.wishlist--badge {
+				top: 12px;
+				left: 12px;
+			}
+
+		}
+
+		.nav--wishlist {
+			justify-content: flex-end;
+			display: flex;
 		}
 
 		.icon--search {
@@ -776,7 +794,7 @@
 	&>li {
 		display: block;
 		overflow: hidden;
-		padding-bottom: 70px;
+		padding-bottom: 3vw;
 
 		&:not(.opened) {
 			&>.nav--submenu {
@@ -794,16 +812,16 @@
 			align-items: center;
 			position: relative;
 			cursor: pointer;
-			font-size: 34px;
+			font-size: 1.5vw;
 			font-weight: 500;
 			line-height: 1;
 			text-decoration: none;
 			// transition: all ease-in-out 350ms;
 
 			svg {
-				width: 0.6em;
-				height: 0.6em;
-				margin: 0.1em 0 0 0.35em;
+				width: 0.5em;
+				height: 0.5em;
+				margin: 0 0 0 0.35em;
 			}
 		}
 
@@ -869,8 +887,8 @@
 		}
 
 		&>li {
-			max-width: 50%;
-			flex: 1 1 50%;
+			max-width: calc(50% - 70px);
+			flex: 1 1 calc(50% - 70px);
 
 			&:last-child {
 				margin-bottom: 100%;
@@ -928,14 +946,25 @@
 		}
 
 		&>li {
-			padding-bottom: 35px;
+			padding-bottom: 3.5vw;
 
 			&>a,
 			&>span {
-				font-size: 27px;
+				font-size: 3.5vw;
 			}
 		}
 
+	}
+
+	@include media-down(xs) {
+		&>li {
+			padding-bottom: 5.5vw;
+
+			&>a,
+			&>span {
+				font-size: 5.5vw;
+			}
+		}
 	}
 
 }
