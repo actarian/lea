@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
 
+import DomService from '../services/dom.service';
 import Rect from '../shared/rect';
 
 class ColorsCtrl {
@@ -34,15 +35,16 @@ class ColorsCtrl {
 							this.onOpen(color, true);
 						}
 						// color.scrollIntoView();
-						this.scrollIntoView(color);
+						// this.scrollIntoView(color);
 					}
-				}, 100);
+				}, 150);
 			}
 		}
 	}
 
 	scrollIntoView(node) {
-		let curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
+		const curtop = (document.body.scrollTop || document.documentElement.scrollTop);
+		const top = curtop + node.getBoundingClientRect().top;
 		/*
 		if (node.offsetParent) {
 			do {
@@ -50,7 +52,9 @@ class ColorsCtrl {
 			} while (node = node.offsetParent);
 		}
 		*/
-		window.scroll(0, curtop);
+		window.scroll(0, top);
+		// console.log('scroll-into-view', top);
+		DomService.IMMEDIATE_SCROLL = true;
 	}
 
 	onWindowResize() {

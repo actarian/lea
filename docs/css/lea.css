@@ -193,7 +193,8 @@ body {
 html {
   position: relative;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  scroll-behavior: initial; }
   html.virtual-scrolled {
     overflow: hidden; }
   html.smooth-scrolled {
@@ -205,10 +206,15 @@ body {
   position: relative;
   width: 100%;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  scroll-behavior: initial; }
   .virtual-scrolled > body {
     overflow: hidden;
     height: 100%; }
+  body:not(.ready) {
+    position: fixed;
+    overflow: hidden;
+    height: 100vh; }
 
 .virtual-scroll {
   width: 100%;
@@ -9862,6 +9868,23 @@ canvas {
 .card--color {
   position: relative;
   cursor: pointer; }
+  .card--color > .picture {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+    background: #f7f5ef; }
+    .card--color > .picture img,
+    .card--color > .picture video,
+    .card--color > .picture canvas,
+    .card--color > .picture ng-transclude {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      -o-object-fit: cover;
+         object-fit: cover; }
   .card--color .card__body {
     position: absolute;
     width: 100%;
@@ -10009,6 +10032,23 @@ canvas {
     .card--journal > .card__body > .title {
       font-size: 24px;
       line-height: 1.125; }
+
+.card--news > .picture {
+  position: relative;
+  width: 100%;
+  padding-top: 66.66667%;
+  overflow: hidden; }
+  .card--news > .picture img,
+  .card--news > .picture video,
+  .card--news > .picture canvas,
+  .card--news > .picture ng-transclude {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover; }
 
 .listing--tiles > .listing__item {
   display: block;
@@ -13184,10 +13224,15 @@ layout {
           align-items: stretch; }
 
 .section--news-secondary .card--news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 7px; }
-  .section--news-secondary .card--news .card__body {
-    height: 100%; }
   .section--news-secondary .card--news .abstract {
     -webkit-box-flex: 1;
         -ms-flex: 1 1 auto;

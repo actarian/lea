@@ -161,7 +161,6 @@ export default class DomService {
 		const target = document.querySelector('.smooth-scroll');
 		const node = document.querySelector(selector);
 		let down = false;
-		let first = true;
 		return this.raf$().pipe(
 			map(() => {
 				// const outerHeight = this.getOuterHeight(node);
@@ -170,7 +169,7 @@ export default class DomService {
 					target.style.height = `${innerHeight}px`;
 				}
 				const nodeTop = node.top || 0;
-				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));
+				const top = down || DomService.IMMEDIATE_SCROLL ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (DomService.IMMEDIATE_SCROLL ? 1 : friction));
 				const left = (node.parentNode.offsetWidth - node.offsetWidth) / 2;
 				if (node.left !== left) {
 					node.left = left;
@@ -181,7 +180,8 @@ export default class DomService {
 					// node.style.transform = `translateX(-50%) translateY(${top}px)`;
 					// node.style.top = `${top}px`;
 					node.scrollTop = -top;
-					first = false;
+					// console.log(DomService.IMMEDIATE_SCROLL);
+					DomService.IMMEDIATE_SCROLL = false;
 					return top;
 				} else {
 					return null;
@@ -213,7 +213,6 @@ export default class DomService {
 			this.scrollTo(0, this.scrollTop + event.deltaY);
 		});
 		let down = false;
-		let first = true;
 		return this.raf$().pipe(
 			map(() => {
 				const outerHeight = this.getOuterHeight(node);
@@ -223,12 +222,12 @@ export default class DomService {
 					// console.log(rule.style.height);
 				}
 				const nodeTop = node.top || 0;
-				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (first ? 1 : friction));
+				const top = down ? -this.scrollTop : tween(nodeTop, -this.scrollTop, (DomService.IMMEDIATE_SCROLL ? 1 : friction));
 				if (node.top !== top) {
 					node.top = top;
 					node.style.transform = `translateX(-50%) translateY(${top}px)`;
 					// node.style = `position: fixed; top: 0; transform: translateX(-50%) translateY(${top}px)`;
-					first = false;
+					DomService.IMMEDIATE_SCROLL = false;
 					return top;
 				} else {
 					return null;
@@ -447,6 +446,7 @@ export default class DomService {
 
 }
 
+DomService.IMMEDIATE_SCROLL = true;
 DomService.DEFAULT_SCROLL_TARGET = window;
 DomService.factory.$inject = [];
 DomService.rafIntersection_ = {};

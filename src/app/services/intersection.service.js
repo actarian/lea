@@ -33,7 +33,7 @@ export default class IntersectionService {
 				switchMap(() => this.observerSubject_),
 				// tap(entries => console.log(entries.length)),
 				map(entries => entries.find(entry => entry.target === node)),
-				filter(entry => entry !== undefined && entry.intersectionRatio > 0),
+				filter(entry => entry !== undefined && entry.isIntersecting), // entry.intersectionRatio > 0),
 				first(),
 				finalize(() => this.observer.unobserve(node)),
 			);

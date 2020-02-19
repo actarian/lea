@@ -299,6 +299,11 @@
 	position: relative;
 	cursor: pointer;
 
+	&>.picture {
+		@include aspect-clip(1, 1);
+		background: #f7f5ef;
+	}
+
 	.card__body {
 		position: absolute;
 		width: 100%;
@@ -481,4 +486,12 @@
 			line-height: 1.125;
 		}
 	}
+}
+
+.card--news {
+
+	&>.picture {
+		@include aspect-clip(420, 280);
+	}
+
 }

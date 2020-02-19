@@ -30,6 +30,7 @@ html {
 	position: relative;
 	width: 100%;
 	height: 100%;
+	scroll-behavior: initial;
 
 	&.virtual-scrolled {
 		overflow: hidden;
@@ -47,6 +48,7 @@ body {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+	scroll-behavior: initial;
 
 	.virtual-scrolled>& {
 		overflow: hidden;
@@ -55,6 +57,12 @@ body {
 
 	.smooth-scrolled>& {
 		// overflow-x: hidden;
+	}
+
+	&:not(.ready) {
+		position: fixed;
+		overflow: hidden;
+		height: 100vh;
 	}
 }
 

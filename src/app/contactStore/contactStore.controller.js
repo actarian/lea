@@ -17,8 +17,8 @@ class ContactStoreCtrl {
 		this.$http = $http;
 		this.data = window.data || {};
 		this.model = {
-            Collections: []
-        };
+			Collections: []
+		};
 		if (this.$location.search() && this.$location.search().email) {
 			this.model.email = this.$location.search().email;
 		}
@@ -28,19 +28,16 @@ class ContactStoreCtrl {
 
 	onSubmit() {
 		console.log('ContactStoreCtrl.onSubmit', this.model);
-
 		if (this.state.busy()) {
-			this.$http.post('/WS/wsUsers.asmx/ContactStore', {data: this.model}).then(
+			this.$http.post('/WS/wsUsers.asmx/ContactStore', { data: this.model }).then(
 				success => {
 					this.state.success();
-
-					GtmService.push({"event": "Action Complete"});
+					GtmService.push({ "event": "Action Complete" });
 				},
 				error => {
 					this.error = error;
 				}
 			);
-
 			this.$timeout(() => {
 				// this.state.ready();
 			}, 2000);
@@ -48,6 +45,7 @@ class ContactStoreCtrl {
 	}
 
 	onInvalid() {
+		console.log(this.model, this);
 		this.$scope.$broadcast('onInvalid');
 	}
 

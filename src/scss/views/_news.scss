@@ -49,12 +49,12 @@
 	}
 
 	.card--news {
+		display: flex;
+		flex-direction: column;
+
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
 		padding-top: 7px;
 
-		.card__body {
-			height: 100%;
-		}
 
 		.abstract {
 			flex: 1 1 auto;

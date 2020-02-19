@@ -21527,6 +21527,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _dom = _interopRequireDefault(require("../services/dom.service"));
+
 var _rect = _interopRequireDefault(require("../shared/rect"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -21579,11 +21581,10 @@ function () {
 
               _this.onOpen(color, true);
             } // color.scrollIntoView();
+            // this.scrollIntoView(color);
 
-
-            _this.scrollIntoView(color);
           }
-        }, 100);
+        }, 150);
       };
     }
   }
@@ -21591,7 +21592,8 @@ function () {
   _createClass(ColorsCtrl, [{
     key: "scrollIntoView",
     value: function scrollIntoView(node) {
-      var curtop = (document.body.scrollTop || document.documentElement.scrollTop) + node.getBoundingClientRect().top;
+      var curtop = document.body.scrollTop || document.documentElement.scrollTop;
+      var top = curtop + node.getBoundingClientRect().top;
       /*
       if (node.offsetParent) {
       	do {
@@ -21600,7 +21602,9 @@ function () {
       }
       */
 
-      window.scroll(0, curtop);
+      window.scroll(0, top); // console.log('scroll-into-view', top);
+
+      _dom.default.IMMEDIATE_SCROLL = true;
     }
   }, {
     key: "onWindowResize",
@@ -21804,7 +21808,7 @@ ColorsCtrl.$inject = ['$scope', '$timeout', '$location', 'DomService'];
 var _default = ColorsCtrl;
 exports.default = _default;
 
-},{"../shared/rect":265}],203:[function(require,module,exports){
+},{"../services/dom.service":259,"../shared/rect":265}],203:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21871,6 +21875,7 @@ function () {
   }, {
     key: "onInvalid",
     value: function onInvalid() {
+      console.log(this.model, this);
       this.$scope.$broadcast('onInvalid');
     }
   }]);
@@ -28834,7 +28839,6 @@ function () {
       var target = document.querySelector('.smooth-scroll');
       var node = document.querySelector(selector);
       var down = false;
-      var first = true;
       return this.raf$().pipe((0, _operators.map)(function () {
         // const outerHeight = this.getOuterHeight(node);
         var innerHeight = node.lastElementChild.offsetTop + node.lastElementChild.offsetHeight;
@@ -28844,7 +28848,7 @@ function () {
         }
 
         var nodeTop = node.top || 0;
-        var top = down ? -_this.scrollTop : tween(nodeTop, -_this.scrollTop, first ? 1 : friction);
+        var top = down || DomService.IMMEDIATE_SCROLL ? -_this.scrollTop : tween(nodeTop, -_this.scrollTop, DomService.IMMEDIATE_SCROLL ? 1 : friction);
         var left = (node.parentNode.offsetWidth - node.offsetWidth) / 2;
 
         if (node.left !== left) {
@@ -28856,8 +28860,9 @@ function () {
           node.top = top; // node.style.transform = `translateX(-50%) translateY(${top}px)`;
           // node.style.top = `${top}px`;
 
-          node.scrollTop = -top;
-          first = false;
+          node.scrollTop = -top; // console.log(DomService.IMMEDIATE_SCROLL);
+
+          DomService.IMMEDIATE_SCROLL = false;
           return top;
         } else {
           return null;
@@ -28895,7 +28900,6 @@ function () {
         _this2.scrollTo(0, _this2.scrollTop + event.deltaY);
       });
       var down = false;
-      var first = true;
       return this.raf$().pipe((0, _operators.map)(function () {
         var outerHeight = _this2.getOuterHeight(node);
 
@@ -28905,13 +28909,13 @@ function () {
         }
 
         var nodeTop = node.top || 0;
-        var top = down ? -_this2.scrollTop : tween(nodeTop, -_this2.scrollTop, first ? 1 : friction);
+        var top = down ? -_this2.scrollTop : tween(nodeTop, -_this2.scrollTop, DomService.IMMEDIATE_SCROLL ? 1 : friction);
 
         if (node.top !== top) {
           node.top = top;
           node.style.transform = "translateX(-50%) translateY(".concat(top, "px)"); // node.style = `position: fixed; top: 0; transform: translateX(-50%) translateY(${top}px)`;
 
-          first = false;
+          DomService.IMMEDIATE_SCROLL = false;
           return top;
         } else {
           return null;
@@ -29185,6 +29189,7 @@ function () {
 }();
 
 exports.default = DomService;
+DomService.IMMEDIATE_SCROLL = true;
 DomService.DEFAULT_SCROLL_TARGET = window;
 DomService.factory.$inject = [];
 DomService.rafIntersection_ = {};
@@ -29288,8 +29293,9 @@ function () {
             return entry.target === node;
           });
         }), (0, _operators.filter)(function (entry) {
-          return entry !== undefined && entry.intersectionRatio > 0;
-        }), (0, _operators.first)(), (0, _operators.finalize)(function () {
+          return entry !== undefined && entry.isIntersecting;
+        }), // entry.intersectionRatio > 0),
+        (0, _operators.first)(), (0, _operators.finalize)(function () {
           return _this.observer.unobserve(node);
         }));
       } else {
