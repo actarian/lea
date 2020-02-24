@@ -2,6 +2,12 @@
 	padding: 70px 0 140px 0;
 }
 
+.section--map {
+	@include media-down(xs) {
+		margin-top: 25px;
+	}
+}
+
 .map {
 	display: block;
 	background: #D6D2CE;

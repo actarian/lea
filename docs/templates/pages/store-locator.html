@@ -32,6 +32,7 @@
 						<div class="form__group form__group--control" title="Dove ti trovi adesso?" placeholder="Cerca un indirizzo" form="storeLocator.form" control="text" ng-model="storeLocator.model.address" required="true"></div>
 						<div class="form__group form__group--cta"> <button type="submit" class="btn btn--discover" ng-class="{ 'btn--busy': storeLocator.busyFind }" ng-disabled="!storeLocator.map || !storeLocator.form.$valid"><span>Cerca</span></button> </div>
 						<div class="form__group form__group--cta"> <button type="button" class="btn btn--discover" ng-class="{ 'btn--busy': storeLocator.busyLocation }" ng-click="storeLocator.getGeolocation()" ng-disabled="!storeLocator.map"><span>Trova la mia posizione</span></button> </div>
+						<!--
 						<div class="form__group form__group--legends">
 							<div class="legend">
 								<svg class="icon icon--pin-showroom">
@@ -49,6 +50,7 @@
 								</svg> <span>Reseller</span>
 							</div>
 						</div>
+						-->
 					</form>
 				</div>
 			</div>

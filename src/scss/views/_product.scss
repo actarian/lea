@@ -14,7 +14,7 @@ layout {
 	}
 
 	.group--back {
-		/*display: none;*/ 
+		/*display: none;*/
 	}
 
 	.background {
@@ -57,7 +57,7 @@ layout {
 
 	@include media-down(xs) {
 		.container {
-			padding: 220px 0 0 0;
+			padding: 120px 0 0 0;
 		}
 
 		.background {

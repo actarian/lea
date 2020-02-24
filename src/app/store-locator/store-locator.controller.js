@@ -260,8 +260,7 @@ class StoreLocatorCtrl {
 
 		if (window.storeLocatorSettings.currMkt === 2) {
 			startingMapBounds = this.getItalyBounds();
-		}
-		else {
+		} else {
 			startingMapBounds = this.getWorldBounds();
 		}
 
@@ -506,7 +505,7 @@ class StoreLocatorCtrl {
 
 				// 2a. Cerco i pin in un raggio di 150Km, eventualmente lo estendo se non c'è nulla.
 				for (let searchRadius = 150000; searchRadius <= 600000; searchRadius += 150000) {
-					var searchBounds = new google.maps.Circle({center: position, radius: searchRadius}).getBounds();
+					var searchBounds = new google.maps.Circle({ center: position, radius: searchRadius }).getBounds();
 
 					if (this.boundsContainsStores(searchBounds)) {
 						break;
@@ -517,8 +516,7 @@ class StoreLocatorCtrl {
 					this.map.fitBounds(searchBounds, 0);
 					this.map.panToBounds(searchBounds);
 				}
-			}
-			else {
+			} else {
 				// Se non ci sono store nel paese ricercato allora mostro il mondo intero e il PIN Showroom Italia.
 				let italyMainStore = this.stores[0];
 				this.addMarkers([italyMainStore]);
@@ -717,8 +715,7 @@ class StoreLocatorCtrl {
 		visibleItems = visibleItems.sort((a, b) => {
 			if (a.type === b.type) {
 				return a.distance - b.distance;
-			}
-			else {
+			} else {
 				return a.type - b.type;
 			}
 		});

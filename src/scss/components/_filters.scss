@@ -9,7 +9,7 @@
 	@include media-up(sm) {
 		z-index: 99;
 		min-height: 70px;
-		margin-top: 70px;
+		margin-top: 25px;
 
 		&.sticky {
 			[sticky-content] {
@@ -178,9 +178,17 @@
 		}
 
 		&.form__group--control {
+			flex: 1 1 auto;
+			min-width: 0;
+
 			.group--text {
 				margin: 0;
 			}
+		}
+
+		&.form__group--cta {
+			flex: 0 1 auto;
+			min-width: 0;
 		}
 
 		&.form__group--cta,
@@ -211,6 +219,14 @@
 				width: 18px;
 				height: 22.5px;
 				margin-right: 10px;
+			}
+		}
+
+		@include media-down(xs) {
+			&.form__group--cta {
+				display: block;
+				text-align: center;
+				padding: 10px 0;
 			}
 		}
 	}
