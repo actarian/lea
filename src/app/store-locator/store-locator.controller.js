@@ -328,14 +328,14 @@ class StoreLocatorCtrl {
 				<div class="group group--info">
 					<div class="address">
 						${store.address}<br>
-						${store.zip} ${store.city} ${store.provinceCode} ${store.country}<br>
+						${store.zip} ${store.city} ${store.provinceCode} ${store.countryCode}<br>
 						${store.telephone ? `<span>${store.telephone}<br></span>` : ''}
 						${store.website ? `<span><a target="_blank" href="${store.website}">${store.website}</a></span>` : ''}
 					</div>
-					<div class="distance">${this.labels.approximately} <b>${Math.floor(store.distance)} km</b></div>
+					${store.address !== '' ? `<div class="distance">${this.labels.approximately} <b>${Math.floor(store.distance)} km</b></div>` : ``}
 				</div>
 				<div class="group group--cta">
-					<a id="locator-marker" href="https://www.google.it/maps/dir/${position.lat()},${position.lng()}/${store.title}/@${store.latitude},${store.longitude}/" target="_blank" class="btn btn--link"><span>${this.labels.reachStore}</span></a>
+					${store.address !== '' ? `<a id="locator-marker" href="https://www.google.it/maps/dir/${position.lat()},${position.lng()}/${store.title}/@${store.latitude},${store.longitude}/" target="_blank" class="btn btn--link"><span>${this.labels.reachStore}</span></a>` : ``}
 					${store.type === 9 ? `<a id="contact-store" href="/contatta-store?store=${store.id}" target="_blank" class="btn btn--link"><span>${this.labels.contactStore}</span></a>` : ''}
 				</div>
 			</div>`;
