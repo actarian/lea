@@ -56,19 +56,40 @@ class CollectionsCtrl {
 		return filters;
 	}
 
+	setFilteredImage(item, filter) {
+		const filteredImage = Object.keys(item.filter_images).reduce((p, image) => {
+			const imageFeatures = item.filter_images[image];
+			const hasImageFeature = imageFeatures.indexOf(filter.value) !== -1;
+			/*
+			if (hasImageFeature) {
+				console.log(hasImageFeature, filter.value, imageFeatures);
+			}
+			*/
+			return hasImageFeature ? image : p;
+		}, undefined);
+		item.filteredImage = filteredImage || item.filteredImage;
+	}
+
 	applyFilters() {
 		this.serializeFilters();
 		const selectedFilters = Object.keys(this.filters).map((x) => this.filters[x]).filter(x => x.value !== null);
 		let filteredItems = this.collections.slice();
-		// console.log(filteredItems);
+		// console.log('selectedFilters', selectedFilters.map(x => x.value).join(', '));
 		if (selectedFilters.length) {
-			filteredItems = filteredItems.filter(reference => {
+			filteredItems = filteredItems.filter(item => {
+				item.filteredImage = item.image;
 				let has = true;
 				selectedFilters.forEach(filter => {
-					has = has && filter.doFilter(reference, filter.value);
+					const hasFilter = filter.doFilter(item, filter.value);
+					if (hasFilter) {
+						this.setFilteredImage(item, filter);
+					}
+					has = has && hasFilter;
 				});
 				return has;
 			});
+		} else {
+			filteredItems.forEach(item => item.filteredImage = item.image);
 		}
 		// console.log(filteredItems, selectedFilters);
 		this.selectedFilters = selectedFilters;
@@ -81,17 +102,17 @@ class CollectionsCtrl {
 		GtmService.pageViewFilters(GTM_CAT, this.filters);
 	}
 
-	updateFilterStates(collections) {
-		// console.log('updateFilterStates', collections);
+	updateFilterStates(items) {
+		// console.log('updateFilterStates', items);
 		Object.keys(this.filters).forEach(x => {
 			const filter = this.filters[x];
 			filter.options.forEach(option => {
 				let has = false;
 				if (option.value) {
 					let i = 0;
-					while (i < collections.length && !has) {
-						const reference = collections[i];
-						has = filter.doFilter(reference, option.value);
+					while (i < items.length && !has) {
+						const item = items[i];
+						has = filter.doFilter(item, option.value);
 						i++;
 					}
 				} else {

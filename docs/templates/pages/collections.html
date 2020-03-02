@@ -11,425 +11,646 @@
 </section>
 
 <script type="text/javascript" lazy-script>
-	window.filters = {
-		"colors": {
-			"label": "Colors",
-			"placeholder": "Any",
-			"options": [{ "label": "Concreto Dark", "value": 52 }, { "label": "Concreto Extra Light", "value": 53 }, { "label": "Concreto Light", "value": 54 }, { "label": "Concreto Medium", "value": 55 }, { "label": "Calacatta Oro", "value": 56 }, { "label": "Invisible Light", "value": 57 }, { "label": "Marquina Nero", "value": 58 }, { "label": "Venato Bianco", "value": 59 }, { "label": "Oak Ash", "value": 60 }, { "label": "Oak Cloves", "value": 61 }, { "label": "Oak Ginger", "value": 62 }, { "label": "Oak Natural", "value": 63 }, { "label": "Oak Vanilla", "value": 64 }, { "label": "Walnut Cinnamon", "value": 65 }, { "label": "Walnut Tobacco", "value": 66 }, { "label": "Concreto Rust", "value": 67 }, { "label": "C_ground", "value": 68 }, { "label": "C Moon", "value": 69 }, { "label": "C Night", "value": 70 }, { "label": "C Snow", "value": 71 }, { "label": "C Steel", "value": 72 }, { "label": "T Ground", "value": 73 }, { "label": "T Moon", "value": 74 }, { "label": "T Night", "value": 75 }, { "label": "T Snow 2", "value": 76 }, { "label": "T Steel", "value": 77 }, { "label": "Next Dark", "value": 78 }, { "label": "Next Gray", "value": 79 }, { "label": "Next Taupe", "value": 80 }, { "label": "Next White", "value": 81 }, { "label": "Canvas Argilla", "value": 82 }, { "label": "Canvas Corda", "value": 83 }, { "label": "Canvas Lino", "value": 84 }, { "label": "Canvas Moro", "value": 85 }, { "label": "Canvas Tabacco", "value": 86 }, { "label": "Canvas Tortora", "value": 87 }, { "label": "Matter Argilla", "value": 88 }, { "label": "Matter Corda", "value": 89 }, { "label": "Matter Lino", "value": 90 }, { "label": "Matter Moro", "value": 91 }, { "label": "Matter Tabacco", "value": 92 }, { "label": "Matter Tortora", "value": 93 }, { "label": "Plaster Argilla", "value": 94 }, { "label": "Plaster Corda", "value": 95 }, { "label": "Plaster Lino", "value": 96 }, { "label": "Plaster Moro", "value": 97 }, { "label": "Plaster Tabacco", "value": 98 }, { "label": "Plaster Tortora", "value": 99 }, { "label": "Dark Flow", "value": 100 }, { "label": "Gray Flow", "value": 101 }, { "label": "Ivory Flow", "value": 102 }, { "label": "Silver Flow", "value": 103 }, { "label": "Naive Black", "value": 104 }, { "label": "Naive Blue", "value": 105 }, { "label": "Naive Grey", "value": 106 }, { "label": "Naive Terra", "value": 107 }, { "label": "Beige Madeira", "value": 108 }, { "label": "Grey Tenerife", "value": 109 }, { "label": "Taupe Moher", "value": 110 }, { "label": "White Dover", "value": 111 }, { "label": "Golden Flame", "value": 112 }, { "label": "Old Walnut", "value": 113 }, { "label": "Warm Cream", "value": 114 }, { "label": "Black Coffee", "value": 115 }, { "label": "Black Stone", "value": 116 }, { "label": "Calacatta Gold Extra", "value": 117 }, { "label": "Cool Rain", "value": 118 }, { "label": "Crystal Water", "value": 119 }, { "label": "Deep Sea", "value": 120 }, { "label": "Lappata", "value": 121 }, { "label": "Light Rock", "value": 122 }, { "label": "Milk", "value": 123 }, { "label": "Naturale", "value": 124 }, { "label": "Pietra Gray", "value": 125 }, { "label": "Sabbiata", "value": 126 }, { "label": "Safari Amande", "value": 127 }, { "label": "Soft Sand", "value": 128 }, { "label": "Src010", "value": 129 }, { "label": "Src020", "value": 130 }, { "label": "Src030", "value": 131 }, { "label": "Srw010", "value": 132 }, { "label": "Srw020", "value": 133 }, { "label": "Srw030", "value": 134 }, { "label": "Statuario White", "value": 135 }, { "label": "Stuccata", "value": 136 }, { "label": "Total Black", "value": 137 }, { "label": "Total White", "value": 138 }, { "label": "Travertino Classico", "value": 139 }, { "label": "White Cloud", "value": 140 }, { "label": "Lasa Bright", "value": 141 }, { "label": "Onice Venus", "value": 142 }, { "label": "Lodge Brown 2", "value": 143 }, { "label": "Lodge Greige 2", "value": 144 }, { "label": "Lodge Grey", "value": 145 }, { "label": "Lodge Grove", "value": 146 }, { "label": "Avenue", "value": 147 }, { "label": "Boulevard", "value": 148 }, { "label": "Route", "value": 149 }, { "label": "Street", "value": 150 }, { "label": "Bianco Statuario", "value": 151 }, { "label": "Calacatta Shine", "value": 152 }, { "label": "Crystal White Drea 2", "value": 153 }, { "label": "Gray Stone", "value": 154 }, { "label": "Imperial Onyx", "value": 155 }, { "label": "Lasa Aurora", "value": 156 }, { "label": "Romance Safari", "value": 157 }, { "label": "Beige Madeira L2", "value": 158 }, { "label": "Cendre L2", "value": 159 }, { "label": "Grey Tenerife L2", "value": 160 }, { "label": "Lime L2", "value": 161 }, { "label": "Lodge Brown L2", "value": 162 }, { "label": "Lodge Greige L2", "value": 163 }, { "label": "Lodge Grey L2", "value": 164 }, { "label": "Lodge Grove L2", "value": 165 }, { "label": "Taupe Moher L2", "value": 166 }, { "label": "White Dover L2", "value": 167 }, { "label": "Berlin Night", "value": 168 }, { "label": "London Gray", "value": 169 }, { "label": "Milano Ecru", "value": 170 }, { "label": "New York Coal", "value": 171 }, { "label": "Paris Amande", "value": 172 }, { "label": "Rio Coffee", "value": 173 }, { "label": "Shanghai Iron", "value": 174 }, { "label": "Tokyo White", "value": 175 }, { "label": "Coffee", "value": 176 }, { "label": "Honey", "value": 177 }, { "label": "Snow", "value": 178 }, { "label": "Vintage", "value": 179 }, { "label": "Coffee Wood", "value": 180 }, { "label": "Cream Wood", "value": 181 }, { "label": "Honey Wood", "value": 182 }, { "label": "Snow Wood", "value": 183 }, { "label": "Vintage Wood", "value": 184 }, { "label": "Line Blue", "value": 185 }, { "label": "Line Grey", "value": 186 }, { "label": "Wave Blue", "value": 187 }, { "label": "Wave Grey", "value": 188 }, { "label": "Sabbiata Velvet", "value": 189 }, { "label": "Scalpellata", "value": 190 }, { "label": "Texture", "value": 191 }, { "label": "Lappata Mauk", "value": 192 }, { "label": "Black 3", "value": 193 }, { "label": "Gesso", "value": 194 }, { "label": "White Goc 2", "value": 195 }, { "label": "Xblack", "value": 196 }, { "label": "Xwhite", "value": 197 }, { "label": "Cordusio Bronzo 3d", "value": 198 }, { "label": "Moscova Antracite 3d", "value": 199 }, { "label": "Cendre", "value": 200 }, { "label": "Charcoal", "value": 201 }, { "label": "Lime Sto", "value": 202 }, { "label": "Silt", "value": 203 }]
-		},
-		"styles": {
-			"label": "Styles",
-			"placeholder": "Any",
-			"options": [{ "label": "Shapes And Colors", "value": 204 }, { "label": "Marble Mood", "value": 205 }, { "label": "Protect", "value": 206 }, { "label": "Slimtech", "value": 207 }, { "label": "Wood Experience", "value": 208 }, { "label": "Contemporary Style", "value": 209 }, { "label": "Alternative Stone", "value": 210 }, { "label": "Outdoor Solutions", "value": 211 }, { "label": "Home By Lea", "value": 212 }]
-		},
-		"formats": {
-			"label": "Formats",
-			"placeholder": "Any",
-			"options": [{ "label": "30x60", "value": 12 }, { "label": "45x90", "value": 13 }, { "label": "60x60", "value": 14 }, { "label": "90x90", "value": 15 }, { "label": "120x120", "value": 16 }, { "label": "120x260", "value": 17 }, { "label": "60x120slimtech", "value": 18 }, { "label": "20x120", "value": 19 }, { "label": "30x120", "value": 20 }, { "label": "30x180", "value": 21 }, { "label": "100x100", "value": 22 }, { "label": "100x150", "value": 23 }, { "label": "100x300", "value": 24 }, { "label": "60x120", "value": 25 }, { "label": "30x90", "value": 26 }, { "label": "5x45", "value": 27 }, { "label": "Cuadra L 112", "value": 28 }, { "label": "Esa 338 X 195", "value": 29 }, { "label": "Gramma 38 392x97", "value": 30 }, { "label": "Gramma 66 392x169", "value": 31 }, { "label": "50x100", "value": 32 }, { "label": "20x1215", "value": 33 }, { "label": "20x180", "value": 34 }, { "label": "L 25", "value": 35 }, { "label": "L 50", "value": 36 }, { "label": "L 62", "value": 37 }, { "label": "50x150", "value": 38 }, { "label": "58x116", "value": 39 }, { "label": "73x73 2", "value": 40 }, { "label": "75x75", "value": 41 }, { "label": "20x200", "value": 42 }, { "label": "20x100", "value": 43 }, { "label": "20x150", "value": 44 }, { "label": "33x300", "value": 45 }, { "label": "49x100", "value": 46 }, { "label": "228", "value": 47 }, { "label": "229", "value": 48 }, { "label": "258x135x87", "value": 49 }, { "label": "10x40", "value": 50 }, { "label": "13x13", "value": 51 }]
-		},
-		"thickness": {
-			"label": "Thickness",
-			"placeholder": "Any",
-			"options": [{ "label": "281", "value": 1 }, { "label": "11mm", "value": 2 }, { "label": "6mm", "value": 3 }, { "label": "10mm", "value": 4 }, { "label": "12mm", "value": 5 }, { "label": "5 5mm", "value": 6 }, { "label": "105 Mm", "value": 7 }, { "label": "3 5mm", "value": 8 }, { "label": "20mm", "value": 9 }, { "label": "3mm", "value": 10 }, { "label": "9mm", "value": 11 }]
-		}
+	var filtro;
+	window.filters = {};
+	filtro = {
+		label: "Effetto",
+		placeholder: "Tutti",
+		options: []
 	};
+	filtro.options.push({ label: "Pietra", value: 4186 });
+	filtro.options.push({ label: "Marmo", value: 4187 });
+	filtro.options.push({ label: "Cemento e resina", value: 4188 });
+	filtro.options.push({ label: "Legno", value: 4189 });
+	filtro.options.push({ label: "Forme e colori", value: 4190 });
+	window.filters.Effetto = filtro;
+	filtro = { label: "Ambiente", placeholder: "Tutti", options: [] };
+	filtro.options.push({ label: "Bagno", value: 4191 });
+	filtro.options.push({ label: "Cucina", value: 4192 });
+	filtro.options.push({ label: "Living", value: 4193 });
+	filtro.options.push({ label: "Interno", value: 4194 });
+	filtro.options.push({ label: "Esterno", value: 4195 });
+	filtro.options.push({ label: "Pubblico", value: 4197 });
+	window.filters.Ambiente = filtro;
+	filtro = { label: "Tecnologia", placeholder: "Tutti", options: [] };
+	filtro.options.push({ label: "Gres laminato Slimtech", value: 4198 });
+	filtro.options.push({ label: "Gres porcellanato", value: 4199 });
+	filtro.options.push({ label: "Gres 20mm L2", value: 4200 });
+	filtro.options.push({ label: "Antibatterico", value: 4201 });
+	window.filters.Tecnologia = filtro;
+	filtro = { label: "Designer", placeholder: "Tutti", options: [] };
+	filtro.options.push({ label: "Patrick Norguet", value: 4202 });
+	filtro.options.push({ label: "Philippe Nigro", value: 4203 });
+	filtro.options.push({ label: "Diego Grandi", value: 4205 });
+	filtro.options.push({ label: "Fabio Novembre", value: 4206 });
+	window.filters.Designer = filtro;
+	filtro = { label: "Tipologia", placeholder: "Tutti", options: [] };
+	filtro.options.push({ label: "Pavimento", value: 4183 });
+	filtro.options.push({ label: "Rivestimento", value: 4184 });
+	filtro.options.push({ label: "Pavimento e rivestimento", value: 4185 });
+	window.filters.Tipologia = filtro;
+	window.filters.thickness = { label: "Spessore", placeholder: "Tutti", options: [] };
+	window.filters.slipResistanceR = { label: "Resistenza allo scivolamento R", placeholder: "Tutti", options: [] };
+	window.filters.formats = { label: "Formati", placeholder: "Tutti", options: [] };
+	window.filters.formats.options.push({ label: "4,9x100 cm", value: "4,9x100 cm" });
+	window.filters.formats.options.push({ label: "5x40 cm", value: "5x40 cm" });
+	window.filters.formats.options.push({ label: "6,2 cm", value: "6,2 cm" });
+	window.filters.formats.options.push({ label: "8,3x19,5 cm", value: "8,3x19,5 cm" });
+	window.filters.formats.options.push({ label: "9,7x33,8 cm", value: "9,7x33,8 cm" });
+	window.filters.formats.options.push({ label: "9,7x39,2 cm", value: "9,7x39,2 cm" });
+	window.filters.formats.options.push({ label: "11,2x9,7 cm", value: "11,2x9,7 cm" });
+	window.filters.formats.options.push({ label: "14,5x49,8 cm", value: "14,5x49,8 cm" });
+	window.filters.formats.options.push({ label: "16,9x39,2 cm", value: "16,9x39,2 cm" });
+	window.filters.formats.options.push({ label: "20x100 cm", value: "20x100 cm" });
+	window.filters.formats.options.push({ label: "20x120 cm", value: "20x120 cm" });
+	window.filters.formats.options.push({ label: "20x121,5 cm", value: "20x121,5 cm" });
+	window.filters.formats.options.push({ label: "20x150 cm", value: "20x150 cm" });
+	window.filters.formats.options.push({ label: "20x180 cm", value: "20x180 cm" });
+	window.filters.formats.options.push({ label: "20x200 cm", value: "20x200 cm" });
+	window.filters.formats.options.push({ label: "25 cm", value: "25 cm" });
+	window.filters.formats.options.push({ label: "26 cm", value: "26 cm" });
+	window.filters.formats.options.push({ label: "30x60 cm", value: "30x60 cm" });
+	window.filters.formats.options.push({ label: "30x90 cm", value: "30x90 cm" });
+	window.filters.formats.options.push({ label: "30x120 cm", value: "30x120 cm" });
+	window.filters.formats.options.push({ label: "30x180 cm", value: "30x180 cm" });
+	window.filters.formats.options.push({ label: "33x300 cm", value: "33x300 cm" });
+	window.filters.formats.options.push({ label: "38,5 cm", value: "38,5 cm" });
+	window.filters.formats.options.push({ label: "45x90 cm", value: "45x90 cm" });
+	window.filters.formats.options.push({ label: "50 cm", value: "50 cm" });
+	window.filters.formats.options.push({ label: "50x100 cm", value: "50x100 cm" });
+	window.filters.formats.options.push({ label: "50x150 cm", value: "50x150 cm" });
+	window.filters.formats.options.push({ label: "57,6 cm", value: "57,6 cm" });
+	window.filters.formats.options.push({ label: "60x60 cm", value: "60x60 cm" });
+	window.filters.formats.options.push({ label: "60x120 cm", value: "60x120 cm" });
+	window.filters.formats.options.push({ label: "90x90 cm", value: "90x90 cm" });
+	window.filters.formats.options.push({ label: "100x100 cm", value: "100x100 cm" });
+	window.filters.formats.options.push({ label: "100x150 cm", value: "100x150 cm" });
+	window.filters.formats.options.push({ label: "120x120 cm", value: "120x120 cm" });
+	window.filters.formats.options.push({ label: "260x120 cm", value: "260x120 cm" });
+	window.filters.formats.options.push({ label: "300x100 cm", value: "300x100 cm" });
+	window.filters.thickness.options.push({ label: "3,5 mm", value: "3,5 mm" });
+	window.filters.thickness.options.push({ label: "5,5 mm", value: "5,5 mm" });
+	window.filters.thickness.options.push({ label: "6 mm", value: "6 mm" });
+	window.filters.thickness.options.push({ label: "9,5 mm", value: "9,5 mm" });
+	window.filters.thickness.options.push({ label: "11 mm", value: "11 mm" });
+	window.filters.thickness.options.push({ label: "12 mm", value: "12 mm" });
+	window.filters.thickness.options.push({ label: "20 mm", value: "20 mm" });
+	window.filters.slipResistanceR.options.push({ label: "R9", value: "R9" });
+	window.filters.slipResistanceR.options.push({ label: "R10", value: "R10" });
+	window.filters.slipResistanceR.options.push({ label: "R11", value: "R11" });
 
-	window.collections = [{
-		"id": 10924,
-		"protect": true,
-		"styles": [204],
-		"formats": [12, 13, 14, 15],
-		"thickness": [1, 2],
-		"colors": [52, 53, 54, 55],
-		"url": "product.html",
-		"originalUrl": "/collezioni/concreto/",
-		"title": "Concreto",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2019/03/LEA-concreto-copertina.jpg",
-		"name": "Concreto",
-		"abstract": "Il materiale simbolo dell’architettura moderna ispira un’operazione concettuale che, tra campiture pure e pattern decorativi, celebra l’estetica del cemento. Con Concreto Lea Ceramiche mette a punto una collezione ceramica integrale, articolata su tre spessori, su più finiture e più formati. Un progetto estetico che plasma il carattere di ogni ambiente: spazi più intimi e privati..."
-}, {
-		"id": 10925,
-		"designer": "Mimmo Iodice",
-		"styles": [205, 206, 207],
-		"formats": [16, 17, 18],
-		"thickness": [3],
-		"colors": [56, 57, 58, 59],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-delight/",
-		"title": "Slimtech Delight",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/LEA-delight-venatobianco.jpg",
-		"name": "Slimtech Delight",
-		"abstract": "Delight nasce dalla fusione dell’anima elegante del marmo con l’alta tecnologia del gres laminato, perfezionando e donando forza materica alla delicatezza delle ricche venature. Una proposta di quattro essenze uniche e raffinate che vestono lo spazio di luce. La collezione Delight viene arricchita da Touch, una nuova finitura di superficie."
-}, {
-		"id": 10946,
-		"protect": true,
-		"styles": [206, 208],
-		"formats": [19, 20, 21],
-		"thickness": [4, 5],
-		"colors": [60, 61, 62, 63, 64, 65, 66],
-		"url": "product.html",
-		"originalUrl": "/collezioni/bio-select/",
-		"title": "Bio Select",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2018/09/LEA-bioselect-copertina.jpg",
-		"name": "Bio Select",
-		"abstract": "Lea Ceramiche crea Bio Select, preziosa e fedele interpretazione di essenze classiche, proposte in colori contemporanei ed equilibrati. Bio Select è una collezione ricca di innovativi decori che vestono, rendendo unici, i luoghi di vita quotidiana e gli spazi commerciali."
-}, {
-		"id": 10297,
-		"styles": [206, 207],
-		"formats": [16, 17, 18],
-		"thickness": [3],
-		"colors": [52, 53, 54, 55, 67],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-concreto/",
-		"title": "Slimtech Concreto",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2018/04/LEA-concreto-dark-copertina.jpg",
-		"name": "Slimtech Concreto",
-		"abstract": "Concreto, l’organicità del cemento incontra la tecnologia del gres porcellanato laminato, dando vita a superfici inedite, sorprendenti, emozionanti. Una collezione innovativa e ricercata, in grado di adattarsi ad ogni contesto architettonico e stilistico, per spazi originali e dal forte valore narrativo. Cinque le declinazioni cromatiche: Concreto Extra Light, Light, Medium, Dark e Rust. Quattro finiture: Foam, Tide, Dry..."
-}, {
-		"id": 9122,
-		"designer": "Mimmo Iodice",
-		"protect": true,
-		"styles": [209, 206, 207],
-		"formats": [22, 23, 24],
-		"thickness": [6],
-		"colors": [68, 69, 70, 71, 72, 73, 74, 75, 76, 77],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-take-care/",
-		"title": "Slimtech Take Care",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/take-care-immagine-in-evidenza.jpg",
-		"name": "Slimtech Take Care",
-		"abstract": "Composto da due superfici in apparenza eterogenee, Take Care è il risultato di un armonioso dialogo. In Take, si legge l’effetto spatolato e continuo a metà tra la resina e il cemento, arricchito dall’inclusione di materiali a diversa riflessione. La finitura è morbida, quasi vellutata e in base all’incidenza della luce, può risultare con un..."
-}, {
-		"id": 9177,
-		"styles": [206, 210],
-		"formats": [12, 13, 25, 14, 15],
-		"thickness": [4, 2],
-		"colors": [78, 79, 80, 81],
-		"url": "product.html",
-		"originalUrl": "/collezioni/nextone/",
-		"title": "Nextone",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2017/09/Lea_Nextone_copertina.jpg",
-		"name": "Nextone",
-		"abstract": "Nextone è una collezione con spessore tradizionale che riproduce un effetto pietra ingegnerizzato. Combinando 4 pietre di differenti cave, le cui caratteristiche sono state fuse tra loro, si è giunti alla definizione di grafiche inedite che ricreano una pietra non esistente in natura, ma dall’effetto estetico naturale e molto equilibrato. Un orientamento decorativo attraversa la collezione e..."
-}, {
-		"id": 7943,
-		"protect": true,
-		"styles": [209, 206, 204],
-		"formats": [26, 27, 15, 28, 29, 30, 31],
-		"thickness": [2],
-		"colors": [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99],
-		"url": "product.html",
-		"originalUrl": "/collezioni/trame/",
-		"title": "Trame",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2017/02/TRAME_JEWEL_SCURO_2-400x400.jpg",
-		"name": "Trame",
-		"abstract": "Trame è un progetto composito perché accosta tra loro, in perfetta armonia, cromie, materiali e forme. 3 effetti materici di base reinterpretano visivamente e attraverso la sensazione tattile, 3 texture differenti. Attraverso l’utilizzo e il mix di materiali e colori, si è volutamente introdotto l’uso di tagli speciali per evidenziare ancora più, le infinite combinazioni e..."
-}, {
-		"id": 8733,
-		"designer": "Mimmo Iodice",
-		"styles": [206, 207, 210],
-		"formats": [22, 24, 32],
-		"thickness": [6],
-		"colors": [100, 101, 102, 103],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-waterfall/",
-		"title": "Slimtech Waterfall",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2017/05/LEA-waterfall_zenit0055-2-400x400.jpg",
-		"name": "Slimtech Waterfall",
-		"abstract": "Waterfall ricrea sulla superficie gli effetti cangianti tipici delle pietre rocciose sedimentarie, irregolarità e variazioni di colori che segnano il trascorrere del tempo ancora più amplificate sulle grandi lastre di 5,5mm di spessore. La collezione, già presente nel catalogo Lea con lo spessore tradizionale di 10,5mm e 20mm e con un ampio corredo di decori..."
-}, {
-		"id": 7587,
-		"protect": true,
-		"styles": [206, 210],
-		"formats": [12, 13, 25, 14, 15],
-		"thickness": [7],
-		"colors": [100, 101, 102, 103],
-		"url": "product.html",
-		"originalUrl": "/collezioni/waterfall/",
-		"title": "Waterfall",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/Lea_WaterFall_Gray_Chevron-400x400.jpg",
-		"name": "Waterfall",
-		"abstract": "Waterfall è una pietra che richiama l’ardesia, con la varietà di superficie tipica della pietra a spacco."
-}, {
-		"id": 7478,
-		"designer": "Mimmo Iodice",
-		"styles": [204, 207],
-		"formats": [22, 24],
-		"thickness": [6],
-		"colors": [104, 105, 106, 107],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-naive/",
-		"title": "Slimtech Naive",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2016/04/NaiveBlack-Versione02-400x400.jpg",
-		"name": "Slimtech Naive",
-		"abstract": "Slimtech Naive, design by Patrick Norguet, trae ispirazione da una tecnologia d’avanguardia."
-}, {
-		"id": 6901,
-		"protect": true,
-		"styles": [206, 210],
-		"formats": [12, 25, 14, 15],
-		"thickness": [4, 2],
-		"colors": [108, 109, 110, 111],
-		"url": "product.html",
-		"originalUrl": "/collezioni/cliffstone/",
-		"title": "Cliffstone",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/LEA-cliffstone-greytenerife-nat-10mm-copertina.jpg",
-		"name": "Cliffstone",
-		"abstract": "Cliffstone è un’interpretazione di una pietra rocciosa inesistente in natura ma reinventata con creatività da Lea Ceramiche"
-}, {
-		"id": 1604,
-		"designer": "Mimmo Iodice",
-		"styles": [206, 208],
-		"formats": [33, 34],
-		"thickness": [7, 5],
-		"colors": [112, 113, 114],
-		"url": "product.html",
-		"originalUrl": "/collezioni/bio-recover/",
-		"title": "Bio Recover",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/Lea_Living_GoldenFlame_Zenitale_400.jpg",
-		"name": "Bio Recover",
-		"abstract": "Bio Recover è una reinterpretazione del legno di recupero, tavole recuperate dal mondo dell’antiquariato"
-}, {
-		"id": 176,
-		"designer": "Mimmo Iodice",
-		"protect": true,
-		"styles": [204, 207],
-		"formats": [35, 36, 37],
-		"thickness": [8, 6],
-		"colors": [115, 116, 117, 118, 119, 100, 120, 101, 102, 121, 122, 123, 124, 125, 126, 127, 103, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-pixelnest/",
-		"title": "Slimtech Nest",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/hok_nest_pubblico_2.jpg",
-		"name": "Slimtech Nest",
-		"abstract": "Colore e movimento, una miscela di sfumature, un omaggio al paesaggio italiano. Design by HOK Product Design"
-}, {
-		"id": 181,
-		"styles": [205, 206, 207],
-		"formats": [22, 24, 38],
-		"thickness": [6],
-		"colors": [117, 141, 142, 125, 127, 135],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-timeless-marble/",
-		"title": "Slimtech Timeless Marble",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/Timeless_Marble_calacattaPart03-400x400.jpg",
-		"name": "Slimtech Timeless Marble",
-		"abstract": "La preziosità del marmo rivive con le rivoluzionarie ed imponenti lastre di Timeless Marble"
-}, {
-		"id": 171,
-		"protect": true,
-		"styles": [209, 206, 207],
-		"formats": [22, 24],
-		"thickness": [6],
-		"colors": [137, 138],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-absolute/",
-		"title": "Slimtech Absolute",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_ABSOLUTE_total_white_sat1.jpg",
-		"name": "Slimtech Absolute",
-		"abstract": "Sorprendenti superfici in versione lucido brillante o matt intenso, presentate in due colori essenziali: Total Black e Total White"
-}, {
-		"id": 87,
-		"designer": "Mimmo Iodice",
-		"styles": [206, 208],
-		"formats": [19, 20],
-		"thickness": [4],
-		"colors": [143, 144, 145, 146],
-		"url": "product.html",
-		"originalUrl": "/collezioni/bio-lumber/",
-		"title": "Bio Lumber",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/05/400_Lodge-Brown-Part021.jpg",
-		"name": "Bio Lumber",
-		"abstract": "La capacità mimetica della ceramica reinterpreta e ricrea la calda naturalità del legno"
-}, {
-		"id": 151,
-		"protect": true,
-		"styles": [209, 206],
-		"formats": [12, 13, 14, 15],
-		"thickness": [4, 2],
-		"colors": [147, 148, 149, 150],
-		"url": "product.html",
-		"originalUrl": "/collezioni/district/",
-		"title": "District",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_District_Boulevard_30x60.jpg",
-		"name": "District",
-		"abstract": "La nuova collezione District, effetto cemento, è fonte di ispirazione estetica e di sperimentazione tecnologica"
-}, {
-		"id": 152,
-		"designer": "Lenny Kravitz",
-		"styles": [205],
-		"formats": [12, 39, 25, 14, 40, 41],
-		"thickness": [4, 2],
-		"colors": [151, 152, 153, 154, 155, 156, 157],
-		"url": "product.html",
-		"originalUrl": "/collezioni/dreaming/",
-		"title": "Dreaming",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_bianco-stat.jpg",
-		"name": "Dreaming",
-		"abstract": "Lucentezza e venature del marmo sono sapientemente reinterpretate per unire tradizione e innovazione, eleganza e comfort"
-}, {
-		"id": 185,
-		"styles": [211],
-		"formats": [20, 13, 14],
-		"thickness": [9],
-		"colors": [158, 159, 52, 53, 54, 55, 100, 101, 160, 102, 161, 162, 163, 164, 165, 78, 79, 80, 81, 61, 63, 103, 166, 167],
-		"url": "product.html",
-		"originalUrl": "/collezioni/system-l2/",
-		"title": "System L2",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/System-L2_60x60cm_lime_cendre-400x400.jpg",
-		"name": "System L2",
-		"abstract": "Il gres con 20 mm di spessore di Lea Ceramiche offre caratteristiche tecniche, cromatiche e materiche tutte dedicate all’outdoor"
-}, {
-		"id": 162,
-		"protect": true,
-		"styles": [209, 206],
-		"formats": [12, 13, 14, 15],
-		"thickness": [4, 2],
-		"colors": [168, 169, 170, 171, 172, 173, 174, 175],
-		"url": "product.html",
-		"originalUrl": "/collezioni/metropolis/",
-		"title": "Metropolis",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_LEA_metropolis_set01_part-2-vert00041.jpg",
-		"name": "Metropolis",
-		"abstract": "Metropolis ripropone il carattere rude e sostanziale del cemento, con un ritorno alla materia, alla sua purezza ed austerità"
-}, {
-		"id": 182,
-		"styles": [204, 207, 208],
-		"formats": [42],
-		"thickness": [6],
-		"colors": [176, 177, 178, 179],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-type/",
-		"title": "Slimtech Type 32",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_Type32-Copertina-Sgabello1.jpg",
-		"name": "Slimtech Type 32",
-		"abstract": "Quattro basi Slimtech 5Plus con cromie differenti e quattro grafiche combinabili tra loro. Design by Diego Grandi"
-}, {
-		"id": 183,
-		"protect": true,
-		"styles": [206, 207, 208],
-		"formats": [43, 44, 42, 45],
-		"thickness": [6],
-		"colors": [180, 181, 182, 183, 184],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-wood-stock/",
-		"title": "Slimtech Wood-Stock",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/Woodstock-Cream-Part01-400x400.jpg",
-		"name": "Slimtech Wood-Stock",
-		"abstract": "Slimtech Wood Stock è la nuova collezione effetto legno della serie Slimtech 5Plus, con spessore 5,5mm."
-}, {
-		"id": 174,
-		"styles": [204, 207],
-		"formats": [24],
-		"thickness": [8],
-		"colors": [185, 186, 187, 188],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-lines-and-waves/",
-		"title": "Slimtech Lines and Waves",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_A_5084082.jpg",
-		"name": "Slimtech Lines and Waves",
-		"abstract": "La collezione Lines e Waves, design by Patrick Norguet, esalta l’aspetto sensoriale delle superfici"
-}, {
-		"id": 147,
-		"styles": [210],
-		"formats": [12, 25, 14],
-		"thickness": [2, 5],
-		"colors": [121, 124, 126, 189, 190, 136, 191],
-		"url": "product.html",
-		"originalUrl": "/collezioni/basaltina-stone-project/",
-		"title": "Basaltina Stone Project",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_amb.bsp_.texture.naturale_camera1.jpg",
-		"name": "Basaltina Stone Project",
-		"abstract": "Le diverse varianti proposte, con differenti toni di grigio, danno origine ad un prodotto che ricorda la pietra naturale, dal look minimal e suggestivo"
-}, {
-		"id": 179,
-		"protect": true,
-		"styles": [209, 207],
-		"formats": [22, 24, 46, 32],
-		"thickness": [8],
-		"colors": [129, 130, 131, 132, 133, 134],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-re-evolution/",
-		"title": "Slimtech RE-evolution",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_slimtech_re_volution_palestra-a-1.jpg",
-		"name": "Slimtech RE-evolution",
-		"abstract": "Slimtech RE-evolution propone una nuova texture che richiama l’effetto resina"
-}, {
-		"id": 173,
-		"styles": [207, 210],
-		"formats": [22, 24, 46, 32],
-		"thickness": [8],
-		"colors": [116, 118, 119, 120, 122, 128, 140],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-gouache-10/",
-		"title": "Slimtech Gouache.10",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/deep-sea_100x100cm_lscgu65_4001.jpg",
-		"name": "Slimtech Gouache.10",
-		"abstract": "La serie è incentrata sul tema della ricerca cromatica e dell’effetto tattile della superficie ceramica. Design by Diego Grandi"
-}, {
-		"id": 172,
-		"styles": [207],
-		"formats": [22, 24, 46, 32],
-		"thickness": [8],
-		"colors": [121, 124, 126, 136],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-basaltina-stone-project/",
-		"title": "Slimtech Basaltina Stone Project",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_basaltina_slimtech_sabbiata_basaltina_stone_project_sabbiata_cucina_dettaglio1.jpg",
-		"name": "Slimtech Basaltina Stone Project",
-		"abstract": "Le lastre della Slimtech Basaltina Stone Project sono disponibili in 4 colori: Lappata, Stuccata, Naturale e Sabbiata"
-}, {
-		"id": 175,
-		"protect": true,
-		"styles": [204, 207],
-		"formats": [47, 48, 49],
-		"thickness": [8, 10],
-		"colors": [192, 124, 126],
-		"url": "product.html",
-		"originalUrl": "/collezioni/slimtech-mauk/",
-		"title": "Slimtech Mauk",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/spina_1.jpg",
-		"name": "Slimtech Mauk",
-		"abstract": "I disegni storici di rivestimenti lignei e lapidei vengono recuperati e rielaborati con Mauk. Design by Diego Grandi"
-}, {
-		"id": 154,
-		"styles": [204],
-		"formats": [50, 51],
-		"thickness": [11],
-		"colors": [193, 194, 195, 196, 197],
-		"url": "product.html",
-		"originalUrl": "/collezioni/goccia/",
-		"title": "Goccia",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_BugnatoNero1.jpg",
-		"name": "Goccia",
-		"abstract": "Una nuova moderna interpretazione del decoro stereoscopico. Design by Kravitz Design"
-}, {
-		"id": 150,
-		"styles": [204],
-		"formats": [12],
-		"thickness": [2],
-		"colors": [198, 199],
-		"url": "product.html",
-		"originalUrl": "/collezioni/city/",
-		"title": "City",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_amb_city_cordusio_bronze_3d_dettaglio.jpg",
-		"name": "City",
-		"abstract": "L’utilizzo flessibile del materiale si dedica alla ricerca materica e tecnologica. Design by Diego Grandi"
-}, {
-		"id": 188,
-		"protect": true,
-		"styles": [209, 212, 210],
-		"formats": [12, 14],
-		"thickness": [4, 11],
-		"colors": [200, 201, 202, 203],
-		"url": "product.html",
-		"originalUrl": "/collezioni/stoneclay/",
-		"title": "Stoneclay",
-		"image": "http://www.ceramichelea.it/wp-content/uploads/2015/06/400_charcoal-067_21.jpg",
-		"name": "Stoneclay",
-		"abstract": "Una collezione equilibrata e familiare, che si adatta perfettamente a spazi dallo stile sia classico che contemporaneo"
-}];
+</script>
+<script type=text/javscript lazy-script>
+	window.collections = [
+	{
+	"id": 29,
+	"protect": true,
+	"formats": ["300x100 cm","100x100 cm"],
+	"thickness": ["5,5 mm"],
+	"slipResistanceR": [],
+	"colors": [4022,4023],
+	"url": "/collezione/absolute",
+	"originalUrl": "/collezione/absolute",
+	"title": "Absolute",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/357_t_absolute.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Absolute",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">2</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">2</span> <span class=\"label\">COLORI</span>","<span class=\"number\">2</span> <span class=\"label\">FINITURE</span>"],
+	"Effetto": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Ambiente": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Tecnologia": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Designer": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Tipologia": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	}, {
+	"id": 30,
+	"protect": false,
+	"formats": ["30x60 cm","60x60 cm","60x120 cm","300x100 cm","50x100 cm","100x100 cm","4,9x100 cm","26 cm","38,5 cm","57,6 cm"],
+	"thickness": ["11 mm","12 mm","3,5 mm"],
+	"slipResistanceR": ["R10","R9"],
+	"colors": [4025,4028,4027,4026],
+	"url": "/collezione/basaltina-stone-project",
+	"originalUrl": "/collezione/basaltina-stone-project",
+	"title": "Basaltina Stone Project",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/358_t_basaltina_slimtech_naturale_e_lappata.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Basaltina Stone Project",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">2</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">10</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+	"Effetto": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4205,4183,4184,4185],
+	"Ambiente": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4205,4183,4184,4185],
+	"Tecnologia": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4205,4183,4184,4185],
+	"Designer": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4205,4183,4184,4185],
+	"Tipologia": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4205,4183,4184,4185],
+	}, {
+	"id": 31,
+	"protect": true,
+	"formats": ["20x121,5 cm","20x180 cm"],
+	"thickness": ["9,5 mm","12 mm"],
+	"slipResistanceR": ["R10"],
+	"colors": [4029,4030,4031],
+	"url": "/collezione/bio-recover",
+	"originalUrl": "/collezione/bio-recover",
+	"title": "Bio Recover",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/359_t_bio-recover.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Bio Recover",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">2</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">3</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
 
+	"Effetto": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Ambiente": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tecnologia": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Designer": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tipologia": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	}, {
+	"id": 32,
+	"protect": true,
+	"formats": ["30x120 cm","20x120 cm","30x180 cm"],
+	"thickness": ["20 mm","9,5 mm","12 mm"],
+	"slipResistanceR": ["R11","R10","R9"],
+	"colors": [4036,4034,4033,4037,4038,4039,4035],
+	"url": "/collezione/bio-select",
+	"originalUrl": "/collezione/bio-select",
+	"title": "Bio Select",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/360_t_bioselect.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Bio Select",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">2</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">3</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">7</span> <span class=\"label\">COLORI</span>","<span class=\"number\">2</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Ambiente": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Tecnologia": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Designer": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Tipologia": [4189,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	}, {
+	"id": 33,
+	"protect": false,
+	"formats": ["30x60 cm"],
+	"thickness": ["11 mm"],
+	"slipResistanceR": [],
+	"colors": [4041,4040],
+	"url": "/collezione/city",
+	"originalUrl": "/collezione/city",
+	"title": "City",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/361_t_city.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "City",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">1</span> <span class=\"label\">FORMATO</span>","<span class=\"number\">2</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4190,4191,4192,4193,4194,4195,4196,4197,4199,4205,4184],
+	"Ambiente": [4190,4191,4192,4193,4194,4195,4196,4197,4199,4205,4184],
+	"Tecnologia": [4190,4191,4192,4193,4194,4195,4196,4197,4199,4205,4184],
+	"Designer": [4190,4191,4192,4193,4194,4195,4196,4197,4199,4205,4184],
+	"Tipologia": [4190,4191,4192,4193,4194,4195,4196,4197,4199,4205,4184],
+	}, {
+	"id": 34,
+	"protect": true,
+	"formats": ["90x90 cm","30x60 cm","60x60 cm","60x120 cm"],
+	"thickness": ["9,5 mm","20 mm"],
+	"slipResistanceR": ["R10","R11"],
+	"colors": [4045,4042,4043,4044],
+	"url": "/collezione/cliffstone",
+	"originalUrl": "/collezione/cliffstone",
+	"title": "Cliffstone",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/362_t_cliffstone2.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Cliffstone",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">2</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">4</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">3</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4186,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Ambiente": [4186,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Tecnologia": [4186,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Designer": [4186,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	"Tipologia": [4186,4191,4192,4193,4194,4195,4196,4197,4199,4200,4201,4183,4184,4185],
+	}, {
+	"id": 35,
+	"protect": true,
+	"formats": ["90x90 cm","45x90 cm","30x60 cm","60x60 cm","260x120 cm","120x120 cm","60x120 cm"],
+	"thickness": ["9,5 mm","20 mm","6 mm"],
+	"slipResistanceR": ["R10","R11"],
+	"colors": [4047,4048,4049,4050,4051],
+	"url": "/collezione/concreto",
+	"originalUrl": "/collezione/concreto",
+	"title": "Concreto",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/363_t_LEA-concreto-medium-6mm-medium-foam-6mm-rust-6mm-dark-dry-6mm-lobby-001.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Concreto",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">3</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">7</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">5</span> <span class=\"label\">COLORI</span>","<span class=\"number\">3</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4206,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4206,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4206,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4206,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4206,4183,4184,4185],
+	}, {
+	"id": 36,
+	"protect": true,
+	"formats": ["90x90 cm","30x60 cm","60x60 cm","60x120 cm","260x120 cm","120x120 cm"],
+	"thickness": ["9,5 mm","6 mm"],
+	"slipResistanceR": ["R9"],
+	"colors": [4052,4053,4054,4055],
+	"url": "/collezione/delight",
+	"originalUrl": "/collezione/delight",
+	"title": "Delight",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/364_t_slimtech-delight.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Delight",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">2</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">6</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">4</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4199,4201,4183,4184,4185],
+	"Ambiente": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4199,4201,4183,4184,4185],
+	"Tecnologia": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4199,4201,4183,4184,4185],
+	"Designer": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4199,4201,4183,4184,4185],
+	"Tipologia": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4199,4201,4183,4184,4185],
+	}, {
+	"id": 37,
+	"protect": true,
+	"formats": ["90x90 cm","45x90 cm","30x60 cm","60x60 cm"],
+	"thickness": ["9,5 mm"],
+	"slipResistanceR": ["R10"],
+	"colors": [4056,4057,4058,4059],
+	"url": "/collezione/district",
+	"originalUrl": "/collezione/district",
+	"title": "District",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/365_t_district.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "District",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">4</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	}, {
+	"id": 38,
+	"protect": false,
+	"formats": ["30x60 cm","60x60 cm","60x120 cm"],
+	"thickness": ["9,5 mm"],
+	"slipResistanceR": [],
+	"colors": [4064,4060,4062,4065,4061,4063],
+	"url": "/collezione/dreaming",
+	"originalUrl": "/collezione/dreaming",
+	"title": "Dreaming",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/366_t_dreaming.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Dreaming",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">3</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">6</span> <span class=\"label\">COLORI</span>","<span class=\"number\">2</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4187,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Ambiente": [4187,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Tecnologia": [4187,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Designer": [4187,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Tipologia": [4187,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	}, {
+	"id": 53,
+	"protect": false,
+	"formats": [],
+	"thickness": [],
+	"slipResistanceR": [],
+	"colors": [],
+	"url": "/collezione/emperor",
+	"originalUrl": "/collezione/emperor",
+	"title": "Emperor",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/381_t_emperor.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Emperor",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": [],
+
+	"Effetto": [4187,4191,4192,4193,4194,4196,4197,4199,4183,4184,4185],
+	"Ambiente": [4187,4191,4192,4193,4194,4196,4197,4199,4183,4184,4185],
+	"Tecnologia": [4187,4191,4192,4193,4194,4196,4197,4199,4183,4184,4185],
+	"Designer": [4187,4191,4192,4193,4194,4196,4197,4199,4183,4184,4185],
+	"Tipologia": [4187,4191,4192,4193,4194,4196,4197,4199,4183,4184,4185],
+	}, {
+	"id": 40,
+	"protect": false,
+	"formats": ["300x100 cm","50x100 cm","100x100 cm","4,9x100 cm"],
+	"thickness": ["3,5 mm"],
+	"slipResistanceR": ["R9"],
+	"colors": [4077,4078,4073],
+	"url": "/collezione/gouache-10",
+	"originalUrl": "/collezione/gouache-10",
+	"title": "Gouache.10",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/368_t_gouache2.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Gouache.10",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">4</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">3</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4205,4183,4184,4185],
+	"Ambiente": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4205,4183,4184,4185],
+	"Tecnologia": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4205,4183,4184,4185],
+	"Designer": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4205,4183,4184,4185],
+	"Tipologia": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4205,4183,4184,4185],
+	}, {
+	"id": 153,
+	"protect": false,
+	"formats": ["30x120 cm","60x60 cm","90x90 cm","60x120 cm","45x90 cm"],
+	"thickness": ["20 mm"],
+	"slipResistanceR": ["R11"],
+	"colors": [4036,4034,4042,4043,4044,4045,4047,4048,4049,4050,4095,4096,4097,4098,4155,4156,4157,4158],
+	"url": "/collezione/l2",
+	"originalUrl": "/collezione/l2",
+	"title": "L2",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/4055_t_LEA-waterfall-silver-ivory-flow-45x90.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "L2",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">5</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">18</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4186,4188,4189,4195,4197,4200,4183],
+	"Ambiente": [4186,4188,4189,4195,4197,4200,4183],
+	"Tecnologia": [4186,4188,4189,4195,4197,4200,4183],
+	"Designer": [4186,4188,4189,4195,4197,4200,4183],
+	"Tipologia": [4186,4188,4189,4195,4197,4200,4183],
+	}, {
+	"id": 42,
+	"protect": true,
+	"formats": ["30x60 cm","60x60 cm"],
+	"thickness": ["9,5 mm"],
+	"slipResistanceR": ["R10"],
+	"colors": [4088,4090,4085,4087,4086,4089,4084,4083],
+	"url": "/collezione/metropolis",
+	"originalUrl": "/collezione/metropolis",
+	"title": "Metropolis",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/370_t_metropolis.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Metropolis",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">2</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">8</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	}, {
+	"id": 43,
+	"protect": false,
+	"formats": ["300x100 cm","100x100 cm"],
+	"thickness": ["5,5 mm"],
+	"slipResistanceR": [],
+	"colors": [4091,4093],
+	"url": "/collezione/naive",
+	"originalUrl": "/collezione/naive",
+	"title": "Naive",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/1437_t_LEA-naive-naiveblack-55mm-restaurant-002.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Naive",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">2</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">2</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4202,4183,4184,4185],
+	"Ambiente": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4202,4183,4184,4185],
+	"Tecnologia": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4202,4183,4184,4185],
+	"Designer": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4202,4183,4184,4185],
+	"Tipologia": [4190,4191,4192,4193,4194,4195,4196,4197,4198,4202,4183,4184,4185],
+	}, {
+	"id": 152,
+	"protect": true,
+	"formats": ["50 cm","25 cm","6,2 cm"],
+	"thickness": [],
+	"slipResistanceR": [],
+	"colors": [],
+	"url": "/collezione/nest",
+	"originalUrl": "/collezione/nest",
+	"title": "Nest",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/4096_t_LEA_nest-re-evolution.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Nest",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">3</span> <span class=\"label\">FORMATI</span>"],
+
+	"Effetto": [],
+	"Ambiente": [],
+	"Tecnologia": [],
+	"Designer": [],
+	"Tipologia": [],
+	}, {
+	"id": 44,
+	"protect": true,
+	"formats": ["90x90 cm","45x90 cm","30x60 cm","60x60 cm","60x120 cm","260x120 cm","120x120 cm","14,5x49,8 cm"],
+	"thickness": ["9,5 mm","20 mm","6 mm"],
+	"slipResistanceR": ["R10","R11"],
+	"colors": [4095,4096,4097,4098],
+	"url": "/collezione/nextone",
+	"originalUrl": "/collezione/nextone",
+	"title": "Nextone",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/372_t_nextone.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Nextone",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">3</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">8</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">3</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Ambiente": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Tecnologia": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Designer": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Tipologia": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	}, {
+	"id": 45,
+	"protect": false,
+	"formats": ["300x100 cm","50x100 cm","100x100 cm","4,9x100 cm"],
+	"thickness": ["3,5 mm"],
+	"slipResistanceR": [],
+	"colors": [4099,4100,4101,4102,4103,4104],
+	"url": "/collezione/re-evolution",
+	"originalUrl": "/collezione/re-evolution",
+	"title": "Re-evolution",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/373_t_re-evolution.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Re-evolution",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">4</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">6</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4183,4184,4185],
+	}, {
+	"id": 46,
+	"protect": false,
+	"formats": ["30x60 cm","60x60 cm"],
+	"thickness": ["9,5 mm"],
+	"slipResistanceR": ["R10"],
+	"colors": [4106,4107,4105,4108],
+	"url": "/collezione/stoneclay",
+	"originalUrl": "/collezione/stoneclay",
+	"title": "Stoneclay",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/374_t_stoneclay.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Stoneclay",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">2</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4183,4184,4185],
+	}, {
+	"id": 47,
+	"protect": true,
+	"formats": ["300x100 cm","100x100 cm","100x150 cm"],
+	"thickness": ["5,5 mm"],
+	"slipResistanceR": ["R9"],
+	"colors": [4109,4110,4111,4112,4113],
+	"url": "/collezione/take-care",
+	"originalUrl": "/collezione/take-care",
+	"title": "Take Care",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/375_t_slimtech-take-care.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Take Care",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">3</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">5</span> <span class=\"label\">COLORI</span>","<span class=\"number\">2</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4201,4202,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4201,4202,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4201,4202,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4201,4202,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4198,4201,4202,4183,4184,4185],
+	}, {
+	"id": 48,
+	"protect": true,
+	"formats": ["50x150 cm","300x100 cm","100x100 cm"],
+	"thickness": ["5,5 mm"],
+	"slipResistanceR": [],
+	"colors": [4123,4121,4118,4120,4122,4119],
+	"url": "/collezione/timeless-marble",
+	"originalUrl": "/collezione/timeless-marble",
+	"title": "Timeless Marble",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/376_t_LEA-timelessmarble-calacatta-sat-pearl-hyphen-55mm-office-001.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Timeless Marble",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">3</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">6</span> <span class=\"label\">COLORI</span>","<span class=\"number\">2</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4201,4203,4183,4184,4185],
+	"Ambiente": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4201,4203,4183,4184,4185],
+	"Tecnologia": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4201,4203,4183,4184,4185],
+	"Designer": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4201,4203,4183,4184,4185],
+	"Tipologia": [4187,4191,4192,4193,4194,4195,4196,4197,4198,4201,4203,4183,4184,4185],
+	}, {
+	"id": 49,
+	"protect": true,
+	"formats": ["90x90 cm","30x90 cm","9,7x39,2 cm","16,9x39,2 cm","9,7x33,8 cm","11,2x9,7 cm","5x40 cm"],
+	"thickness": ["11 mm"],
+	"slipResistanceR": ["R10","R9"],
+	"colors": [4125,4126,4127,4128,4129,4130,4131,4132,4133,4134,4135,4136,4137,4138,4139,4140,4141,4142],
+	"url": "/collezione/trame",
+	"originalUrl": "/collezione/trame",
+	"title": "Trame",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/377_t_trame.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Trame",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">7</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">6</span> <span class=\"label\">COLORI</span>","<span class=\"number\">3</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Ambiente": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tecnologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Designer": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	"Tipologia": [4188,4191,4192,4193,4194,4195,4196,4197,4199,4201,4183,4184,4185],
+	}, {
+	"id": 50,
+	"protect": false,
+	"formats": [],
+	"thickness": [],
+	"slipResistanceR": [],
+	"colors": [],
+	"url": "/collezione/type-32",
+	"originalUrl": "/collezione/type-32",
+	"title": "Type 32",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/3939_t_LEA-type32-honey-betawarm11-55mm-honey-deltacold30-55mm-honey-alfawarm03-55mm-honey-gammacold22-55mm-kitchen-001.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Type 32",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>"],
+	"Effetto": [4189,4191,4192,4193,4194,4196,4197,4198,4205,4183,4184,4185],
+	"Ambiente": [4189,4191,4192,4193,4194,4196,4197,4198,4205,4183,4184,4185],
+	"Tecnologia": [4189,4191,4192,4193,4194,4196,4197,4198,4205,4183,4184,4185],
+	"Designer": [4189,4191,4192,4193,4194,4196,4197,4198,4205,4183,4184,4185],
+	"Tipologia": [4189,4191,4192,4193,4194,4196,4197,4198,4205,4183,4184,4185],
+	}, {
+	"id": 51,
+	"protect": true,
+	"formats": ["90x90 cm","45x90 cm","30x60 cm","60x60 cm","60x120 cm","50x100 cm","300x100 cm","100x100 cm","8,3x19,5 cm","14,5x49,8 cm","16,9x39,2 cm"],
+	"thickness": ["20 mm","9,5 mm","5,5 mm"],
+	"slipResistanceR": ["R11","R10"],
+	"colors": [4155,4156,4157,4158],
+	"url": "/collezione/waterfall",
+	"originalUrl": "/collezione/waterfall",
+	"title": "Waterfall",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/379_t_slimtech-waterfall.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Waterfall",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">3</span> <span class=\"label\">SPESSORI</span>","<span class=\"number\">11</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">4</span> <span class=\"label\">COLORI</span>","<span class=\"number\">3</span> <span class=\"label\">FINITURE</span>"],
+
+	"Effetto": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Ambiente": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Tecnologia": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Designer": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	"Tipologia": [4186,4191,4192,4193,4194,4195,4196,4197,4198,4199,4200,4201,4183,4184,4185],
+	}, {
+	"id": 52,
+	"protect": true,
+	"formats": ["20x100 cm","33x300 cm","20x200 cm","20x150 cm"],
+	"thickness": ["5,5 mm"],
+	"slipResistanceR": ["R10"],
+	"colors": [4160,4161,4163],
+	"url": "/collezione/wood-stock",
+	"originalUrl": "/collezione/wood-stock",
+	"title": "Wood-stock",
+	"image": "https://leaceramiche.wslabs.it/media/immagini/380_t_LEA-woodstock-honey-55mm-reataurant-001.jpg",
+	"filter_images": {"https://leaceramiche.wslabs.it/media/immagini/4118_t_534x390.png":[4191,4183],"https://leaceramiche.wslabs.it/media/immagini/4119_t_700x560.png":[4192]},
+	"name": "Wood-stock",
+	"abstract": "",
+	"madeInUsa": "false",
+	"htmlOverlay": ["<span class=\"number\">1</span> <span class=\"label\">SPESSORE</span>","<span class=\"number\">4</span> <span class=\"label\">FORMATI</span>","<span class=\"number\">3</span> <span class=\"label\">COLORI</span>","<span class=\"number\">1</span> <span class=\"label\">FINITURA</span>"],
+
+	"Effetto": [4189,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Ambiente": [4189,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Tecnologia": [4189,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Designer": [4189,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	"Tipologia": [4189,4191,4192,4193,4194,4195,4196,4197,4198,4201,4183,4184,4185],
+	}
+	];
 </script>
 
 <div ng-controller="CollectionsCtrl as collectionsCtrl">
@@ -501,7 +722,7 @@
 					<div class="collections" ng-if="collectionsCtrl.filteredItems">
 						<a class="card card--collections" href="{{item.url}}" ng-repeat="item in collectionsCtrl.filteredItems track by $index">
 							<div class="picture" appear>
-								<img lazy data-src="{{item.image}}" alt="{{item.title}}" />
+								<img lazy data-src="{{item.filteredImage}}" alt="{{item.title}}" />
 								<div class="group--overlay">
 									<div class="group--info" ng-if="item.protect">
 										<div class="group--info__protect">

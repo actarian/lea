@@ -21363,6 +21363,22 @@ function () {
       return filters;
     }
   }, {
+    key: "setFilteredImage",
+    value: function setFilteredImage(item, filter) {
+      var filteredImage = Object.keys(item.filter_images).reduce(function (p, image) {
+        var imageFeatures = item.filter_images[image];
+        var hasImageFeature = imageFeatures.indexOf(filter.value) !== -1;
+        /*
+        if (hasImageFeature) {
+        	console.log(hasImageFeature, filter.value, imageFeatures);
+        }
+        */
+
+        return hasImageFeature ? image : p;
+      }, undefined);
+      item.filteredImage = filteredImage || item.filteredImage;
+    }
+  }, {
     key: "applyFilters",
     value: function applyFilters() {
       var _this3 = this;
@@ -21373,15 +21389,26 @@ function () {
       }).filter(function (x) {
         return x.value !== null;
       });
-      var filteredItems = this.collections.slice(); // console.log(filteredItems);
+      var filteredItems = this.collections.slice(); // console.log('selectedFilters', selectedFilters.map(x => x.value).join(', '));
 
       if (selectedFilters.length) {
-        filteredItems = filteredItems.filter(function (reference) {
+        filteredItems = filteredItems.filter(function (item) {
+          item.filteredImage = item.image;
           var has = true;
           selectedFilters.forEach(function (filter) {
-            has = has && filter.doFilter(reference, filter.value);
+            var hasFilter = filter.doFilter(item, filter.value);
+
+            if (hasFilter) {
+              _this3.setFilteredImage(item, filter);
+            }
+
+            has = has && hasFilter;
           });
           return has;
+        });
+      } else {
+        filteredItems.forEach(function (item) {
+          return item.filteredImage = item.image;
         });
       } // console.log(filteredItems, selectedFilters);
 
@@ -21399,10 +21426,10 @@ function () {
     }
   }, {
     key: "updateFilterStates",
-    value: function updateFilterStates(collections) {
+    value: function updateFilterStates(items) {
       var _this4 = this;
 
-      // console.log('updateFilterStates', collections);
+      // console.log('updateFilterStates', items);
       Object.keys(this.filters).forEach(function (x) {
         var filter = _this4.filters[x];
         filter.options.forEach(function (option) {
@@ -21411,9 +21438,9 @@ function () {
           if (option.value) {
             var i = 0;
 
-            while (i < collections.length && !has) {
-              var reference = collections[i];
-              has = filter.doFilter(reference, option.value);
+            while (i < items.length && !has) {
+              var item = items[i];
+              has = filter.doFilter(item, option.value);
               i++;
             }
           } else {
