@@ -28,8 +28,12 @@ class ContactStoreCtrl {
 
 	onSubmit() {
 		console.log('ContactStoreCtrl.onSubmit', this.model);
+
+		var data = this.model;
+		data.Collections = data.Collections.join(',');
+
 		if (this.state.busy()) {
-			this.$http.post('/WS/wsUsers.asmx/ContactStore', { data: this.model }).then(
+			this.$http.post('/WS/wsUsers.asmx/ContactStore', { data: data }).then(
 				success => {
 					this.state.success();
 					GtmService.push({ "event": "Action Complete" });

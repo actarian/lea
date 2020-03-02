@@ -335,7 +335,7 @@ class StoreLocatorCtrl {
 				</div>
 				<div class="group group--cta">
 					${store.address !== '' ? `<a id="locator-marker" href="https://www.google.it/maps/dir/${position.lat()},${position.lng()}/${store.title}/@${store.latitude},${store.longitude}/" target="_blank" class="btn btn--link"><span>${this.labels.reachStore}</span></a>` : ``}
-					${store.type === 9 ? `<a id="contact-store" href="/contatta-store?store=${store.id}" target="_blank" class="btn btn--link"><span>${this.labels.contactStore}</span></a>` : ''}
+					${store.type === 8  || store.type === 9 ? `<a id="contact-store" href="/contatta-store?store=${store.id}" target="_blank" class="btn btn--link"><span>${this.labels.contactStore}</span></a>` : ''}
 				</div>
 			</div>`;
 

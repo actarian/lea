@@ -21855,10 +21855,12 @@ function () {
       var _this = this;
 
       console.log('ContactStoreCtrl.onSubmit', this.model);
+      var data = this.model;
+      data.Collections = data.Collections.join(',');
 
       if (this.state.busy()) {
         this.$http.post('/WS/wsUsers.asmx/ContactStore', {
-          data: this.model
+          data: data
         }).then(function (success) {
           _this.state.success();
 
@@ -30922,7 +30924,7 @@ function () {
 
       var markers = stores.map(function (store) {
         var position = new google.maps.LatLng(store.latitude, store.longitude);
-        var content = "<div class=\"marker__content\">\n\t\t\t\t<div class=\"title\"><span>".concat(store.title, "</span></div>\n\t\t\t\t<div class=\"group group--info\">\n\t\t\t\t\t<div class=\"address\">\n\t\t\t\t\t\t").concat(store.address, "<br>\n\t\t\t\t\t\t").concat(store.zip, " ").concat(store.city, " ").concat(store.provinceCode, " ").concat(store.countryCode, "<br>\n\t\t\t\t\t\t").concat(store.telephone ? "<span>".concat(store.telephone, "<br></span>") : '', "\n\t\t\t\t\t\t").concat(store.website ? "<span><a target=\"_blank\" href=\"".concat(store.website, "\">").concat(store.website, "</a></span>") : '', "\n\t\t\t\t\t</div>\n\t\t\t\t\t").concat(store.address !== '' ? "<div class=\"distance\">".concat(_this3.labels.approximately, " <b>").concat(Math.floor(store.distance), " km</b></div>") : "", "\n\t\t\t\t</div>\n\t\t\t\t<div class=\"group group--cta\">\n\t\t\t\t\t").concat(store.address !== '' ? "<a id=\"locator-marker\" href=\"https://www.google.it/maps/dir/".concat(position.lat(), ",").concat(position.lng(), "/").concat(store.title, "/@").concat(store.latitude, ",").concat(store.longitude, "/\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.reachStore, "</span></a>") : "", "\n\t\t\t\t\t").concat(store.type === 9 ? "<a id=\"contact-store\" href=\"/contatta-store?store=".concat(store.id, "\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.contactStore, "</span></a>") : '', "\n\t\t\t\t</div>\n\t\t\t</div>");
+        var content = "<div class=\"marker__content\">\n\t\t\t\t<div class=\"title\"><span>".concat(store.title, "</span></div>\n\t\t\t\t<div class=\"group group--info\">\n\t\t\t\t\t<div class=\"address\">\n\t\t\t\t\t\t").concat(store.address, "<br>\n\t\t\t\t\t\t").concat(store.zip, " ").concat(store.city, " ").concat(store.provinceCode, " ").concat(store.countryCode, "<br>\n\t\t\t\t\t\t").concat(store.telephone ? "<span>".concat(store.telephone, "<br></span>") : '', "\n\t\t\t\t\t\t").concat(store.website ? "<span><a target=\"_blank\" href=\"".concat(store.website, "\">").concat(store.website, "</a></span>") : '', "\n\t\t\t\t\t</div>\n\t\t\t\t\t").concat(store.address !== '' ? "<div class=\"distance\">".concat(_this3.labels.approximately, " <b>").concat(Math.floor(store.distance), " km</b></div>") : "", "\n\t\t\t\t</div>\n\t\t\t\t<div class=\"group group--cta\">\n\t\t\t\t\t").concat(store.address !== '' ? "<a id=\"locator-marker\" href=\"https://www.google.it/maps/dir/".concat(position.lat(), ",").concat(position.lng(), "/").concat(store.title, "/@").concat(store.latitude, ",").concat(store.longitude, "/\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.reachStore, "</span></a>") : "", "\n\t\t\t\t\t").concat(store.type === 8 || store.type === 9 ? "<a id=\"contact-store\" href=\"/contatta-store?store=".concat(store.id, "\" target=\"_blank\" class=\"btn btn--link\"><span>").concat(_this3.labels.contactStore, "</span></a>") : '', "\n\t\t\t\t</div>\n\t\t\t</div>");
         var icon = ['pin-showroom.png', 'pin-top-store.png', 'pin-reseller.png'][store.type - 8];
         var marker = new google.maps.Marker({
           position: position,
