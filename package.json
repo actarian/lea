@@ -29,7 +29,7 @@
 		"angular-route": "~1.7.5",
 		"angular-sanitize": "~1.7.5",
 		"gmaps-marker-clusterer": "~1.2.2",
-		"gsap": "^2.1.2",
+		"gsap": "^3.6.0",
 		"jsonformatter": "~0.7.0",
 		"jquery": "~3.4.1",
 		"muuri": "^0.7.1",
